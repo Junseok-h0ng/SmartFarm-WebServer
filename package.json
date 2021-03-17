@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend": "nodemon ./app.js",
+    "backend": "nodemon ./back/app.js",
     "start": "concurrently \"npm run backend\" \"npm run start --prefix front"
   },
   "repository": {
@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/Junseok-h0ng/SmartFarm-WebServer#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

@@ -1,15 +1,14 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import store from '../_redux/store';
+import {wrapper} from '../_redux/store'
 
-function MyApp({ Component, pageProps }) {
+const root = ({ Component, pageProps })=>{
   return (
-    <Provider store ={store}>
-      <Component {...pageProps} />
-    </Provider>
-    
+    <>
+      <Component {...pageProps} />  
+    </>
+        
   )
   
 }
 
-export default MyApp
+export default wrapper.withRedux(root);

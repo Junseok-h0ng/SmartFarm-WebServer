@@ -8,7 +8,7 @@ const root = ({ Component, pageProps })=>{
     </>
         
   )
-  
+ 
 }
 
 export default wrapper.withRedux(root);

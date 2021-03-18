@@ -1,9 +1,12 @@
 import { configureStore,getDefaultMiddleware } from '@reduxjs/toolkit';
 import {createWrapper} from 'next-redux-wrapper';
- import {reducer} from './_reducer/rootReducer';
+//  import {reducer} from './_reducer/rootReducer';
+import testReducer from './_reducer/test'
 
 const makeStore = (context) => configureStore({
-  reducer,
+  reducer:{
+    testReducer
+  },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware()
 });

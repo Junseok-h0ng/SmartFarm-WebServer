@@ -17,8 +17,8 @@ function Home({data}){
 
 
   const handleClick = () =>{
-    const socketClient = io("http://220.126.61.83:9001");
-    socketClient.on("connect",(res)=>{
+    const socketClient = io("http://localhost:3000");
+    socketClient.on("hello",(res)=>{
       console.log(res);
     });
   }

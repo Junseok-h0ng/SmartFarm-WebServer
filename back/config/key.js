@@ -8,5 +8,5 @@ switch(process.env.NODE_ENV){
         module.exports = require('./dev');
         break;
     default:
-        console.log(process.env.NODE_ENV);
+        console.log("환경변수 확인필요");
 }

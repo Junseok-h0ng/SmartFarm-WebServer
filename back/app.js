@@ -30,9 +30,6 @@ const server = app.listen(3000,function(){
 });
 
 
-
-
-
 //소켓 테스트
 const socketServer = io(server,{
       cors:{

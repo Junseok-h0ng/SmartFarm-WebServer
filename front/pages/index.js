@@ -12,9 +12,7 @@ function Home({data}){
 
   useEffect(() => {
     dispatch(increment());
-  }, [])
-
-
+  }, []);
 
   const handleClick = () =>{
     const socketClient = io("http://localhost:3000");
@@ -24,8 +22,11 @@ function Home({data}){
   }
 
   return(
-    <div>
-      id123
+    <div style={{border:'1px solid black'}}>
+      여기에 메인 화면 출력<br/>
+      상황에 따라
+      sns 출력 / 스마트팜 출력 <br/>
+      이부분만 바낌<br/>
       <Button onClick={handleClick}>연결</Button>
     </div>
   )

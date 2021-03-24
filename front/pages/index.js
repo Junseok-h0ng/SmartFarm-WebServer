@@ -5,6 +5,7 @@ import {Button} from 'antd';
 
 import {useDispatch} from 'react-redux';
 import { increment } from '../_redux/_reducer/test';
+import CardForm from '../components/Contents/CardForm';
 
 function Home({data}){
   
@@ -17,17 +18,16 @@ function Home({data}){
   const handleClick = () =>{
     const socketClient = io("http://localhost:3000");
     socketClient.on("hello",(res)=>{
+      socketClient.on('disconnect',()=>{
+        
+      })
       console.log(res);
     });
   }
 
   return(
-    <div style={{border:'1px solid black'}}>
-      여기에 메인 화면 출력<br/>
-      상황에 따라
-      sns 출력 / 스마트팜 출력 <br/>
-      이부분만 바낌<br/>
-      <Button onClick={handleClick}>연결</Button>
+    <div>
+      <CardForm/>
     </div>
   )
 

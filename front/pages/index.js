@@ -6,6 +6,7 @@ import {Button} from 'antd';
 import {useDispatch} from 'react-redux';
 import { increment } from '../_redux/_reducer/test';
 import CardForm from '../components/Contents/CardForm';
+import SearchForm from '../components/Contents/SearchForm';
 
 function Home({data}){
   
@@ -27,6 +28,7 @@ function Home({data}){
 
   return(
     <div>
+      {/* <SearchForm/> */}
       <CardForm/>
     </div>
   )

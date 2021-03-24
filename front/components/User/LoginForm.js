@@ -17,7 +17,6 @@ function LoginForm() {
             </div>
             <div style={{marginTop:'10px'}}>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
-                <Link href="/"><a><Button>회원가입</Button></a></Link>
             </div>
         </Form>
 

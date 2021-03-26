@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Form,Input,Button,message} from 'antd';
 import { register } from '../../_redux/_reducer/userReducer';
+import Router from 'next/router';
 
 function RegisterForm() {
 
@@ -27,16 +28,25 @@ function RegisterForm() {
 
     const onSubmitRegister = ()=>{
 
-        // if(password != password2){
-            
-        // }
+        if(password != password2){
+            return setPassword2('');
+        }
+
         const data ={
             name,
             email,
             password,
             password2
         }
-        dispatch(register(data));
+        
+        dispatch(register(data))
+        .then(res=>{
+            if(res.type === "REGISTER/fulfilled"){
+                Router.push('/');
+            }else{
+                message.error('회원가입에 실패했습니다.');
+            }
+        });
     }
 
     return (

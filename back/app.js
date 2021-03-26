@@ -1,6 +1,9 @@
 const express = require('express'); 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./passport');
 const app = express(); 
 
 const config = require('./config/key');
@@ -15,7 +18,17 @@ mongoose.connect(config.mongoURI,{
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cookieParser());
+
+app.use(cookieParser('qwer'));
+app.use(session({
+      secret: 'qwer',
+      resave:false,
+      saveUninitialized:true
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig();
 
 app.use('/rasp',require('./routes/rasp'));
 app.use('/user',require('./routes/user'));

@@ -1,21 +1,19 @@
 import axios from 'axios';
 import {createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import config from '../../config/config'
 
 export const logIn = createAsyncThunk("LOG_IN",async(data)=>{
-    console.log(data);
-    const response = await axios.post("http://localhost:3000/user/login",data);
+    const response = await axios.post(config.back_url+"/user/login",data);
     return response.data;
 });
 
-export const logOut = createAsyncThunk("LOG_OUT",async(data)=>{
-    const response = await axios.post("http://locahlost:/3000/user/logout",data);
-    return response.data;
+export const logOut = createAsyncThunk("LOG_OUT",async()=>{
+    await axios.post(config.back_url+"/user/logout");
 });
 
 export const register = createAsyncThunk("REGISTER",async(data)=>{
-    await axios.post("http://localhost:3000/user/register",data);
-})
-
+    await axios.post(config.back_url+"/user/register",data);
+});
 
 export const userReducer = createSlice({
     name:'user',

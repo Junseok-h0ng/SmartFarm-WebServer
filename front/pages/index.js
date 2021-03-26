@@ -13,18 +13,8 @@ function Home({data}){
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(increment());
+    
   }, []);
-
-  const handleClick = () =>{
-    const socketClient = io("http://localhost:3000");
-    socketClient.on("hello",(res)=>{
-      socketClient.on('disconnect',()=>{
-        
-      })
-      console.log(res);
-    });
-  }
 
   return(
     <div>
@@ -35,13 +25,13 @@ function Home({data}){
 
 }
 
-export async function getServerSideProps() {
-  // Fetch data from external API
+// export async function getServerSideProps() {
+//   // Fetch data from external API
  
-  const {data} = await axios.get(`http://localhost:3000/rasp`);
+//   const {data} = await axios.get(`http://localhost:3000/rasp`);
   
-  return { props: { data } };
-}
+//   return { props: { data } };
+// }
 
 export default Home;
 

@@ -10,7 +10,7 @@ function CardForm() {
                   actions={[
                     <LikeOutlined type="like" key="like" />,
                     <DislikeOutlined type="dislike" key="dislike" /> ,
-                    <MessageOutlined  type="message" key="message" onClick/>,
+                    <MessageOutlined  type="message" key="message"/>,
                 ]}
             >
                 <Card.Meta

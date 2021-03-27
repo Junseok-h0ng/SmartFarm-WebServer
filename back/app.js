@@ -13,18 +13,25 @@ mongoose.connect(config.mongoURI,{
       useNewUrlParser:true,useUnifiedTopology:true,
       useCreateIndex:true,useFindAndModify:false
 }).then(()=> console.log(process.env.NODE_ENV+"모드로 DB연결했습니다."));
-
-
-app.use(cors());
+app.use(express.static("public"));
 app.use(express.json());
-app.use(express.urlencoded());
-
-app.use(cookieParser('qwer'));
+app.use(express.urlencoded({extended:false }));
+app.use(cors({
+      origin:['http://localhost:8080'],
+      credentials:true
+}));
+app.use(cookieParser());
 app.use(session({
-      secret: 'qwer',
+      secret: "cats",
       resave:false,
-      saveUninitialized:true
-}))
+      saveUninitialized:true,
+      cookie:{
+            httpOnly:true,
+            secure:false
+      },
+      name:'muyaho'
+}));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,7 +41,7 @@ app.use('/rasp',require('./routes/rasp'));
 app.use('/user',require('./routes/user'));
 
 app.get('/',function(req,res){
-      res.send('indexPage1')
+      res.send();
 });
 
 app.listen(3000,function(){

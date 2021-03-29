@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import { increment } from '../_redux/_reducer/test';
 import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
+import PostForm from '../components/Contents/PostForm';
 
 function Home({data}){
   
@@ -19,7 +20,8 @@ function Home({data}){
   return(
     <div>
       {/* <SearchForm/> */}
-      <CardForm/>
+      <PostForm/>
+      {/* <CardForm/> */}
     </div>
   )
 

@@ -39,6 +39,7 @@ passportConfig();
 
 app.use('/rasp',require('./routes/rasp'));
 app.use('/user',require('./routes/user'));
+app.use('/upload',require('./routes/upload'));
 
 app.get('/',function(req,res){
       res.send();

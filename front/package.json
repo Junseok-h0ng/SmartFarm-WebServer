@@ -9,14 +9,14 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@reduxjs/toolkit": "^1.5.0",
-    "antd": "^4.14.0",
+    "@reduxjs/toolkit": "^1.5.1",
+    "antd": "^4.10.2",
     "axios": "^0.21.1",
     "next": "10.0.9",
     "next-redux-wrapper": "^6.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.3",
     "socket.io-client": "^4.0.0"
   }
 }

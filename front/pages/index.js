@@ -1,17 +1,16 @@
 import React,{useEffect} from 'react';
-import axios from 'axios';
-import io from "socket.io-client";
-import {Button} from 'antd';
-
+import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
-import { increment } from '../_redux/_reducer/test';
+
 import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
 import PostForm from '../components/Contents/PostForm';
+import ProfileForm from '../components/User/ProfileForm';
 
 function Home({data}){
   
   const dispatch = useDispatch();
+  const {isLogin} = useSelector(state => state.user);
 
   useEffect(() => {
     
@@ -20,8 +19,15 @@ function Home({data}){
   return(
     <div>
       {/* <SearchForm/> */}
-      <PostForm/>
-      {/* <CardForm/> */}
+      {isLogin &&
+        <>
+          <ProfileForm/>
+          <PostForm/>
+        </>
+      }
+
+
+      <CardForm/>
     </div>
   )
 
@@ -36,5 +42,7 @@ function Home({data}){
 // }
 
 export default Home;
+
+
 
 

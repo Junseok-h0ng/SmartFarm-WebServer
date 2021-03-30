@@ -11,7 +11,7 @@ router.get('/',(req,res)=>{
         delete user.password;
         return res.status(200).send(user);
     }else{
-        return res.status(401)
+        return res.status(401).send();
     }
 })
 

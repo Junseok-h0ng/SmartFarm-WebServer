@@ -25,22 +25,27 @@ export const register = createAsyncThunk("REGISTER",async(data)=>{
 export const userReducer = createSlice({
     name:'user',
     initialState: {
-        isLogin: false
+        isLogin: false,
+        isLoading: false
       },
       extraReducers:{
           [logIn.fulfilled]: (state,{payload}) => {
               state.isLogin = true;
               state.data = payload;
           },
-          [logOut.fulfilled]: (state,{payload})=>{
+          [logOut.fulfilled]: (state)=>{
               state.isLogin = false;
           },
-          [register.fulfilled]: (state,{payload})=>{
-
+          [loadUserData.pending]: (state) =>{
+              state.isLoading = true;
           },
           [loadUserData.fulfilled]: (state,{payload}) =>{
+              state.isLoading = false;
               state.isLogin = true;
               state.data = payload;
+          },
+          [loadUserData.rejected]: (state)=>{
+              state.isLoading = false;
           }
       },
 })

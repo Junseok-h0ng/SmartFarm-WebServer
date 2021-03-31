@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card,Avatar} from 'antd';
+import {Card,Avatar,Checkbox} from 'antd';
 import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
 
 

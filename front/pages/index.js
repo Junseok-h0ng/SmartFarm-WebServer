@@ -23,6 +23,7 @@ function Home({data}){
         <>
           <ProfileForm/>
           <PostForm/>
+          
         </>
       }
 

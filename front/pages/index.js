@@ -2,6 +2,8 @@ import React,{useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
+import {Image} from 'antd';
+
 import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
 import PostForm from '../components/Contents/PostForm';

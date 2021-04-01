@@ -12,7 +12,7 @@ const root = ({ Component, pageProps })=>{
     <>
     <Head>
       <title>SmartFarm</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.12.0/antd.css"/>
     </Head>
       <AppLayout>
         <Component {...pageProps} />  

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination } from 'antd';
+import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import { loadFarmImages } from '../../../_redux/_reducer/farmReducer';
 
@@ -14,12 +14,12 @@ function UploadForm() {
     .then(result=>{
       if(result.payload){
         result.payload.map((payload)=>{
-          const data = "data:image/png;base64,"+payload
+          const data = "data:image/jpg;base64,"+payload
           setImg(prevImg => [...prevImg,data]);
         });
       }
-    })
-  }, [])
+    });
+  }, []);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -48,24 +48,18 @@ function UploadForm() {
       }
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Row>
-          <Col span={6}>
-            <Card
-            hoverable
-            style={{ width: 120 }}
-            cover={<img alt="example" src={img[0]} />}
-            >
-              <Checkbox>1</Checkbox>
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card
-            hoverable
-            style={{ width: 120 }}
-            cover={<img alt="example" src={img[1]} />}
-            >
-              <Checkbox>1</Checkbox>
-            </Card>
-          </Col>
+          {img && img.map((img,index)=>(
+            <Col span={6}>
+              <Card
+                key={index}
+                hoverable
+                style={{width:120}}
+                cover={<Image width={120} height={90} src={img}/>} 
+              >
+                <Checkbox>{index}</Checkbox>
+              </Card>
+            </Col>
+          ))}
         </Row>
         <Pagination style={{paddingTop:'20px',display:'flex', justifyContent:'center',alignItems:'center',
           width:'100%'}} defaultCurrent={1} total={50}/>

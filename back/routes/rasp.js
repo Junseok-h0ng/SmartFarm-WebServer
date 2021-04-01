@@ -10,9 +10,8 @@ router.get('/',(req,res)=>{
 router.post('/images',async(req,res)=>{
     const files = ['1617021913938.png','1617023151405.png']
     const filesData = files.map((file)=>{
-        return fs.readFileSync('uploads/'+file)
+        return new Buffer(fs.readFileSync('uploads/'+file)).toString('base64')
     });
-    res.writeHead(200,{'Content-Type': 'image/png'});
     res.send(filesData);
 });
 

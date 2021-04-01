@@ -7,17 +7,17 @@ import { loadFarmImages } from '../../../_redux/_reducer/farmReducer';
 function UploadForm() {
 
   const dispatch = useDispatch();
-  const farm = useSelector(state => state.farm);
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState([]);
 
   useEffect(() => {
     dispatch(loadFarmImages())
     .then(result=>{
-      console.log(result);
       if(result.payload){
-        setImg("data:image/png;base64,"+result.payload)
+        result.payload.map((payload)=>{
+          const data = "data:image/png;base64,"+payload
+          setImg(prevImg => [...prevImg,data]);
+        });
       }
-      
     })
   }, [])
 
@@ -45,14 +45,14 @@ function UploadForm() {
         <Tabs.TabPane tab="data" key="2">
         </Tabs.TabPane>
       </Tabs>
-      } 
+      }
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Row>
           <Col span={6}>
             <Card
             hoverable
             style={{ width: 120 }}
-            cover={<img alt="example" src={img?img:null}/>}
+            cover={<img alt="example" src={img[0]} />}
             >
               <Checkbox>1</Checkbox>
             </Card>
@@ -61,7 +61,7 @@ function UploadForm() {
             <Card
             hoverable
             style={{ width: 120 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+            cover={<img alt="example" src={img[1]} />}
             >
               <Checkbox>1</Checkbox>
             </Card>

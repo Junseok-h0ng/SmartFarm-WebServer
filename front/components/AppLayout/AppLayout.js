@@ -10,11 +10,12 @@ function AppLayout({children}) {
 
     useEffect(() => {
             dispatch(loadUserData())   
-    }, [])
+    }, []);
 
     const onLogout = () =>{
         dispatch(logOut());
     }
+    
     return (
         <div>
             <Menu mode="horizontal" style={{padding:'0 30px'}}>

@@ -8,9 +8,17 @@ function UploadForm() {
 
   const dispatch = useDispatch();
   const farm = useSelector(state => state.farm);
+  const [img, setImg] = useState(null);
 
   useEffect(() => {
-    dispatch(loadFarmImages());
+    dispatch(loadFarmImages())
+    .then(result=>{
+      console.log(result);
+      if(result.payload){
+        setImg("data:image/png;base64,"+result.payload)
+      }
+      
+    })
   }, [])
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -39,13 +47,12 @@ function UploadForm() {
       </Tabs>
       } 
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-
         <Row>
           <Col span={6}>
             <Card
             hoverable
             style={{ width: 120 }}
-            cover={<img alt="example" src={farm.images} />}
+            cover={<img alt="example" src={img?img:null}/>}
             >
               <Checkbox>1</Checkbox>
             </Card>

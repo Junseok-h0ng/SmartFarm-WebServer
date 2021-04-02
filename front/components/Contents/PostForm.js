@@ -15,8 +15,11 @@ function PostForm() {
                     valuePropName="fileList"
                     getValueFromEvent
                 >
-                <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
-                <UploadButton/>
+                <div style={{marginTop:'5px'}}>
+                    <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
+                    <UploadButton/>
+                </div>
+
                 </Form.Item>
             </Form>
         </div>

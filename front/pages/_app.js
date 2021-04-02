@@ -13,6 +13,17 @@ const root = ({ Component, pageProps })=>{
     <Head>
       <title>SmartFarm</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.12.0/antd.css"/>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        charset="UTF-8"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
     </Head>
       <AppLayout>
         <Component {...pageProps} />  

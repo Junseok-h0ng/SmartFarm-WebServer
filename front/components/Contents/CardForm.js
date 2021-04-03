@@ -10,7 +10,9 @@ function CardForm() {
     const dispatch = useDispatch();
     const post = useSelector(state => state.post);
 
-
+    useEffect(() => {
+        dispatch(loadContents());
+    }, []);
 
     const settings = {
         dots: true,
@@ -56,30 +58,6 @@ function CardForm() {
                 </Slider>           
             </Card>
             ))}
-            {/* <Card
-                style={{marginTop:'10px'}}
-                actions={[
-                    <LikeOutlined type="like" key="like" />,
-                    <DislikeOutlined type="dislike" key="dislike" /> ,
-                    <MessageOutlined  type="message" key="message"/>,
-                ]}
-            >
-                <Card.Meta
-                    avatar={<Avatar>fasd</Avatar>}
-                    title={'123'}
-                    description={
-                        'asdfas'
-                    }
-                />
-                <Slider {...settings}>
-                <div>
-                <Image style={{height:'200px',objectFit:'contain'}} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                <div>
-                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                </Slider>           
-            </Card> */}
         </div>
     )
 }

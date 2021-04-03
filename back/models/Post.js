@@ -4,11 +4,18 @@ const postSchema = mongoose.Schema({
     title:{
         type:String
     },
-    description:{
+    contents:{
         type:String
+    },
+    image:{
+        type:Array
     },
     data:{
         type:Object
+    },
+    writer:{
+        type:mongoose.Types.ObjectId,
+        ref:'User'
     }
 },{
     timestamps: true

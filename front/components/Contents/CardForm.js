@@ -20,7 +20,8 @@ function CardForm() {
     return (
         <div>
             <Card
-                  actions={[
+                style={{marginTop:'10px'}}
+                actions={[
                     <LikeOutlined type="like" key="like" />,
                     <DislikeOutlined type="dislike" key="dislike" /> ,
                     <MessageOutlined  type="message" key="message"/>,
@@ -40,8 +41,79 @@ function CardForm() {
                 <div>
                     <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
                 </div>
-                </Slider>               
-
+                </Slider>           
+            </Card>
+            <Card
+                style={{marginTop:'10px'}}
+                actions={[
+                    <LikeOutlined type="like" key="like" />,
+                    <DislikeOutlined type="dislike" key="dislike" /> ,
+                    <MessageOutlined  type="message" key="message"/>,
+                ]}
+            >
+                <Card.Meta
+                    avatar={<Avatar>fasd</Avatar>}
+                    title={'123'}
+                    description={
+                        'asdfas'
+                    }
+                />
+                <Slider {...settings}>
+                <div>
+                <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                <div>
+                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                </Slider>           
+            </Card>
+            <Card
+                style={{marginTop:'10px'}}
+                actions={[
+                    <LikeOutlined type="like" key="like" />,
+                    <DislikeOutlined type="dislike" key="dislike" /> ,
+                    <MessageOutlined  type="message" key="message"/>,
+                ]}
+            >
+                <Card.Meta
+                    avatar={<Avatar>fasd</Avatar>}
+                    title={'123'}
+                    description={
+                        'asdfas'
+                    }
+                />
+                <Slider {...settings}>
+                <div>
+                <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                <div>
+                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                </Slider>           
+            </Card>
+            <Card
+                style={{marginTop:'10px'}}
+                actions={[
+                    <LikeOutlined type="like" key="like" />,
+                    <DislikeOutlined type="dislike" key="dislike" /> ,
+                    <MessageOutlined  type="message" key="message"/>,
+                ]}
+            >
+                <Card.Meta
+                    avatar={<Avatar>fasd</Avatar>}
+                    title={'123'}
+                    description={
+                        'asdfas'
+                    }
+                />
+                <Slider {...settings}>
+                <div>
+                <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                <div>
+                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
+                </div>
+                </Slider>           
             </Card>
         </div>
     )

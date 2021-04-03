@@ -3,12 +3,14 @@ import {createWrapper} from 'next-redux-wrapper';
 import testReducer from './_reducer/test';
 import user from './_reducer/userReducer';
 import farm from './_reducer/farmReducer';
+import post from './_reducer/postReducer';
 
 const makeStore = (context) => configureStore({
   reducer:{
     testReducer,
     user,
-    farm
+    farm,
+    post
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware()

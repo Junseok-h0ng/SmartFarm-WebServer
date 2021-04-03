@@ -8,6 +8,7 @@ import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
+import { loadContents } from '../_redux/_reducer/postReducer';
 
 function Home({data}){
   
@@ -15,8 +16,8 @@ function Home({data}){
   const {isLogin} = useSelector(state => state.user);
 
   useEffect(() => {
-    
-  }, []);
+    dispatch(loadContents());
+}, [])
 
   return(
     <div>

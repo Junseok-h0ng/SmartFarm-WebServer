@@ -42,7 +42,7 @@ function AppLayout({children}) {
                     {!isLoading &&
                     <>
                         {children}
-                    </>   
+                    </>
                     }
                 </Col>
                 <Col xs={24}  md={4} lg={5} xl={6} xxl={7}/>

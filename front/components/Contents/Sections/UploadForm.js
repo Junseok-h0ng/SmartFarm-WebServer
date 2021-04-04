@@ -4,7 +4,7 @@ import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import { loadFarmImages } from '../../../_redux/_reducer/farmReducer';
 
-function UploadForm() {
+function UploadForm(props) {
 
   const dispatch = useDispatch();
   const [img, setImg] = useState([]);
@@ -13,8 +13,13 @@ function UploadForm() {
     dispatch(loadFarmImages())
     .then(result=>{
       if(result.payload){
-        result.payload.map((payload)=>{
-          const data = "data:image/jpg;base64,"+payload
+        result.payload.map((payload,key)=>{
+          const data = {
+            key,
+            name: key,
+            src: "data:image/jpg;base64,"+payload,
+            checked:false
+          }
           setImg(prevImg => [...prevImg,data]);
         });
       }
@@ -23,18 +28,27 @@ function UploadForm() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+ 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = () => {
       setIsModalVisible(false);
+      const images = img.map((img)=> img.checked ? img : null);
+      const filterImages = images.filter((img)  =>{
+        return img != null;
+      });
+      props.handleCheckedImages(filterImages)
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
+  const onChangeCheckBox = (key) =>{
+   img[key].checked = !img[key].checked
+  }
   return (
     <>
       <Button type="primary" onClick={showModal} icon={<PlusOutlined />}/>
@@ -49,14 +63,14 @@ function UploadForm() {
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Row>
           {img && img.map((img,index)=>(
-            <Col span={6}>
+            <Col span={6} key={index}>
               <Card
-                key={index}
+                
                 hoverable
                 style={{width:120}}
-                cover={<Image width={120} height={90} src={img}/>} 
+                cover={<Image width={120} height={90} src={img.src}/>} 
               >
-                <Checkbox>{index}</Checkbox>
+                <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
               </Card>
             </Col>
           ))}

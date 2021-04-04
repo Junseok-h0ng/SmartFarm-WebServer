@@ -6,7 +6,6 @@ axios.defaults.withCredentials = true;
 
 export const loadFarmImages = createAsyncThunk("LOAD_FARM_IMAGES",async()=>{
     const response = await axios.post(config.back_url+"/rasp/images");
-    console.log(response);
     return response.data;
 });
 

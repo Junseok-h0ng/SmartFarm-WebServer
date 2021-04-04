@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
-
 import CardForm from '../components/Contents/CardForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
@@ -22,8 +21,6 @@ function Home({data}){
           
         </>
       }
-
-
       <CardForm/>
     </div>
   )
@@ -39,7 +36,3 @@ function Home({data}){
 // }
 
 export default Home;
-
-
-
-

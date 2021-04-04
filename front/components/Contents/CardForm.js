@@ -45,7 +45,6 @@ function CardForm() {
                     title={post.writer.name}
                     description={post.writer.email}
                 />
-
                 {post.contents}
 
                 <Slider {...settings}>

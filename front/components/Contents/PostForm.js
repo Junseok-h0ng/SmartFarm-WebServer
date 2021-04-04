@@ -1,12 +1,13 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {Form,Input,Button} from 'antd';
+import {Form,Input,Button,Upload} from 'antd';
 import UploadButton from './Sections/UploadForm';
 import {postContents} from '../../_redux/_reducer/postReducer';
 
 function PostForm() {
 
     const [contents, setContents] = useState("");
+    const [fileList, setFileList] = useState([])
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 
@@ -17,10 +18,24 @@ function PostForm() {
     const onSubmitPost = () =>{
         const data = {
             writer: user.data._id,
+            image:fileList,
             contents
         }
-        dispatch(postContents(data));
+        console.log(data);
+        // dispatch(postContents(data));
     }
+    const props = {
+        action: 'http://localhost:3000/upload',
+        onChange({ file, fileList }) {
+            if (file.status !== 'uploading') {
+              setFileList(fileList);
+            }
+        }
+    }
+    const handleCheckedImages = (images) =>{
+        setFileList(images);
+    }
+    
 
     return (
         <div>
@@ -28,14 +43,12 @@ function PostForm() {
                 <Input.TextArea value={contents} onChange={onChangeContents} rows={4}/>
                 <Form.Item
                     name="image"
-                    valuePropName="fileList"
-                    getValueFromEvent
                 >
                 <div style={{marginTop:'5px'}}>
-                    <UploadButton/>
+                    <Upload {...props} fileList={fileList}/>
+                    <UploadButton handleCheckedImages={images=>handleCheckedImages(images)}/>
                     <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
                 </div>
-
                 </Form.Item>
             </Form>
         </div>

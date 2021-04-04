@@ -4,7 +4,6 @@ import Head from 'next/head';
 import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
 
-
 const root = ({ Component, pageProps })=>{
 
 
@@ -24,6 +23,7 @@ const root = ({ Component, pageProps })=>{
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
+      
     </Head>
       <AppLayout>
         <Component {...pageProps} />  

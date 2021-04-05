@@ -1,22 +1,19 @@
 import Column from 'antd/lib/table/Column';
 import React from 'react'
 import { Bar, Line } from 'react-chartjs-2'
-import Link from 'next/link';
-import {Menu} from 'antd';
+
 
 
 const DashboardForm = () => {
-    return <table  width="700" height="900" align = "center" >
-        <table>
-        <tr>
-        <Menu mode="horizontal" style={{padding:'0 30px'}}>
-        <Menu.Item key="control"><Link href="/control"><a>Control</a></Link></Menu.Item>         
-        </Menu>
-        </tr>
-        <tr>
-        <td>
-        <Bar
-        
+    return <div>
+        <div>
+        <style jsx>{`    
+        div {
+          column-count:2;
+        }
+      `}</style>
+        <div>
+        <Bar   
             data={{
                 labels: ['4/5', '4/6', '4/7', '4/8', '4/9'],
                 datasets:[
@@ -71,18 +68,18 @@ const DashboardForm = () => {
                             labelString: '°C'
                         }
                     }]
-                }
-            
+                }            
             }}
 
         />
-        </td>
-    
-        <td>
-            <h3>현재상태 사진</h3>    
-        </td>
-        </tr>
-        <tr>
+        
+        </div>
+        <div align="right">현재상태</div>
+        </div>
+
+        
+            
+        <div>
         <Line
             data={{
                 labels: ['4/5', '4/6', '4/7', '4/8'],
@@ -124,11 +121,9 @@ const DashboardForm = () => {
             
             }}
 
-        />      
-    </tr>     
-    </table>
-    </table>
-    
+        />
+        </div>
+    </div>
 }
 
 export default DashboardForm

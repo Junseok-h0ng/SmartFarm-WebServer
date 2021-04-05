@@ -1,20 +1,15 @@
 import React from 'react'
-import Link from 'next/link';
-import {Menu} from 'antd';
 import { HorizontalBar } from 'react-chartjs-2';
 
 const ControlForm = () => {
-    return <table width="700" height="300" align = "center" >
-        <tr>
-            <td>
-                <Menu mode="horizontal" style={{padding:'0 30px'}}>
-                <Menu.Item key="dashboard"><Link href="/dashboard"><a>Dashboard</a></Link></Menu.Item>                
-                </Menu>
-            </td>   
-    
-            </tr>
-        <tr> 
-        <td>
+    return <div>
+        <div>
+    <style jsx>{`    
+        div {
+        column-count:2;
+        }
+    `}</style>
+        <div>
         <HorizontalBar width='200' height ='150'
         data={{
             labels: ['온도'],
@@ -59,14 +54,18 @@ const ControlForm = () => {
             }
         }}
         />
-        </td>
+        </div>
+        <div align="center">추천온도</div>
+        </div>
 
-        <td> 
-
-        </td>
-    </tr>
-
-    <tr>
+    <div>
+    <div>
+    <style jsx>{`    
+        div {
+        column-count:2;
+        }
+    `}</style>
+        <div>
         <HorizontalBar width='200' height ='150'
         data={{
             labels: ['습도'],
@@ -111,12 +110,20 @@ const ControlForm = () => {
             }
         }}
         />
-        <td>
-            
-        </td>
-    </tr>
+        </div>
+        <div align="center">추천습도</div>
+        </div>
+        
+        </div>
 
-    <tr>
+        <div>
+        <div>
+    <style jsx>{`    
+        div {
+        column-count:2;
+        }
+    `}</style>
+        <div>
         <HorizontalBar width='200' height ='150'
         data={{
             labels: ['밝기'],
@@ -159,15 +166,13 @@ const ControlForm = () => {
                 }]
             }
         }}
-        />
-        <td>
-            
-        </td>
-    </tr>
+        />   
+        </div>
+            <div align="center">추천밝기</div>
+        </div>
         
-
-        
-    </table>
+        </div>
+    </div>
 
 }
 

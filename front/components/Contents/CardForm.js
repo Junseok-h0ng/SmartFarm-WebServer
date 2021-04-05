@@ -1,22 +1,9 @@
 import React from 'react';
-import {Card,Avatar,Image} from 'antd';
+import {Card,Avatar,Checkbox} from 'antd';
 import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
-import Slider from 'react-slick';
+
 
 function CardForm() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
-
-      const contentStyle = {
-        height:'200px',
-        objectFit: 'contain'
-      };
-    
     return (
         <div>
             <Card
@@ -33,15 +20,6 @@ function CardForm() {
                         'asdfas'
                     }
                 />
-                <Slider {...settings}>
-                <div>
-                <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                <div>
-                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                </Slider>               
-
             </Card>
         </div>
     )

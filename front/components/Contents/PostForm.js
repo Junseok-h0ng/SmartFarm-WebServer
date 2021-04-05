@@ -16,13 +16,18 @@ function PostForm() {
     }
 
     const onSubmitPost = () =>{
+
         const data = {
             writer: user.data._id,
-            image:fileList,
+            images: fileList.map(file=>{
+                return {
+                    src:file.src.slice(22),
+                    name:file.name
+                }
+            }),
             contents
         }
-        console.log(data);
-        // dispatch(postContents(data));
+        dispatch(postContents(data));
     }
     const props = {
         action: 'http://localhost:3000/upload',
@@ -35,8 +40,6 @@ function PostForm() {
     const handleCheckedImages = (images) =>{
         setFileList(images);
     }
-    
-
     return (
         <div>
             <Form onFinish={onSubmitPost}>

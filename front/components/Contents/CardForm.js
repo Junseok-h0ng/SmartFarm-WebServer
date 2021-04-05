@@ -19,14 +19,9 @@ function CardForm() {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
       };
 
-      const contentStyle = {
-        height:'200px',
-        objectFit: 'contain'
-      };
-    
     return (
         <div>
             {post.data && post.data.map((post,index)=>(
@@ -46,15 +41,21 @@ function CardForm() {
                     description={post.writer.email}
                 />
                 {post.contents}
+                {post.images &&
+                <div style={{textAlign:'center'}}>
+                    <Slider {...settings}>
+                    {post.images.map((image)=>(
+                        <div>
+                        <Image style={{height:'200px',objectFit:'contain'}} height={'100%'} placeholder={image.name} src={"data:image/jpg;base64,"+image.src}></Image>
+                        </div>
+                    ))}
+                </Slider>   
+                </div>
 
-                <Slider {...settings}>
-                <div>
-                <Image style={{height:'200px',objectFit:'contain'}} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                <div>
-                    <Image style={contentStyle} height={'100%'} src={"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}  ></Image>
-                </div>
-                </Slider>           
+                }
+                
+            
+                        
             </Card>
             ))}
         </div>

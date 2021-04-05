@@ -30,7 +30,7 @@ function Home({data}){
       }
 
 
-      <CardForm/>
+      {/* <CardForm/> */}
     </div>
   )
 

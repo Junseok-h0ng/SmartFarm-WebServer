@@ -4,10 +4,18 @@ import {useDispatch} from 'react-redux';
 import CardForm from '../components/Contents/CardForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
+import { loadContents } from '../_redux/_reducer/postReducer';
 
 function Home({data}){
   
+  const dispatch = useDispatch();
+  
   const {isLogin} = useSelector(state => state.user);
+  const post = useSelector(state => state.post);
+
+  useEffect(() => {
+      dispatch(loadContents());
+  }, []);
 
 
 
@@ -21,7 +29,9 @@ function Home({data}){
           
         </>
       }
-      <CardForm/>
+      {post.data && post.data.map((post,index)=>(
+        <CardForm key={index} post={post}/>
+      ))}
     </div>
   )
 

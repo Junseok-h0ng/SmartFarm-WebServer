@@ -4,7 +4,6 @@ import Head from 'next/head';
 import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
 
-
 const root = ({ Component, pageProps })=>{
 
 

@@ -1,15 +1,15 @@
 import React,{useState,createElement} from 'react';
-import { Comment, Avatar,Tooltip,Icon } from 'antd';
+import {Tooltip } from 'antd';
 import {LikeOutlined,LikeFilled,DislikeFilled,DislikeOutlined} from '@ant-design/icons'
-import LikeDislikeActions from './LikeDislike';
 
 
-function ReplyForm() {
+function LikeDislike() {
+
     const [likes, setLikes] = useState(0);
     const [dislikes, setDisLikes] = useState(0);
     const [likeAction, setLikeAction] = useState(null);
     const [dislikeAction, setDislikeAction] = useState(null);
-    
+
     const onClickLike = () =>{
         if(likeAction === null){
             setLikes(likes + 1);
@@ -37,44 +37,22 @@ function ReplyForm() {
         }
     }
 
-    const actions = 
-            [<Tooltip key="comment-basic-like" title="Like">
-                <span onClick={onClickLike}>
-                {createElement(likeAction === 'liked' ? LikeFilled : LikeOutlined)}
+
+    return [
+            <Tooltip key="comment-basic-like" title="Like">
+                <span style={{margin:'0 5px'}} onClick={onClickLike}>
+                    {createElement(likeAction === 'liked' ? LikeFilled : LikeOutlined)}
                     <span style={{margin:'0 5px'}}>{likes}</span>
                 </span>
             </Tooltip>,
-            <Tooltip key="comment-basic-like" title="Like">
-                <span onClick={onClickDislike}>
-                {createElement(dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
+            <Tooltip key="comment-basic-like" title="Dislike">
+                    <span onClick={onClickDislike}>
+                    {createElement(dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
                     <span style={{margin:'0 5px'}}>{dislikes}</span>
                 </span>
-            </Tooltip>    
+            </Tooltip> 
         ]
-    return (
-        <div>
-            <Comment
-            actions={[
-                <LikeDislikeActions/>,
-                <span key="comment-nested-reply-to">Reply to</span>
-                ]}
-            author={<a>Han Solo</a>}
-            avatar={
-            <Avatar
-                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                alt="Han Solo"
-            />
-            }
-            content={
-            <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure).
-            </p>
-            }
-            >
-            </Comment>
-        </div>
-    )
 }
 
-export default ReplyForm
+
+export default LikeDislike

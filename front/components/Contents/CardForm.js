@@ -5,6 +5,8 @@ import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/ico
 import Slider from 'react-slick';
 import { loadContents } from '../../_redux/_reducer/postReducer';
 import ReplyForm from './Sections/ReplyForm';
+import LikeDislikeActions from './Sections/LikeDislike';
+import Moment from 'react-moment';
 
 function CardForm(props) {
 
@@ -35,11 +37,15 @@ function CardForm(props) {
             <Card
             key={props.index}
             style={{marginTop:'10px'}}
+            title={<Moment format="YYYY/MM/DD">
+            {post.createdAt}
+        </Moment>}
+            extra={[     
+                <LikeDislikeActions/>
+                ]}
             actions={[
-                <LikeOutlined type="like" key="like" />,
-                <DislikeOutlined type="dislike" key="dislike" /> ,
-                <MessageOutlined onClick={onChangetoggleReply} type="message" key="message"/>
-            ]}
+                <MessageOutlined onClick={onChangetoggleReply} type="message" key="message"/>,
+                ]}
         >
             <Card.Meta
                 style={{paddingBottom:'20px'}}

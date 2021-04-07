@@ -71,6 +71,7 @@ function CardForm(props) {
                 <ReplyForm/>
             </div>
             }
+            
             </Card>
         </div>
     )

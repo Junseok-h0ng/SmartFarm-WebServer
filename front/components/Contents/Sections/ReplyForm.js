@@ -1,63 +1,52 @@
 import React,{useState,createElement} from 'react';
-import { Comment, Avatar,Tooltip,Icon } from 'antd';
-import {LikeOutlined,LikeFilled,DislikeFilled,DislikeOutlined} from '@ant-design/icons'
+import { Comment, Avatar,Form,Input,Button,List} from 'antd';
 import LikeDislikeActions from './LikeDislike';
 
 
 function ReplyForm() {
-    const [likes, setLikes] = useState(0);
-    const [dislikes, setDisLikes] = useState(0);
-    const [likeAction, setLikeAction] = useState(null);
-    const [dislikeAction, setDislikeAction] = useState(null);
-    
-    const onClickLike = () =>{
-        if(likeAction === null){
-            setLikes(likes + 1);
-            setLikeAction('liked');
-            if(dislikeAction != null){
-                setDisLikes(dislikes - 1);
-                setDislikeAction(null);
-            }
-        }else{
-            setLikes(likes - 1);
-            setLikeAction(null);
-        }
-    }
-    const onClickDislike = () =>{
-        if(dislikeAction === null){
-            setDisLikes(dislikes + 1);
-            setDislikeAction('disliked');
-            if(likeAction != null){
-                setLikes(likes - 1);
-                setLikeAction(null);
-            }
-        }else{
-            setDisLikes(dislikes - 1);
-            setDislikeAction(null);
-        }
-    }
+    const [value, setvalue] = useState("");
 
-    const actions = 
-            [<Tooltip key="comment-basic-like" title="Like">
-                <span onClick={onClickLike}>
-                {createElement(likeAction === 'liked' ? LikeFilled : LikeOutlined)}
-                    <span style={{margin:'0 5px'}}>{likes}</span>
-                </span>
-            </Tooltip>,
-            <Tooltip key="comment-basic-like" title="Like">
-                <span onClick={onClickDislike}>
-                {createElement(dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
-                    <span style={{margin:'0 5px'}}>{dislikes}</span>
-                </span>
-            </Tooltip>    
-        ]
+    const Editor = ({onChange,onSubmit,value})=>(
+        <Form style={{display:'flex'}}>
+
+                <Input.TextArea style={{width:'100%'}} rows={2} onChange={onChange} value={value}/>
+
+                <Button style={{widows:'20%',height:'52px',marginLeft:'5px'}} htmlType="submit" onClick={onSubmit} type="primary">
+                    Add Comment
+                </Button>
+
+        </Form>
+    )
+    const data = [
+        {
+          actions: [<LikeDislikeActions/>,<span key="comment-list-reply-to-0">Reply to</span>],
+          author: 'Han Solo',
+          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content: (
+            <p>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure), to help people create their product prototypes beautifully and
+              efficiently.
+            </p>
+          ),
+        },
+        {
+          actions: [<LikeDislikeActions/>,<span key="comment-list-reply-to-0">Reply to</span>],
+          author: 'Han Solo',
+          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content: (
+            <p>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure), to help people create their product prototypes beautifully and
+              efficiently.
+            </p>
+          ),
+        },
+      ];
+
     return (
         <div>
             <Comment
-            actions={[
-                <LikeDislikeActions/>,
-                <span key="comment-nested-reply-to">Reply to</span>
-                ]}
             author={<a>Han Solo</a>}
             avatar={
             <Avatar
@@ -66,13 +55,29 @@ function ReplyForm() {
             />
             }
             content={
-            <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure).
-            </p>
+                <Editor
+                    // onChange={onChangeEditor}
+                    // onSubmit={onSubmitEditor}
+                    value={value}
+                />
             }
             >
             </Comment>
+            <List
+                className="comment-list"
+                itemLayout="horizontal"
+                dataSource={data}
+                renderItem={item => (
+                <li>
+                    <Comment
+                    actions={item.actions}
+                    author={item.author}
+                    avatar={item.avatar}
+                    content={item.content}
+                    />
+                </li>
+                )}
+            />
         </div>
     )
 }

@@ -1,23 +1,17 @@
 import React,{useEffect,useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {Card,Avatar,Image} from 'antd';
-import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
+import {MessageOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
-import { loadContents } from '../../_redux/_reducer/postReducer';
 import ReplyForm from './Sections/ReplyForm';
 import LikeDislikeActions from './Sections/LikeDislike';
 import Moment from 'react-moment';
 
 function CardForm(props) {
 
-    const dispatch = useDispatch();
-    // const post = useSelector(state => state.post);
     const post = props.post;
 
-    // useEffect(() => {
-    //     dispatch(loadContents());
-    // }, []);
-
+    const user = useSelector(state => state.user);
     const [toggleReply, setToggleReply] = useState(false);
 
     const onChangetoggleReply = () =>{
@@ -37,9 +31,7 @@ function CardForm(props) {
             <Card
             key={props.index}
             style={{marginTop:'10px'}}
-            title={<Moment format="YYYY/MM/DD">
-            {post.createdAt}
-        </Moment>}
+            title={<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>}
             extra={[     
                 <LikeDislikeActions/>
                 ]}

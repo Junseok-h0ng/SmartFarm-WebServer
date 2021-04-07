@@ -1,6 +1,7 @@
 import React,{useState,createElement} from 'react';
 import { Comment, Avatar,Form,Input,Button,List} from 'antd';
 import LikeDislikeActions from './LikeDislike';
+import Moment from 'react-moment';
 
 
 function ReplyForm() {
@@ -29,6 +30,11 @@ function ReplyForm() {
               efficiently.
             </p>
           ),
+          datetime:(
+            <Moment format="YYYY/MM/DD">
+            "2021-04-05"
+            </Moment>
+          )
         },
         {
           actions: [<LikeDislikeActions/>,<span key="comment-list-reply-to-0">Reply to</span>],
@@ -41,6 +47,11 @@ function ReplyForm() {
               efficiently.
             </p>
           ),
+          datetime:(
+            <Moment format="YYYY/MM/DD">
+            "2021-04-05"
+            </Moment>
+          )
         },
       ];
 
@@ -74,6 +85,7 @@ function ReplyForm() {
                     author={item.author}
                     avatar={item.avatar}
                     content={item.content}
+                    datetime={item.datetime}
                     />
                 </li>
                 )}

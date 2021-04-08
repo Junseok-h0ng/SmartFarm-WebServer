@@ -47,6 +47,53 @@ function LoginForm() {
             <div style={{marginTop:'10px'}}>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
             </div>
+            <br/>
+            <br/>
+
+            <div align = 'center'>
+            <style jsx>{`    
+                div {
+                    width: 50%
+                    border: 1px;
+                }
+                
+                #naver {
+                    background-color:green;
+                }
+                #kakao {
+                    background-color:yellow;
+                }
+                #google {
+                    background-color:black;
+                }
+                #font_White {
+                    color:white;
+                }
+                #font_Black {
+                    color:black;
+                }
+            `}</style>
+            <div id = 'naver'> 
+                <a href="#" class="naver-login">
+                    <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon1.gif" alt="네이버 로그인"></img>
+                    <span id = 'font_White'>&emsp;네이버 로그인</span>
+                </a>  
+            </div>
+            <br/>
+            <div id = 'kakao'>
+                <a href="#" class="kakao-login">
+                        <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon2.gif" alt="카카오톡 로그인"></img>
+                        <span id = 'font_Black'>&emsp;카카오톡 로그인</span>
+                </a>
+            </div>
+            <br/>                 
+            <div id = 'google'>
+                <a href="#">
+                        <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon4.gif" alt="구글 로그인"></img>
+                        <span id = 'font_White'>&emsp;구글 로그인</span>
+                    </a>
+            </div>
+            </div>
         </Form>
 
     )

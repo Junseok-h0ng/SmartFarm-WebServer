@@ -15,11 +15,11 @@ const DashboardForm = () => {
         <div>
         <Bar   
             data={{
-                labels: ['4/5', '4/6', '4/7', '4/8', '4/9'],
+                labels: ['현재 온도', '권장 습도'],
                 datasets:[
                     {
                         label : "온도",
-                        data: [21, 22, 27, 24, 27],
+                        data: [21,24],
                         borderColor: [
                             "rgba(255, 201, 14, 1)",
                         ],
@@ -29,7 +29,7 @@ const DashboardForm = () => {
                     },
                     {
                         label : "습도",
-                        data: [24, 27, 21, 26, 28],
+                        data: [24, 26],
                         borderColor: [
                             "rgba(255, 201, 14, 1)",
                         ],
@@ -55,7 +55,7 @@ const DashboardForm = () => {
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: '날짜'
+                            // labelString: '날짜'
                         }
                     }],
                     yAxes: [{
@@ -70,11 +70,13 @@ const DashboardForm = () => {
                     }]
                 }            
             }}
-
         />
         
         </div>
-        <div align="right">현재상태</div>
+        <div align="right">
+            현재상태
+            <img width={280} height={320} src= "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"></img>  
+        </div>
         </div>
 
         

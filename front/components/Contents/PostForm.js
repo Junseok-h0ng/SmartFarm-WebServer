@@ -27,7 +27,8 @@ function PostForm() {
             }),
             contents
         }
-        dispatch(postContents(data));
+        dispatch(postContents(data))
+        .then(window.location.reload());
     }
     const props = {
         action: 'http://localhost:3000/upload',

@@ -3,7 +3,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import {Card,Avatar,Image} from 'antd';
 import {MessageOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
-import ReplyForm from './Sections/ReplyForm';
+import CommentForm from './Sections/CommentForm';
 import LikeDislikeActions from './Sections/LikeDislike';
 import Moment from 'react-moment';
 
@@ -11,7 +11,6 @@ function CardForm(props) {
 
     const post = props.post;
 
-    const user = useSelector(state => state.user);
     const [toggleReply, setToggleReply] = useState(false);
 
     const onChangetoggleReply = () =>{
@@ -60,10 +59,9 @@ function CardForm(props) {
             <br/>
             {toggleReply &&
             <div>
-                <ReplyForm/>
+                <CommentForm/>
             </div>
             }
-            
             </Card>
         </div>
     )

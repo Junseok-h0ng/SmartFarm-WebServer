@@ -34,7 +34,7 @@ function Home({data}){
       ))}
     </div>
   )
-
+        
 }
 
 // export async function getServerSideProps() {

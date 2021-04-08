@@ -12,7 +12,7 @@ function SingleComment(props) {
         <div>
             <Comment
                 actions={[<LikeDislikeActions/>,<span key="comment-nested-reply-to" onClick={onClickReply}>답글</span>]}
-                author={<a>Han Solo</a>}
+                author={<a>{props.comment.author.name}</a>}
                 avatar={
                 <Avatar
                     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -21,14 +21,13 @@ function SingleComment(props) {
                 }
                 content={
                 <p>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure).
+                    {props.comment.content}
                 </p>
                 }
             >
             </Comment>
             {openReply &&
-                <ReplyComment user={props.user}/>
+                <ReplyComment user={props.user} refereshFunction={props.refereshFunction}/>
             }
         </div>
     )

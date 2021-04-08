@@ -5,10 +5,14 @@ const commentSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Post'
     },
+    responseTo:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
     comment:{
         type:String
     },
-    writer:{
+    author:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     }

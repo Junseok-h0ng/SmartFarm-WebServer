@@ -9,6 +9,119 @@ import Moment from 'react-moment';
 
 function CardForm(props) {
 
+    const [comments, setComments] = useState([])
+    const commentLists = [
+        {
+        id: '123',
+        author: {
+            id:'123',
+            name:'junseok'
+        },
+        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content: (
+            <p>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure), to help people create their product prototypes beautifully and
+              efficiently.
+            </p>
+          ),
+          datetime:(
+            <Moment format="YYYY/MM/DD">
+            "2021-04-05"
+            </Moment>
+          ),
+        },
+        {
+            responseTo:'123',
+            author: {
+              id:'321',
+              name:'junseok123'
+            },
+            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            content: (
+              <p><a>@junseok </a>
+                We supply a series of design principles, practical patterns and high quality design
+                resources (Sketch and Axure), to help people create their product prototypes beautifully and
+                efficiently.
+              </p>
+            ),
+            datetime:(
+              <Moment format="YYYY/MM/DD">
+              "2021-04-05"
+              </Moment>
+            )
+        },
+        {
+          responseTo:'321',
+          author: {
+            id:'432',
+            name:'junseok53'
+          },
+          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content: (
+            <p><a>@junseok123 </a>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure), to help people create their product prototypes beautifully and
+              efficiently.
+            </p>
+          ),
+          datetime:(
+            <Moment format="YYYY/MM/DD">
+            "2021-04-05"
+            </Moment>
+          )
+      },
+      
+      {
+        responseTo:'123',
+        author: {
+          id:'432',
+          name:'junseok433'
+        },
+        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+        content: (
+          <p><a>@junseok </a>
+            We supply a series of design principles, practical patterns and high quality design
+            resources (Sketch and Axure), to help people create their product prototypes beautifully and
+            efficiently.
+          </p>
+        ),
+        datetime:(
+          <Moment format="YYYY/MM/DD">
+          "2021-04-05"
+          </Moment>
+        )
+    },
+    {
+        author: {
+          id:'432',
+          name:'junseok433'
+        },
+        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+        content: (
+          <p>
+            We supply a series of design principles, practical patterns and high quality design
+            resources (Sketch and Axure), to help people create their product prototypes beautifully and
+            efficiently.
+          </p>
+        ),
+        datetime:(
+          <Moment format="YYYY/MM/DD">
+          "2021-04-05"
+          </Moment>
+        )
+    }
+      ]
+
+    useEffect(() => {
+        setComments(commentLists);
+    }, [])
+
+    const refereshFunction = (newComment) =>{
+        console.log(newComment);
+        setComments(comments.concat(newComment));
+      }
+
     const post = props.post;
 
     const [toggleReply, setToggleReply] = useState(false);
@@ -59,7 +172,7 @@ function CardForm(props) {
             <br/>
             {toggleReply &&
             <div>
-                <CommentForm/>
+                <CommentForm refereshFunction={refereshFunction} commentLists={comments}/>
             </div>
             }
             </Card>

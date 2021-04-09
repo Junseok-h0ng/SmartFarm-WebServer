@@ -45,7 +45,7 @@ function LikeDislike() {
                     <span style={{margin:'0 5px'}}>{likes}</span>
                 </span>
             </Tooltip>,
-            <Tooltip key="comment-basic-like" title="Dislike">
+            <Tooltip key="comment-basic-dislike" title="Dislike">
                     <span onClick={onClickDislike}>
                     {createElement(dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
                     <span style={{margin:'0 5px'}}>{dislikes}</span>

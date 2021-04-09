@@ -6,119 +6,93 @@ import Slider from 'react-slick';
 import CommentForm from './Sections/CommentForm';
 import LikeDislikeActions from './Sections/LikeDislike';
 import Moment from 'react-moment';
+import { getComment } from '../../_redux/_reducer/commentReducer';
+
 
 function CardForm(props) {
 
-    const [comments, setComments] = useState([])
-    const commentLists = [
-        {
-        id: '123',
-        author: {
-            id:'123',
-            name:'junseok'
-        },
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-          content: (
-            <p>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure), to help people create their product prototypes beautifully and
-              efficiently.
-            </p>
-          ),
-          datetime:(
-            <Moment format="YYYY/MM/DD">
-            "2021-04-05"
-            </Moment>
-          ),
-        },
-        {
-            responseTo:'123',
-            author: {
-              id:'321',
-              name:'junseok123'
-            },
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            content: (
-              <p><a>@junseok </a>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                efficiently.
-              </p>
-            ),
-            datetime:(
-              <Moment format="YYYY/MM/DD">
-              "2021-04-05"
-              </Moment>
-            )
-        },
-        {
-          responseTo:'321',
-          author: {
-            id:'432',
-            name:'junseok53'
-          },
-          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-          content: (
-            <p><a>@junseok123 </a>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure), to help people create their product prototypes beautifully and
-              efficiently.
-            </p>
-          ),
-          datetime:(
-            <Moment format="YYYY/MM/DD">
-            "2021-04-05"
-            </Moment>
-          )
-      },
-      
-      {
-        responseTo:'123',
-        author: {
-          id:'432',
-          name:'junseok433'
-        },
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: (
-          <p><a>@junseok </a>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure), to help people create their product prototypes beautifully and
-            efficiently.
-          </p>
-        ),
-        datetime:(
-          <Moment format="YYYY/MM/DD">
-          "2021-04-05"
-          </Moment>
-        )
-    },
-    {
-        author: {
-          id:'432',
-          name:'junseok433'
-        },
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: (
-          <p>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure), to help people create their product prototypes beautifully and
-            efficiently.
-          </p>
-        ),
-        datetime:(
-          <Moment format="YYYY/MM/DD">
-          "2021-04-05"
-          </Moment>
-        )
-    }
-      ]
+    const dispatch = useDispatch();
+
+    const [comments, setComments] = useState([]);
+    
+    const [commentLists, setCommentLists] = useState([]);
+
 
     useEffect(() => {
-        setComments(commentLists);
-    }, [])
+      dispatch(getComment({postId:props.post._id}))
+      .then((response)=>{
+        console.log(response.payload);
+        setComments(response.payload);
+      })
+  }, [])
+    
+    // const commentLists = [
+    //     {
+    //     _id: '605da419717879464cc9dc0012354',
+    //     author: {
+    //         id:'605da419717879464cc9dc00',
+    //         name:'junseok'
+    //     },
+    //     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    //       content: (
+    //         <p>
+    //           We supply a series of design principles, practical patterns and high quality design
+    //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
+    //           efficiently.
+    //         </p>
+    //       ),
+    //       datetime:(
+    //         <Moment format="YYYY/MM/DD">
+    //         "2021-04-05"
+    //         </Moment>
+    //       ),
+    //     },
+    //     {
+    //       _id: '605da419717879464cc94',
+    //       responseTo:'605da419717879464cc9dc0012354',
+    //       author: {
+    //           id:'605da419717879464cc9dc00',
+    //           name:'junseok'
+    //       },
+    //       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    //         content: (
+    //           <p>
+    //             We supply a series of design principles, practical patterns and high quality design
+    //             resources (Sketch and Axure), to help people create their product prototypes beautifully and
+    //             efficiently.
+    //           </p>
+    //         ),
+    //         datetime:(
+    //           <Moment format="YYYY/MM/DD">
+    //           "2021-04-05"
+    //           </Moment>
+    //         ),
+    //       },
+    //     {
+    //       _id: '605da419717879464cc9dc',
+    //       author: {
+    //           id:'605da419717879464cc9dc00',
+    //           name:'junseok'
+    //       },
+    //       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    //         content: (
+    //           <p>
+    //             We supply a series of design principles, practical patterns and high quality design
+    //             resources (Sketch and Axure), to help people create their product prototypes beautifully and
+    //             efficiently.
+    //           </p>
+    //         ),
+    //         datetime:(
+    //           <Moment format="YYYY/MM/DD">
+    //           "2021-04-05"
+    //           </Moment>
+    //         ),
+    //       },
+    //   ]
+
+
 
     const refereshFunction = (newComment) =>{
-        console.log(newComment);
         setComments(comments.concat(newComment));
       }
 
@@ -137,11 +111,9 @@ function CardForm(props) {
         slidesToShow: 1,
         slidesToScroll: 1,
       };
-
     return (
         <div>
             <Card
-            key={props.index}
             style={{marginTop:'10px'}}
             title={<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>}
             extra={[     
@@ -172,7 +144,7 @@ function CardForm(props) {
             <br/>
             {toggleReply &&
             <div>
-                <CommentForm refereshFunction={refereshFunction} commentLists={comments}/>
+                <CommentForm refereshFunction={refereshFunction} commentLists={comments} postId={post._id}/>
             </div>
             }
             </Card>

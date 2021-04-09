@@ -1,18 +1,31 @@
 import React,{useState} from 'react';
+import {useDispatch,useSelector} from 'react-redux';
 import Router from 'next/router';
 import { Comment, Avatar,Form,Input,Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
+import { postComment } from '../../../_redux/_reducer/commentReducer';
 
 function ReplyComment(props) {
+    console.log(props);
+    
+    const dispatch = useDispatch();
 
-    const [value, setValue] = useState("");
+    const [commentValue, setcommentValue] = useState("");
 
     const onChangeEditor = (event) =>{
-        setValue(event.target.value);
+        setcommentValue(event.target.value);
     }
 
     const onSubmitReply = () =>{
-        console.log('submitReply');
+        const variable = {
+            postId: props.postId,
+            contents:commentValue,
+            author: props.user.data._id,
+            responseTo: props.parentCommentId
+        }
+        console.log(variable)
+        dispatch(postComment(variable));
+
     }
 
     const onClickReply = () =>{
@@ -30,7 +43,7 @@ function ReplyComment(props) {
             }
             content={
                 <Form onFinish={onSubmitReply} style={{display:'flex'}}>
-                    <Input.TextArea style={{width:'100%'}} onClick={onClickReply} onChange={onChangeEditor} value={value}/>
+                    <Input.TextArea style={{width:'100%'}} onClick={onClickReply} onChange={onChangeEditor} value={commentValue}/>
                     <Button style={{widows:'20%',height:'52px',marginLeft:'5px'}} htmlType="submit" type="primary">
                         답글
                     </Button>

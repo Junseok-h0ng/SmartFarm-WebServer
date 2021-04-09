@@ -20,14 +20,18 @@ function SingleComment(props) {
                 />
                 }
                 content={
+                
                 <p>
-                    {props.comment.content}
+                    {props.comment.responseTo &&
+                        <a>@{props.parentAuthor} </a>
+                    }
+                    {props.comment.contents}
                 </p>
                 }
             >
             </Comment>
             {openReply &&
-                <ReplyComment user={props.user} refereshFunction={props.refereshFunction}/>
+                <ReplyComment  postId={props.postId} user={props.user} refereshFunction={props.refereshFunction} parentCommentId={props.comment._id}/>
             }
         </div>
     )

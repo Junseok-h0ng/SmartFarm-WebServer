@@ -11,7 +11,7 @@ export const postContents = createAsyncThunk("POST_CONTENTS",async(data)=>{
 export const loadContents = createAsyncThunk("LOAD_CONTENTS",async(data)=>{
     const response = await axios.post(config.back_url+"/post/contents",data);
     return response.data;
-})
+});
 
 export const postReducer = createSlice({
     name:'post',

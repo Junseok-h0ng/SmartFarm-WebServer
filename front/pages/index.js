@@ -30,8 +30,11 @@ function Home({data}){
         </>
       }
       {post.data && post.data.map((post,index)=>(
-        <CardForm key={index} post={post}/>
-      ))}
+          <React.Fragment key={index}>
+            <CardForm post={post}/>
+          </React.Fragment>
+          
+        ))}
     </div>
   )
         

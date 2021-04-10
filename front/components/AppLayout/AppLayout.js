@@ -8,8 +8,9 @@ function AppLayout({children}) {
     const dispatch = useDispatch();
     const {isLogin,isLoading} = useSelector(state => state.user);
 
+    
     useEffect(() => {
-            dispatch(loadUserData())   
+        dispatch(loadUserData());
     }, []);
 
     const onLogout = () =>{
@@ -34,6 +35,7 @@ function AppLayout({children}) {
                 }
                 </>
                 }
+            
 
             </Menu>
             <Row style={{marginTop:'15px'}} gutter={8}>
@@ -42,7 +44,7 @@ function AppLayout({children}) {
                     {!isLoading &&
                     <>
                         {children}
-                    </>
+                    </>   
                     }
                 </Col>
                 <Col xs={24}  md={4} lg={5} xl={6} xxl={7}/>

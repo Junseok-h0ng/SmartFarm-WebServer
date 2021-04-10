@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import CardForm from '../components/Contents/CardForm';
@@ -11,10 +11,14 @@ function Home({data}){
   const dispatch = useDispatch();
   
   const {isLogin} = useSelector(state => state.user);
-  const post = useSelector(state => state.post);
+
+  const [contents, setContents] = useState([]);
 
   useEffect(() => {
-      dispatch(loadContents());
+      dispatch(loadContents())
+      .then((response)=>{
+        setContents(response.payload);
+      });
   }, []);
 
 
@@ -25,11 +29,9 @@ function Home({data}){
       {isLogin &&
         <>
           <ProfileForm/>
-          <PostForm/>
-          
         </>
       }
-      {post.data && post.data.map((post,index)=>(
+      {contents && contents.map((post,index)=>(
           <React.Fragment key={index}>
             <CardForm post={post}/>
           </React.Fragment>

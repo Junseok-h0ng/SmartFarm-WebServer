@@ -11,94 +11,23 @@ import { getComment } from '../../_redux/_reducer/commentReducer';
 
 function CardForm(props) {
 
+    const post = props.post;
+
     const dispatch = useDispatch();
 
     const [comments, setComments] = useState([]);
-    
-    const [commentLists, setCommentLists] = useState([]);
-
+    const [toggleReply, setToggleReply] = useState(false);
 
     useEffect(() => {
       dispatch(getComment({postId:props.post._id}))
       .then((response)=>{
-        console.log(response.payload);
         setComments(response.payload);
-      })
-  }, [])
-    
-    // const commentLists = [
-    //     {
-    //     _id: '605da419717879464cc9dc0012354',
-    //     author: {
-    //         id:'605da419717879464cc9dc00',
-    //         name:'junseok'
-    //     },
-    //     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //       content: (
-    //         <p>
-    //           We supply a series of design principles, practical patterns and high quality design
-    //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //           efficiently.
-    //         </p>
-    //       ),
-    //       datetime:(
-    //         <Moment format="YYYY/MM/DD">
-    //         "2021-04-05"
-    //         </Moment>
-    //       ),
-    //     },
-    //     {
-    //       _id: '605da419717879464cc94',
-    //       responseTo:'605da419717879464cc9dc0012354',
-    //       author: {
-    //           id:'605da419717879464cc9dc00',
-    //           name:'junseok'
-    //       },
-    //       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //         content: (
-    //           <p>
-    //             We supply a series of design principles, practical patterns and high quality design
-    //             resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //             efficiently.
-    //           </p>
-    //         ),
-    //         datetime:(
-    //           <Moment format="YYYY/MM/DD">
-    //           "2021-04-05"
-    //           </Moment>
-    //         ),
-    //       },
-    //     {
-    //       _id: '605da419717879464cc9dc',
-    //       author: {
-    //           id:'605da419717879464cc9dc00',
-    //           name:'junseok'
-    //       },
-    //       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //         content: (
-    //           <p>
-    //             We supply a series of design principles, practical patterns and high quality design
-    //             resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //             efficiently.
-    //           </p>
-    //         ),
-    //         datetime:(
-    //           <Moment format="YYYY/MM/DD">
-    //           "2021-04-05"
-    //           </Moment>
-    //         ),
-    //       },
-    //   ]
-
-
+      });
+  }, []);
 
     const refereshFunction = (newComment) =>{
         setComments(comments.concat(newComment));
       }
-
-    const post = props.post;
-
-    const [toggleReply, setToggleReply] = useState(false);
 
     const onChangetoggleReply = () =>{
         setToggleReply(!toggleReply)
@@ -111,6 +40,7 @@ function CardForm(props) {
         slidesToShow: 1,
         slidesToScroll: 1,
       };
+      
     return (
         <div>
             <Card

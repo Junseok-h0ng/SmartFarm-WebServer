@@ -48,16 +48,15 @@ function ChildrenComment(props) {
         
         <>
           {!openReply ?
-            <div > 
-              <span onClick={onHandleChange}><CaretDownOutlined />답글 보기 ({childrenCommentNumber})</span>
+            <div>
+              <span onClick={onHandleChange}><CaretDownOutlined /> 답글 보기 ({childrenCommentNumber})</span>
             </div>
             :
             <div> 
-              
-              <span onClick={onHandleChange}><CaretUpOutlined /> 답글 숨기기</span>
+              <span onClick={onHandleChange}><CaretUpOutlined /> 답글 숨기기</span> 
               {renderReplyComment(props.parentCommentId,props.parentAuthor)}
             </div> 
-            }
+          }
         </>
         
         }         

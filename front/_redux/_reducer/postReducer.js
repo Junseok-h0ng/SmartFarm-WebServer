@@ -5,7 +5,8 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const postContents = createAsyncThunk("POST_CONTENTS",async(data)=>{
-    await axios.post(config.back_url+"/post",data)
+    const response = await axios.post(config.back_url+"/post",data);
+    return response.data;
 });
 
 export const loadContents = createAsyncThunk("LOAD_CONTENTS",async(data)=>{

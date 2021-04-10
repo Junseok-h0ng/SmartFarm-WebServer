@@ -6,26 +6,33 @@ import {UserOutlined} from '@ant-design/icons';
 import { postComment } from '../../../_redux/_reducer/commentReducer';
 
 function ReplyComment(props) {
-    console.log(props);
-    
+
     const dispatch = useDispatch();
 
-    const [commentValue, setcommentValue] = useState("");
+    const [commentValue, setCommentValue] = useState("");
 
     const onChangeEditor = (event) =>{
-        setcommentValue(event.target.value);
+        setCommentValue(event.target.value);
     }
 
     const onSubmitReply = () =>{
+        setCommentValue('');
+        
         const variable = {
             postId: props.postId,
             contents:commentValue,
             author: props.user.data._id,
             responseTo: props.parentCommentId
         }
-        console.log(variable)
-        dispatch(postComment(variable));
 
+        dispatch(postComment(variable))
+        .then(res=>{
+            props.refereshFunction(res.payload);
+            
+            if(variable.responseTo){
+                props.refreshOpenReply();
+            }
+        });
     }
 
     const onClickReply = () =>{

@@ -14,12 +14,14 @@ function CommentForm(props) {
 
     return (
         <div>
-           <ReplyComment postId={props.postId} user={user}/>
+           <ReplyComment postId={props.postId} user={user} refereshFunction={props.refereshFunction}/>
            {props.commentLists.map((comment,index)=>(
              (!comment.responseTo &&
             <>
               <SingleComment key={index} user={user} comment={comment} refereshFunction={props.refereshFunction} postId={props.postId} />
-              <ChildrenComment  key={index} user={user} parentAuthor={comment.author.name}  commentLists={props.commentLists} parentCommentId={comment._id} refereshFunction={props.refereshFunction} postId={props.postId}/>
+              <div  style={{marginLeft:"40px"}}>
+              <ChildrenComment   key={index} user={user} parentAuthor={comment.author.name}  commentLists={props.commentLists} parentCommentId={comment._id} refereshFunction={props.refereshFunction} postId={props.postId}/>
+              </div>
             </>
             )
            ))}

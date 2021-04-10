@@ -5,7 +5,8 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const postComment = createAsyncThunk("POST_COMMENTS",async(data)=>{
-    await axios.post(config.back_url+"/comment",data);
+    const response = await axios.post(config.back_url+"/comment",data);
+    return response.data;
 });
 
 export const getComment = createAsyncThunk("GET_COMMENTS",async(data)=>{

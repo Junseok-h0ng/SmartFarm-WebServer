@@ -10,8 +10,18 @@ router.post('/contents',(req,res,next)=>{
     .exec((err,doc)=>{
         if(err) return res.status(401).send(err);
         res.status(200).send(doc);
-    })
+    });
 });
+
+router.post('/user/contents',(req,res,next)=>{
+    console.log(req.body);
+    Post.find({writer:req.body.userId})
+    .populate('writer', 'name email')
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        res.status(200).send(doc);
+    })
+})
 
 router.post('/',(req,res,next)=>{
     const post = new Post(req.body);

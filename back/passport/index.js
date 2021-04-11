@@ -8,11 +8,13 @@ module.exports = () =>{
         done(null, user.id);
     });
 
-    passport.deserializeUser(function (id, done){
+    passport.deserializeUser(async function (id, done){
         console.log('deserialize');
-        User.findById(id, (err, user)=>{
+        // const user = await User.findById(id, (err, user)=>{
+        //     done(null, user);
+        // });
+        const user = await User.findById(id);
             done(null, user);
-        });
     });
     localStrategey();
 }

@@ -5,7 +5,9 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const loadUserData = createAsyncThunk("LOAD_USER_DATA",async()=>{
-    const response = await axios.get(config.back_url+"/user");
+    const response = await axios.get(config.back_url+"/user",{
+        withCredentials:true
+    });
     return response.data;
 });
 
@@ -21,6 +23,8 @@ export const logOut = createAsyncThunk("LOG_OUT",async()=>{
 export const register = createAsyncThunk("REGISTER",async(data)=>{
     await axios.post(config.back_url+"/user/register",data);
 });
+
+
 
 export const userReducer = createSlice({
     name:'user',
@@ -46,8 +50,14 @@ export const userReducer = createSlice({
           },
           [loadUserData.rejected]: (state)=>{
               state.isLoading = false;
+          },
+          [loadUserData]: (state,{payload})=>{
+            state.isLoading = false;
+            state.isLogin = true;
+            state.data = payload;
           }
       },
-})
+});
+// export const {loadUserData} = slice.actions;
 
 export default userReducer.reducer;

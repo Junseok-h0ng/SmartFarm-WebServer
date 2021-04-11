@@ -2,17 +2,14 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
+const {isLoggedIn} = require('./middleware');
 const {User} = require('../models/User');
 
-router.get('/',(req,res)=>{
-    if(req.user){
-        const user = Object.assign({},req.user.toJSON());
-        delete user.password;
-        return res.status(200).send(user);
-    }else{
-        return res.status(401).send();
-    }
-})
+router.get('/',isLoggedIn,(req,res)=>{
+    const user = Object.assign({},req.user.toJSON());
+    delete user.password;
+    return res.status(200).json(user);
+});
 
 router.post('/login',(req,res,next)=>{
    passport.authenticate('local',(err,user)=>{

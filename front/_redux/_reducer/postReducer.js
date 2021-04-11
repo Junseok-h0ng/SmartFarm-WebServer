@@ -14,6 +14,16 @@ export const loadContents = createAsyncThunk("LOAD_CONTENTS",async(data)=>{
     return response.data;
 });
 
+export const loadUserContents = createAsyncThunk("LOAD_USER_CONTENTS",async(data)=>{
+    try{
+        const response = await axios.post(config.back_url+"/post/user/contents",(data));
+        return response.data;
+    }catch(err){
+        throw err;
+    }
+
+})
+
 export const postReducer = createSlice({
     name:'post',
     initialState: {
@@ -27,6 +37,10 @@ export const postReducer = createSlice({
             state.isLoading = false;
             state.data = payload;
         },
+        [loadUserContents.fulfilled]: (state,{payload}) => {
+            state.isLoading = false;
+            state.data = payload;
+        }
       },
 })
 

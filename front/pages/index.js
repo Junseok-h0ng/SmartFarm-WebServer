@@ -5,20 +5,22 @@ import CardForm from '../components/Contents/CardForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
 import { loadContents } from '../_redux/_reducer/postReducer';
+import axios from 'axios';
 
 function Home({data}){
   
   const dispatch = useDispatch();
   
-  const {isLogin} = useSelector(state => state.user);
+  const user = useSelector(state => state.user);
 
   const [contents, setContents] = useState([]);
 
   useEffect(() => {
-      dispatch(loadContents())
-      .then((response)=>{
-        setContents(response.payload);
-      });
+    setContents(data);
+      // dispatch(loadContents())
+      // .then((response)=>{
+      //   setContents(response.payload);
+      // });
   }, []);
 
 
@@ -26,9 +28,9 @@ function Home({data}){
   return(
     <div>
       {/* <SearchForm/> */}
-      {isLogin &&
+      {user.isLogin &&
         <>
-          <ProfileForm/>
+          <ProfileForm user={user}/>
         </>
       }
       {contents && contents.map((post,index)=>(
@@ -37,17 +39,18 @@ function Home({data}){
           </React.Fragment>
           
         ))}
+
     </div>
   )
         
 }
 
-// export async function getServerSideProps() {
+export async function getServerSideProps() {
 //   // Fetch data from external API
  
-//   const {data} = await axios.get(`http://localhost:3000/rasp`);
-  
-//   return { props: { data } };
-// }
+  const {data} = await axios.post(`http://localhost:3000/post/contents`);
+  // console.log(data);
+  return { props: { data } };
+}
 
 export default Home;

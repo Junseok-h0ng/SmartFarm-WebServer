@@ -1,20 +1,22 @@
 import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
+import Router from 'next/router';
 import Link from 'next/link';
 import {Menu,Row,Col} from 'antd';
 import { loadUserData, logOut } from '../../_redux/_reducer/userReducer';
 
-function AppLayout({children}) {
+function AppLayout({children,props}) {
     const dispatch = useDispatch();
     const {isLogin,isLoading} = useSelector(state => state.user);
 
-    
     useEffect(() => {
         dispatch(loadUserData());
-    }, []);
+    }, [])
+
 
     const onLogout = () =>{
-        dispatch(logOut());
+        dispatch(logOut())
+        .then((Router.push('/')));
     }
     
     return (
@@ -53,5 +55,12 @@ function AppLayout({children}) {
         </div>
     )
 }
+AppLayout.getInitialProps = async (context) =>{
+    const state = context.store.getState();
+    console.log('app');
+    console.log(state);
+    // return {user:state.user}
+}
+
 
 export default AppLayout

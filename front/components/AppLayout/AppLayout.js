@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {Menu,Row,Col} from 'antd';
 import { loadUserData, logOut } from '../../_redux/_reducer/userReducer';
 
-function AppLayout({children,props}) {
+function AppLayout({children}) {
     const dispatch = useDispatch();
     const {isLogin,isLoading} = useSelector(state => state.user);
 

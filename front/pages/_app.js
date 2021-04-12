@@ -36,7 +36,9 @@ const root = ({ Component, pageProps})=>{
 }
 
 root.getInitialProps = async (context) =>{
+
   const {ctx,Component} = context;
+
   let pageProps = {};
   const state = ctx.store.getState();
   const cookie = ctx.req ? ctx.req.headers.cookie : '';
@@ -53,7 +55,7 @@ root.getInitialProps = async (context) =>{
     pageProps = (await Component.getInitialProps(ctx)) || {};
     }
   return { pageProps };
- 
 }
+
 
 export default wrapper.withRedux(root);

@@ -45,7 +45,6 @@ function index({user}) {
                         </React.Fragment>
                     ))}
                 </div>
-                
             }
 
         </div>

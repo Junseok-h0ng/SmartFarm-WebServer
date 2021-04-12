@@ -18,6 +18,8 @@ function CardForm(props) {
     const [comments, setComments] = useState([]);
     const [toggleReply, setToggleReply] = useState(false);
 
+    const user = useSelector(state => state.user);
+    const userId = user.data ? user.data._id : '';
     useEffect(() => {
       dispatch(getComment({postId:props.post._id}))
       .then((response)=>{
@@ -47,7 +49,7 @@ function CardForm(props) {
             style={{marginTop:'10px'}}
             title={<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>}
             extra={[     
-                <LikeDislikeActions/>
+                <LikeDislikeActions postId={post._id} userId={userId}/>
                 ]}
             actions={[
                 <MessageOutlined onClick={onChangetoggleReply} type="message" key="message"/>,

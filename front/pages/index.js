@@ -17,10 +17,6 @@ function Home({data}){
 
   useEffect(() => {
     setContents(data);
-      // dispatch(loadContents())
-      // .then((response)=>{
-      //   setContents(response.payload);
-      // });
   }, []);
 
 
@@ -47,7 +43,7 @@ function Home({data}){
 
 export async function getServerSideProps() {
 //   // Fetch data from external API
- 
+
   const {data} = await axios.post(`http://localhost:3000/post/contents`);
   // console.log(data);
   return { props: { data } };

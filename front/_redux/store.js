@@ -5,7 +5,7 @@ import user from './_reducer/userReducer';
 import farm from './_reducer/farmReducer';
 import post from './_reducer/postReducer';
 import comment from './_reducer/commentReducer';
-import loadUser from './_reducer/user_reducer';
+import action from './_reducer/actionReducer';
 
 const makeStore = (context) => configureStore({
   reducer:{
@@ -14,7 +14,7 @@ const makeStore = (context) => configureStore({
     farm,
     post,
     comment,
-    loadUser
+    action
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware()

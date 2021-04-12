@@ -8,11 +8,7 @@ function ProfileForm(props) {
     const user = props.user;
     return (
         <div>
-            <Card
-                actions={[
-                    `게시물 ${props.postLength}`,
-                ]}
-            >
+            <Card>
                 <Button style={{float:'right' ,marginLeft:'10px'}}>제어창</Button>
                 <Button style={{float:'right'}}><Link href="/user"><a>유저 프로필</a></Link></Button>
                 <Card.Meta

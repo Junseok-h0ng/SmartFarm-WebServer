@@ -12,7 +12,7 @@ export const postComment = createAsyncThunk("POST_COMMENTS",async(data)=>{
 export const getComment = createAsyncThunk("GET_COMMENTS",async(data)=>{
     const response = await axios.post(config.back_url+"/comment/getComment",data);
     return response.data;
-})
+});
 
 
 export const commentReducer = createSlice({

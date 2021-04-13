@@ -24,8 +24,13 @@ function index() {
         if(!user.isLogin){
             Router.push('/');
         }
-        setContents(post.data);
-    }, [])
+
+        if(post.data != []){
+            setHasMore(false);
+        }else{
+            setContents(post.data)
+        }
+    }, [contents])
 
     const refreshPostCard = (newContents) =>{
         setContents(contents.concat(newContents));
@@ -34,7 +39,6 @@ function index() {
     const fetchMoreData = () =>{
         dispatch(loadUserContents({userId:user.data._id,start:currentLoad,end:currentLoad+5}))
         .then((res=>{
-            console.log(res);
             if(res.payload.length != 0){
                 setCurrentLoad(currentLoad+5);
                 setContents(contents.concat(res.payload));

@@ -57,21 +57,25 @@ function RegisterForm() {
                 <br/>
                 <Input name="name" value={name} onChange={onChangeName} required/>
             </div>
+            <br/>
             <div>
                 <label htmlFor="email">이메일</label>
                 <br/>
                 <Input name="email" value={email} onChange={onChangeEmail} required/>
             </div>
+            <br/>
             <div>
                 <label htmlFor="password">패스워드</label>
                 <br/>
                 <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
             </div>
+            <br/>
             <div>
                 <label htmlFor="password2">패스워드 재입력</label>
                 <br/>
                 <Input name="password2" type="password" value={password2} onChange={onChangePassword2} required/>
             </div>
+            <br/>
             <div style={{marginTop:'10px'}}>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>확인</Button>
             </div>

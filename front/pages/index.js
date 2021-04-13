@@ -19,19 +19,13 @@ function Home(){
   const [currentLoad, setCurrentLoad] = useState(5);
 
   useEffect(() => {
-    if(!post.data){
-      setHasMore(false);
-    }else{
-      setContents(post.data)
-    }
-    
-  }, [post.data]);
+    setContents(post.data)
+  },[user]);
 
   
   const fetchMoreData = () =>{
     dispatch(loadContents({start:currentLoad,end:currentLoad+5}))
     .then((res=>{
-      console.log(res);
         if(res.payload.length != 0){
             setCurrentLoad(currentLoad+5);
             setContents(contents.concat(res.payload));
@@ -40,6 +34,8 @@ function Home(){
         }
     }));
   }
+
+  console.log(contents);
 
   return(
     <div>
@@ -50,7 +46,7 @@ function Home(){
         </>
       }
 
-
+      {contents[0] &&
         <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}
@@ -66,6 +62,8 @@ function Home(){
           </React.Fragment>
         ))}
         </InfiniteScroll>
+      }
+        
       
      
 

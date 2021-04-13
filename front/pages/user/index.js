@@ -24,13 +24,8 @@ function index() {
         if(!user.isLogin){
             Router.push('/');
         }
-
-        if(post.data != []){
-            setHasMore(false);
-        }else{
-            setContents(post.data)
-        }
-    }, [contents])
+        setContents(post.data)
+    }, [user]);
 
     const refreshPostCard = (newContents) =>{
         setContents(contents.concat(newContents));
@@ -48,6 +43,7 @@ function index() {
         }));
       }
 
+      console.log(contents);
 
     return (
         <div>
@@ -55,7 +51,8 @@ function index() {
                 <div>
                     <ProfileForm user={user} postLength={post.Length}/>
                     <PostForm refreshPostCard={refreshPostCard}/>
-                    <InfiniteScroll 
+                    {contents[0] &&
+                        <InfiniteScroll 
                         dataLength={contents.length}
                         next={fetchMoreData}
                         hasMore={hasMore}
@@ -69,7 +66,9 @@ function index() {
                         <CardForm post={post}/>
                         </React.Fragment>
                     ))}
-                    </InfiniteScroll>                   
+                    </InfiniteScroll>     
+                    }
+                                  
                 </div>
             }
 

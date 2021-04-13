@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {Form,Input,Button,Upload} from 'antd';
 import UploadButton from './Sections/UploadForm';
-import {loadContents, postContents} from '../../_redux/_reducer/postReducer';
+import {loadContents, postContents} from '../../_redux/slices/post';
 
 function PostForm(props) {
 

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Form,Input,Button,message} from 'antd';
-import { register } from '../../_redux/_reducer/userReducer';
+import { register } from '../../_redux/slices/userReducer';
 import Router from 'next/router';
 
 function RegisterForm() {

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
-import { loadFarmImages } from '../../../_redux/_reducer/farmReducer';
+import { loadFarmImages } from '../../../_redux/slices/farm';
 
 function UploadForm(props) {
 

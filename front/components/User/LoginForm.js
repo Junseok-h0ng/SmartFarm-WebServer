@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Router from 'next/router';
 import {Form,Input,Button, message} from 'antd';
-import { logIn } from '../../_redux/_reducer/userReducer';
+import { logIn } from '../../_redux/slices/user';
 
 function LoginForm() {
 

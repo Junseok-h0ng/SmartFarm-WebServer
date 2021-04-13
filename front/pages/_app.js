@@ -4,7 +4,7 @@ import Head from 'next/head';
 import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
 import axios from 'axios';
-import { loadUserData } from '../_redux/_reducer/userReducer';
+import { loadUserData } from '../_redux/slices/user';
 
 
 
@@ -35,7 +35,7 @@ const root = ({ Component, pageProps})=>{
   )
 }
 
-root.getInitialProps = async (context) =>{
+root.getInitialProps = async context =>{
 
   const {ctx,Component} = context;
 

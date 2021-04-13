@@ -2,7 +2,7 @@ import React,{useState,createElement,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {Tooltip,message } from 'antd';
 import {LikeOutlined,LikeFilled,DislikeFilled,DislikeOutlined} from '@ant-design/icons'
-import { upLike,unLike,upDislike,unDislike, getLikes, getDislikes } from '../../../_redux/_reducer/actionReducer';
+import { upLike,unLike,upDislike,unDislike, getLikes, getDislikes } from '../../../_redux/slices/action';
 
 
 function LikeDislike(props) {

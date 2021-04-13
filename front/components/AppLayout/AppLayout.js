@@ -3,14 +3,14 @@ import {useDispatch,useSelector} from 'react-redux';
 import Router from 'next/router';
 import Link from 'next/link';
 import {Menu,Row,Col} from 'antd';
-import { loadUserData, logOut } from '../../_redux/_reducer/userReducer';
+import { loadUserData, logOut } from '../../_redux/slices/user';
 
 function AppLayout({children}) {
     const dispatch = useDispatch();
-    const {isLogin,isLoading} = useSelector(state => state.user);
+    const {isLoading,isLogin} = useSelector(state => state.user);
 
     useEffect(() => {
-        dispatch(loadUserData());
+        // dispatch(loadUserData());
     }, [])
 
 

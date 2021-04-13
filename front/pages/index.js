@@ -3,9 +3,8 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import CardForm from '../components/Contents/CardForm';
 import PostForm from '../components/Contents/PostForm';
-import ProfileForm from '../components/User/ProfileForm';
-import { loadContents } from '../_redux/_reducer/postReducer';
 import axios from 'axios';
+import ProfileForm from '../components/User/ProfileForm';
 
 function Home({data}){
   
@@ -41,9 +40,9 @@ function Home({data}){
         
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
 //   // Fetch data from external API
-
+  console.log(context.req);
   const {data} = await axios.post(`http://localhost:3000/post/contents`);
   // console.log(data);
   return { props: { data } };

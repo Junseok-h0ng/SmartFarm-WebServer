@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import CommentForm from './Sections/CommentForm';
 import LikeDislikeActions from './Sections/LikeDislike';
 import Moment from 'react-moment';
-import { getComment } from '../../_redux/_reducer/commentReducer';
+import { getComment } from '../../_redux/slices/comment';
 
 
 function CardForm(props) {

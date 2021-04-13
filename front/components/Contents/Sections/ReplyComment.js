@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import Router from 'next/router';
 import { Comment, Avatar,Form,Input,Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
-import { postComment } from '../../../_redux/_reducer/commentReducer';
+import { postComment } from '../../../_redux/slices/comment';
 
 function ReplyComment(props) {
 

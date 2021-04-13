@@ -4,22 +4,30 @@ const router = express.Router();
 const {Post} = require('../models/Post');
 
 router.post('/contents',(req,res,next)=>{
+    const start = req.body.start;
+    const end = req.body.end;
+    console.log(req.body);
     Post.find({})
-    .skip(0).limit(5)
+    .skip(start).limit(end)
     .populate('writer','name email')
-    .exec((err,doc)=>{
+    .exec((err,contents)=>{
         if(err) return res.status(401).send(err);
-        res.status(200).send(doc);
+        res.status(200).send(contents);
     });
 });
 
 router.post('/user/contents',(req,res,next)=>{
+    const start = req.body.start;
+    const end = req.body.end;
     console.log(req.body);
     Post.find({writer:req.body.userId})
+    .skip(start).limit(end)
     .populate('writer', 'name email')
-    .exec((err,doc)=>{
+    .exec((err,contents)=>{
+        console.log(err);
         if(err) return res.status(401).send(err);
-        res.status(200).send(doc);
+        console.log(contents);
+        res.status(200).send(contents);
     })
 })
 

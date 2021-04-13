@@ -58,6 +58,5 @@ export const userReducer = createSlice({
           }
       },
 });
-// export const {loadUserData} = slice.actions;
 
 export default userReducer.reducer;

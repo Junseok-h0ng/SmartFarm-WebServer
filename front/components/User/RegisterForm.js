@@ -49,8 +49,24 @@ function RegisterForm() {
         });
     }
 
+    
+
     return (
         <div>
+        <style jsx>{`   
+         #flex-container { 
+
+            display: flex;
+            width: 100%;
+            height: 85vh;
+            justify-content: center;
+            align-items: center;
+         }
+
+
+        `}</style>
+
+        <div id='flex-container'>
             <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitRegister}>
             <div>
                 <label htmlFor="name">이름</label>
@@ -80,6 +96,7 @@ function RegisterForm() {
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>확인</Button>
             </div>
         </Form>
+        </div>
         </div>
     )
 }

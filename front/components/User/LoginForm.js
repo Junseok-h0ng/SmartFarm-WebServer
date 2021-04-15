@@ -37,42 +37,30 @@ function LoginForm() {
     return (
         <div>
         <style jsx>{`   
-         #flex-container { 
 
+         #flex-container { 
             display: flex;
-            width: 100%;
-            height: 85vh;
             justify-content: center;
             align-items: center;
-         }
-
-        .size {
-            width: 50%
-            border: 1px;
-            border-radius: 2em;
+            min-height: 85vh;
         }
 
-        #naver {
-            background-color:#00bf18;
+        ul {
+            width: 100%;
+            list-style: none;
+            text-align: center;
+            justify-content: space-around;
+            line-width:150%;
         }
-        #kakao {
-            background-color:#fae301;
+
+        li {
+            display: inline-block;
         }
-        #google {
-            background-color:#f4f4f4;
-        }
-        #font_White {
-            color:white;
-        }
-        #font_Black {
-            color:black;
-        }
-            
 
         `}</style>
     
-        <div id='flex-container'>  
-        <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitLogin} id='flex-container'>
+        <div id='flex-container'>
+        <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitLogin}>
 
             <div>
                 <label htmlFor="email">이메일</label>
@@ -87,35 +75,35 @@ function LoginForm() {
             <br/>
             <br/>
 
-            <div class='size'>
-        
-                <div id = 'naver'> 
+            <ul class='sns_login'>             
+            <li>
                 <a href="#">
-                    <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon1.gif" alt="네이버 로그인"></img>
-                    <span id = 'font_White'>&nbsp;네이버 로그인</span>
+                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="80" alt="네이버 로그인"></img>
+                    {/* <span id = 'font_White'>&nbsp;네이버 로그인</span> */}
                 </a>  
-                </div>
-            <br/>
-                <div id = 'kakao'>
+            </li>      
+            &emsp;&emsp;
+            <li>
                 <a href="#">
-                        <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon2.gif" alt="카카오톡 로그인"></img>
-                        <span id = 'font_Black'>&nbsp;카카오톡 로그인</span>
+                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="80" alt="카카오톡 로그인"></img>
+                    {/* <span id = 'font_Black'>&nbsp;카카오톡 로그인</span> */}
                 </a>
-                </div>
-            <br/>                 
-                <div id = 'google'>
+            </li>
+            &emsp;&emsp;
+            <li>
                 <a href="#">
-                        <img src="https://img2.quasarzone.com/homepage/real/themes/quasarzone/images/common/sns_login_icon4.gif" alt="구글 로그인"></img>
-                        <span id = 'font_Black'>&nbsp;구글 로그인</span>
-                    </a>
-                </div>
-            </div>
+                    <img src="https://i.ibb.co/mF552Gw/btn-google-light-pressed-ios-2x.png" width="93" alt="구글 로그인"></img>
+                    {/* <span id = 'font_Black'>&nbsp;구글 로그인</span> */}
+                </a>
+            </li> 
+            </ul>
+
             <br/> 
             <div style={{marginTop:'10px'}}>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
             </div>
         </Form>
-        </div>
+        </div> 
         </div>
 
     )

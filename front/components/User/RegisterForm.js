@@ -55,14 +55,11 @@ function RegisterForm() {
         <div>
         <style jsx>{`   
          #flex-container { 
-
             display: flex;
-            width: 100%;
-            height: 85vh;
             justify-content: center;
             align-items: center;
-         }
-
+            min-height: 85vh;
+        }
 
         `}</style>
 
@@ -95,7 +92,9 @@ function RegisterForm() {
             <div style={{marginTop:'10px'}}>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>확인</Button>
             </div>
+            <h2>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h2>
         </Form>
+        
         </div>
         </div>
     )

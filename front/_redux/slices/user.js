@@ -24,6 +24,11 @@ export const register = createAsyncThunk("REGISTER",async(data)=>{
     await axios.post(config.back_url+"/user/register",data);
 });
 
+export const googleAuth = createAsyncThunk("GOOGLE_AUTH",async()=>{
+    await axios.get(config.back_url+"/user/auth/google",{
+        withCredentials:true
+    });
+});
 
 
 export const userReducer = createSlice({
@@ -37,8 +42,9 @@ export const userReducer = createSlice({
               state.isLogin = true;
               state.data = payload;
           },
-          [logOut.fulfilled]: (state)=>{
+          [logOut.fulfilled]: (state,{payload})=>{
               state.isLogin = false;
+              state.data = payload;
           },
           [loadUserData.pending]: (state) =>{
               state.isLoading = true;

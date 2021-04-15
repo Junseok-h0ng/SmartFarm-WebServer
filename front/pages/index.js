@@ -35,8 +35,6 @@ function Home(){
     }));
   }
 
-  console.log(contents);
-
   return(
     <div>
       {/* <SearchForm/> */}
@@ -46,7 +44,7 @@ function Home(){
         </>
       }
 
-      {contents[0] &&
+      {contents.length > 0 &&
         <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}
@@ -77,7 +75,8 @@ function Home(){
 // SSR은 프론트서버에서 백엔드서버로 데이터를 요청하고, 받은 후 브라우저로 데이터와 렌더링을 한번에 보낸다.
 // 서버에서 진행이 되기 떄문에 쿠키를 넣어서 직접 보내줘야한다.
 export const getServerSideProps = wrapper.getServerSideProps(async context=>{
-    await context.store.dispatch(loadContents({start:0,end:5}));
+    const data = await context.store.dispatch(loadContents({start:0,end:5}));
+    console.log(data)
 }); 
 
 

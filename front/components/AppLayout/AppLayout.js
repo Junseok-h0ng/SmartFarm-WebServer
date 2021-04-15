@@ -9,14 +9,8 @@ function AppLayout({children}) {
     const dispatch = useDispatch();
     const {isLoading,isLogin} = useSelector(state => state.user);
 
-    useEffect(() => {
-        // dispatch(loadUserData());
-    }, [])
-
-
     const onLogout = () =>{
         dispatch(logOut())
-        .then((Router.push('/')));
     }
     
     return (
@@ -55,12 +49,5 @@ function AppLayout({children}) {
         </div>
     )
 }
-AppLayout.getInitialProps = async (context) =>{
-    const state = context.store.getState();
-    console.log('app');
-    console.log(state);
-    // return {user:state.user}
-}
-
 
 export default AppLayout

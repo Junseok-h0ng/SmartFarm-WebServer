@@ -35,7 +35,16 @@ router.post('/register',(req,res,next)=>{
         if(err) return next(err);
         res.status(200).send();
     });
-    
+});
+
+router.get('/auth/google',(req,res,next)=>{
+    passport.authenticate('google',{ scope: ['profile','email']})(req,res,next);
+});
+
+router.get('/auth/google/callback',passport.authenticate('google',{
+    failureRedirect:'/'
+}),(req,res)=>{
+    res.redirect(process.env.FRONT_URL);
 });
 
 module.exports = router;

@@ -76,7 +76,7 @@ function CardForm(props) {
             <br/>
             {toggleReply &&
             <div>
-                <CommentForm refereshFunction={refereshFunction} commentLists={comments} postId={post._id}/>
+                <CommentForm refereshFunction={refereshFunction} commentLists={comments} postId={post._id} userId={userId}/>
             </div>
             }
             </Card>

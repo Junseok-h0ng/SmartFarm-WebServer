@@ -8,6 +8,7 @@ function UploadForm(props) {
 
   const dispatch = useDispatch();
   const [img, setImg] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(loadFarmImages())
@@ -49,6 +50,41 @@ function UploadForm(props) {
   const onChangeCheckBox = (key) =>{
    img[key].checked = !img[key].checked
   }
+
+  const onChangePage = (page,pageSize)=>{
+
+    dispatch(loadFarmImages())
+    .then(res=>{
+      if(res.payload.length != 0){
+        res.payload.map((payload,key)=>{
+          const data = {
+            key,
+            name: key,
+            src: "data:image/jpg;base64,"+payload,
+            checked:false
+          }
+
+          setImg(prevImg => [...prevImg,data]);
+      });
+     }
+    });
+  }
+  
+  const render = (start) =>{
+    
+    for(let i = page; i<8 ; i++){
+      <Col span={6} key={index}>
+        <Card
+          hoverable
+          style={{width:120}}
+          cover={<Image width={120} height={90} src={img.src}/>} 
+        >
+          <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
+        </Card>
+      </Col>
+    }
+  }
+
   return (
     <>
       <Button type="primary" onClick={showModal} icon={<PlusOutlined />}/>
@@ -62,10 +98,12 @@ function UploadForm(props) {
       }
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Row>
+          {/* {img && 
+            render()
+          } */}
           {img && img.map((img,index)=>(
             <Col span={6} key={index}>
               <Card
-                
                 hoverable
                 style={{width:120}}
                 cover={<Image width={120} height={90} src={img.src}/>} 
@@ -76,7 +114,7 @@ function UploadForm(props) {
           ))}
         </Row>
         <Pagination style={{paddingTop:'20px',display:'flex', justifyContent:'center',alignItems:'center',
-          width:'100%'}} defaultCurrent={1} total={50}/>
+          width:'100%'}} pageSize={8} onChange={onChangePage} defaultCurrent={1} total={50}/>
       </Modal>
     </>
   );

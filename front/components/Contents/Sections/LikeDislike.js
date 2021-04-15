@@ -30,6 +30,7 @@ function LikeDislike(props) {
     useEffect(() => {
         dispatch(getLikes(variable))
         .then(res=>{
+            console.log(res);
             if(res.payload.success){
                 setLikes(res.payload.likes.length);
                 res.payload.likes.map(like=>{
@@ -62,6 +63,7 @@ function LikeDislike(props) {
             if(likeAction === null){
                 dispatch(upLike(variable))
                 .then(res=>{
+                    console.log(res);
                     if(res.payload.success){
                         setLikes(likes + 1);
                         setLikeAction('liked');

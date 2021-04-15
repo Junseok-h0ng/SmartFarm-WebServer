@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const moment = require('moment');
 
 const userSchema = mongoose.Schema({
     name:{
@@ -9,17 +8,13 @@ const userSchema = mongoose.Schema({
     },
     email:{
         type:String,
-        trim:true,
-        unique:1
+        trim:true
     },
     password:{
         type:String
     },
-    toke:{
+    type:{
         type:String
-    },
-    tokenExp:{
-        type:Number
     }
 });
 

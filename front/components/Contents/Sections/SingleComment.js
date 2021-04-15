@@ -12,7 +12,7 @@ function SingleComment(props) {
     return (
         <div>
             <Comment
-                actions={[<LikeDislikeActions commentId={props.comment._id} userId={props.user.data._id}/>,<span key="comment-nested-reply-to" onClick={onClickReply}>답글</span>]}
+                actions={[<LikeDislikeActions commentId={props.comment._id} userId={props.userId}/>,<span key="comment-nested-reply-to" onClick={onClickReply}>답글</span>]}
                 author={<a>{props.comment.author.name}</a>}
                 avatar={
                 <Avatar>{props.comment.author.name[0]}</Avatar>

@@ -22,7 +22,7 @@ app.use(express.static("public"));
 app.use(express.json({limit:"50mb"}));
 app.use(express.urlencoded({limit:"50mb",extended:false }));
 app.use(cors({
-      origin:['http://localhost:8080'],
+      origin:[config.frontURL],
       credentials:true
 }));
 app.use(cookieParser('rnbck'));
@@ -40,7 +40,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 passportConfig();
-
 app.use('/rasp',require('./routes/rasp'));
 app.use('/user',require('./routes/user'));
 app.use('/upload',require('./routes/upload'));

@@ -9,6 +9,8 @@ function LikeDislike(props) {
 
     const dispatch = useDispatch();
 
+    const {isLogin} = useSelector(state => state.user);
+
     const [likes, setLikes] = useState(0);
     const [dislikes, setDisLikes] = useState(0);
     const [likeAction, setLikeAction] = useState(null);
@@ -120,13 +122,13 @@ function LikeDislike(props) {
     return [
             <Tooltip key="comment-basic-like" title="Like">
                 <span style={{margin:'0 5px'}} onClick={onClickLike}>
-                    {createElement(likeAction === 'liked' ? LikeFilled : LikeOutlined)}
+                    {createElement(isLogin && likeAction === 'liked' ? LikeFilled : LikeOutlined)}
                     <span style={{margin:'0 5px'}}>{likes}</span>
                 </span>
             </Tooltip>,
             <Tooltip key="comment-basic-dislike" title="Dislike">
                     <span onClick={onClickDislike}>
-                    {createElement(dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
+                    {createElement(isLogin && dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
                     <span style={{margin:'0 5px'}}>{dislikes}</span>
                 </span>
             </Tooltip> 

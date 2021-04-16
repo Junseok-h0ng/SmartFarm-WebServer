@@ -76,7 +76,6 @@ function Home(){
 // 서버에서 진행이 되기 떄문에 쿠키를 넣어서 직접 보내줘야한다.
 export const getServerSideProps = wrapper.getServerSideProps(async context=>{
     const data = await context.store.dispatch(loadContents({start:0,end:5}));
-    console.log(data)
 }); 
 
 

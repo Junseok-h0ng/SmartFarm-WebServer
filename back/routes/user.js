@@ -11,6 +11,7 @@ router.get('/',isLoggedIn,(req,res)=>{
     return res.status(200).json(user);
 });
 
+
 router.post('/login',(req,res,next)=>{
    passport.authenticate('local',(err,user)=>{
        if(err) return next(err);

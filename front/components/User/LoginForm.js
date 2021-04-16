@@ -53,7 +53,7 @@ function LoginForm() {
                     <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
                 </div>
             </Form>
-            <Button><Link href={config.back_url+"/user/auth/google"}><a>Google</a></Link></Button>
+            <Button><Link href={"/api/auth/google"}><a>Google</a></Link></Button>
         </>
             
         

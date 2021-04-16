@@ -24,11 +24,6 @@ export const register = createAsyncThunk("REGISTER",async(data)=>{
     await axios.post(config.back_url+"/user/register",data);
 });
 
-export const googleAuth = createAsyncThunk("GOOGLE_AUTH",async()=>{
-    await axios.get(config.back_url+"/user/auth/google",{
-        withCredentials:true
-    });
-});
 
 
 export const userReducer = createSlice({

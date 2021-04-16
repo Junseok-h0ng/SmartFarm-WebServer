@@ -46,6 +46,7 @@ app.use('/upload',require('./routes/upload'));
 app.use('/post',require('./routes/post'));
 app.use('/comment',require('./routes/comment'));
 app.use('/action',require('./routes/action'));
+app.use('/api',require('./routes/api'))
 
 app.get('/',function(req,res){
       res.send();

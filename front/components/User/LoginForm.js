@@ -42,15 +42,15 @@ function LoginForm() {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 85vh;
+            min-height: 80vh;
         }
 
         ul {
             width: 100%;
             list-style: none;
             text-align: center;
-            justify-content: space-around;
-            line-width:150%;
+            justify-content: space-between;
+            line-width: 100%;
         }
 
         li {
@@ -78,21 +78,21 @@ function LoginForm() {
             <ul class='sns_login'>             
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="80" alt="네이버 로그인"></img>
+                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="70" alt="네이버 로그인"></img>
                     {/* <span id = 'font_White'>&nbsp;네이버 로그인</span> */}
                 </a>  
             </li>      
-            &emsp;&emsp;
+            &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="80" alt="카카오톡 로그인"></img>
+                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="70" alt="카카오톡 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;카카오톡 로그인</span> */}
                 </a>
             </li>
-            &emsp;&emsp;
+            &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/mF552Gw/btn-google-light-pressed-ios-2x.png" width="93" alt="구글 로그인"></img>
+                    <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="70" alt="구글 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;구글 로그인</span> */}
                 </a>
             </li> 

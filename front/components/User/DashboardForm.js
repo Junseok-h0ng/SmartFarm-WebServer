@@ -6,12 +6,21 @@ import { Bar, Line } from 'react-chartjs-2'
 
 const DashboardForm = () => {
     return <div>
-        <div>
         <style jsx>{`    
-        div {
+        #col {
           column-count:2;
         }
+        
+        #flex-container { 
+            position:absolute;
+            top:0; left:0; bottom:0; right:0;
+            height:10%;
+            margin:10% auto;
+        }
+        
       `}</style>
+      <div id='flex-container'>
+        <div id='col'>
         <div>
         <Bar   
             data={{
@@ -125,6 +134,7 @@ const DashboardForm = () => {
 
         />
         </div>
+    </div>
     </div>
 }
 

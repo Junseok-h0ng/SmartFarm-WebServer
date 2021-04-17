@@ -44,7 +44,7 @@ function Home(){
         </>
       }
 
-      {contents.length > 0 &&
+      {contents &&
         <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}

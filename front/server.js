@@ -13,7 +13,7 @@ const handle = app.getRequestHandler();
 
 const apiPaths = {
     '/api': {
-        target: 'http://localhost:3000', 
+        target: 'http://3.34.1.120:3000', 
         pathRewrite: {
             '^/api': '/api'
         },
@@ -36,8 +36,8 @@ app.prepare().then(() => {
             saveUninitialized: false,
             secret: 'rnbck',
             cookie: {
-                // httpOnly: true,
-                secure: false,
+                httpOnly: true,
+                secure: false,		
             },
         }),
     );
@@ -48,7 +48,7 @@ app.prepare().then(() => {
         return handle(req, res);
     });
 
-    server.listen(prod ? process.env.PORT : 80, () => {
-        console.log(`next+express running on port ${process.env.PORT || 80}`);
+    server.listen(prod ? process.env.PORT : 8080, () => {
+        console.log(`next+express running on port ${process.env.PORT || 8080}`);
     });
 });

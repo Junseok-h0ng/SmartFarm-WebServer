@@ -27,9 +27,9 @@ function ChildrenComment(props) {
         {comment.responseTo == parentCommentId &&
         <div>
           <div style={{ width: '80%', marginLeft: '40px' }}>
-            <SingleComment key={index} comment={comment} user={props.user} refereshFunction={props.refereshFunction} postId={props.postId} parentAuthor={parentAuthor}/>
+            <SingleComment key={index} comment={comment} user={props.user} userId={props.userId} refereshFunction={props.refereshFunction} postId={props.postId} parentAuthor={parentAuthor}/>
           </div>
-            <ChildrenComment commentLists={props.commentLists} parentAuthor={comment.author.name} parentCommentId={comment._id} user={props.user} refereshFunction={props.refereshFunction} postId={props.postId}/>
+            <ChildrenComment commentLists={props.commentLists} parentAuthor={comment.author.name} parentCommentId={comment._id} userId={props.userId} user={props.user} refereshFunction={props.refereshFunction} postId={props.postId}/>
         </div>
         }
       </React.Fragment>

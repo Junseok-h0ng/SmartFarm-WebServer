@@ -7,14 +7,15 @@ module.exports = () =>{
   passport.use(new GoogleStrategy({
     clientID: google.client_id,
     clientSecret: google.client_secret,
-    callbackURL: "http://api.eouleuda.kro.kr/api/auth/google/callback/",
-    passReqToCallback   : true
+    callbackURL: google.callbackURL,
+    passReqToCallback : true
   },
   async function(request, accessToken, refreshToken, profile, done) {
       const email = profile.emails[0].value;
       User.findOne({email:email},(err,user)=>{
-        console.log(user);
+
         if(user && user.type === 'Google'){
+          console.log(user);
           return done(null,user);
         }else{
             const userData = {
@@ -23,9 +24,9 @@ module.exports = () =>{
               pwd:null,
               type:'Google'
             }
-            new User(userData).save((err)=>{
+            new User(userData).save((err,user)=>{
               if(err) throw err;
-              return done(null,userData);
+              return done(null,user);
             });
         }
       })

@@ -54,6 +54,8 @@ function LoginForm() {
                 </div>
             </Form>
             <Button><Link href={"http://api.eouleuda.kro.kr/api/auth/google"}><a>Google</a></Link></Button>
+            <Button><Link href={"http://localhost:3000/api/auth/naver"}><a>Naver</a></Link></Button>
+            <Button><Link href={"http://localhost:3000/api/auth/kakao"}><a>Kakao</a></Link></Button>
         </>
             
         

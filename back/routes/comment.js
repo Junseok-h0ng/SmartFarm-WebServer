@@ -24,7 +24,7 @@ router.post('/getComment',(req,res,next)=>{
         if (err) return res.status(401).send(err);
         res.status(200).send(doc);
     });
-})
+});
 
 
 module.exports = router;

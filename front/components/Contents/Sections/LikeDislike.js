@@ -65,7 +65,6 @@ function LikeDislike(props) {
             if(likeAction === null){
                 dispatch(upLike(variable))
                 .then(res=>{
-                    console.log(res);
                     if(res.payload.success){
                         setLikes(likes + 1);
                         setLikeAction('liked');

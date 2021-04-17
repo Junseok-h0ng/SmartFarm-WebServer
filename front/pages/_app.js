@@ -48,8 +48,9 @@ root.getInitialProps = async context =>{
   }
 
   if(!state.user.isLogin){
-    await ctx.store.dispatch(loadUserData());
-  }
+  	const data = await ctx.store.dispatch(loadUserData());
+	console.log(data);  
+}
 
   if (Component.getInitialProps) { 
     pageProps = (await Component.getInitialProps(ctx)) || {};

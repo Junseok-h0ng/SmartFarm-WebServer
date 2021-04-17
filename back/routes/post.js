@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {Post} = require('../models/Post');
+const {User} = require('../models/User');
 
 router.post('/contents',(req,res,next)=>{
     const start = req.body.start;
@@ -11,6 +12,7 @@ router.post('/contents',(req,res,next)=>{
     .skip(start).limit(end)
     .populate('writer','name email')
     .exec((err,contents)=>{
+	console.log(err,contents);
         if(err) return res.status(401).send(err);
         res.status(200).send(contents);
     });

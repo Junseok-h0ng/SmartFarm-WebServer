@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next -p 80",
     "build": "next build",
-    "start": "nodemon"
+    "prod" : "next start -p 8080"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",

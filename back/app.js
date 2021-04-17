@@ -11,7 +11,6 @@ const app = express();
 const config = require('./config/key');
 
 const prod = process.env.NODE_ENV === 'production';
-console.log(prod);
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI,{
@@ -43,7 +42,7 @@ app.use(session({
             httpOnly:true,
             secure:false,
             path:'/',
-            domain:'.eouleuda.kro.kr'
+            // domain: prod && '.eouleuda.kro.kr'
         },
       name:'rnbck'
 }));
@@ -70,7 +69,6 @@ app.use('/api/auth',require('./routes/auth'));
 app.get('/',function(req,res){
       res.send();
 });
-
-app.listen(8080,function(){
-      console.log('server is running at 8080');
+app.listen(prod ? 8080 : 3000,function(){
+      console.log(`server is running at ${prod ? 8080 : 3000}`);
 });

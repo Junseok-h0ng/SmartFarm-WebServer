@@ -5,23 +5,23 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const loadUserData = createAsyncThunk("LOAD_USER_DATA",async()=>{
-    const response = await axios.get(config.back_url+"/user",{
+    const response = await axios.get(config.back_url+"/api/user",{
         withCredentials:true
     });
     return response.data;
 });
 
 export const logIn = createAsyncThunk("LOG_IN",async(data)=>{
-    const response = await axios.post(config.back_url+"/user/login",data);
+    const response = await axios.post(config.back_url+"/api/user/login",data);
     return response.data;
 });
 
 export const logOut = createAsyncThunk("LOG_OUT",async()=>{
-    await axios.post(config.back_url+"/user/logout");
+    await axios.post(config.back_url+"/api/user/logout");
 });
 
 export const register = createAsyncThunk("REGISTER",async(data)=>{
-    await axios.post(config.back_url+"/user/register",data);
+    await axios.post(config.back_url+"/api/user/register",data);
 });
 
 

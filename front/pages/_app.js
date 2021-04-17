@@ -47,7 +47,6 @@ root.getInitialProps = async context =>{
     axios.defaults.headers.Cookie = cookie;
   }
 
-
   if(!state.user.isLogin){
     await ctx.store.dispatch(loadUserData());
   }

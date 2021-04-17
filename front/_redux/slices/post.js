@@ -5,18 +5,18 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const postContents = createAsyncThunk("POST_CONTENTS",async(data)=>{
-    const response = await axios.post(config.back_url+"/post",data);
+    const response = await axios.post(config.back_url+"/api/post",data);
     return response.data;
 });
 
 export const loadContents = createAsyncThunk("LOAD_CONTENTS",async(data)=>{
-    const response = await axios.post(config.back_url+"/post/contents",data);
+    const response = await axios.post(config.back_url+"/api/post/contents",data);
     return response.data;
 });
 
 export const loadUserContents = createAsyncThunk("LOAD_USER_CONTENTS",async(data)=>{
     try{
-        const response = await axios.post(config.back_url+"/post/user/contents",(data));
+        const response = await axios.post(config.back_url+"/api/post/user/contents",(data));
         return response.data;
     }catch(err){
         throw err;

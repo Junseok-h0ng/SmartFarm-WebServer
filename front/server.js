@@ -42,13 +42,13 @@ app.prepare().then(() => {
         }),
     );
 
-    server.use('/api', createProxyMiddleware(apiPaths['/api']));
+    // server.use('/api', createProxyMiddleware(apiPaths['/api']));
 
     server.get('*', (req, res) => {
         return handle(req, res);
     });
 
-    server.listen(prod ? process.env.PORT : 80, () => {
-        console.log(`next+express running on port ${process.env.PORT || 80}`);
+    server.listen(prod ? process.env.PORT : 8080, () => {
+        console.log(`next+express running on port ${process.env.PORT || 8080}`);
     });
 });

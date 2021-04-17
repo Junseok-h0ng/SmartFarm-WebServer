@@ -5,32 +5,32 @@ import config from '../../config/config'
 axios.defaults.withCredentials = true;
 
 export const upLike = createAsyncThunk("ACTION_UP_LIKE",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/upLike",data);
+    const response = await axios.post(config.back_url+"/api/action/upLike",data);
     return response.data;
 });
 
 export const unLike = createAsyncThunk("ACTION_UN_LIKE",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/unLike",data);
+    const response = await axios.post(config.back_url+"/api/action/unLike",data);
     return response.data;
 });
 
 export const upDislike = createAsyncThunk("ACTION_UP_DISLIKE",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/upDislike",data);
+    const response = await axios.post(config.back_url+"/api/action/upDislike",data);
     return response.data;
 });
 
 export const unDislike = createAsyncThunk("ACTION_UN_DISLIKE",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/unDislike",data);
+    const response = await axios.post(config.back_url+"/api/action/unDislike",data);
     return response.data;
 });
 
 export const getLikes = createAsyncThunk("ACTION_GET_LIKES",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/getLikes",data);
+    const response = await axios.post(config.back_url+"/api/action/getLikes",data);
     return response.data;
 });
 
 export const getDislikes = createAsyncThunk("ACTION_GET_DISLIKES",async(data)=>{
-    const response = await axios.post(config.back_url+"/action/getDislikes",data);
+    const response = await axios.post(config.back_url+"/api/action/getDislikes",data);
     return response.data;
 })
 

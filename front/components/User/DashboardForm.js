@@ -15,7 +15,7 @@ const DashboardForm = () => {
             position:absolute;
             top:0; left:0; bottom:0; right:0;
             height:10%;
-            margin:10% auto;
+            margin:20% auto;
         }
         
       `}</style>
@@ -24,7 +24,7 @@ const DashboardForm = () => {
         <div>
         <Bar   
             data={{
-                labels: ['현재 온도', '권장 습도'],
+                labels: ['현재 값', '권장 값'],
                 datasets:[
                     {
                         label : "온도",
@@ -46,6 +46,26 @@ const DashboardForm = () => {
 	                backgroundColor: "rgba(25, 201, 14, 0.5)",
 
                     },
+                    {
+                        label : "물양",
+                        data: [20, 17],
+                        borderColor: [
+                            "rgba(255, 201, 14, 1)",
+                        ],
+                        borderColor: "rgba(75, 197, 220, 1",
+	                backgroundColor: "rgba(75, 197, 220, 1)",
+
+                    },
+                    {
+                        label : "밝기",
+                        data: [33, 40],
+                        borderColor: [
+                            "rgba(255, 201, 14, 1)",
+                        ],
+                        borderColor: "rgba(144, 144, 114, 1)",
+	                backgroundColor: "rgba(2144, 144, 114, 1)",
+
+                    },
                     
 
                 ],
@@ -64,7 +84,6 @@ const DashboardForm = () => {
                         display: true,
                         scaleLabel: {
                             display: true,
-                            // labelString: '날짜'
                         }
                     }],
                     yAxes: [{
@@ -82,14 +101,12 @@ const DashboardForm = () => {
         />
         
         </div>
-        <div align="right">
-            현재상태
-            <img width={280} height={320} src= "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"></img>  
+        <div align="center">
+            <div>현재상태</div>
+            <img width={260} height={320} src= "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"></img>  
         </div>
         </div>
 
-        
-            
         <div>
         <Line
             data={{

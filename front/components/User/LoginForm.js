@@ -32,8 +32,6 @@ function LoginForm() {
         setPassword(event.target.value);
     }
 
-
-
     return (
         <div>
         <style jsx>{`   
@@ -51,10 +49,11 @@ function LoginForm() {
             text-align: center;
             justify-content: space-between;
             line-width: 100%;
+            padding-left: 2px;
         }
 
         li {
-            display: inline-block;
+            display: inline;
         }
 
         `}</style>
@@ -75,31 +74,31 @@ function LoginForm() {
             <br/>
             <br/>
 
-            <ul class='sns_login'>             
+            <ul>             
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="70" alt="네이버 로그인"></img>
+                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="66" alt="네이버 로그인"></img>
                     {/* <span id = 'font_White'>&nbsp;네이버 로그인</span> */}
                 </a>  
             </li>      
             &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="70" alt="카카오톡 로그인"></img>
+                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="66" alt="카카오톡 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;카카오톡 로그인</span> */}
                 </a>
             </li>
             &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="70" alt="구글 로그인"></img>
+                    <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="66" alt="구글 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;구글 로그인</span> */}
                 </a>
             </li> 
             </ul>
 
             <br/> 
-            <div style={{marginTop:'10px'}}>
+            <div style={{padding:'10px',margin:'0 autox'}} align='center' width='100%'>
                 <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
             </div>
         </Form>

@@ -32,10 +32,18 @@ router.post('/logout',(req,res,next)=>{
 })
 
 router.post('/register',(req,res,next)=>{
-    const user = new User(req.body);
-    user.save((err,doc)=>{
-        if(err) return next(err);
-        res.status(200).send();
+    const email = req.body.email;
+    User.find({email:email,type:null})
+    .exec((err,user)=>{
+        if(user[0]){
+            res.status(401).send();
+        }else{
+            new User(req.body)
+            .save((err)=>{
+                res.status(200).send();
+            });
+        }
     });
+
 });
 module.exports = router;

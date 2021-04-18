@@ -36,7 +36,8 @@ function RegisterForm() {
             name,
             email,
             password,
-            password2
+            password2,
+            type:null
         }
         
         dispatch(register(data))

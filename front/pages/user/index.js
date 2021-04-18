@@ -8,6 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { loadUserContents } from '../../_redux/slices/post';
 import {wrapper} from '../../_redux/store';
+import NoContents from '../../components/commons/NoContents';
 
 function index() {
 
@@ -51,7 +52,7 @@ function index() {
                 <div>
                     <ProfileForm user={user} postLength={post.Length}/>
                     <PostForm refreshPostCard={refreshPostCard}/>
-                    {contents[0] &&
+                    {contents.length > 0 ?
                         <InfiniteScroll 
                         dataLength={contents.length}
                         next={fetchMoreData}
@@ -66,7 +67,9 @@ function index() {
                             <CardForm post={post}/>
                         </React.Fragment>
                     ))}
-                    </InfiniteScroll>     
+                    </InfiniteScroll>
+                    :
+                        <NoContents/>     
                     }
                                   
                 </div>

@@ -12,10 +12,8 @@ module.exports = () =>{
   },
   async function(request, accessToken, refreshToken, profile, done) {
       const email = profile.emails[0].value;
-      User.findOne({email:email},(err,user)=>{
-
+      User.findOne({email:email,type:'Google'},(err,user)=>{
         if(user && user.type === 'Google'){
-          console.log(user);
           return done(null,user);
         }else{
             const userData = {

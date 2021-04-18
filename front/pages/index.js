@@ -6,6 +6,7 @@ import {wrapper} from '../_redux/store';
 import ProfileForm from '../components/User/ProfileForm';
 import { loadContents } from '../_redux/slices/post';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import NoContents from '../components/commons/NoContents';
 
 function Home(){
   
@@ -44,7 +45,7 @@ function Home(){
         </>
       }
 
-      {contents &&
+      {contents.length > 0 ?
         <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}
@@ -60,6 +61,8 @@ function Home(){
           </React.Fragment>
         ))}
         </InfiniteScroll>
+      :
+        <NoContents/>
       }
         
       

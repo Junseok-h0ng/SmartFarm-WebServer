@@ -10,7 +10,7 @@ module.exports = () =>{
         passReqToCallback: true
     },
        async function(req,email, password, done) {
-          User.findOne({ email: email }, function(err, user){
+          User.findOne({ email: email,type:null}, function(err, user){
             if (err) { return done(err); }
             // 유저의 이메일이 없는 경우
             if (!user) {

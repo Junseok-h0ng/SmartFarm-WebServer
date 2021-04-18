@@ -14,7 +14,7 @@ module.exports = () =>{
         if(!email){
             return done(null,false);        
         }else{
-            User.findOne({email:email},(err,user)=>{
+            User.findOne({email:email,type:'Kakao'},(err,user)=>{
                 if(user && user.type === 'Kakao'){
                     return done(null,user);
                 }else{

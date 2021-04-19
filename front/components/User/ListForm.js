@@ -7,15 +7,15 @@ const ListForm = () => {
             <div>
             <style jsx>{`    
                 table {
-                    width: 100%;
+                    width: 97%;
                     text-align: center;
                     border-radius: 2em;
-                    background-color: #F1F1F1
+                    background-color: #F1F1F5;
                     
                 }
 
                 th, td {
-                    border: 3px solid #FFFFFF;
+                    border: 4px solid #FFFFFF;
                 }
 
                 #col-style {
@@ -40,6 +40,22 @@ const ListForm = () => {
                 </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td>작물</td>
+                </tr>
+                <tr>
+                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td>작물</td>
+                </tr>
+                <tr>
+                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td>작물</td>
+                </tr>
+                <tr>
+                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td>작물</td>
+                </tr>
                 <tr>
                     <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
                     <td>작물</td>

@@ -103,7 +103,7 @@ const DashboardForm = () => {
         </div>
         <div align="center">
             <div>현재상태</div>
-            <img width={260} height={320} src= "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"></img>  
+            <img width={260} height={320} src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img>  
         </div>
         </div>
 

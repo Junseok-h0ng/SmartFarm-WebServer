@@ -35,6 +35,7 @@ function AppLayout({children}) {
                 </>
                 }
                 <Menu.Item style={{float:'right'}} key="dashboard"><Link href="/dashboard"><a>Board</a></Link></Menu.Item>
+                <Menu.Item style={{float:'right'}} key="list"><Link href="/list"><a>List</a></Link></Menu.Item>
 
             </Menu>
             <Row style={{marginTop:'15px'}} gutter={8}>

@@ -45,7 +45,7 @@ function Home(){
         </>
       }
 
-      {contents.length > 0 ?
+      {contents ?
         <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}
@@ -56,9 +56,7 @@ function Home(){
             }
         >
         {contents && contents.map((post,index)=>(
-          <React.Fragment key={index}>
-            <CardForm post={post}/>
-          </React.Fragment>
+            <CardForm post={post} key={index}/>
         ))}
         </InfiniteScroll>
       :

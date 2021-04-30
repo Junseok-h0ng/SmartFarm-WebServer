@@ -37,28 +37,69 @@ function LoginForm() {
     }
 
     return (
-        <>
-            <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitLogin}>
-                <div>
-                    <label htmlFor="email">이메일</label>
-                    <br/>
-                    <Input name="email" value={email} onChange={onChangeEmail} required/>
-                </div>
-                <div>
-                    <label htmlFor="password">비밀번호</label>
-                    <br/>
-                    <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
-                </div>
-                <div style={{marginTop:'10px'}}>
-                    <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
-                </div>
-            </Form>
-            <Button><Link href={"http://api.eouleuda.kro.kr/api/auth/google"}><a>Google</a></Link></Button>
-            <Button><Link href={"http://localhost:3000/api/auth/naver"}><a>Naver</a></Link></Button>
-            <Button><Link href={"http://localhost:3000/api/auth/kakao"}><a>Kakao</a></Link></Button>
-        </>
-            
-        
+        <div>
+        <style jsx>{`
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }   
+        ul {
+            width: 100%;
+            list-style: none;
+            text-align: center;
+            justify-content: space-between;
+            line-width: 100%;
+            padding-left: 2px;
+            margin-top:20px;
+        }
+        li {
+            display: inline;
+            margin-left: 20px;
+        }
+        `}</style>
+            <div id="container">
+                <Form style={{padding:'10px',margin:'0 auto',width:'60%'}} onFinish={onSubmitLogin}>
+                    <div>
+                        <label htmlFor="email">이메일</label>
+                        <br/>
+                        <Input name="email" value={email} onChange={onChangeEmail} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="password">비밀번호</label>
+                        <br/>
+                        <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
+                    </div>
+                    <div align="center" >
+                        <Button style={{width:'100%' ,marginTop:'20px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>  
+                    </div>
+                    <ul>
+                        <li>
+                            <Link href="http://localhost:3000/api/auth/naver" >
+                                <a>
+                                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="66" alt="네이버 로그인"></img>
+                                </a>  
+                            </Link>
+                        </li>
+                        <li>
+                        <Link href="http://localhost:3000/api/auth/kakao">
+                            <a>
+                                <img src="https://i.ibb.co/k0djP8x/img.jpg" width="66" alt="카카오톡 로그인"></img>
+                            </a>
+                        </Link>
+                        </li>
+                        <li>
+                        <Link href="http://api.eouleuda.kro.kr/api/auth/google">
+                            <a>
+                                <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="66" alt="구글 로그인"></img>                      
+                            </a>
+                        </Link>
+                        </li>
+                    </ul>
+                </Form>
+            </div>          
+        </div>
     )
 }
 

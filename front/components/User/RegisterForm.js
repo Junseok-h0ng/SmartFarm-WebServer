@@ -52,31 +52,54 @@ function RegisterForm() {
 
     return (
         <div>
-            <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitRegister}>
-            <div>
-                <label htmlFor="name">이름</label>
-                <br/>
-                <Input name="name" value={name} onChange={onChangeName} required/>
+            <style jsx>{`
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }   
+        ul {
+            width: 100%;
+            list-style: none;
+            text-align: center;
+            justify-content: space-between;
+            line-width: 100%;
+            padding-left: 2px;
+            margin-top:20px;
+        }
+        li {
+            display: inline;
+            margin-left: 20px;
+        }
+        `}</style>
+            <div id="container">
+                <Form style={{padding:'10px',margin:'0 auto',width:'60%'}} onFinish={onSubmitRegister}>
+                    <div>
+                        <label htmlFor="name">이름</label>
+                        <br/>
+                        <Input name="name" value={name} onChange={onChangeName} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="email">이메일</label>
+                        <br/>
+                        <Input name="email" value={email} onChange={onChangeEmail} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="password">패스워드</label>
+                        <br/>
+                        <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="password2">패스워드 재입력</label>
+                        <br/>
+                        <Input name="password2" type="password" value={password2} onChange={onChangePassword2} required/>
+                    </div>
+                    <div style={{marginTop:'10px', }}>
+                        <Button style={{marginRight:'10px',width:'100%'}} type="primary" htmlType="submit" loading={false}>확인</Button>
+                    </div>
+                </Form>
             </div>
-            <div>
-                <label htmlFor="email">이메일</label>
-                <br/>
-                <Input name="email" value={email} onChange={onChangeEmail} required/>
-            </div>
-            <div>
-                <label htmlFor="password">패스워드</label>
-                <br/>
-                <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
-            </div>
-            <div>
-                <label htmlFor="password2">패스워드 재입력</label>
-                <br/>
-                <Input name="password2" type="password" value={password2} onChange={onChangePassword2} required/>
-            </div>
-            <div style={{marginTop:'10px'}}>
-                <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>확인</Button>
-            </div>
-        </Form>
         </div>
     )
 }

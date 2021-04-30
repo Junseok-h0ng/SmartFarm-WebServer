@@ -34,27 +34,29 @@ function PostForm(props) {
             props.refreshPostCard(response.payload);
         });
     }
-    // const props = {
-    //     action: 'http://localhost:3000/upload',
-    //     onChange({ file, fileList }) {
-    //         if (file.status !== 'uploading') {
-    //           setFileList(fileList);
-    //         }
-    //     }
-    // }
+
     const handleCheckedImages = (images) =>{
+
         setFileList(images);
     }
+    const uploadSetting = {
+        onChange({ file, fileList }) {
+            if (file.status !== 'uploading') {
+              setFileList(fileList);
+            }
+        }
+      };
 
     return (
         <div >
+
             <Form onFinish={onSubmitPost}>
                 <Input.TextArea value={contents} onChange={onChangeContents} rows={4}/>
                 <Form.Item
                     name="image"
                 >
                 <div style={{marginTop:'5px'}}>
-                    <Upload  fileList={fileList}/>
+                    <Upload {...uploadSetting} fileList={fileList}/>
                     <UploadButton handleCheckedImages={images=>handleCheckedImages(images)}/>
                     <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
                 </div>

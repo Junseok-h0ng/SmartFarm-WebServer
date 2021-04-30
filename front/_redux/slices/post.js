@@ -21,8 +21,11 @@ export const loadUserContents = createAsyncThunk("LOAD_USER_CONTENTS",async(data
     }catch(err){
         throw err;
     }
-
+});
+export const deleteUserContent = createAsyncThunk("DELETE_USER_CONTENT",async(data)=>{
+    await axios.post(config.back_url+"/api/post/user/delete",(data));
 })
+
 
 export const postReducer = createSlice({
     name:'post',

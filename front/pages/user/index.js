@@ -9,6 +9,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { loadUserContents } from '../../_redux/slices/post';
 import {wrapper} from '../../_redux/store';
 import NoContents from '../../components/commons/NoContents';
+import { Button } from 'antd';
 
 function index() {
 
@@ -42,9 +43,14 @@ function index() {
                 setHasMore(false);
             }
         }));
-      }
-
-      console.log(contents);
+    }
+    
+    const deletePostCard = () =>{
+        dispatch(loadUserContents({userId:user.data._id,start:0,end:currentLoad}))
+        .then((res=>{
+            setContents(res.payload);
+        }))
+    }
 
     return (
         <div>
@@ -64,7 +70,7 @@ function index() {
                     >
                     {contents && contents.map((post,index)=>(
                         <React.Fragment key={index}>
-                            <CardForm post={post}/>
+                            <CardForm post={post} delete={deletePostCard}/>
                         </React.Fragment>
                     ))}
                     </InfiniteScroll>

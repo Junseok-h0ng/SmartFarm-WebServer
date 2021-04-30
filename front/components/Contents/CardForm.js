@@ -1,12 +1,13 @@
 import React,{useEffect,useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
-import {Card,Avatar,Image} from 'antd';
-import {MessageOutlined } from '@ant-design/icons';
+import {Card,Avatar,Image,Button} from 'antd';
+import {MessageOutlined,DeleteOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
 import CommentForm from './Sections/CommentForm';
 import LikeDislikeActions from './Sections/LikeDislike';
 import Moment from 'react-moment';
 import { getComment } from '../../_redux/slices/comment';
+import { deleteUserContent } from '../../_redux/slices/post';
 
 
 function CardForm(props) {
@@ -41,19 +42,28 @@ function CardForm(props) {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-      };
+    };
+
+    const onClickDelete = () =>{
+        dispatch(deleteUserContent({postId:props.post._id}))
+        .then((res)=>{
+            if(res){
+                props.delete();
+            }
+
+        })
+    }
+
       
     return (
         <div>
             <Card
             style={{marginTop:'10px'}}
-            title={<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>}
-            extra={[     
-                <LikeDislikeActions postId={post._id} userId={userId}/>
-                ]}
+            title={[<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>]}
+            extra={<LikeDislikeActions postId={post._id} userId={userId}/>}
             actions={[
                 <MessageOutlined onClick={onChangetoggleReply} type="message" key="message"/>,
-                ]}
+            ]}
         >
             <Card.Meta
                 style={{paddingBottom:'20px'}}
@@ -70,8 +80,11 @@ function CardForm(props) {
                     <Image style={{height:'200px',objectFit:'contain'}} height={'100%'} placeholder={image.name} src={"data:image/jpg;base64,"+image.src}></Image>
                     </div>
                 ))}
-            </Slider> 
+                </Slider> 
             </div>
+            }
+            {props.delete &&
+                <DeleteOutlined style={{float:'right'}} onClick={onClickDelete}/>
             }
             <br/>
             {toggleReply &&

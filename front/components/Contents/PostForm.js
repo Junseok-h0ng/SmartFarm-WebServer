@@ -16,6 +16,9 @@ function PostForm(props) {
     }
 
     const onSubmitPost = () =>{
+        
+        const chartFilter = fileList.pop();
+        const charts = chartFilter.start ? chartFilter : fileList.push(chartFilter);
 
         const data = {
             writer: user.data._id,
@@ -25,6 +28,8 @@ function PostForm(props) {
                     name:file.name
                 }
             }),
+            charts: charts
+            ,
             contents
         }
         dispatch(postContents(data))
@@ -36,9 +41,11 @@ function PostForm(props) {
     }
 
     const handleCheckedImages = (images) =>{
-
+        console.log(images);
         setFileList(images);
+       
     }
+    
     const uploadSetting = {
         onChange({ file, fileList }) {
             if (file.status !== 'uploading') {
@@ -58,6 +65,7 @@ function PostForm(props) {
                 <div style={{marginTop:'5px'}}>
                     <Upload {...uploadSetting} fileList={fileList}/>
                     <UploadButton handleCheckedImages={images=>handleCheckedImages(images)}/>
+                    
                     <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
                 </div>
                 </Form.Item>

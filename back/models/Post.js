@@ -10,7 +10,7 @@ const postSchema = mongoose.Schema({
     images:{
         type:Array
     },
-    data:{
+    charts:{
         type:Object
     },
     writer:{

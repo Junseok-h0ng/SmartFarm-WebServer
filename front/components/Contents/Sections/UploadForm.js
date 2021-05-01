@@ -118,13 +118,13 @@ function UploadForm(props) {
               <Tabs type="card">
                 <Tabs.TabPane tab="week" key="1">
                   <DatePicker.RangePicker onChange={onChangeDate}/>
-                  {dateString.length > 0 &&
+                  {dateString.name &&
                     renderCharts()
                   } 
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="today" key="2">
                   <TimePicker format={'HH'} onChange={onChangeDate}/>
-                  {dateString.length > 0 &&
+                  {dateString.name &&
                     renderCharts()
                   }
                 </Tabs.TabPane>

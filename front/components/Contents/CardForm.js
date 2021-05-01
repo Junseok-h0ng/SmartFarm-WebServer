@@ -60,6 +60,7 @@ function CardForm(props) {
     return (
         <div>
             <Card
+            key={props.key}
             style={{marginTop:'10px'}}
             title={[<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>]}
             extra={<LikeDislikeActions postId={post._id} userId={userId}/>}

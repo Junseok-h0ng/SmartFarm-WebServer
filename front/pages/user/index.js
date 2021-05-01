@@ -24,7 +24,7 @@ function index() {
 
     useEffect(() => {
         if(!user.isLogin){
-            Router.push('/');
+            return Router.push('/');
         }
         setContents(post.data)
     }, [user]);

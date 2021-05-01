@@ -20,10 +20,9 @@ function Home(){
   const [currentLoad, setCurrentLoad] = useState(5);
 
   useEffect(() => {
-    setContents(post.data)
-  },[user]);
+    setContents(post.data);
+  },[]);
 
-  
   const fetchMoreData = () =>{
     dispatch(loadContents({start:currentLoad,end:currentLoad+5}))
     .then((res=>{
@@ -36,17 +35,8 @@ function Home(){
     }));
   }
 
-  return(
-    <div>
-      {/* <SearchForm/> */}
-      {user.isLogin &&
-        <>
-          <ProfileForm user={user}/>
-        </>
-      }
-
-      {contents ?
-        <InfiniteScroll 
+  const renderContents = ()=>(
+    <InfiniteScroll 
         dataLength={contents.length}
         next={fetchMoreData}
         hasMore={hasMore}
@@ -59,6 +49,19 @@ function Home(){
             <CardForm post={post} key={index}/>
         ))}
         </InfiniteScroll>
+  )
+
+  return(
+    <div>
+      {/* <SearchForm/> */}
+      {user.isLogin &&
+        <>
+          <ProfileForm user={user}/>
+        </>
+      }
+
+      {contents.length ?
+        renderContents()
       :
         <NoContents/>
       }

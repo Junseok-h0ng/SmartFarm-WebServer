@@ -16,13 +16,21 @@ function PostForm(props) {
     }
 
     const onSubmitPost = () =>{
-        
+
         const chartFilter = fileList.pop();
-        const charts = chartFilter.start ? chartFilter : fileList.push(chartFilter);
+        let charts;
+        //파일리스트에 차트정보가 있으면 차트값을 넣음
+        if(chartFilter && chartFilter.start){
+            charts = chartFilter;
+        //파일리스트에 차트정보가 없으면 마지막 값을 다시 파일리스트에 넣어줌
+        }else if(chartFilter != undefined){
+            fileList.push(chartFilter);
+        }
+        
 
         const data = {
             writer: user.data._id,
-            images: fileList.map(file=>{
+            images: fileList.map(file=>{ 
                 return {
                     src:file.src.slice(22),
                     name:file.name

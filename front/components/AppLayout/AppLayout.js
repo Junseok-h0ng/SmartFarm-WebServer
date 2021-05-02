@@ -22,7 +22,7 @@ function AppLayout({children}) {
                 <Menu.Item key="home"><Link href="/"><a>Home</a></Link></Menu.Item>
                 {!isLoading &&
                 <>
-                {!isLogin ?
+                {isLogin ?
                     <>
                         <Menu.Item style={{float:'right'}}key="register"><Link href="/register"><a>Register</a></Link></Menu.Item>
                         <Menu.Item style={{float:'right'}} key="login"><Link href="/login"><a>Login</a></Link></Menu.Item>

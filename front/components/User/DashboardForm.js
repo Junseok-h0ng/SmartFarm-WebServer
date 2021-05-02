@@ -7,7 +7,7 @@ import { Bar, Line } from 'react-chartjs-2'
 const DashboardForm = () => {
     return <div>
         <style jsx>{`    
-        #col {
+        #col_2 {
           column-count:2;
         }
         
@@ -20,7 +20,7 @@ const DashboardForm = () => {
         
       `}</style>
       <div id='flex-container'>
-        <div id='col'>
+        <div id='col_2'>
         <div>
         <Bar   
             data={{

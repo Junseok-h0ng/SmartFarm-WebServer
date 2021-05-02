@@ -6,10 +6,13 @@ import {Menu} from 'antd';
 function index() {
     return (       
         <main>
+        <br/>
         <div>
             <Menu mode="horizontal" style={{padding:'0 30px'}}>
-            <Menu.Item key="dashboard"><Link href="/dashboard"><a>Dashboard</a></Link></Menu.Item>                
-            </Menu>
+            <Menu.Item key="dashboard"><Link href="/dashboard">
+            <button type="button" class="btn btn-outline-info">Dashboard</button>
+            </Link></Menu.Item>         
+        </Menu>
         </div>
 
         <div>

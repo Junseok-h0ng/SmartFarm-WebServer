@@ -21,7 +21,7 @@ function Home(){
 
   useEffect(() => {
     setContents(post.data);
-  },[]);
+  },[post.data === undefined],[post.data == 0],[]);
 
   const fetchMoreData = () =>{
     dispatch(loadContents({start:currentLoad,end:currentLoad+5}))
@@ -43,7 +43,7 @@ function Home(){
         loader={<h4>Loading...</h4>}
         endMessage={
             <p>end</p>
-            }
+          }
         >
         {contents && contents.map((post,index)=>(
             <CardForm post={post} key={index}/>
@@ -60,7 +60,7 @@ function Home(){
         </>
       }
 
-      {contents.length ?
+      {contents ?
         renderContents()
       :
         <NoContents/>

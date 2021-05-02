@@ -12,7 +12,7 @@ const commentSchema = mongoose.Schema({
     contents:{
         type:String
     },
-    author:{
+    writer:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     }

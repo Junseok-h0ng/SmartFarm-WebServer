@@ -21,7 +21,7 @@ function ReplyComment(props) {
         const variable = {
             postId: props.postId,
             contents:commentValue,
-            author: props.user.data._id,
+            writer: props.user.data._id,
             responseTo: props.parentCommentId
         }
 

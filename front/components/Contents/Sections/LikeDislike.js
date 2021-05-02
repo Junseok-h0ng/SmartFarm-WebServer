@@ -32,7 +32,6 @@ function LikeDislike(props) {
     useEffect(() => {
         dispatch(getLikes(variable))
         .then(res=>{
-            console.log(res);
             if(res.payload.success){
                 setLikes(res.payload.likes.length);
                 res.payload.likes.map(like=>{

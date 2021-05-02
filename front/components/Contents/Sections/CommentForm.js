@@ -20,7 +20,7 @@ function CommentForm(props) {
             <>
               <SingleComment key={index} user={user} userId={props.userId} comment={comment} refereshFunction={props.refereshFunction} postId={props.postId} />
               <div  style={{marginLeft:"40px"}}>
-              <ChildrenComment   key={index} user={user} userId={props.userId} parentAuthor={comment.author.name}  commentLists={props.commentLists} parentCommentId={comment._id} refereshFunction={props.refereshFunction} postId={props.postId}/>
+              <ChildrenComment   key={index} user={user} userId={props.userId} parentAuthor={comment.writer.name}  commentLists={props.commentLists} parentCommentId={comment._id} refereshFunction={props.refereshFunction} postId={props.postId}/>
               </div>
             </>
             )

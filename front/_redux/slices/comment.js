@@ -14,6 +14,12 @@ export const getComment = createAsyncThunk("GET_COMMENTS",async(data)=>{
     return response.data;
 });
 
+export const deleteComment = createAsyncThunk("DELETE_COMMENT",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/comment/delete",(data));
+    console.log(response);
+    return response.data;
+})
+
 
 export const commentReducer = createSlice({
     name:'comment',

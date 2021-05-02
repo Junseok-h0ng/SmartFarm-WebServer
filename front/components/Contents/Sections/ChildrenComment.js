@@ -29,7 +29,7 @@ function ChildrenComment(props) {
           <div style={{ width: '80%', marginLeft: '40px' }}>
             <SingleComment key={index} comment={comment} user={props.user} userId={props.userId} refereshFunction={props.refereshFunction} postId={props.postId} parentAuthor={parentAuthor}/>
           </div>
-            <ChildrenComment commentLists={props.commentLists} parentAuthor={comment.author.name} parentCommentId={comment._id} userId={props.userId} user={props.user} refereshFunction={props.refereshFunction} postId={props.postId}/>
+            <ChildrenComment commentLists={props.commentLists} parentAuthor={comment.writer.name} parentCommentId={comment._id} userId={props.userId} user={props.user} refereshFunction={props.refereshFunction} postId={props.postId}/>
         </div>
         }
       </React.Fragment>

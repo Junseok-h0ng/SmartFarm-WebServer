@@ -58,7 +58,7 @@ app.use(passport.session());
 passportConfig();
 
 //다른 서비스가 기능을 실행할 수 있게 열어둠
-app.use('/api/rasp',require('./routes/rasp'));
+app.use('/api/farm',require('./routes/farm'));
 app.use('/api/user',require('./routes/user'));
 app.use('/api/upload',require('./routes/upload'));
 app.use('/api/post',require('./routes/post')); 

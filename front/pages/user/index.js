@@ -56,7 +56,7 @@ function index() {
         <div>
             {user.data &&
                 <div>
-                    <ProfileForm user={user} postLength={post.Length}/>
+                    <ProfileForm user={user}/>
                     <PostForm refreshPostCard={refreshPostCard}/>
                     {contents.length > 0 ?
                         <InfiniteScroll 

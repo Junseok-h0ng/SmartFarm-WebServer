@@ -48,8 +48,7 @@ root.getInitialProps = async context =>{
   }
 
   if(!state.user.isLogin){
-  	const data = await ctx.store.dispatch(loadUserData());
-	console.log(data);  
+  	await ctx.store.dispatch(loadUserData());
 }
 
   if (Component.getInitialProps) { 

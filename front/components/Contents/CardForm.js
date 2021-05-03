@@ -24,18 +24,23 @@ function CardForm(props) {
     const user = useSelector(state => state.user);
     const userId = user.data ? user.data._id : '';
     useEffect(() => {
-      dispatch(getComment({postId:props.post._id}))
-      .then((response)=>{
-        setComments(response.payload);
-      });
+      loadComment();
   }, []);
 
     const refereshFunction = (newComment) =>{
         setComments(comments.concat(newComment));
-      }
+    }
+
+    const loadComment = () =>{
+        dispatch(getComment({postId:props.post._id}))
+        .then((response)=>{
+        setComments(response.payload);
+      });
+    }
 
     const onChangetoggleReply = () =>{
         setToggleReply(!toggleReply)
+        loadComment();
     }
 
     const settings = {
@@ -52,7 +57,6 @@ function CardForm(props) {
             if(res){
                 props.delete();
             }
-
         })
     }
 

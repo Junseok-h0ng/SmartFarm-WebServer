@@ -32,12 +32,9 @@ function SingleComment(props) {
     const onClickDelete = () =>{
         dispatch(deleteComment({commentId:props.comment._id}))
         .then(res=>{
-            console.log(res);
             setComment(res.payload);
         });
     }
-
-    console.log(comment);
 
     return (
         <div>

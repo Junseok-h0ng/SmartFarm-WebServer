@@ -21,6 +21,14 @@ function Home({data}){
 
   return(
     <div>
+      <style jsx>{`   
+
+        #line { 
+ 
+        }
+
+      `}</style>
+    <div id='line'>
       {/* <SearchForm/> */}
       {
         <>
@@ -29,9 +37,10 @@ function Home({data}){
           
         </>
       }
+      <br/><br/>
+      <CardForm/>
 
-
-      {/* <CardForm/> */}
+    </div>
     </div>
   )
 

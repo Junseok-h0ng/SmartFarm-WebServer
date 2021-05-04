@@ -41,6 +41,7 @@ function LoginForm() {
             justify-content: center;
             align-items: center;
             min-height: 80vh;
+
         }
 
         ul {
@@ -77,21 +78,21 @@ function LoginForm() {
             <ul>             
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="66" alt="네이버 로그인"></img>
+                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="17%" alt="네이버 로그인"></img>
                     {/* <span id = 'font_White'>&nbsp;네이버 로그인</span> */}
                 </a>  
             </li>      
             &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="66" alt="카카오톡 로그인"></img>
+                    <img src="https://i.ibb.co/k0djP8x/img.jpg" width="17%" alt="카카오톡 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;카카오톡 로그인</span> */}
                 </a>
             </li>
             &emsp;
             <li>
                 <a href="#">
-                    <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="66" alt="구글 로그인"></img>
+                    <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="17%" alt="구글 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;구글 로그인</span> */}
                 </a>
             </li> 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card,Avatar,Checkbox} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
 
 
@@ -14,7 +15,7 @@ function CardForm() {
                 ]}
             >
                 <Card.Meta
-                    avatar={<Avatar>fasd</Avatar>}
+                    avatar={<Avatar icon={<UserOutlined />} />}
                     title={'123'}
                     description={
                         'asdfas'

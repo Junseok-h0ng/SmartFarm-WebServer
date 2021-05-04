@@ -2,8 +2,8 @@ import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import Router from 'next/router';
 import Link from 'next/link';
-import {Menu,Row,Col} from 'antd';
-import { loadUserData, logOut } from '../../_redux/slices/user';
+import {Menu,Row,Col,message} from 'antd';
+import {logOut } from '../../_redux/slices/user';
 
 function AppLayout({children}) {
     const dispatch = useDispatch();
@@ -11,6 +11,12 @@ function AppLayout({children}) {
 
     const onLogout = () =>{
         dispatch(logOut())
+        .then(res=>{
+            console.log(res);
+            if(res.payload.success){
+                message.success('로그아웃을 성공적으로 마쳤습니다.');
+            }
+        })
     }
     
     return (

@@ -37,25 +37,29 @@ router.post('/user/contents',(req,res,next)=>{
 router.post('/user/delete',(req,res,next)=>{
     const postId = req.body.postId;
     
+    // 포스트 삭제
     Post.findByIdAndRemove({_id:postId})
     .exec((err)=>{
         if(err) return res.status(401).send(err);
+        // 포스트의 모든 댓글 찾기
         Comment.find({postId:postId})
         .exec((err,comments)=>{
             if(err) return res.status(401).send(err);
-            console.log(comments)
+            // 댓글 좋아요 싫어요 삭제
             comments.map((comment,index)=>{
                Like.deleteOne({commentId:comment._id}).exec();
                Dislike.deleteOne({commentId:comment._id}).exec(); 
             });
         });
 
+        // 포스트 좋아요 싫어요 삭제
         Like.deleteOne({postId:postId}).exec();
         Dislike.deleteOne({postId:postId}).exec();
 
+        // 포스트의 모든 댓글 삭제
         Comment.deleteMany({postId:postId})
         .exec((err)=>{
-            res.status(200).send();
+            res.status(200).send({success:true});
         })
     })
 

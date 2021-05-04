@@ -17,7 +17,8 @@ export const logIn = createAsyncThunk("LOG_IN",async(data)=>{
 });
 
 export const logOut = createAsyncThunk("LOG_OUT",async()=>{
-    await axios.post(config.back_url+"/api/user/logout");
+    const response = await axios.post(config.back_url+"/api/user/logout");
+    return response.data;
 });
 
 export const register = createAsyncThunk("REGISTER",async(data)=>{

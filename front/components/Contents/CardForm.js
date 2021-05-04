@@ -54,8 +54,9 @@ function CardForm(props) {
     const onClickDelete = () =>{
         dispatch(deleteUserContent({postId:props.post._id}))
         .then((res)=>{
-            if(res){
-                props.delete();
+            console.log(res);
+            if(res.payload.success){
+                props.deletePostCard();
             }
         })
     }
@@ -97,7 +98,7 @@ function CardForm(props) {
             </div>
             }
             <br/>
-            {props.delete &&
+            {props.deletePostCard &&
                 <DeleteOutlined style={{float:'right'}} onClick={onClickDelete}/>
             }
             {toggleReply &&

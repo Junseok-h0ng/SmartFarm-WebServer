@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Form,Input,Button} from 'antd';
-import { addFarm } from '../../_redux/slices/farm';
+import {Form,Input,Button,message} from 'antd';
+import { addFarm, loadFarmInfo } from '../../_redux/slices/farm';
 
 function AddFarm(props) {
 
@@ -10,12 +10,35 @@ function AddFarm(props) {
     const [inputValue, setInputValue] = useState("");
 
     const onSubmitCommit = () =>{
+        // 주소창이 빈칸일 경우
+        if(inputValue === ""){return message.error('주소가 입력되지 않았습니다.')}
+
         setInputValue("");
+
         const data={
             userId: props.userId,
             address: inputValue
         }
-        dispatch(addFarm(data));
+
+        dispatch(loadFarmInfo({userId:props.userId}))
+        .then(res=>{
+            // 이미 주소가 등록되었는지 체크
+            const hasAddress = res.payload.map(payload=>payload.address).indexOf(data.address);
+            // 주소가 중복되있지 않으면 농장정보 등록
+            if(hasAddress != 0){
+                dispatch(addFarm(data))
+                .then(res=>{
+                    if(res.payload){
+                        message.success('새로운 정보등록에 성공했습니다.');
+                        props.refreshFarmData(res.payload);
+                    }
+                });
+            }else{
+                //중복되면 에러 메세지 출력
+                message.error('이미 정보가 있습니다.');
+            }
+        });
+       
     }
 
     const onChangeInputValue = (event) =>{

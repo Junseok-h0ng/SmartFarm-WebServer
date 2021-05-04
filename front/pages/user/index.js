@@ -70,7 +70,7 @@ function index() {
                     >
                     {contents && contents.map((post,index)=>(
                         <React.Fragment key={index}>
-                            <CardForm post={post} delete={deletePostCard}/>
+                            <CardForm post={post} deletePostCard={deletePostCard}/>
                         </React.Fragment>
                     ))}
                     </InfiniteScroll>

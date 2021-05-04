@@ -30,11 +30,27 @@ router.post('/',(req,res)=>{
                 res.status(200).send(doc);
             });
         }else{
-            return res.status(401).send('이미 등록된 정보입니다.');
+            return res.status(401).json('이미 등록된 정보입니다.');
         }
+    });
+});
 
+// 농장 정보 가져오기
+router.post('/info',(req,res)=>{
+    Farm.find({userId:req.body.userId})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        res.status(200).send(doc);
+    });
+});
+
+router.post('/delete',(req,res)=>{
+
+    Farm.deleteOne({_id:req.body._id})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        res.status(200).send({success:true});
     })
-  
 })
 
 module.exports = router;

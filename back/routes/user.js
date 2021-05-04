@@ -27,8 +27,7 @@ router.post('/login',(req,res,next)=>{
 router.post('/logout',(req,res,next)=>{
     req.logout();
     req.session.destroy();
-	console.log(req.isAuthenticated())
-    res.status(200).send();
+    res.status(200).send({success:true});
 })
 
 router.post('/register',(req,res,next)=>{

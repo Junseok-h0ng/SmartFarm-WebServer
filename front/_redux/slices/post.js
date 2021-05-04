@@ -23,7 +23,8 @@ export const loadUserContents = createAsyncThunk("LOAD_USER_CONTENTS",async(data
     }
 });
 export const deleteUserContent = createAsyncThunk("DELETE_USER_CONTENT",async(data)=>{
-    await axios.post(config.back_url+"/api/post/user/delete",(data));
+    const response = await axios.post(config.back_url+"/api/post/user/delete",(data));
+    return response.data;
 })
 
 

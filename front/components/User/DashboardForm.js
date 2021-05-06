@@ -1,8 +1,8 @@
 import Column from 'antd/lib/table/Column';
 import React from 'react'
 import { Bar, Line } from 'react-chartjs-2'
-
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Card } from 'react-bootstrap'
 
 const DashboardForm = () => {
     return <div>
@@ -14,9 +14,10 @@ const DashboardForm = () => {
         #flex-container { 
             position:absolute;
             top:0; left:0; bottom:0; right:0;
-            height:10%;
-            margin:20% auto;
+            height:11%;
+            margin:18% auto;
         }
+
         
       `}</style>
       <div id='flex-container'>
@@ -107,8 +108,8 @@ const DashboardForm = () => {
         </div>
         </div>
 
-        <div>
-        <Line
+        <div align='center' class='container'>
+        {/* <Line
             data={{
                 labels: ['4/5', '4/6', '4/7', '4/8'],
                 datasets:[
@@ -148,8 +149,53 @@ const DashboardForm = () => {
                 }
             
             }}
-
-        />
+        /> */}
+        <table width='80%'>
+            <tr>
+                <td>
+                    <Card className='card bg-warning' style={{ color: "white" }}  align='center'>
+                        <Card.Body>
+                                <Card.Title>
+                                    현재 온도
+                                </Card.Title>  
+                                <Card.Text>21 °C</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </td>
+                <td>
+                    <Card className='card bg-success' style={{ color: "white" }} align='center'>
+                        <Card.Body>
+                            <Card.Title>
+                                현재 습도
+                            </Card.Title>  
+                            <Card.Text>24 °C</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <Card className='card bg-info' style={{ color: "white" }} align='center'>
+                        <Card.Body>
+                            <Card.Title>
+                                현재 물량
+                            </Card.Title>  
+                            <Card.Text>20%</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </td>
+                <td>
+                    <Card className='card bg-danger' style={{ color: "white" }} align='center'>
+                        <Card.Body>
+                            <Card.Title>현재 밝기</Card.Title>  
+                            <Card.Text>
+                                33
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </td>
+            </tr>
+            </table>
         </div>
     </div>
     </div>

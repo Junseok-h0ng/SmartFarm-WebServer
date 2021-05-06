@@ -27,8 +27,7 @@ const ListForm = () => {
                     justify-content: center;
                     align-items: center;
                     min-height: 69vh;
-                }
-        
+                }     
             `}</style>
             <div id= 'flex-container'>
 

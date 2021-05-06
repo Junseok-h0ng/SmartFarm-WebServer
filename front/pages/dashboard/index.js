@@ -12,11 +12,9 @@ function index() {
         <div>
         <Menu mode="horizontal" style={{padding:'0 30px'}}>
         <Menu.Item key="control"><Link href="/control">
-            <button type="button" class="btn btn-outline-success">Control</button>
+            <Button classname="btn btn-outline-success">Control</Button>
             </Link></Menu.Item>         
         </Menu>
-        </div>
-        <div>
             <DashboardForm/>
         </div>
 

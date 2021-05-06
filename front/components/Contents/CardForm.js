@@ -31,61 +31,15 @@ function CardForm() {
                             <div>
                                 hello, this is my planet
                             </div>
+                            <br/>
                             <div align='center'>
-                                <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
+                                <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='77%' height='180px' alt="sample"></img>
                             </div>      
                         </div> 
                     </div>
                 </Card>
             </div>
-            <br/>
-            <div id='line'>
-            <Card
-                  actions={[
-                    <LikeOutlined type="like" key="like" />,
-                    <DislikeOutlined type="dislike" key="dislike" /> ,
-                    <MessageOutlined  type="message" key="message"/>,
-                ]}
-            >
-                <div>
-                    <Avatar icon={<UserOutlined />}/>
-                    <div>Jason</div>
-                    <br/>
-                    <div>
-                        <div>
-                            hello, this is my planet
-                        </div>
-                        <div align='center'>
-                            <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
-                        </div>      
-                    </div> 
-                </div>
-            </Card>
-            </div>
-            <br/>
-            <div id='line'>
-            <Card
-                  actions={[
-                    <LikeOutlined type="like" key="like" />,
-                    <DislikeOutlined type="dislike" key="dislike" /> ,
-                    <MessageOutlined  type="message" key="message"/>,
-                ]}
-            >
-                <div>
-                    <Avatar icon={<UserOutlined />}/>
-                    <div>Jason</div>
-                    <br/>
-                    <div>
-                        <div>
-                            hello, this is my planet
-                        </div>
-                        <div align='center'>
-                            <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
-                        </div>      
-                    </div> 
-                </div>
-            </Card>
-            </div>
+            
         </div>
     )
 }

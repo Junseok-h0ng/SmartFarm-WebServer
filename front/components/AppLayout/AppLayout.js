@@ -25,7 +25,7 @@ function AppLayout({children}) {
                 <>
                 {isLogin ?
                     <>
-                        <Menu.Item style={{float:'right'}}key="register"><Link href="/register"><a>Register</a></Link></Menu.Item>
+                        <Menu.Item style={{float:'right'}}key="register"><Link href="/register"><img src='https://i.ibb.co/fY8VH6F/image.png' width='100px' alt="임시"></img></Link></Menu.Item>
                         <Menu.Item style={{float:'right'}} key="login"><Link href="/login"><a><KeyOutlined /></a></Link></Menu.Item>
                     </>
                     :
@@ -36,7 +36,7 @@ function AppLayout({children}) {
                 </>
                 }
                 <Menu.Item style={{float:'right'}} key="dashboard"><Link href="/dashboard"><a>Board</a></Link></Menu.Item>
-                <Menu.Item style={{float:'right'}} key="list"><Link href="/list"><a>List</a></Link></Menu.Item>
+                {/* <Menu.Item style={{float:'right'}} key="list"><Link href="/list"><a>List</a></Link></Menu.Item> */}
 
             </Menu>
             <Row style={{marginTop:'15px'}} gutter={8}>

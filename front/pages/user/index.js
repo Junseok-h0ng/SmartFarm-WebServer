@@ -11,7 +11,7 @@ import {wrapper} from '../../_redux/store';
 import NoContents from '../../components/commons/NoContents';
 import { Button } from 'antd';
 
-function index() {
+function index({data}) {
 
     const dispatch = useDispatch();
     
@@ -26,7 +26,7 @@ function index() {
         if(!user.isLogin){
             return Router.push('/');
         }
-        setContents(post.data)
+        setContents(data.payload)
     }, [user]);
 
     const refreshPostCard = (newContents) =>{
@@ -88,9 +88,9 @@ function index() {
 export const getServerSideProps = wrapper.getServerSideProps(async context=>{
     const state = context.store.getState();
     const user = state.user;
-    if(state.user.data){
-        await context.store.dispatch(loadUserContents({userId:user.data._id,start:0,end:5}));
-    }
+    if(!state.user.data){return}
+    const data = await context.store.dispatch(loadUserContents({userId:user.data._id,start:0,end:5}));
+    return {props:{data}}
 }); 
 
 export default index

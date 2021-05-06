@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const {Farm} = require('../models/Farm');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 const fs = require('fs');
 
@@ -45,12 +47,47 @@ router.post('/info',(req,res)=>{
 });
 
 router.post('/delete',(req,res)=>{
-
     Farm.deleteOne({_id:req.body._id})
     .exec((err,doc)=>{
         if(err) return res.status(401).send(err);
         res.status(200).send({success:true});
-    })
+    });
+});
+
+router.post('/getApiNongsaro',async (req,res)=>{
+    const getUrl = async () =>{
+        try{
+            return await axios.get("https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30650&sKidofcomdtySeCode=FC")
+        }catch(err){
+            return res.status(401).send(err)
+        }
+    }
+    getUrl()
+        .then(url => {
+            // 해당 링크에서 가져온 데이터를 저장
+            const $ = cheerio.load(url.data);
+            // url에서 가져온 데이터들을 추출할 bodyList
+            const $bodyList = $("div#contents").children("div#printZone");
+
+            // 제목을 추출해줌
+            const title = $bodyList.find('div#nongScheduleTit').children('div.floatDiv').text().replace(/(\r\n\t|\n|\t|\r\t)/gm,"");
+            
+            // 데이터들을 추출해줌
+            let data = [];
+            for(let i =1; i<=$bodyList.find('ul.listCon').children('li').length;i++){
+                data.push($bodyList.find('ul.listCon').children(`li:nth-child(${i})`).text())   
+            };
+
+            // 리턴해줄 최종 데이터 값
+            const response = {
+                title,
+                data
+            }
+
+            return response;
+        }).then(response=>{res.send(response)});
+  
+    
 })
 
-module.exports = router;
+module.exports = router;    

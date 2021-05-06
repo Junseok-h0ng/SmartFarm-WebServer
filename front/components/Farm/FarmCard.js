@@ -26,7 +26,7 @@ function FarmCard(props) {
                     description={[props.farm.address,<DeleteOutlined onClick={onClickDelete} style={{float:'right',marginBottom:'20px'}}/>]}
                 />
                 <Button style={{float:'right'}}><BarChartOutlined /></Button>
-                <Button style={{float:'right'}}><SettingOutlined /></Button>
+                <Button style={{float:'right'}}><Link href={`/farm/${props.farm._id}`}><SettingOutlined /></Link></Button>
             </Card>
         </div>
     )

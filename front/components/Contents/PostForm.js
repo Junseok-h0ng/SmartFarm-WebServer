@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {Form,Input,Button,Upload} from 'antd';
+import {Form,Input,Button,Upload, message} from 'antd';
 import UploadButton from './Sections/UploadForm';
 import {loadContents, postContents} from '../../_redux/slices/post';
 
@@ -16,6 +16,8 @@ function PostForm(props) {
     }
 
     const onSubmitPost = () =>{
+        
+        if(contents === ""){return message.error('글의 내용이 빈칸입니다.')}
 
         const chartFilter = fileList.pop();
         let charts;
@@ -49,7 +51,6 @@ function PostForm(props) {
     }
 
     const handleCheckedImages = (images) =>{
-        console.log(images);
         setFileList(images);
        
     }
@@ -66,7 +67,7 @@ function PostForm(props) {
         <div >
 
             <Form onFinish={onSubmitPost}>
-                <Input.TextArea value={contents} onChange={onChangeContents} rows={4}/>
+                <Input.TextArea value={contents} onChange={onChangeContents} rows={4} placeholder='다른사람들과 공유 해보세요!'/>
                 <Form.Item
                     name="image"
                 >

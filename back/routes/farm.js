@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const {Farm} = require('../models/Farm');
+const convert = require('xml-js');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const config = require('../config/key');
+
 
 const fs = require('fs');
 
@@ -86,8 +89,35 @@ router.post('/getApiNongsaro',async (req,res)=>{
 
             return response;
         }).then(response=>{res.send(response)});
-  
-    
+});
+
+router.post('/getCrops',async (req,res)=>{
+    await axios.get(`http://api.nongsaro.go.kr/service/farmWorkingPlanNew/workScheduleLst?apiKey=${config.nongsaroAPI}&kidofcomdtySeCode=${req.body.id}`)
+    .then((response)=>{
+        const itemList = response.data;
+        const xmlToJson = convert.xml2json(itemList,{compact:true,spaces:4});
+        return JSON.parse(xmlToJson).response;
+    }).then(response=>{
+        let data = [];
+        response.body.items.item.map((item)=>{
+            data.push({
+                id: item.cntntsNo._cdata,
+                name: item.sj._cdata
+            });
+        })
+        res.send(data);
+    });
+});
+
+router.post('/getCrops/info',async(req,res)=>{
+    await axios.get(`http://api.nongsaro.go.kr/service/farmWorkingPlanNew/workScheduleDtl?cntntsNo=${req.body.id}&apiKey=${config.nongsaroAPI}`)
+    .then((response)=>{
+        const itemList = response.data;
+        const xmlToJson = convert.xml2json(itemList,{compact:true,spaces:4});
+        return JSON.parse(xmlToJson).response;
+    }).then(response=>{
+        res.send(response.body.item.cn._cdata);
+    })
 })
 
 module.exports = router;    

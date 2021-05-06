@@ -1,6 +1,6 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import SelectFarm from '../../components/Farm/SelectFarm';
+import SelectCrops from '../../components/Farm/SelectCrops';
 
 function settingFarm() {
     const router = useRouter();
@@ -9,7 +9,7 @@ function settingFarm() {
     return (
         <div>
             <p>Post : {pid}</p>
-            <SelectFarm/>        
+            <SelectCrops/>        
         </div>
     )
 }

@@ -37,7 +37,9 @@
     "passport-kakao": "^1.0.1",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "socket.io": "^4.0.0"
+    "request": "^2.88.2",
+    "socket.io": "^4.0.0",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",

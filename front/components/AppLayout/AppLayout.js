@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import Link from 'next/link';
 import {Menu,Row,Col} from 'antd';
+import {KeyOutlined, LogoutOutlined} from '@ant-design/icons'
 import { loadUserData, logOut } from '../../_redux/_reducer/userReducer';
 
 function AppLayout({children}) {
@@ -19,17 +20,17 @@ function AppLayout({children}) {
     return (
         <div>
             <Menu mode="horizontal" style={{padding:'0 30px'}}>
-                <Menu.Item key="home"><Link href="/"><a>Home</a></Link></Menu.Item>
+                <Menu.Item key="home"><Link href="/"><img src='https://www.smartfarmkorea.net/images/logo.png' width='100px' alt='임시아이콘'></img></Link></Menu.Item>
                 {!isLoading &&
                 <>
                 {isLogin ?
                     <>
                         <Menu.Item style={{float:'right'}}key="register"><Link href="/register"><a>Register</a></Link></Menu.Item>
-                        <Menu.Item style={{float:'right'}} key="login"><Link href="/login"><a>Login</a></Link></Menu.Item>
+                        <Menu.Item style={{float:'right'}} key="login"><Link href="/login"><a><KeyOutlined /></a></Link></Menu.Item>
                     </>
                     :
                     <>
-                        <Menu.Item style={{float:'right'}} key="logout"><a onClick={onLogout}>Logout</a></Menu.Item>
+                        <Menu.Item style={{float:'right'}} key="logout"><a onClick={onLogout}><LogoutOutlined /></a></Menu.Item>
                     </>
                 }
                 </>

@@ -7,6 +7,39 @@ import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/ico
 function CardForm() {
     return (
         <div>
+            <style jsx>{`    
+                #line {
+                    border: 1.5px solid #a0a0a0;
+                    // border-radius: 1.1em;
+                    // background-color: #59f80f;
+                }
+            `}</style>
+
+            <div id='line'>
+                <Card
+                    actions={[
+                        <LikeOutlined type="like" key="like" />,
+                        <DislikeOutlined type="dislike" key="dislike" /> ,
+                        <MessageOutlined  type="message" key="message"/>,
+                    ]}
+                >
+                    <div>
+                        <Avatar icon={<UserOutlined />}/>
+                        <div>Jason</div>
+                        <br/>
+                        <div>
+                            <div>
+                                hello, this is my planet
+                            </div>
+                            <div align='center'>
+                                <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
+                            </div>      
+                        </div> 
+                    </div>
+                </Card>
+            </div>
+            <br/>
+            <div id='line'>
             <Card
                   actions={[
                     <LikeOutlined type="like" key="like" />,
@@ -14,14 +47,45 @@ function CardForm() {
                     <MessageOutlined  type="message" key="message"/>,
                 ]}
             >
-                <Card.Meta
-                    avatar={<Avatar icon={<UserOutlined />} />}
-                    title={'123'}
-                    description={
-                        'asdfas'
-                    }
-                />
+                <div>
+                    <Avatar icon={<UserOutlined />}/>
+                    <div>Jason</div>
+                    <br/>
+                    <div>
+                        <div>
+                            hello, this is my planet
+                        </div>
+                        <div align='center'>
+                            <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
+                        </div>      
+                    </div> 
+                </div>
             </Card>
+            </div>
+            <br/>
+            <div id='line'>
+            <Card
+                  actions={[
+                    <LikeOutlined type="like" key="like" />,
+                    <DislikeOutlined type="dislike" key="dislike" /> ,
+                    <MessageOutlined  type="message" key="message"/>,
+                ]}
+            >
+                <div>
+                    <Avatar icon={<UserOutlined />}/>
+                    <div>Jason</div>
+                    <br/>
+                    <div>
+                        <div>
+                            hello, this is my planet
+                        </div>
+                        <div align='center'>
+                            <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='83%' height='180px' alt="sample"></img>
+                        </div>      
+                    </div> 
+                </div>
+            </Card>
+            </div>
         </div>
     )
 }

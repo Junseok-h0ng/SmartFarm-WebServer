@@ -8,14 +8,11 @@ function CardForm() {
     return (
         <div>
             <style jsx>{`    
-                #line {
-                    border: 1.5px solid #a0a0a0;
-                    // border-radius: 1.1em;
-                    // background-color: #59f80f;
-                }
+        
+        
             `}</style>
 
-            <div id='line'>
+            <div>
                 <Card
                     actions={[
                         <LikeOutlined type="like" key="like" />,
@@ -24,18 +21,17 @@ function CardForm() {
                     ]}
                 >
                     <div>
-                        <Avatar icon={<UserOutlined />}/>
-                        <div>Jason</div>
-                        <br/>
+                        <Avatar icon={<UserOutlined />}/>&emsp;<a>Jason</a>
                         <div>
-                            <div>
-                                hello, this is my planet
-                            </div>
-                            <br/>
+                            <br/>Hello, this is my planet               
                             <div align='center'>
-                                <img src="https://i.ibb.co/QXrwTWh/sample.jpg"  width='77%' height='180px' alt="sample"></img>
-                            </div>      
+                                <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg"  width='99%' height='' alt="sample"></img>
+                            </div>
                         </div> 
+
+                        <LikeOutlined type="like" key="like" /> 7
+                        &emsp;
+                        <DislikeOutlined type="dislike" key="dislike" /> 2
                     </div>
                 </Card>
             </div>

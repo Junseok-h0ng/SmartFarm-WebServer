@@ -12,7 +12,7 @@ function index() {
         <div>
         <Menu mode="horizontal" style={{padding:'0 30px'}}>
         <Menu.Item key="control"><Link href="/control">
-            <Button classname="btn btn-outline-success">Control</Button>
+            <Button className= 'card bg-success btn-block disabled' style={{ color: "white" }}>Control</Button>
             </Link></Menu.Item>         
         </Menu>
             <DashboardForm/>

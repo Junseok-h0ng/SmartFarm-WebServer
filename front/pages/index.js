@@ -33,11 +33,12 @@ function Home({data}){
       {
         <>
           <ProfileForm/>
-          {/* <PostForm/> */}
+          <br/>
+          <PostForm/>
           
         </>
       }
-      <br/><br/>
+      <br/>
       <CardForm/>
 
     </div>

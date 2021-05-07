@@ -15,7 +15,7 @@ const DashboardForm = () => {
             position:absolute;
             top:0; left:0; bottom:0; right:0;
             height:11%;
-            margin:18% auto;
+            margin:17% auto;
         }
 
         

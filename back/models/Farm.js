@@ -10,6 +10,9 @@ const farmSchema = mongoose.Schema({
     },
     address:{
         type:String
+    },
+    crops:{
+        type:Object
     }
 });
 

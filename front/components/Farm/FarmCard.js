@@ -2,12 +2,14 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import Link from 'next/link';
 import {Input,Button,Card,message} from 'antd';
-import {BarChartOutlined,SettingOutlined,DeleteOutlined} from '@ant-design/icons'
+import {BarChartOutlined,InfoCircleOutlined,DeleteOutlined} from '@ant-design/icons'
 import { deleteFarm } from '../../_redux/slices/farm';
 
 function FarmCard(props) {
 
     const dispatch = useDispatch();
+
+    
 
     const onClickDelete = ()=>{
         dispatch(deleteFarm({_id:props.farm._id}))
@@ -26,7 +28,7 @@ function FarmCard(props) {
                     description={[props.farm.address,<DeleteOutlined onClick={onClickDelete} style={{float:'right',marginBottom:'20px'}}/>]}
                 />
                 <Button style={{float:'right'}}><BarChartOutlined /></Button>
-                <Button style={{float:'right'}}><Link href={`/farm/${props.farm._id}`}><SettingOutlined /></Link></Button>
+                <Button style={{float:'right'}}><Link href={`/farm/${props.farm._id}`}><InfoCircleOutlined /></Link></Button>
             </Card>
         </div>
     )

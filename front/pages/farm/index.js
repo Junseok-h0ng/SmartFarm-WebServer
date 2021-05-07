@@ -11,7 +11,6 @@ function index() {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.user);
-    const farm = useSelector(state => state.farm);
 
     const [farmData, setFarmData] = useState([])
 

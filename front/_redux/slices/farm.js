@@ -32,6 +32,12 @@ export const getCrops = createAsyncThunk("GET_CROPS",async(data)=>{
 export const getCropsInfo = createAsyncThunk("GET_CROPS_INFO",async(data)=>{
     const response = await axios.post(config.back_url+"/api/farm/getCrops/info",(data));
     return response.data;
+});
+
+// 농작물 정보 DB FARM에 CROPS로 넣기
+export const addCropsInfo = createAsyncThunk("ADD_CROPS_INFO",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/addCropsInfo",(data));
+    return response.data;
 })
 
 export const farmReducer = createSlice({

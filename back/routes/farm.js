@@ -57,6 +57,14 @@ router.post('/delete',(req,res)=>{
     });
 });
 
+router.post('/addCropsInfo',(req,res)=>{
+    Farm.findByIdAndUpdate({_id:req.body._id},{crops:req.body.crops})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        res.status(200).send({success:true});
+    })
+})
+
 router.post('/getApiNongsaro',async (req,res)=>{
     const getUrl = async () =>{
         try{
@@ -118,6 +126,13 @@ router.post('/getCrops/info',async(req,res)=>{
     }).then(response=>{
         res.send(response.body.item.cn._cdata);
     })
-})
+});
+
+router.get('/getFarm',async(req,res)=>[
+    await axios.get('http://119.195.177.230:8000/data')
+    .then((response)=>{
+        console.log(response.data[0]);
+    })
+])
 
 module.exports = router;    

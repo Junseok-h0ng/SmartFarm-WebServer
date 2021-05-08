@@ -65,7 +65,6 @@ function PostForm(props) {
 
     return (
         <div >
-
             <Form onFinish={onSubmitPost}>
                 <Input.TextArea value={contents} onChange={onChangeContents} rows={4} placeholder='다른사람들과 공유 해보세요!'/>
                 <Form.Item

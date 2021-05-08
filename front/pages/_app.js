@@ -5,6 +5,7 @@ import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
 import axios from 'axios';
 import { loadUserData } from '../_redux/slices/user';
+import './style.css';
 
 
 

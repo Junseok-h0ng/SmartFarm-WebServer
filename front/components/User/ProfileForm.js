@@ -1,21 +1,42 @@
 import React from 'react';
 import Link from 'next/link';
 import {Avatar,Button,Card} from 'antd';
-import {MenuOutlined,EditOutlined} from '@ant-design/icons'
+import {MenuOutlined,EditOutlined,UserOutlined} from '@ant-design/icons'
+
 
 function ProfileForm(props) {
     const user = props.user;
     return (
-        <div>
-            <Card>
-                <Button style={{float:'right',marginLeft:'10px'}}><Link href="/farm"><a><MenuOutlined /></a></Link></Button>
-                <Button style={{float:'right'}}><Link href="/user"><a><EditOutlined /></a></Link></Button>
-                <Card.Meta
-                    avatar={<Avatar>{user.data.name[0]}</Avatar>}        
-                    title={user.data.name}
-                    description={user.data.email}
-                />
-            </Card>
+        <div>   
+            <div id='line'>
+            <br/>    
+                <div>                 
+                    <div id='flex-container'>
+                        <table>
+                            <tr>
+                                <th><Avatar size={99} icon={<UserOutlined />} /></th>
+                            </tr>
+                            <tr>
+                                <td><h4>{user.data.name}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h5>{user.data.email}</h5></td>
+                            </tr>
+                            <br/>
+                            <tr>
+                                <Button>
+                                    <Link href="/user"><a><EditOutlined /></a></Link>
+                                </Button>
+                                &ensp;
+                                <Button>
+                                    <Link href="/farm"><a><MenuOutlined /></a></Link>
+                                </Button> 
+                            </tr>
+                        </table>     
+                    </div>   
+                </div>
+                <br/>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Head from 'next/head';
 import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './Reaction.css';
 
 
 const root = ({ Component, pageProps })=>{

@@ -40,7 +40,7 @@ function LoginForm() {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 66vh;
+            min-height: 85vh;
             border: 3px solid #a0a0a0;
             border-radius: 1.1em;
         }
@@ -56,12 +56,6 @@ function LoginForm() {
 
         li {
             display: inline;
-        }
-
-        #line {
-            border: 1.5px solid #a0a0a0;
-            // border-radius: 1.1em;
-            // background-color: #59f80f;
         }
 
         `}</style>

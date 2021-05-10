@@ -1,27 +1,48 @@
 import Column from 'antd/lib/table/Column';
-import React from 'react'
-import { Bar, Line } from 'react-chartjs-2'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Card } from 'react-bootstrap'
+import React from 'react';
+import { Bar, Line } from 'react-chartjs-2';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card } from 'react-bootstrap';
+import $ from "jquery";
+
+
+function reaction_col(){
+
+    // var windowWidth = width_col()
+    if (typeof window !== "undefined"){
+
+        if($(window).width() > 450) {
+            return 'col_2';
+
+        } else {
+            return null;
+        }
+    }
+}
 
 const DashboardForm = () => {
     return <div>
         <style jsx>{`    
-        #col_2 {
-          column-count:2;
-        }
-        
-        #flex-container { 
-            position:absolute;
-            top:0; left:0; bottom:0; right:0;
-            height:11%;
-            margin:17% auto;
-        }
 
+        #col_2 {
+            column-count: 2;
+        }
         
+        // #flex-container { 
+        //     position:absolute;
+        //     top:0; left:0; bottom:0; right:0;
+        //     height:11%;
+        //     margin:17% auto;
+        // }
+
+        #col {column-count: 1;}
+                @media screen and (min-width:600px){
+                #col {column-count: 2;}
+        }
+    
       `}</style>
       <div id='flex-container'>
-        <div id='col_2'>
+        <div id='col'>
         <div>
         <Bar   
             data={{
@@ -69,13 +90,11 @@ const DashboardForm = () => {
                     },
                     
 
-                ],
-
-                
+                ],       
                 
             }}
-            width={300}
-            height={400}
+            width= {'50%'}
+            height= {400}
            
             options={{
                 responsive: true,
@@ -104,10 +123,10 @@ const DashboardForm = () => {
         </div>
         <div align="center">
             <div>현재상태</div>
-            <img width={260} height={320} src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img>  
+            <img width={250} height={320} src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img>
         </div>
         </div>
-
+        <br/>
         <div align='center' class='container'>
         {/* <Line
             data={{
@@ -150,7 +169,7 @@ const DashboardForm = () => {
             
             }}
         /> */}
-        <table width='80%'>
+        <table width='70%'>
             <tr>
                 <td>
                     <Card className='card bg-warning' style={{ color: "white" }}  align='center'>

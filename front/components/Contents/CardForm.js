@@ -21,17 +21,13 @@ function CardForm() {
                     ]}
                 >
                     <div>
-                        <Avatar icon={<UserOutlined />}/>&emsp;<a>Jason</a>
+                        <Avatar icon={<UserOutlined />}/>&emsp;Jason<br/>2000 / 10 / 10 
                         <div>
                             <br/>Hello, this is my planet               
                             <div align='center'>
                                 <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg"  width='99%' height='' alt="sample"></img>
                             </div>
                         </div> 
-
-                        <LikeOutlined type="like" key="like" /> 7
-                        &emsp;
-                        <DislikeOutlined type="dislike" key="dislike" /> 2
                     </div>
                 </Card>
             </div>

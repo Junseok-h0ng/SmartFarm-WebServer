@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image,DatePicker,TimePicker } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
-import { loadFarmImages } from '../../../_redux/slices/farm';
+import { loadFarmData, loadFarmImages } from '../../../_redux/slices/farm';
 import LineCharts from '../../commons/Charts/LineCharts';
 
 function UploadForm(props) {
@@ -12,20 +12,21 @@ function UploadForm(props) {
   const [dateString, setDateString] = useState([]);
 
   useEffect(() => {
-    dispatch(loadFarmImages())
+
+    dispatch(loadFarmData({pid:'609bc277b4574f595802b5c1'}))
     .then(result=>{
       if(result.payload){
         result.payload.map((payload,key)=>{
-          const data = {
+          const data={
             key,
             name: key,
-            src: "data:image/jpg;base64,"+payload,
+            src: "data:image/jpg;base64,"+payload.fields.src,
             checked:false
           }
           setImg(prevImg => [...prevImg,data]);
-        });
+        })
       }
-    });
+    })
   }, []);
 
   const [isModalVisible, setIsModalVisible] = useState(false);

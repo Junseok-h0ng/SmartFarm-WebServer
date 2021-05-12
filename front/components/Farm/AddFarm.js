@@ -17,7 +17,7 @@ function AddFarm(props) {
 
         const data={
             userId: props.userId,
-            address: inputValue
+            ipAddress: inputValue
         }
 
         dispatch(loadFarmInfo({userId:props.userId}))

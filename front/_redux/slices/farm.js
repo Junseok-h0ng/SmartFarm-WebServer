@@ -38,7 +38,13 @@ export const getCropsInfo = createAsyncThunk("GET_CROPS_INFO",async(data)=>{
 export const addCropsInfo = createAsyncThunk("ADD_CROPS_INFO",async(data)=>{
     const response = await axios.post(config.back_url+"/api/farm/addCropsInfo",(data));
     return response.data;
-})
+});
+
+export const loadFarmData = createAsyncThunk("LOAD_FARM_DATA",async(data)=>{
+    console.log('32');
+    const response = await axios.post(config.back_url+"/api/farm/loadFarmData",(data));
+    return response.data;
+});
 
 export const farmReducer = createSlice({
     name:'farm',

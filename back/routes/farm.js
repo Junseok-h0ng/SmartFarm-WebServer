@@ -128,11 +128,18 @@ router.post('/getCrops/info',async(req,res)=>{
     })
 });
 
-router.get('/getFarm',async(req,res)=>[
-    await axios.get('http://119.195.177.230:8000/data')
-    .then((response)=>{
-        console.log(response.data[0]);
+router.post('/loadFarmData',async(req,res)=>{
+    console.log(req.body.pid);
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        const ipAddress = doc.ipAddress;
+        axios.get(ipAddress+"/data")
+        .then((response)=>{
+            res.status(200).send(response.data);
+        })
     })
-])
+
+});
 
 module.exports = router;    

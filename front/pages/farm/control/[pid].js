@@ -1,9 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+
 import {Progress,Slider,Tooltip,Switch,Row,Col,Button} from 'antd';
-import {FaFan,FaFire} from 'react-icons/fa';
+import {FaFan} from 'react-icons/fa';
 import {GiPlantWatering} from 'react-icons/gi';
 
 function control() {
+
+
 
     const marks = {
         0: {
@@ -40,14 +43,7 @@ function control() {
                 
 
             </Row>
-            <div>
 
-            </div>
-
-            
-
-            
-            
             <FaFan style={{width:'75px',height:'50px'}}/>
             <Switch/>
             <GiPlantWatering style={{width:'75px',height:'50px'}} />

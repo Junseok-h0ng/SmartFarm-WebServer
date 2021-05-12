@@ -8,7 +8,7 @@ const farmSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User'
     },
-    address:{
+    ipAddress:{
         type:String
     },
     crops:{

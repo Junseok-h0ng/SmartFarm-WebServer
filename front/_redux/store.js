@@ -11,4 +11,4 @@ const makeStore = (context) => configureStore({
 
 export const wrapper = createWrapper(makeStore,{
   debug: process.env.NODE_ENV !== 'production'
-})
+});

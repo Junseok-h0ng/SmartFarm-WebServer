@@ -6,19 +6,19 @@ import { Card } from 'react-bootstrap';
 import $ from "jquery";
 
 
-function reaction_col(){
+// function reaction_col(){
 
-    // var windowWidth = width_col()
-    if (typeof window !== "undefined"){
+//     // var windowWidth = width_col()
+//     if (typeof window !== "undefined"){
 
-        if($(window).width() > 450) {
-            return 'col_2';
+//         if($(window).width() > 450) {
+//             return 'col_2';
 
-        } else {
-            return null;
-        }
-    }
-}
+//         } else {
+//             return null;
+//         }
+//     }
+// }
 
 const DashboardForm = () => {
     return <div>
@@ -172,7 +172,7 @@ const DashboardForm = () => {
         <table width='70%'>
             <tr>
                 <td>
-                    <Card className='card bg-warning' style={{ color: "white" }}  align='center'>
+                    <Card  className='card border-success mb-3' style={{ color: "green" }}  align='center'>
                         <Card.Body>
                                 <Card.Title>
                                     현재 온도
@@ -182,7 +182,7 @@ const DashboardForm = () => {
                     </Card>
                 </td>
                 <td>
-                    <Card className='card bg-success' style={{ color: "white" }} align='center'>
+                    <Card className='card border-success mb-3' style={{ color: "green" }} align='center'>
                         <Card.Body>
                             <Card.Title>
                                 현재 습도
@@ -194,7 +194,7 @@ const DashboardForm = () => {
             </tr>
             <tr>
                 <td>
-                    <Card className='card bg-info' style={{ color: "white" }} align='center'>
+                    <Card  className='card border-success mb-3' style={{ color: "green" }} align='center'>
                         <Card.Body>
                             <Card.Title>
                                 현재 물량
@@ -204,7 +204,7 @@ const DashboardForm = () => {
                     </Card>
                 </td>
                 <td>
-                    <Card className='card bg-danger' style={{ color: "white" }} align='center'>
+                    <Card  className='card border-success mb-3' style={{ color: "green" }} align='center'>
                         <Card.Body>
                             <Card.Title>현재 밝기</Card.Title>  
                             <Card.Text>

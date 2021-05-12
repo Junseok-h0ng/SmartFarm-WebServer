@@ -76,21 +76,22 @@ const ControlForm = () => {
             display: inline-block;
         }
 
-        #red {
-            color: red;
+        #col {
+            margin-left: 15%;
+            width: 70%;
         }
     }
         
     `}</style>
     <div>
-        <div>
+        <div align='center'>
             <Progress type="dashboard" percent={20} format={percent => `${percent} °C`} />
-            <div id='right'>
-                <Progress type="dashboard" percent={40} />
-            </div>    
+            &emsp;&emsp;
+            <Progress type="dashboard" percent={40} />
+               
         </div>
         <br/>
-        <div>
+        <div id='col'>
             <Slider range marks={marks} defaultValue={[17, 23]} max ='30' />
         </div>
         <br/>

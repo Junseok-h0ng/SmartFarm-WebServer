@@ -47,29 +47,26 @@ function PostForm() {
                 <div id='align'>
                 <br/>
                     <Form>
-                        <Avatar icon={<UserOutlined />}/> Jason
+                        {/* <Avatar icon={<UserOutlined />}/> Jason */}
 
                         <Input.TextArea type='text' name='upload' cols={55} rows={7} placeholder='게시물을 올려볼까요?'/>
+                        
                         <Form.Item
                             name="image"
                             valuePropName="fileList"
                             getValueFromEvent
                             
-                        >
+                        > 
+                        <table width='100%'>
+                            <tr>
+                                <td><UploadButton /></td>    
+                                <td width='95%'><Button className="btn btn-success disabled btn-block" style={{ textAlign: "center"}} htmlType='submit'>전송</Button> </td>    
+                            </tr>    
+                        </table>              
                             
-                            <UploadButton/>
-                    {/* <Dragger {...props}>
-                        <p className="ant-upload-drag-icon">
-                        <InboxOutlined />
-                        </p>
-                        <p className="ant-upload-text">사진 업로드</p>
-                        <p className="ant-upload-hint">
-                            파일을 끌어다 놓거나 클릭하여 해당 사진을 업로드 하세요!
-                        </p>
-                    </Dragger> */}
-
-                            <Button className='btn-success btn-block disabled' style={{ textAlign: "center"}} htmlType='submit'>전송</Button> 
+                            
                         </Form.Item>
+                        
                     </Form>
                 </div>
             </div>

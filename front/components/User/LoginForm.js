@@ -1,8 +1,10 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Router from 'next/router';
-import {Form,Input,Button, message} from 'antd';
+import {Form,Input, message} from 'antd';
 import { logIn } from '../../_redux/_reducer/userReducer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 function LoginForm() {
 
@@ -43,6 +45,7 @@ function LoginForm() {
             min-height: 85vh;
             border: 3px solid #a0a0a0;
             border-radius: 1.1em;
+            // background-color: #5cb85c;
         }
 
         ul {
@@ -100,8 +103,8 @@ function LoginForm() {
             </ul>
 
             <br/> 
-            <div style={{padding:'10px',margin:'0 autox'}} align='center' width='100%'>
-                <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>
+            <div style={{padding:'10px',margin:'0 autox'}} align='center'>
+                <Button type="button" class="btn btn-success" htmlType="submit" loading={false}>로그인</Button>
             </div>
         </Form>
         </div> 

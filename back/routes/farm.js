@@ -129,15 +129,18 @@ router.post('/getCrops/info',async(req,res)=>{
 });
 
 router.post('/loadFarmData',async(req,res)=>{
-    console.log(req.body.pid);
     Farm.findById({_id:req.body.pid})
     .exec((err,doc)=>{
         if(err) return res.status(401).send(err);
         const ipAddress = doc.ipAddress;
-        axios.get(ipAddress+"/data")
-        .then((response)=>{
-            res.status(200).send(response.data);
-        })
+            axios.get(ipAddress+"/data",{timeout:500})
+            .catch((err)=>{
+                res.status(401).send(false);
+            })
+            .then((response)=>{
+                res.status(200).send(response.data);
+            });  
+
     })
 
 });

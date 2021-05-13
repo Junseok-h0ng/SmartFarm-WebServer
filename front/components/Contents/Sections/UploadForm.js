@@ -17,6 +17,7 @@ function UploadForm(props) {
     .then(result=>{
       if(result.payload){
         result.payload.map((payload,key)=>{
+          console.log(payload.src)
           const data={
             key,
             name: key,

@@ -13,13 +13,6 @@ function dashboard() {
     #col_2 {
         column-count: 2;
     }
-    
-    // #flex-container { 
-    //     position:absolute;
-    //     top:0; left:0; bottom:0; right:0;
-    //     height:11%;
-    //     margin:17% auto;
-    // }
     #col {column-count: 1;}
             @media screen and (min-width:600px){
             #col {column-count: 2;}
@@ -113,51 +106,11 @@ function dashboard() {
     </div>
     <br/>
     <div align='center' class='container'>
-    {/* <Line
-        data={{
-            labels: ['4/5', '4/6', '4/7', '4/8'],
-            datasets:[
-                {
-                    label : "토양습도",
-                    data: [300, 454, 700, 654],
-                    borderColor: [
-                        "rgba(255, 201, 14, 1)",
-                    ],
-                    borderColor: "rgba(5, 1, 14, 1)",
-                backgroundColor: "rgba(5, 1, 14, 0.5)",
-                },
-            ]      
-        }}
-        width={250}
-        height={220}
-        options={{
-            maintainAspectRatio: false,
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: '날짜'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    ticks: {
-                        suggestedMin: 0,
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            }
-        
-        }}
-    /> */}
+
     <table width='70%'>
         <tr>
             <td>
-                <Card className='card bg-warning' style={{ color: "white" }}  align='center'>
+                <Card  className='card border-success mb-3' style={{ color: "green" }}  align='center'>
                     <Card.Body>
                             <Card.Title>
                                 현재 온도
@@ -167,7 +120,7 @@ function dashboard() {
                 </Card>
             </td>
             <td>
-                <Card className='card bg-success' style={{ color: "white" }} align='center'>
+                <Card className='card border-success mb-3' style={{ color: "green" }} align='center'>
                     <Card.Body>
                         <Card.Title>
                             현재 습도
@@ -179,7 +132,7 @@ function dashboard() {
         </tr>
         <tr>
             <td>
-                <Card className='card bg-info' style={{ color: "white" }} align='center'>
+                <Card  className='card border-success mb-3' style={{ color: "green" }} align='center'>
                     <Card.Body>
                         <Card.Title>
                             현재 물량
@@ -189,7 +142,7 @@ function dashboard() {
                 </Card>
             </td>
             <td>
-                <Card className='card bg-danger' style={{ color: "white" }} align='center'>
+                <Card  className='card border-success mb-3' style={{ color: "green" }} align='center'>
                     <Card.Body>
                         <Card.Title>현재 밝기</Card.Title>  
                         <Card.Text>

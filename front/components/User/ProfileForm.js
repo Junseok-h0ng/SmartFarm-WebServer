@@ -7,6 +7,32 @@ import {MenuOutlined,EditOutlined,UserOutlined} from '@ant-design/icons'
 function ProfileForm(props) {
     const user = props.user;
     return (
+        <div>
+        <style jsx>{`
+        #right {
+            float: right;
+            margin-right: 20px;
+          }
+          #left {
+            margin-left: 15px;
+          }
+          th,
+          td {
+            text-align: center;
+            vertical-align: top;
+          }
+          #flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 18vh;
+          }
+          #line {
+            border: 2.2px solid #a0a0a0;
+            border-radius: 1.2em;
+          }
+          
+        `}</style>
         <div>   
             <div id='line'>
             <br/>    
@@ -38,6 +64,7 @@ function ProfileForm(props) {
                 <br/>
             </div>
         </div>
+    </div>
     )
 }
 

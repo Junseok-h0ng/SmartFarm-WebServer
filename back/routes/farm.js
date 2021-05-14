@@ -24,7 +24,7 @@ router.post('/images',(req,res)=>{
 });
 
 router.post('/',(req,res)=>{
-    Farm.find({userId:req.body.userId,address:req.body.address})
+    Farm.find({userId:req.body.userId,address:req.body.ipAddress})
     .exec((err,doc)=>{
         if (err) return res.status(401).send(err);
         //중복 등록 방지

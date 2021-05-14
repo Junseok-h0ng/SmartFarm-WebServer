@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image,DatePicker,TimePicker } from 'antd';
+import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image,DatePicker,TimePicker,Radio, message } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
-import { loadFarmData, loadFarmImages } from '../../../_redux/slices/farm';
+import { loadFarmData, loadFarmImages, loadFarmInfo } from '../../../_redux/slices/farm';
 import LineCharts from '../../commons/Charts/LineCharts';
 
 function UploadForm(props) {
@@ -10,22 +10,14 @@ function UploadForm(props) {
   const dispatch = useDispatch();
   const [img, setImg] = useState([]);
   const [dateString, setDateString] = useState([]);
+  const [farmList, setfarmList] = useState([]);
+  const [selectFarm, setSelectFarm] = useState("");
 
   useEffect(() => {
-
-    dispatch(loadFarmData({pid:'609bc277b4574f595802b5c1'}))
-    .then(result=>{
-      if(result.payload){
-        result.payload.map((payload,key)=>{
-          console.log(payload.src)
-          const data={
-            key,
-            name: key,
-            src: "data:image/jpg;base64,"+payload.fields.src,
-            checked:false
-          }
-          setImg(prevImg => [...prevImg,data]);
-        })
+    dispatch(loadFarmInfo({userId:props.userId}))
+    .then(response=>{
+      if(response.payload){
+        setfarmList(response.payload);
       }
     })
   }, []);
@@ -94,28 +86,65 @@ function UploadForm(props) {
     }
   }
 
+  const onChageFarmInfo = (e) =>{
+    const farmId = e.target.value;
+    setSelectFarm(farmId);
+
+    dispatch(loadFarmData({pid:farmId}))
+    .then(response=>{
+      if(response.payload){
+        response.payload.map((payload,key)=>{
+          const data={
+            key,
+            name: key,
+            src: "data:image/jpg;base64,"+payload.fields.src,
+            checked:false
+          }
+          setImg(prevImg => [...prevImg,data]);
+        })
+      }else{
+        message.error('농장과 연결이 실패했습니다.');
+        setSelectFarm();
+      }
+    })
+  }
+
   return (
     <>
       <Button type="primary" onClick={showModal} icon={<PlusOutlined />}/>
       <Modal
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
       <Tabs>
-        <Tabs.TabPane tab="Images" key="1">
-        <Row>
-          {img && img.map((img,index)=>(
-            <Col span={6} key={index}>
-              <Card
-                hoverable
-                style={{width:120}}
-                cover={<Image width={120} height={90} src={img.src}/>} 
-              >
-                <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="data" key="2">
+        {farmList[0] &&
+          <Tabs.TabPane tab="FarmList" key="1" value={0}>
+            <Row>
+              <Radio.Group onChange={onChageFarmInfo} value={selectFarm}>
+                123
+              {farmList.map((farm,index)=>(
+                <Radio value={farm._id}>{farm.name ? farm.name : farm.ipAddress}</Radio>
+              ))}
+              </Radio.Group>
+            </Row>
+          </Tabs.TabPane>
+        }
+        {img[0] && 
+          <Tabs.TabPane tab="Images" key="2">
+          <Row>
+            {img && img.map((img,index)=>(
+              <Col span={6} key={index}>
+                <Card
+                  hoverable
+                  style={{width:120}}
+                  cover={<Image width={120} height={90} src={img.src}/>} 
+                >
+                  <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          </Tabs.TabPane>
+        }
+        <Tabs.TabPane tab="data" key="3">
           <div className="card-container">
               <Tabs type="card">
                 <Tabs.TabPane tab="week" key="1">
@@ -135,13 +164,6 @@ function UploadForm(props) {
           
         </Tabs.TabPane>
       </Tabs>
-        {/* {pageKey == 1 ?
-          1
-        :
-          renderData()
-        } */}
-        {/* <Pagination style={{paddingTop:'20px',display:'flex', justifyContent:'center',alignItems:'center',
-          width:'100%'}} pageSize={8} onChange={onChangePage} defaultCurrent={1} total={50}/> */}
       </Modal>
     </>
   );

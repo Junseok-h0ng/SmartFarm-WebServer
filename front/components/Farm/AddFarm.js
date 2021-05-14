@@ -23,7 +23,7 @@ function AddFarm(props) {
         dispatch(loadFarmInfo({userId:props.userId}))
         .then(res=>{
             // 이미 주소가 등록되었는지 체크
-            const hasAddress = res.payload.map(payload=>payload.address).indexOf(data.address);
+            const hasAddress = res.payload.map(payload=>payload.ipAddress).indexOf(data.ipAddress);
             // 주소가 중복되있지 않으면 농장정보 등록
             if(hasAddress != 0){
                 dispatch(addFarm(data))

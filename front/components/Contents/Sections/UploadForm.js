@@ -4,6 +4,8 @@ import {Modal,Button,Card,Checkbox,Row,Col,Tabs,Pagination,Image,DatePicker,Time
 import {PlusOutlined} from '@ant-design/icons';
 import { loadFarmData, loadFarmImages, loadFarmInfo } from '../../../_redux/slices/farm';
 import LineCharts from '../../commons/Charts/LineCharts';
+import NoContents from '../../commons/NoContents';
+import FarmImage from './FarmImage';
 
 function UploadForm(props) {
 
@@ -47,32 +49,69 @@ function UploadForm(props) {
    img[key].checked = !img[key].checked
   }
 
-  const onChangePage = (page,pageSize)=>{
+  // const renderImage = () =>(
+  //  <Row>
+  //           {img[0] ?
+  //            img.map((img,index)=>(
+  //             <Col span={6} key={index}>
+  //               <Card
+  //                 hoverable
+  //                 style={{width:120}}
+  //                 cover={<Image width={120} height={90} src={img.src}/>} 
+  //               >
+  //                 <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
+  //               </Card>
+  //             </Col>
+  //           ))
+  //           :
+  //           <NoContents message="이미지가 없습니다."/>
+  //           }
+  //         </Row>
+  // )
 
-    dispatch(loadFarmImages())
-    .then(res=>{
-      if(res.payload.length != 0){
-        res.payload.map((payload,key)=>{
-          const data = {
-            key,
-            name: key,
-            src: "data:image/jpg;base64,"+payload,
-            checked:false
-          }
+  const onChangeImageDate = (date,dateString) =>{
+    // date가 빈칸이 아닌경우에만 img불러오기
+    if(date != null){
+      dispatch(loadFarmImages())
+      .then(result=>{
+        if(result.payload){
+          result.payload.map((payload,key)=>{
+            const data = {
+              key,
+              name: key,
+              src: "data:image/jpg;base64,"+payload,
+              checked:false
+            }
+            setImg(prevImg => [...prevImg,data]);
+          });
+        }
+      }); 
+      // dispatch(loadFarmData({pid:farmId}))
+      // .then(response=>{
+      //   if(response.payload){
+      //     response.payload.map((payload,key)=>{
+      //       const data={
+      //         key,
+      //         name: key,
+      //         src: "data:image/jpg;base64,"+payload.fields.src,
+      //         checked:false
+      //       }
+      //       setImg(prevImg => [...prevImg,data]);
+      //     })
+      //   }else{
+      //     message.error('농장과 연결이 실패했습니다.');
+      //     setSelectFarm();
+      //   }
+      // }) 
+    }else{
+      //date가 빈칸이면 이미지 초기화
+      setImg([]);
+    }
 
-          setImg(prevImg => [...prevImg,data]);
-      });
-     }
-    });
   }
 
-  const renderCharts = () =>(
-    <LineCharts/>
-  )
-
-  const onChangeDate = (date,dateString) =>{
+  const onChangeChartDate = (date,dateString) =>{
     // date가 빈칸이 아닌경우에만 date를 저장
-    console.log(date,dateString);
     if(date != null){
       const data = {
         name: dateString[0] != 0 ? dateString[0]+'~'+dateString[1] : dateString[1]+'시',
@@ -88,26 +127,24 @@ function UploadForm(props) {
 
   const onChageFarmInfo = (e) =>{
     const farmId = e.target.value;
-    setSelectFarm(farmId);
-
-    dispatch(loadFarmData({pid:farmId}))
-    .then(response=>{
-      if(response.payload){
-        response.payload.map((payload,key)=>{
-          const data={
-            key,
-            name: key,
-            src: "data:image/jpg;base64,"+payload.fields.src,
-            checked:false
-          }
-          setImg(prevImg => [...prevImg,data]);
-        })
-      }else{
-        message.error('농장과 연결이 실패했습니다.');
-        setSelectFarm();
-      }
-    })
+    setSelectFarm(farmId);   
   }
+
+  const renderImage = () =>(
+    <Row>
+      {img && img.map((img,index)=>(
+          <Col span={6} key={index}>
+          <Card
+              hoverable
+              style={{width:120}}
+              cover={<Image width={120} height={90} src={img.src}/>} 
+          >
+              <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
+          </Card>
+          </Col>
+      ))}
+    </Row>
+  )
 
   return (
     <>
@@ -119,7 +156,6 @@ function UploadForm(props) {
           <Tabs.TabPane tab="FarmList" key="1" value={0}>
             <Row>
               <Radio.Group onChange={onChageFarmInfo} value={selectFarm}>
-                123
               {farmList.map((farm,index)=>(
                 <Radio value={farm._id}>{farm.name ? farm.name : farm.ipAddress}</Radio>
               ))}
@@ -127,42 +163,48 @@ function UploadForm(props) {
             </Row>
           </Tabs.TabPane>
         }
-        {img[0] && 
-          <Tabs.TabPane tab="Images" key="2">
-          <Row>
-            {img && img.map((img,index)=>(
-              <Col span={6} key={index}>
-                <Card
-                  hoverable
-                  style={{width:120}}
-                  cover={<Image width={120} height={90} src={img.src}/>} 
-                >
-                  <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+        {!selectFarm &&
+        <>
+            <Tabs.TabPane tab="Images" key="2">
+              <div className="card-container">
+                  <Tabs type="card">
+                    <Tabs.TabPane tab="week" key="1">
+                      <DatePicker.RangePicker onChange={onChangeImageDate}/>
+                      {img[0] &&
+                        renderImage()
+                      } 
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="today" key="2">
+                      <TimePicker format={'HH'} onChange={onChangeImageDate}/>
+                      {img[0] &&
+                        renderImage()
+                      }
+                    </Tabs.TabPane>
+                  </Tabs>
+              </div>
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="data" key="3">
+            <div className="card-container">
+                <Tabs type="card">
+                  <Tabs.TabPane tab="week" key="1">
+                    <DatePicker.RangePicker onChange={onChangeChartDate}/>
+                    {dateString.name &&
+                      <LineCharts/>
+                    } 
+                  </Tabs.TabPane>
+                  <Tabs.TabPane tab="today" key="2">
+                    <TimePicker format={'HH'} onChange={onChangeChartDate}/>
+                    {dateString.name &&
+                      <LineCharts/>
+                    }
+                  </Tabs.TabPane>
+                </Tabs>
+            </div>
+            
           </Tabs.TabPane>
+        </>
         }
-        <Tabs.TabPane tab="data" key="3">
-          <div className="card-container">
-              <Tabs type="card">
-                <Tabs.TabPane tab="week" key="1">
-                  <DatePicker.RangePicker onChange={onChangeDate}/>
-                  {dateString.name &&
-                    renderCharts()
-                  } 
-                </Tabs.TabPane>
-                <Tabs.TabPane tab="today" key="2">
-                  <TimePicker format={'HH'} onChange={onChangeDate}/>
-                  {dateString.name &&
-                    renderCharts()
-                  }
-                </Tabs.TabPane>
-              </Tabs>
-          </div>
           
-        </Tabs.TabPane>
       </Tabs>
       </Modal>
     </>

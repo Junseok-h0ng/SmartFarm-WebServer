@@ -75,7 +75,7 @@ function index({data}) {
                     ))}
                     </InfiniteScroll>
                     :
-                        <NoContents/>     
+                        <NoContents message="작성된 포스트가 없습니다."/>     
                     }
                                   
                 </div>

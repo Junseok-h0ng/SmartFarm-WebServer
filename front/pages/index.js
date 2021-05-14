@@ -62,7 +62,7 @@ function Home({data}){
       {contents.length ?
         renderContents()
       :
-        <NoContents/>
+        <NoContents message="작성된 포스트가 없습니다."/>
       }
     </div>
   )

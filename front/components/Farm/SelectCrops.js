@@ -14,7 +14,7 @@ function SelectCrops(props) {
 
     const user = useSelector(state => state.user);
 
-    useEffect((props) => {
+    useEffect(() => {
         if(!user.isLogin){
             return Router.push('/');
         }
@@ -25,9 +25,16 @@ function SelectCrops(props) {
         // 농장에 등록된 정보를 가져온다.
         dispatch(loadFarmInfo({userId:user.data._id}))
         .then((res=>{
+            
             // 작물Id정보가 있는지 확인
-            if(res.payload[0].crops){
-                const crops = res.payload[0].crops;
+            if(res.payload[0]){
+                let crops;
+                res.payload.map((payload)=>{
+                    console.log(payload);
+                    if(payload._id === props.pid){
+                        crops = payload.crops;
+                    }
+                })
                 onChangeCrops(crops.id,{children:crops.name});
             }
         }))

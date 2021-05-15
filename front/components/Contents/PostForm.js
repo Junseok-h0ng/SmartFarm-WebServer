@@ -60,7 +60,7 @@ function PostForm() {
                         <table width='100%'>
                             <tr>
                                 <td><UploadButton /></td>    
-                                <td width='95%'><Button className="btn btn-success disabled btn-block" style={{ textAlign: "center"}} htmlType='submit'>전송</Button> </td>    
+                                <td width='95%'><button style={{ textAlign: "center"}} htmlType='submit'>전송</button> </td>    
                             </tr>    
                         </table>              
                             

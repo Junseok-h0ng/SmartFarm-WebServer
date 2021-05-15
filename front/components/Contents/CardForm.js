@@ -8,11 +8,18 @@ function CardForm() {
     return (
         <div>
             <style jsx>{`    
-        
-        
+
+                #line {
+                    border: 2.2px solid #a0a0a0;
+                    // background-color: #59f80f;
+                }
+                    
+                Card {
+                    border: none;
+                }
             `}</style>
 
-            <div>
+            <div id= 'line'>
                 <Card
                     actions={[
                         <LikeOutlined type="like" key="like" />,

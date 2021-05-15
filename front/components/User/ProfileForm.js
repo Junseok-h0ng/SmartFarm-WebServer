@@ -2,8 +2,6 @@ import React from 'react';
 import {Avatar,Button,Card} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import {useSelector} from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 
 function ProfileForm() {
     const user = useSelector(state => state.user);
@@ -61,13 +59,13 @@ function ProfileForm() {
                             </tr>
                             <br/>
                             <tr>
-                                <Button>
+                                <button>
                                     <span>유저 프로필</span>
-                                </Button>
+                                </button>
                                 &ensp;
-                                <Button>
+                                <button>
                                     <a href="/user">제어창</a>
-                                </Button> 
+                                </button> 
                             </tr>
                         </table>        
                 </div>

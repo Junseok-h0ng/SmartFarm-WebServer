@@ -3,8 +3,6 @@ import {useDispatch} from 'react-redux';
 import Router from 'next/router';
 import {Form,Input, message} from 'antd';
 import { logIn } from '../../_redux/_reducer/userReducer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
 
 function LoginForm() {
 
@@ -104,7 +102,7 @@ function LoginForm() {
 
             <br/> 
             <div style={{padding:'10px',margin:'0 autox'}} align='center'>
-                <Button type="button" class="btn btn-success" htmlType="submit" loading={false}>로그인</Button>
+                <button htmlType="submit" loading={false}>로그인</button>
             </div>
         </Form>
         </div> 

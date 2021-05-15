@@ -8,7 +8,6 @@ import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home({data}){
   

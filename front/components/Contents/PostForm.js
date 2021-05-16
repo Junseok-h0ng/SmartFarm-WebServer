@@ -34,12 +34,6 @@ function PostForm() {
                     border-radius: 1.2em;
                     // background-color: #59f80f;
                 }
-  
-                #align {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
 
                 #up_btn {
                     color: #5cb85c;;
@@ -49,15 +43,21 @@ function PostForm() {
                     border-radius: 8px;
                     width: 100%;
                 }
+
+                #textarea {
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 70%;       
+                }
                     
             `}</style>
             <div><br/>
-                <div id='align'>
+                <div id='textarea'>
                 <br/>
-                    <Form>
+                    <Form >
                         {/* <Avatar icon={<UserOutlined />}/> Jason */}
 
-                        <Input.TextArea type='text' name='upload' cols={55} rows={7} placeholder='게시물을 올려볼까요?'/>
+                        <Input.TextArea type='text' name='upload' rows={8} placeholder='게시물을 올려볼까요?'/>
                         
                         <Form.Item
                             name="image"

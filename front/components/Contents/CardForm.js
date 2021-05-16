@@ -13,14 +13,10 @@ function CardForm() {
                     border: 2.2px solid #a0a0a0;
                     // background-color: #59f80f;
                 }
-                    
-                Card {
-                    border: none;
-                }
 
                 #card_pic {
                     width: 88%;
-                    height: 45vh;
+                    height: auto;
                     background-image: url("image-url");
                     background-repeat: no-repeat // background-image가 컨테이너를 가득 채우지 못할 경우에도 반복하지 않는다.
                     background-size: cover; // 사이즈가 container에 맞지 않아도 꽉 차도록 채운다.
@@ -62,7 +58,7 @@ function CardForm() {
                         <div>
                             <br/>Hello, this is my planet               
                             <div align='center'>
-                                <br/><img src="https://i.postimg.cc/3wKdypG5/sample2.jpg" id='card_pic' alt="sample"></img>
+                                <br/><img src="https://i.postimg.cc/rm8xvKy9/Kakao-Talk-20210516-144549737.jpg" id='card_pic' alt="sample"></img>
                             </div>
                         </div> 
                     </div>

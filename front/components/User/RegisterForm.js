@@ -106,7 +106,7 @@ function RegisterForm() {
             <div style={{marginTop:'10px'}}>
                 <button id='log_btn' htmlType="submit" loading={false}>확인</button>
             </div>
-            <h2>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h2>
+            <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h1>
         </Form>
         
         </div>

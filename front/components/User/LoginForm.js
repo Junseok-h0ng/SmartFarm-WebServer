@@ -40,9 +40,10 @@ function LoginForm() {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 85vh;
+            min-height: 55vh;
             border: 3px solid #a0a0a0;
             border-radius: 1.1em;
+            margin-top: 15%;
             // background-color: #5cb85c;
         }
 
@@ -57,6 +58,15 @@ function LoginForm() {
 
         li {
             display: inline;
+        }
+
+        #log_btn {
+            color: #5cb85c;;
+            padding: 5px;
+            border: 2px solid #5cb85c;
+            background-color: rgba(0,0,0,0); 
+            border-radius: 8px;
+            width: 90%;
         }
 
         `}</style>
@@ -102,7 +112,7 @@ function LoginForm() {
 
             <br/> 
             <div style={{padding:'10px',margin:'0 autox'}} align='center'>
-                <button htmlType="submit" loading={false}>로그인</button>
+                <button id ='log_btn' htmlType="submit" loading={false}>로그인</button>
             </div>
         </Form>
         </div> 

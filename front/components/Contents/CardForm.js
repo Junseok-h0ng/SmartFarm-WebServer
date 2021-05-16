@@ -17,6 +17,16 @@ function CardForm() {
                 Card {
                     border: none;
                 }
+
+                #card_pic {
+                    width: 88%;
+                    height: 45vh;
+                    background-image: url("image-url");
+                    background-repeat: no-repeat // background-image가 컨테이너를 가득 채우지 못할 경우에도 반복하지 않는다.
+                    background-size: cover; // 사이즈가 container에 맞지 않아도 꽉 차도록 채운다.
+                    background-position: center; // background-image가 컨테이너에 가운데로 오도록 한다. 
+                }
+                
             `}</style>
 
             <div id= 'line'>
@@ -32,7 +42,27 @@ function CardForm() {
                         <div>
                             <br/>Hello, this is my planet               
                             <div align='center'>
-                                <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg"  width='99%' height='' alt="sample"></img>
+                                <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg" id='card_pic' alt="sample"></img>
+                            </div>
+                        </div> 
+                    </div>
+                </Card>
+            </div>
+
+            <div id= 'line'>
+                <Card
+                    actions={[
+                        <LikeOutlined type="like" key="like" />,
+                        <DislikeOutlined type="dislike" key="dislike" /> ,
+                        <MessageOutlined  type="message" key="message"/>,
+                    ]}
+                >
+                    <div>
+                        <Avatar icon={<UserOutlined />}/>&emsp;Jason<br/>2000 / 10 / 10 
+                        <div>
+                            <br/>Hello, this is my planet               
+                            <div align='center'>
+                                <br/><img src="https://i.postimg.cc/3wKdypG5/sample2.jpg" id='card_pic' alt="sample"></img>
                             </div>
                         </div> 
                     </div>

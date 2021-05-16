@@ -3,8 +3,6 @@ import {Form,Input,Upload,Avatar,message} from 'antd';
 import { UploadOutlined, UserOutlined, InboxOutlined  } from '@ant-design/icons';
 import config from '../../config/config';
 import UploadButton from './Sections/UploadForm';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
 
 // const { Dragger } = Upload;
 
@@ -41,6 +39,16 @@ function PostForm() {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                }
+
+                #up_btn {
+                    color: #5cb85c;;
+                    padding: 5px;
+                    border: 2px solid #5cb85c;
+                    background-color: rgba(0,0,0,0); 
+                    border-radius: 8px;
+                    width: 100%;
+                }
                     
             `}</style>
             <div><br/>
@@ -60,7 +68,7 @@ function PostForm() {
                         <table width='100%'>
                             <tr>
                                 <td><UploadButton /></td>    
-                                <td width='95%'><button style={{ textAlign: "center"}} htmlType='submit'>전송</button> </td>    
+                                <td width='95%'><button id='up_btn' htmlType='submit'>전송</button> </td>    
                             </tr>    
                         </table>              
                             

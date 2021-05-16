@@ -92,17 +92,7 @@ const ControlForm = () => {
     return <div>
 
         <style jsx>{`    
-        #col_2 {
-            column-count:2;
-        }
-
-        // #flex-container { 
-        //     position:absolute;
-        //     top:0; left:0; bottom:0; right:0;
-        //     height:110%;
-        //     margin:110% auto;
-        // }
-
+        
         #right {
             float: right;
             display: inline-block;

@@ -54,14 +54,26 @@ function RegisterForm() {
     return (
         <div>
         <style jsx>{`   
-         #flex-container { 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 85vh;
-            border: 3px solid #a0a0a0;
-            border-radius: 1.1em;
-        }
+
+            #flex-container { 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 55vh;
+                border: 3px solid #a0a0a0;
+                border-radius: 1.1em;
+                margin-top: 15%;
+                // background-color: #5cb85c;
+            }
+
+            #log_btn {
+                color: #5cb85c;;
+                padding: 5px;
+                border: 2px solid #5cb85c;
+                background-color: rgba(0,0,0,0); 
+                border-radius: 8px;
+                width: 99%;
+            }
 
         `}</style>
 
@@ -92,7 +104,7 @@ function RegisterForm() {
             </div>
             <br/>
             <div style={{marginTop:'10px'}}>
-                <Button style={{marginRight:'10px'}} type="primary" htmlType="submit" loading={false}>확인</Button>
+                <button id='log_btn' htmlType="submit" loading={false}>확인</button>
             </div>
             <h2>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h2>
         </Form>

@@ -34,6 +34,15 @@ function ProfileForm() {
                     border-radius: 1.2em;
                     // background-color: #59f80f;
                 }
+
+                #profile_btn {
+                    color: #a0a0a0;
+                    padding: 5px;
+                    border: 2px solid #a0a0a7;
+                    background-color: rgba(0,0,0,0); 
+                    border-radius: 4px;
+                }
+
             `}</style>
             {/* <Card>
                 <Button style={{float:'right'}}>제어창</Button>
@@ -59,12 +68,12 @@ function ProfileForm() {
                             </tr>
                             <br/>
                             <tr>
-                                <button>
+                                <button id='profile_btn'>
                                     <span>유저 프로필</span>
                                 </button>
                                 &ensp;
-                                <button>
-                                    <a href="/user">제어창</a>
+                                <button id='profile_btn'>
+                                    <span href="/user">제어창</span>
                                 </button> 
                             </tr>
                         </table>        

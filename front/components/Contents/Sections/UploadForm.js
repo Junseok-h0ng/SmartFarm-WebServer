@@ -148,7 +148,7 @@ function UploadForm(props) {
 
   return (
     <>
-      <Button type="primary" onClick={showModal} icon={<PlusOutlined />}/>
+      <Button style={{color:'#5cb85c', borderColor: "#5cb85c"}} onClick={showModal} icon={<PlusOutlined />}/>
       <Modal
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
       <Tabs>

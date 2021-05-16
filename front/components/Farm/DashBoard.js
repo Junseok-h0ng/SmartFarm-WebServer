@@ -24,11 +24,11 @@ function dashboard() {
     <div>
     <Bar   
         data={{
-            labels: ['현재 값', '권장 값'],
+            labels: ['현재 값'],
             datasets:[
                 {
                     label : "온도",
-                    data: [21,24],
+                    data: [21],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -38,7 +38,7 @@ function dashboard() {
                 },
                 {
                     label : "습도",
-                    data: [24, 26],
+                    data: [24],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -48,7 +48,7 @@ function dashboard() {
                 },
                 {
                     label : "물양",
-                    data: [20, 17],
+                    data: [20],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -58,7 +58,7 @@ function dashboard() {
                 },
                 {
                     label : "밝기",
-                    data: [33, 40],
+                    data: [33],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],

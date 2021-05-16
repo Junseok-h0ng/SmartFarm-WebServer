@@ -53,27 +53,17 @@ function RegisterForm() {
     return (
         <div>
             <style jsx>{`
-        #container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-        }   
-        ul {
-            width: 100%;
-            list-style: none;
-            text-align: center;
-            justify-content: space-between;
-            line-width: 100%;
-            padding-left: 2px;
-            margin-top:20px;
-        }
-        li {
-            display: inline;
-            margin-left: 20px;
-        }
+            #flex-container { 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 55vh;
+                border: 3px solid #a0a0a0;
+                border-radius: 1.1em;
+                margin-top: 15%;
+            }
         `}</style>
-            <div id="container">
+            <div id="flex-container">
                 <Form style={{padding:'10px',margin:'0 auto',width:'60%'}} onFinish={onSubmitRegister}>
                     <div>
                         <label htmlFor="name">이름</label>
@@ -96,7 +86,7 @@ function RegisterForm() {
                         <Input name="password2" type="password" value={password2} onChange={onChangePassword2} required/>
                     </div>
                     <div style={{marginTop:'10px', }}>
-                        <Button style={{marginRight:'10px',width:'100%'}} type="primary" htmlType="submit" loading={false}>확인</Button>
+                        <Button style={{marginRight:'10px',width:'100%',color:'#5cb85c', borderColor: "#5cb85c",borderRadius: '8px' }} htmlType="submit" loading={false}>확인</Button>
                     </div>
                 </Form>
             </div>

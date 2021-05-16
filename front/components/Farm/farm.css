@@ -1,0 +1,121 @@
+@media (min-width: 600px) {
+  body {
+    padding: 10px;
+    padding-top: 3%;
+    border-radius: 7px;
+    width: 44%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+p {
+  font-weight: bolder;
+}
+
+p::before {
+  content: "□ ";
+}
+
+caption {
+  display: none;
+}
+
+h6 {
+  font-size: x-large;
+}
+
+h6::before {
+  content: "o ";
+}
+
+ul {
+  list-style: none;
+  padding: 15px 10px 15px 10px;
+}
+
+li li {
+  list-style-type: none;
+  position: relative;
+  padding: 20px;
+  font-weight: lighter;
+  border-radius: 1em;
+  margin-bottom: 9px;
+  border: 2px solid gray;
+  color: rgb(41, 23, 23);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  margin: 20px 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+}
+
+table th {
+  width: 15%;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: center;
+  color: #fff;
+  background: #5cb85c;
+}
+table td {
+  width: 15%;
+  padding: 10px;
+  font-weight: lighter;
+  vertical-align: center;
+  border-bottom: 1px solid #ccc;
+  background: #eee;
+}
+
+#short {
+  text-align: center;
+  width: 40%;
+}
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+.show {
+  display: inline-block;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  padding: 15px 25px;
+  font-weight: 600;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+label:hover {
+  color: #2e9cdf;
+  cursor: pointer;
+}
+
+/*input 클릭시, label 스타일*/
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid #2e9cdf;
+  border-bottom: 1px solid #ffffff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: flex;
+}

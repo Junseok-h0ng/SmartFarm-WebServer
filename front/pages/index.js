@@ -52,7 +52,6 @@ function Home({data}){
 
   return(
     <div>
-      {/* <SearchForm/> */}
       {user.isLogin &&
         <>
           <ProfileForm user={user}/>

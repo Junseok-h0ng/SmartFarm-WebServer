@@ -5,6 +5,7 @@ import ProfileForm from '../../components/User/ProfileForm';
 import AddFarm from '../../components/Farm/AddFarm';
 import { loadFarmInfo } from '../../_redux/slices/farm';
 import FarmCard from '../../components/Farm/FarmCard';
+import NoLogin from '../../components/commons/NoLogin';
 
 function index() {
 
@@ -17,7 +18,7 @@ function index() {
     useEffect(() => {
         // 로그인이 안되어있으면 메인화면으로 이동
         if(!user.isLogin){
-            return Router.push('/');
+            return 
         }else{
             dispatch(loadFarmInfo({userId:user.data._id}))
             .then(res=>{
@@ -26,7 +27,7 @@ function index() {
                 }
             })
         }
-    }, [user.isLogin]);
+    }, [user]);
 
     // 농장정보 추가시 갱신
     const refreshFarmData = (newData) =>{
@@ -45,7 +46,7 @@ function index() {
 
     return (
         <div>
-            {user.data &&
+            {user.isLogin ?
                 <div>
                     <ProfileForm user={user}/>
                     <AddFarm userId={user.data._id} refreshFarmData={refreshFarmData}/>
@@ -54,8 +55,9 @@ function index() {
                             <FarmCard farm={farm} userId={user.data._id} reloadFarmInfo={reloadFarmInfo}/>
                         ))
                     }
-                    
                 </div>
+            :
+                <NoLogin/>
             }   
         </div>
     )

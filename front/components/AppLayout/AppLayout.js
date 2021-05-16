@@ -12,7 +12,6 @@ function AppLayout({children}) {
     const onLogout = () =>{
         dispatch(logOut())
         .then(res=>{
-            console.log(res);
             if(res.payload.success){
                 message.success('로그아웃을 성공적으로 마쳤습니다.');
             }

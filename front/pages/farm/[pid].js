@@ -3,6 +3,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import Router,{useRouter} from 'next/router';
 import SelectCrops from '../../components/Farm/SelectCrops';
 import { loadFarmInfo } from '../../_redux/slices/farm';
+import NoLogin from '../../components/commons/NoLogin';
 
 function settingFarm() {
 
@@ -14,15 +15,20 @@ function settingFarm() {
     const user = useSelector(state => state.user)
 
     useEffect(() => {
-        if(!user.isLogin){
-            return Router.push('/');
-        }
-    }, []);
+        if(!user.isLogin){return}
+    }, [user]);
 
     return (
         <div>
-            <p>Post : {pid}</p>
-            <SelectCrops pid={pid}/>        
+            {user.isLogin ?
+                <div>
+                    <p>Post : {pid}</p>
+                    <SelectCrops pid={pid}/> 
+                </div>
+            :
+                <NoLogin/>
+            }
+       
         </div>
     )
 }

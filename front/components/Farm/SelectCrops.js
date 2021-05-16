@@ -4,7 +4,6 @@ import { Button,Select,message } from 'antd';
 import { addCropsInfo, getCrops, getCropsInfo, loadFarmInfo } from '../../_redux/slices/farm';
 import Router from 'next/router';
 
-
 function SelectCrops(props) {
 
     const dispatch = useDispatch();
@@ -24,8 +23,7 @@ function SelectCrops(props) {
         });
         // 농장에 등록된 정보를 가져온다.
         dispatch(loadFarmInfo({userId:user.data._id}))
-        .then((res=>{
-            
+        .then((res=>{  
             // 작물Id정보가 있는지 확인
             if(res.payload[0]){
                 let crops;
@@ -80,7 +78,83 @@ function SelectCrops(props) {
         })
     }
 
+    const mycss = `
+    @media (min-width:600px){
+        .inner_TextArea {
+     
+            border-radius: 7px;;        
+            width: 43%;
+            margin-left: auto;
+            margin-right: auto;    
+            /* text-align: center; */
+        }
+    }    
+    
+    @media (max-width:600px){
+        .inner_TextArea {
+            width: 98%;
+            /* text-align: center; */
+        }
+    }
+    
+    .table_tit {
+        font-weight: bolder;
+    }
+    
+    caption {
+        display: none;
+    }
+    
+    p {
+        font-size: 130%;
+    }
+    
+    h6 {
+        font-size: 175%;
+    }
+    
+    h6::before {
+        content: 'o ';
+    }
+    
+    ul {
+        list-style:none;
+        font-size: 115%;
+        padding: 15px 10px 15px 10px;  
+    }
+    
+    
+    li  li { 
+        list-style-type: none;
+        position: relative;
+        padding: 15px;
+        font-weight: normal;
+        border-radius: 1.1em;
+        margin-bottom: 5px;
+        border: 2px solid gray;
+        color: rgb(41, 23, 23);
+    }
+    
+    .cms_table {
+        display: table;
+        margin: auto;
+        width: 99%;
+    }   
+    
+    .ce.NamoSE_border_show.pe_qF {
+        width: 15%; padding: 10px; font-weight: bold; vertical-align: center; color: #fff; background: #5cb85c ;
+    }
+    
+    .ce.pe_qF {
+        width: 15%; padding: 10px; font-weight: bold; vertical-align: center; color: #fff; background: #5cb85c ;
+    }
+    .ce {
+        width: 15%;  padding: 10px; font-weight: lighter; vertical-align: center; border-bottom: 1px solid #ccc; background: #eee;
+    }
+    `
+
     return (
+
         <div>
             {user.isLogin &&
                 <div>
@@ -101,11 +175,13 @@ function SelectCrops(props) {
                         }
                     </Select>
                     {info &&
-                        <div>
+                        <>
+                            <p>123</p>
                             <h1>{cropsInfo.name}</h1>
-                            <div dangerouslySetInnerHTML={{__html:info}}/>
+                            <style>{mycss}</style>
+                            <div dangerouslySetInnerHTML={{__html:info}}></div>
                             <Button onClick={onSumbitCropsInfo}>확인</Button>
-                        </div>
+                        </>
                     }  
                 </div>
             }

@@ -50,7 +50,7 @@ function AddFarm(props) {
             <Form layout="horizontal" onFinish={onSubmitCommit}>
                 <Form.Item>
                     <Input style={{width:'80%'}} placeholder={"스마트팜의 IP주소를 입력해주세요."} value={inputValue} onChange={onChangeInputValue}/>
-                    <Button style={{width:'20%'}} type='primary' htmlType="submit">확인</Button>
+                    <Button style={{width:'20%',color:'#5cb85c',borderColor: "#5cb85c"}} htmlType="submit">확인</Button>
                 </Form.Item>
             </Form>
         </div>

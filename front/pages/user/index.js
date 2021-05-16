@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import Router from 'next/router';
+
 import {useDispatch,useSelector} from 'react-redux';
 import ProfileForm from '../../components/User/ProfileForm';
 import PostForm from '../../components/Contents/PostForm';
@@ -10,6 +10,7 @@ import { loadUserContents } from '../../_redux/slices/post';
 import {wrapper} from '../../_redux/store';
 import NoContents from '../../components/commons/NoContents';
 import { Button } from 'antd';
+import NoLogin from '../../components/commons/NoLogin';
 
 function index({data}) {
 
@@ -23,11 +24,9 @@ function index({data}) {
     const [currentLoad, setCurrentLoad] = useState(5);
 
     useEffect(() => {
-        if(!user.isLogin){
-            return Router.push('/');
-        }
+        if(!user.isLogin){return}
         setContents(data.payload)
-    }, [user]);
+    }, []);
 
     const refreshPostCard = (newContents) =>{
         setContents(contents.concat(newContents));
@@ -54,7 +53,7 @@ function index({data}) {
 
     return (
         <div>
-            {user.data &&
+            {user.isLogin ?
                 <div>
                     <ProfileForm user={user}/>
                     <PostForm refreshPostCard={refreshPostCard}/>
@@ -76,9 +75,10 @@ function index({data}) {
                     </InfiniteScroll>
                     :
                         <NoContents message="작성된 포스트가 없습니다."/>     
-                    }
-                                  
+                    }          
                 </div>
+            :
+                <NoLogin/>
             }
 
         </div>

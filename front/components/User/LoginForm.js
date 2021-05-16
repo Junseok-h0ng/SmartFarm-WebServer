@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Router from 'next/router';
-import {Form,Input,Button, message} from 'antd';
-import { googleAuth, logIn } from '../../_redux/slices/user';
+import {Form,Input, message,Button} from 'antd';
+import {logIn } from '../../_redux/slices/user';
 import Link from 'next/link';
 import config from '../../config/config';
 
@@ -39,12 +39,16 @@ function LoginForm() {
     return (
         <div>
         <style jsx>{`
-        #container{
+        #flex-container { 
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh;
-        }   
+            min-height: 55vh;
+            border: 3px solid #a0a0a0;
+            border-radius: 1.1em;
+            margin-top: 15%;
+            // background-color: #5cb85c;
+        }
         ul {
             width: 100%;
             list-style: none;
@@ -59,7 +63,7 @@ function LoginForm() {
             margin-left: 20px;
         }
         `}</style>
-            <div id="container">
+            <div id="flex-container">
                 <Form style={{padding:'10px',margin:'0 auto',width:'60%'}} onFinish={onSubmitLogin}>
                     <div>
                         <label htmlFor="email">이메일</label>
@@ -72,7 +76,7 @@ function LoginForm() {
                         <Input name="password" type="password" value={password} onChange={onChangePassword} required/>
                     </div>
                     <div align="center" >
-                        <Button style={{width:'100%' ,marginTop:'20px'}} type="primary" htmlType="submit" loading={false}>로그인</Button>  
+                        <Button style={{width:'100%' ,marginTop:'20px',color:'#5cb85c', borderColor: "#5cb85c",borderRadius: '8px' }} htmlType="submit" loading={false}>로그인</Button>  
                     </div>
                     <ul>
                         <li>

@@ -9,8 +9,6 @@ function FarmCard(props) {
 
     const dispatch = useDispatch();
 
-    
-
     const onClickDelete = ()=>{
         dispatch(deleteFarm({_id:props.farm._id}))
         .then(res=>{

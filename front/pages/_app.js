@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import Head from 'next/head';
 import {wrapper} from '../_redux/store'
 import AppLayout from '../components/AppLayout/AppLayout';
@@ -10,7 +10,6 @@ import { loadUserData } from '../_redux/slices/user';
 
 const root = ({ Component, pageProps})=>{
     
-
   return (
     <>
     <Head>

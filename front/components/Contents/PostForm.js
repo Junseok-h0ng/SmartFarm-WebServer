@@ -74,7 +74,7 @@ function PostForm(props) {
                     <Upload {...uploadSetting} fileList={fileList}/>
                     <UploadButton handleCheckedImages={images=>handleCheckedImages(images)} userId={user.data._id}/>
                     
-                    <Button style={{float:'right'}} type="primary" htmlType="submit">전송</Button>
+                    <Button style={{float:'right',color:'#5cb85c', borderColor: "#5cb85c"}}  htmlType="submit">전송</Button>
                 </div>
                 </Form.Item>
             </Form>

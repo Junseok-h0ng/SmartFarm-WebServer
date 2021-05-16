@@ -64,20 +64,45 @@ function PostForm(props) {
       };
 
     return (
-        <div >
-            <Form onFinish={onSubmitPost}>
-                <Input.TextArea value={contents} onChange={onChangeContents} rows={4} placeholder='다른사람들과 공유 해보세요!'/>
-                <Form.Item
-                    name="image"
-                >
-                <div style={{marginTop:'5px'}}>
-                    <Upload {...uploadSetting} fileList={fileList}/>
-                    <UploadButton handleCheckedImages={images=>handleCheckedImages(images)} userId={user.data._id}/>
+        <div>
+                        <style jsx>{`    
+  
+                #align {
+                    margin-top: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #up_btn {
+                    color: #5cb85c;;
+                    padding: 5px;
+                    border: 2px solid #5cb85c;
+                    background-color: rgba(0,0,0,0); 
+                    border-radius: 8px;
+                    width: 100%;
+                }
                     
-                    <Button style={{float:'right',color:'#5cb85c', borderColor: "#5cb85c"}}  htmlType="submit">전송</Button>
-                </div>
-                </Form.Item>
-            </Form>
+            `}</style>
+            <div id='align'>
+                <br/>
+                <Form onFinish={onSubmitPost}>
+                    <Input.TextArea value={contents} onChange={onChangeContents} cols={60} rows={7} placeholder='다른사람들과 공유 해보세요!'/>
+                    <Form.Item
+                        name="image"
+                    >
+                    <div style={{marginTop:'5px'}}>
+                        <Upload {...uploadSetting} fileList={fileList}/>
+                        <table width='100%'>
+                            <tr>
+                                <td><UploadButton handleCheckedImages={images=>handleCheckedImages(images)} userId={user.data._id}/></td>
+                                <td width='95%'><Button style={{width:'100%',float:'right',color:'#5cb85c', borderColor: "#5cb85c"}}  htmlType="submit">전송</Button></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    </Form.Item>
+                </Form>
+            </div>
         </div>
     )
 }

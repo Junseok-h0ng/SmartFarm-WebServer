@@ -3,10 +3,12 @@ import {Result} from 'antd';
  import {FrownOutlined} from '@ant-design/icons'
 function NoContents(props) {
     return (
-        <Result
-        icon={<FrownOutlined />}
-        title={props.message}
-        />
+        <div>
+            <Result
+            icon={<FrownOutlined />}
+            title={props.message}
+            />
+        </div>
     )
 }
 export default NoContents

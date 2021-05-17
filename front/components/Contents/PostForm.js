@@ -65,8 +65,7 @@ function PostForm(props) {
 
     return (
         <div>
-                        <style jsx>{`    
-  
+            <style jsx>{`
                 #align {
                     margin-top: 25px;
                     display: flex;
@@ -80,8 +79,7 @@ function PostForm(props) {
                     background-color: rgba(0,0,0,0); 
                     border-radius: 8px;
                     width: 100%;
-                }
-                    
+                }   
             `}</style>
             <div id='align'>
                 <br/>
@@ -98,7 +96,6 @@ function PostForm(props) {
                                 <td width='95%'><Button style={{width:'100%',float:'right',color:'#5cb85c', borderColor: "#5cb85c"}}  htmlType="submit">전송</Button></td>
                             </tr>
                         </table>
-
                     </div>
                     </Form.Item>
                 </Form>

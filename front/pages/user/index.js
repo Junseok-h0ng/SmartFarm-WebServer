@@ -9,7 +9,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { loadUserContents } from '../../_redux/slices/post';
 import {wrapper} from '../../_redux/store';
 import NoContents from '../../components/commons/NoContents';
-import { Button } from 'antd';
 import NoLogin from '../../components/commons/NoLogin';
 
 function index({data}) {

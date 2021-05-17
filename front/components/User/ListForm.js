@@ -6,7 +6,7 @@ const ListForm = () => {
         <div>
             <div>
             <style jsx>{`    
-                table {
+                #list_table {
                     width: 97%;
                     text-align: center;
                     border-radius: 2em;
@@ -14,62 +14,66 @@ const ListForm = () => {
                     
                 }
 
-                th, td {
+                #list_th {
                     border: 4px solid #FFFFFF;
                 }
 
-                #col-style {
+                #list_td {
+                    border: 4px solid #FFFFFF;
+                }
+
+                #list_col {
                     width: 18%
                 }
 
-                #flex-container { 
+                #list_container { 
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     min-height: 69vh;
                 }     
             `}</style>
-            <div id= 'flex-container'>
+            <div id= 'list_container'>
 
-            <table>
+            <table id= 'list_table'>
                 <thead>
                 <tr>
-                    <th id= 'col-style'>작물 이미지</th>
-                    <th>작물 설명</th>
+                    <th id= 'list_col' id= 'list_th'>작물 이미지</th>
+                    <th id= 'list_th'>작물 설명</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 <tr>
-                    <td><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
-                    <td>작물</td>
+                    <td id= 'list_td'><img src="https://i.ibb.co/QXrwTWh/sample.jpg" width="85" alt="sample"></img></td>
+                    <td id= 'list_td'>작물</td>
                 </tr>
                 </tbody>
                 </table>

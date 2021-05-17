@@ -55,7 +55,7 @@ function RegisterForm() {
         <div>
         <style jsx>{`   
 
-            #flex-container { 
+            #register_container { 
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -77,7 +77,7 @@ function RegisterForm() {
 
         `}</style>
 
-        <div id='flex-container'>
+        <div id='register_container'>
             <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitRegister}>
             <div>
                 <label htmlFor="name">이름</label>

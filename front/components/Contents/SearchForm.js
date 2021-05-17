@@ -5,7 +5,7 @@ function SearchForm() {
         <div>
             <style jsx>{`    
                 
-                #flex-container { 
+                #search-container { 
                     display: flex;  
                     width: 45%;
                     position: absolute; 
@@ -13,7 +13,7 @@ function SearchForm() {
                 }
         
             `}</style>
-            <div id= 'flex-container'>
+            <div id= 'search-container'>
                 <Input.Search placeholder="input search text" onSearch enterButton />
             </div>          
         </div>

@@ -9,7 +9,7 @@ function CardForm() {
         <div>
             <style jsx>{`    
 
-                #line {
+                #card_line {
                     border: 2.2px solid #a0a0a0;
                     // background-color: #59f80f;
                 }
@@ -25,7 +25,7 @@ function CardForm() {
                 
             `}</style>
 
-            <div id= 'line'>
+            <div id= 'card_line'>
                 <Card
                     actions={[
                         <LikeOutlined type="like" key="like" />,
@@ -44,8 +44,8 @@ function CardForm() {
                     </div>
                 </Card>
             </div>
-
-            <div id= 'line'>
+            <br/>
+            <div id= 'card_line'>
                 <Card
                     actions={[
                         <LikeOutlined type="like" key="like" />,

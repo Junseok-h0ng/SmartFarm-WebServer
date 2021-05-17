@@ -36,7 +36,7 @@ function LoginForm() {
         <div>
         <style jsx>{`   
 
-         #flex-container { 
+         #login_container { 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,7 +47,7 @@ function LoginForm() {
             // background-color: #5cb85c;
         }
 
-        ul {
+        #login_ul {
             width: 100%;
             list-style: none;
             text-align: center;
@@ -56,7 +56,7 @@ function LoginForm() {
             padding-left: 2px;
         }
 
-        li {
+        #login_li {
             display: inline;
         }
 
@@ -71,7 +71,7 @@ function LoginForm() {
 
         `}</style>
     
-        <div id='flex-container'>
+        <div id='login_container'>
         <Form style={{padding:'10px',margin:'0 autox'}} onFinish={onSubmitLogin}>
 
             <div>
@@ -87,22 +87,22 @@ function LoginForm() {
             <br/>
             <br/>
 
-            <ul>             
-            <li>
+            <ul id='login_ul'>             
+            <li id= 'login_li'>
                 <a href="#">
                     <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="17%" alt="네이버 로그인"></img>
                     {/* <span id = 'font_White'>&nbsp;네이버 로그인</span> */}
                 </a>  
             </li>      
             &emsp;
-            <li>
+            <li id= 'login_li'>
                 <a href="#">
                     <img src="https://i.ibb.co/k0djP8x/img.jpg" width="17%" alt="카카오톡 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;카카오톡 로그인</span> */}
                 </a>
             </li>
             &emsp;
-            <li>
+            <li id= 'login_li'>
                 <a href="#">
                     <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="17%" alt="구글 로그인"></img>
                     {/* <span id = 'font_Black'>&nbsp;구글 로그인</span> */}

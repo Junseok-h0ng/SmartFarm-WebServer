@@ -8,21 +8,18 @@ function ProfileForm() {
     return (
         <div>
             <style jsx>{`    
-                #right {
-                    float: right;
-                    margin-right: 20px;
-                }
 
-                #left {
-                    margin-left: 15px;
-                }
-
-                th, td {
+                #profile_th  {
                     text-align: center;
                     vertical-align: top
                 }
 
-                #flex-container { 
+                #profile_td {
+                    text-align: center;
+                    vertical-align: top
+                }
+
+                #profile_container { 
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -55,16 +52,16 @@ function ProfileForm() {
             <div id='line'>
             <br/>    
                 <div>                 
-                    <div id='flex-container'>
+                    <div id='profile_container'>
                         <table>
                             <tr>
-                                <th><Avatar size={99} icon={<UserOutlined />} /></th>
+                                <th id= 'profile_th'><Avatar size={99} icon={<UserOutlined />} /></th>
                             </tr>
                             <tr>
-                                <td><h4>Jason</h4></td>
+                                <td id= 'profile_td'><h4>Jason</h4></td>
                             </tr>
                             <tr>
-                                <td><h5>Jason123@naver.com</h5></td>
+                                <td id= 'profile_td'><h5>Jason123@naver.com</h5></td>
                             </tr>
                             <br/>
                             <tr>

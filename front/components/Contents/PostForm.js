@@ -29,12 +29,6 @@ function PostForm() {
         <div>
             <style jsx>{`    
 
-                #line {
-                    border: 1.1px solid #a0a0a0;
-                    border-radius: 1.2em;
-                    // background-color: #59f80f;
-                }
-
                 #up_btn {
                     color: #5cb85c;;
                     padding: 5px;

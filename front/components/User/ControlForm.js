@@ -93,12 +93,7 @@ const ControlForm = () => {
 
         <style jsx>{`    
         
-        #right {
-            float: right;
-            display: inline-block;
-        }
-
-        #col {
+        #control_col {
             margin-left: 15%;
             width: 70%;
         }
@@ -119,7 +114,7 @@ const ControlForm = () => {
             </table>           
         </div>
         <br/>
-        <div id='col'>
+        <div id='control_col'>
             <Slider range marks={marks} defaultValue={[17, 23]} max ='30' />
         </div>
         <br/>

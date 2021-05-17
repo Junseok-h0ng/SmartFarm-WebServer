@@ -5,13 +5,9 @@ const DashboardForm = () => {
     return <div>
         <style jsx>{`    
 
-        #col_2 {
-            column-count: 2;
-        }
-        
-        #col {column-count: 1;}
+        #dash_col {column-count: 1;}
                 @media screen and (min-width:600px){
-                #col {column-count: 2;}
+                #dash_col {column-count: 2;}
         }
 
         #dash_card {
@@ -34,7 +30,7 @@ const DashboardForm = () => {
     
       `}</style>
       <div id='flex-container'>
-        <div id='col'>
+        <div id='dash_col'>
         <div>
         <Bar   
             data={{
@@ -119,7 +115,6 @@ const DashboardForm = () => {
                     <td id= 'dash_card_td'>
                         <h4>온도</h4>
                         <h4>21℃</h4>
-    
                     </td>
                     <td>
                         <h4>습도</h4>

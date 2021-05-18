@@ -41,7 +41,7 @@ function PostForm() {
                 #textarea {
                     margin-left: auto;
                     margin-right: auto;
-                    width: 70%;       
+                    width: 85%;       
                 }
                     
             `}</style>

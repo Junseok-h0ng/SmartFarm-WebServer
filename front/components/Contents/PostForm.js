@@ -67,24 +67,15 @@ function PostForm(props) {
         <div>
             <style jsx>{`
                 #align {
-                    margin-top: 25px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 95%; 
                 }
-                #up_btn {
-                    color: #5cb85c;;
-                    padding: 5px;
-                    border: 2px solid #5cb85c;
-                    background-color: rgba(0,0,0,0); 
-                    border-radius: 8px;
-                    width: 100%;
-                }   
             `}</style>
             <div id='align'>
                 <br/>
                 <Form onFinish={onSubmitPost}>
-                    <Input.TextArea value={contents} onChange={onChangeContents} cols={60} rows={7} placeholder='다른사람들과 공유 해보세요!'/>
+                    <Input.TextArea id="textarea" value={contents} onChange={onChangeContents} cols={60} rows={7} placeholder='다른사람들과 공유 해보세요!'/>
                     <Form.Item
                         name="image"
                     >

@@ -39,10 +39,6 @@ function Home({data}){
         dataLength={contents.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-            <p>end</p>
-          }
         >
         {contents && contents.map((post,index)=>(
             <CardForm post={post} key={index}/>

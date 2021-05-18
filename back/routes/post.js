@@ -11,10 +11,12 @@ router.post('/contents',(req,res,next)=>{
     const start = req.body.start;
     const end = req.body.end;
     Post.find({})
+    .sort({
+        'createdAt':-1
+    })
     .skip(start).limit(end)
     .populate('writer','name email')
     .exec((err,contents)=>{
-	console.log(err,contents);
         if(err) return res.status(401).send(err);
         res.status(200).send(contents);
     });
@@ -24,10 +26,12 @@ router.post('/user/contents',(req,res,next)=>{
     const start = req.body.start;
     const end = req.body.end;
     Post.find({writer:req.body.userId})
+    .sort({
+        'createdAt':-1
+    })
     .skip(start).limit(end)
     .populate('writer', 'name email')
     .exec((err,contents)=>{
-        console.log(err);
         if(err) return res.status(401).send(err);
         console.log(contents);
         res.status(200).send(contents);

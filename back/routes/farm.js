@@ -128,12 +128,28 @@ router.post('/getCrops/info',async(req,res)=>{
     })
 });
 
-router.post('/loadFarmData',async(req,res)=>{
+router.post('/loadFarmData',(req,res)=>{
+    const filter = {
+        start_date : req.body.dateString[0],
+        end_date : req.body.dateString[1],
+        image: false,
+        chart: false,
+        dashboard: false
+    }
+
+    if(req.body.option === 'image'){
+        filter.image = true
+    }else if(req.body.option === 'chart'){
+        filter.chart = true
+    }else{
+        filter.dashboard = true
+    }
+
     Farm.findById({_id:req.body.pid})
     .exec((err,doc)=>{
         if(err) return res.status(401).send(err);
         const ipAddress = doc.ipAddress;
-            axios.get(ipAddress+"/data",{timeout:500})
+            axios.post(ipAddress+'/data/',(filter))
             .catch((err)=>{
                 res.status(401).send(false);
             })

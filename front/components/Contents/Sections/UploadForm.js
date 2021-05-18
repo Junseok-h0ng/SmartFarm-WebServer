@@ -72,37 +72,38 @@ function UploadForm(props) {
   const onChangeImageDate = (date,dateString) =>{
     // date가 빈칸이 아닌경우에만 img불러오기
     if(date != null){
-      dispatch(loadFarmImages())
-      .then(result=>{
-        if(result.payload){
-          result.payload.map((payload,key)=>{
-            const data = {
-              key,
-              name: key,
-              src: "data:image/jpg;base64,"+payload,
-              checked:false
-            }
-            setImg(prevImg => [...prevImg,data]);
-          });
-        }
-      }); 
-      // dispatch(loadFarmData({pid:farmId}))
-      // .then(response=>{
-      //   if(response.payload){
-      //     response.payload.map((payload,key)=>{
-      //       const data={
+      // dispatch(loadFarmImages())
+      // .then(result=>{
+      //   if(result.payload){
+      //     result.payload.map((payload,key)=>{
+      //       const data = {
       //         key,
       //         name: key,
-      //         src: "data:image/jpg;base64,"+payload.fields.src,
+      //         src: "data:image/jpg;base64,"+payload,
       //         checked:false
       //       }
       //       setImg(prevImg => [...prevImg,data]);
-      //     })
-      //   }else{
-      //     message.error('농장과 연결이 실패했습니다.');
-      //     setSelectFarm();
+      //     });
       //   }
-      // }) 
+      // }); 
+      
+      dispatch(loadFarmData({pid:selectFarm,dateString,option:'image'}))
+      .then(response=>{
+        if(response.payload){
+          response.payload.map((payload,key)=>{
+            const data={
+              key,
+              name: key,
+              src: "data:image/jpg;base64,"+payload.fields.src,
+              checked:false
+            }
+            setImg(prevImg => [...prevImg,data]);
+          })
+        }else{
+          message.error('농장과 연결이 실패했습니다.');
+          setSelectFarm();
+        }
+      }) 
     }else{
       //date가 빈칸이면 이미지 초기화
       setImg([]);
@@ -119,6 +120,12 @@ function UploadForm(props) {
         end : dateString[1]
       }
       setDateString(data);
+      dispatch(loadFarmData({pid:selectFarm,dateString,option:'chart'}))
+      .then(response=>{
+        if(response.payload){
+          console.log(response.payload);
+        }
+      })
     }else{
       //date가 빈칸이면 차트 초기화
       setDateString([]);
@@ -163,7 +170,7 @@ function UploadForm(props) {
             </Row>
           </Tabs.TabPane>
         }
-        {!selectFarm &&
+        {selectFarm &&
         <>
             <Tabs.TabPane tab="Images" key="2">
               <div className="card-container">

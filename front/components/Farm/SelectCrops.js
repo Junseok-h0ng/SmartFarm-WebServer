@@ -28,7 +28,6 @@ function SelectCrops(props) {
             if(res.payload[0]){
                 let crops;
                 res.payload.map((payload)=>{
-                    console.log(payload);
                     if(payload._id === props.pid){
                         crops = payload.crops;
                     }
@@ -176,7 +175,6 @@ function SelectCrops(props) {
                     </Select>
                     {info &&
                         <>
-                            <p>123</p>
                             <h1>{cropsInfo.name}</h1>
                             <style>{mycss}</style>
                             <div dangerouslySetInnerHTML={{__html:info}}></div>

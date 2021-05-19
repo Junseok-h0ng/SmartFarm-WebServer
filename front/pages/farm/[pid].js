@@ -22,7 +22,6 @@ function settingFarm() {
         <div>
             {user.isLogin ?
                 <div>
-                    <p>Post : {pid}</p>
                     <SelectCrops pid={pid}/> 
                 </div>
             :

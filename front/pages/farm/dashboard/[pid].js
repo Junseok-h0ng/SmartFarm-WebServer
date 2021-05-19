@@ -49,7 +49,7 @@ function dashboard({farmData}) {
             <>
                 {/* {farmData.payload &&  */}
                 <div>
-                    {cropsInfo.name}
+                    {cropsInfo ? cropsInfo.name : ''}
                     <DashBoard/><br/>
                     <ControlBoard/> 
                 </div>  

@@ -25,7 +25,7 @@ function FarmCard(props) {
                 <Card.Meta
                     description={[props.farm.ipAddress,<DeleteOutlined onClick={onClickDelete} style={{float:'right',marginBottom:'20px'}}/>]}
                 />
-                {props.farm.crops.name}
+                {props.farm.crops ? props.farm.crops.name : ''}
                 <Button style={{float:'right'}}><Link href={`/farm/dashboard/${props.farm._id}`}><a><BarChartOutlined /></a></Link></Button>
                 <Button style={{float:'right'}}><Link href={`/farm/${props.farm._id}`}><a><InfoCircleOutlined /></a></Link></Button>
             </Card>

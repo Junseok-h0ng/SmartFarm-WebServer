@@ -20,14 +20,19 @@ function AppLayout({children}) {
     
     return (
         <div>
-            <Menu mode="horizontal" style={{padding:'0 30px'}}>
-                <Menu.Item key="home"><Link href="/"><a>Home</a></Link></Menu.Item>
+            <Menu mode="horizontal" style={{
+                padding:'0 30px',
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center'
+                }}>
+                <Menu.Item style={{marginRight:'10%'}} key="home"><Link href="/"><a>Home</a></Link></Menu.Item>
                 {!isLoading &&
                 <>
                 {!isLogin ?
                     <>
-                        <Menu.Item style={{float:'right'}}key="register"><Link href="/register"><a>Register</a></Link></Menu.Item>
-                        <Menu.Item style={{float:'right'}} key="login"><Link href="/login"><a>Login</a></Link></Menu.Item>
+                        <Menu.Item style={{marginRight:'10%'}} key="login"><Link href="/login"><a>Login</a></Link></Menu.Item>
+                        <Menu.Item key="register"><Link href="/register"><a>Register</a></Link></Menu.Item>
                     </>
                     :
                     <>

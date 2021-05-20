@@ -66,9 +66,7 @@ function CardForm(props) {
         <div>
             <Card
             key={props.key}
-            style={{marginTop:'10px'}}
-            title={[<Moment format="YYYY/MM/DD">{post.createdAt}</Moment>]}
-            extra={<LikeDislikeActions postId={post._id} userId={userId}/>}
+            style={{marginTop:'10px'}} 
             actions={[
                 <MessageOutlined onClick={onChangetoggleReply} type="message" key="message"/>,
             ]}
@@ -76,7 +74,7 @@ function CardForm(props) {
             <Card.Meta
                 style={{paddingBottom:'20px'}}
                 avatar={<Avatar>{post.writer.name[0]}</Avatar>}
-                title={post.writer.name}
+                title={[post.writer.name,<LikeDislikeActions postId={post._id} userId={userId}/>]}
                 description={post.writer.email}
             />
             {post.contents}
@@ -97,10 +95,15 @@ function CardForm(props) {
                 </Slider> 
             </div>
             }
+            
             <br/>
             {props.deletePostCard &&
-                <DeleteOutlined style={{float:'right'}} onClick={onClickDelete}/>
+                <span><DeleteOutlined style={{float:'right',marginLeft:'10px'}} onClick={onClickDelete}/></span>
             }
+            {<>
+                <h4><Moment style={{float:'right'}} format="YYYY/MM/DD">{post.createdAt}</Moment></h4>
+            </>}
+
             {toggleReply &&
             <div>
                 <CommentForm refereshFunction={refereshFunction} commentLists={comments} postId={post._id} userId={userId}/>

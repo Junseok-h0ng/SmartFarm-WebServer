@@ -49,7 +49,7 @@ function dashboard({farmData}) {
             <>
                 {/* {farmData.payload &&  */}
                 <div>
-                    {cropsInfo ? cropsInfo.name : ''}
+                    <h1 style={{textAlign:'center'}}>{cropsInfo ? cropsInfo.name : ''}</h1>
                     <DashBoard/><br/>
                     <ControlBoard/> 
                 </div>  

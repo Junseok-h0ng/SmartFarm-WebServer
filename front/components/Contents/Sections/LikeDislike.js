@@ -118,18 +118,20 @@ function LikeDislike(props) {
 
 
     return [
+        <div style={{float:'right'}}>
             <Tooltip key="comment-basic-like" title="Like">
                 <span style={{margin:'0 5px'}} onClick={onClickLike}>
                     {createElement(isLogin && likeAction === 'liked' ? LikeFilled : LikeOutlined)}
                     <span style={{margin:'0 5px'}}>{likes}</span>
                 </span>
-            </Tooltip>,
+            </Tooltip>
             <Tooltip key="comment-basic-dislike" title="Dislike">
                     <span onClick={onClickDislike}>
                     {createElement(isLogin && dislikeAction === 'disliked' ? DislikeFilled : DislikeOutlined)}
                     <span style={{margin:'0 5px'}}>{dislikes}</span>
                 </span>
             </Tooltip> 
+        </div>
         ]
 }
 

@@ -23,7 +23,7 @@ function index({data}) {
     const [currentLoad, setCurrentLoad] = useState(5);
 
     useEffect(() => {
-        if(!user.isLogin){return}
+        if(!user.isLogin){return Router.push('/');}
         setContents(data.payload)
     }, []);
 
@@ -77,7 +77,7 @@ function index({data}) {
                     }          
                 </div>
             :
-                <NoLogin/>
+                    ''
             }
 
         </div>

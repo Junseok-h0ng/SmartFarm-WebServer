@@ -1,13 +1,14 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import Router from 'next/router';
+import {wrapper} from '../../_redux/store';
 import ProfileForm from '../../components/User/ProfileForm';
 import AddFarm from '../../components/Farm/AddFarm';
 import { loadFarmInfo } from '../../_redux/slices/farm';
 import FarmCard from '../../components/Farm/FarmCard';
 import NoLogin from '../../components/commons/NoLogin';
+import Router from 'next/router';
 
-function index() {
+function index({data}) {
 
     const dispatch = useDispatch();
 
@@ -18,15 +19,9 @@ function index() {
     useEffect(() => {
         // 로그인이 안되어있으면 메인화면으로 이동
         if(!user.isLogin){
-            return 
-        }else{
-            dispatch(loadFarmInfo({userId:user.data._id}))
-            .then(res=>{
-                if(res.payload){
-                    setFarmData(res.payload);
-                }
-            })
+            return Router.push('/');
         }
+        setFarmData(data.payload)
     }, [user]);
 
     // 농장정보 추가시 갱신
@@ -46,7 +41,7 @@ function index() {
 
     return (
         <div>
-            {user.isLogin ?
+            {user.isLogin &&
                 <div>
                     <ProfileForm user={user}/>
                     <AddFarm userId={user.data._id} refreshFarmData={refreshFarmData}/>
@@ -56,12 +51,17 @@ function index() {
                         ))
                     }
                 </div>
-            :
-                <NoLogin/>
             }   
         </div>
     )
 }
 
+export const getServerSideProps = wrapper.getServerSideProps(async context=>{
+    const state = context.store.getState();
+    const user = state.user;
+    if(!state.user.data){return}
+    const data = await context.store.dispatch(loadFarmInfo({userId:user.data._id}));
+    return {props:{data}}
+}); 
 
 export default index

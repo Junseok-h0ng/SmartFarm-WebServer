@@ -19,7 +19,7 @@ function dashboard({farmData}) {
 
     useEffect(() => {
         if(!user.isLogin){
-            return
+            return Router.push('/');
         }
         dispatch(loadFarmInfo({userId:user.data._id}))
         .then(res=>{
@@ -57,7 +57,7 @@ function dashboard({farmData}) {
                 {/* }  */}
             </>
             :
-                <NoLogin/>
+                ''
             }
 
 

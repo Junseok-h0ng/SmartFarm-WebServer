@@ -7,6 +7,8 @@ import ProfileForm from '../components/User/ProfileForm';
 import { loadContents } from '../_redux/slices/post';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoContents from '../components/commons/NoContents';
+import LoginForm from '../components/User/LoginForm';
+import RegisterForm from '../components/User/RegisterForm';
 
 function Home({data}){
   
@@ -17,6 +19,7 @@ function Home({data}){
   const [contents, setContents] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [currentLoad, setCurrentLoad] = useState(5);
+  const [loginMode, setLoginMode] = useState(true);
 
   useEffect(() => {
     setContents(data.payload);
@@ -46,11 +49,25 @@ function Home({data}){
         </InfiniteScroll>
   )
 
+  const changeLoginMode = (mode) =>{
+      setLoginMode(mode);
+  }
+
   return(
     <div>
-      {user.isLogin &&
+      {user.isLogin ?
         <>
           <ProfileForm user={user}/>
+        </>
+        :
+        <>
+          {loginMode ?
+            <LoginForm changeLoginMode={(mode)=>changeLoginMode(mode)}/>
+          :
+            <RegisterForm changeLoginMode={(mode)=>changeLoginMode(mode)}/>
+          }
+          
+          
         </>
       }
 

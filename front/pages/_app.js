@@ -14,6 +14,7 @@ const root = ({ Component, pageProps})=>{
     <>
     <Head>
       <title>SmartFarm</title>
+      {/* <link rel='icon' type='image/x-icon' href='https://i.postimg.cc/YSdBB0CY/smartfarm-icon.png'></link> */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.12.0/antd.css"/>
       <link
         rel="stylesheet"

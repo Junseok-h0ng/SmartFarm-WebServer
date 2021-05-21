@@ -95,7 +95,7 @@ function CardForm(props) {
                 </Slider> 
             </div>
             }
-            
+
             <br/>
             {props.deletePostCard &&
                 <span><DeleteOutlined style={{float:'right',marginLeft:'10px'}} onClick={onClickDelete}/></span>

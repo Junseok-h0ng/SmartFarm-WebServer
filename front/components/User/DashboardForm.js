@@ -1,5 +1,9 @@
 import React from 'react';
 import { Bar} from 'react-chartjs-2';
+import PopUp from '../Modal_Popup/PopUp';
+import PopUp2 from '../Modal_Popup/PopUp2';
+import PopUp3 from '../Modal_Popup/PopUp3';
+import PopUp4 from '../Modal_Popup/PopUp4';
 
 const DashboardForm = () => {
     return <div>
@@ -25,11 +29,10 @@ const DashboardForm = () => {
             border: 2.2px solid #a0a0a0;
             padding: 10px;
         }
-
         
     
       `}</style>
-      <div id='flex-container'>
+      <div>
         <div id='dash_col'>
         <div>
         <Bar   
@@ -115,20 +118,24 @@ const DashboardForm = () => {
                     <td id= 'dash_card_td'>
                         <h4>온도</h4>
                         <h4>21℃</h4>
+                        <PopUp/>
                     </td>
                     <td>
                         <h4>습도</h4>
                         <h4>24℃</h4>
+                        <PopUp2/>
                     </td>
                 </tr>
                 <tr id= 'dash_card_th'>
                     <td id= 'dash_card_td'>
                         <h4>물양</h4>
                         <h4>20</h4>
+                        <PopUp3/>
                     </td>
                     <td id= 'dash_card_td'>
                         <h4>밝기</h4>
                         <h4>33</h4>
+                        <PopUp4/>
                     </td>
                 </tr>
             </table>

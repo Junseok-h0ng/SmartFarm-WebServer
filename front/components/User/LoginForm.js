@@ -67,6 +67,7 @@ function LoginForm() {
             background-color: rgba(0,0,0,0); 
             border-radius: 8px;
             width: 90%;
+            cursor: pointer;
         }
 
         `}</style>

@@ -19,8 +19,8 @@ function AppLayout({children}) {
     
     return (
         <div>
-            <Menu mode="horizontal" style={{padding:'0 30px'}}>
-                <Menu.Item key="home"><Link href="/"><img src='https://www.smartfarmkorea.net/images/logo.png' width='100px' alt='임시아이콘'></img></Link></Menu.Item>
+            <Menu mode="horizontal" style={{padding:'0 20px'}}>
+                <Menu.Item key="home"><Link href="/"><img src='https://i.postimg.cc/YSdBB0CY/smartfarm-icon.png' width='130px' alt='자체아이콘'></img></Link></Menu.Item>
                 {!isLoading &&
                 <>
                 {isLogin ?

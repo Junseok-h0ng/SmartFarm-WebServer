@@ -73,6 +73,7 @@ function RegisterForm() {
                 background-color: rgba(0,0,0,0); 
                 border-radius: 8px;
                 width: 99%;
+                cursor: pointer;
             }
 
         `}</style>

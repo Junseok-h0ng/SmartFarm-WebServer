@@ -36,6 +36,7 @@ function PostForm() {
                     background-color: rgba(0,0,0,0); 
                     border-radius: 8px;
                     width: 100%;
+                    cursor: pointer;
                 }
 
                 #textarea {

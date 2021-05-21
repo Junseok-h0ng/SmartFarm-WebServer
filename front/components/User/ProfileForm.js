@@ -38,6 +38,7 @@ function ProfileForm() {
                     border: 2px solid #a0a0a7;
                     background-color: rgba(0,0,0,0); 
                     border-radius: 4px;
+                    cursor: pointer;
                 }
 
             `}</style>

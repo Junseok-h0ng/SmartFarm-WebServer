@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import Router from 'next/router';
-import { Comment, Avatar,Form,Input,Button} from 'antd';
+import { Comment, Avatar,Form,Input,Button,message} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import { postComment } from '../../../_redux/slices/comment';
 
@@ -37,7 +37,7 @@ function ReplyComment(props) {
 
     const onClickReply = () =>{
         if(!props.user.isLogin){
-            Router.push('/login');
+            return message.error('로그인을 해주세요.');
         }
     }
 

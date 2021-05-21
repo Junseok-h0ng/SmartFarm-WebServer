@@ -5,11 +5,11 @@ import ProfileForm from '../../components/User/ProfileForm';
 import PostForm from '../../components/Contents/PostForm';
 import CardForm from '../../components/Contents/CardForm';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Router from 'next/router'
 
 import { loadUserContents } from '../../_redux/slices/post';
 import {wrapper} from '../../_redux/store';
 import NoContents from '../../components/commons/NoContents';
-import NoLogin from '../../components/commons/NoLogin';
 
 function index({data}) {
 
@@ -25,7 +25,7 @@ function index({data}) {
     useEffect(() => {
         if(!user.isLogin){return Router.push('/');}
         setContents(data.payload)
-    }, []);
+    }, [user]);
 
     const refreshPostCard = (newContents) =>{
         setContents(contents.concat(newContents));

@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import { Comment, Avatar } from 'antd';
+import {useDispatch,useSelector} from 'react-redux';
+import { Comment, Avatar, message } from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
 import ReplyComment from './ReplyComment';
 import LikeDislikeActions from './LikeDislike';
@@ -10,6 +10,7 @@ import { deleteComment } from '../../../_redux/slices/comment';
 function SingleComment(props) {
 
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     const [openReply, setOpenReply] = useState(false);
     //댓글의 작성자 여부
@@ -26,6 +27,7 @@ function SingleComment(props) {
     }, []);
 
     const onClickReply = () =>{
+        if(!user.isLogin){return message.error('로그인을 해주세요')}
         setOpenReply(!openReply);
     }
     
@@ -60,7 +62,12 @@ function SingleComment(props) {
             >
             </Comment>
             {openReply &&
-                <ReplyComment  postId={props.postId} user={props.user} refereshFunction={props.refereshFunction} parentCommentId={comment._id} refreshOpenReply={onClickReply}/>
+            <>
+                {user.isLogin &&
+                    <ReplyComment  postId={props.postId} user={props.user} refereshFunction={props.refereshFunction} parentCommentId={comment._id} refreshOpenReply={onClickReply}/>
+                }
+            </> 
+                
             }
         </div>
     )

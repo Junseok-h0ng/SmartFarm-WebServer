@@ -28,6 +28,10 @@ const DashboardForm = () => {
         }
 
         #now_condition {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 47vh;
             border: 3px solid #5cb85c;
             border-radius: 8px;
         }
@@ -110,8 +114,8 @@ const DashboardForm = () => {
         </div>
         <div  id= 'now_condition' align="center">
             <div>
-                <h3><strong>Now</strong></h3>
-            <div><img width='85%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
+                <h3><strong>Now</strong></h3><br/>
+            <div><img width='100%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
             </div>
         </div>
         </div>

@@ -19,7 +19,12 @@ function AppLayout({children}) {
     
     return (
         <div>
-            <Menu mode="horizontal" style={{padding:'0 20px'}}>
+            <Menu mode="horizontal" style={{
+                padding:'0 30px',
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center'
+                }}>
                 <Menu.Item key="home"><Link href="/"><img src='https://i.postimg.cc/YSdBB0CY/smartfarm-icon.png' width='130px' alt='자체아이콘'></img></Link></Menu.Item>
                 {!isLoading &&
                 <>
@@ -40,15 +45,15 @@ function AppLayout({children}) {
 
             </Menu>
             <Row style={{marginTop:'15px'}} gutter={8}>
-                <Col xs={24} md={4}  lg={5} xl={6} xxl={7}/>
-                <Col xs={24}  md={16} lg={14} xl={12} xxl={10}>
+                <Col xs={24} md={4}  lg={5} xl={7} xxl={8}/>
+                <Col xs={24}  md={16} lg={14} xl={10} xxl={8}>
                     {!isLoading &&
                     <>
                         {children}
                     </>   
                     }
                 </Col>
-                <Col xs={24}  md={4} lg={5} xl={6} xxl={7}/>
+                <Col xs={24}  md={4} lg={5} xl={7} xxl={8}/>
             </Row>
             
         </div>

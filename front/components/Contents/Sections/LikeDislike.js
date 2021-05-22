@@ -118,7 +118,7 @@ function LikeDislike(props) {
 
 
     return [
-        <div style={{float:'right'}}>
+        <div >
             <Tooltip key="comment-basic-like" title="Like">
                 <span style={{margin:'0 5px'}} onClick={onClickLike}>
                     {createElement(isLogin && likeAction === 'liked' ? LikeFilled : LikeOutlined)}

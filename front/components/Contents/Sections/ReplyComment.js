@@ -35,12 +35,6 @@ function ReplyComment(props) {
         });
     }
 
-    const onClickReply = () =>{
-        if(!props.user.isLogin){
-            return message.error('로그인을 해주세요.');
-        }
-    }
-
     return (
         <div>
             <Comment
@@ -50,8 +44,8 @@ function ReplyComment(props) {
             }
             content={
                 <Form onFinish={onSubmitReply} style={{display:'flex'}}>
-                    <Input.TextArea style={{width:'100%'}} onClick={onClickReply} onChange={onChangeEditor} value={commentValue}/>
-                    <Button style={{widows:'20%',height:'52px',marginLeft:'5px'}} htmlType="submit" type="primary">
+                    <Input.TextArea style={{width:'100%'}} onChange={onChangeEditor} value={commentValue}/>
+                    <Button disabled={props.user.isLogin ? false : true} style={{widows:'20%',height:'52px',marginLeft:'5px'}} htmlType="submit" type="primary">
                         답글
                     </Button>
                 </Form>

@@ -14,9 +14,7 @@ function CommentForm(props) {
 
     return (
         <div>
-          {user.isLogin && 
-            <ReplyComment postId={props.postId} user={user} userId={props.userId} refereshFunction={props.refereshFunction}/>
-          }
+          <ReplyComment postId={props.postId} user={user} userId={props.userId} refereshFunction={props.refereshFunction}/>
           {props.commentLists.map((comment,index)=>(
             (!comment.responseTo &&
           <>

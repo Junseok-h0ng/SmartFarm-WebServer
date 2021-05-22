@@ -27,7 +27,6 @@ function SingleComment(props) {
     }, []);
 
     const onClickReply = () =>{
-        if(!user.isLogin){return message.error('로그인을 해주세요')}
         setOpenReply(!openReply);
     }
     
@@ -62,12 +61,7 @@ function SingleComment(props) {
             >
             </Comment>
             {openReply &&
-            <>
-                {user.isLogin &&
-                    <ReplyComment  postId={props.postId} user={props.user} refereshFunction={props.refereshFunction} parentCommentId={comment._id} refreshOpenReply={onClickReply}/>
-                }
-            </> 
-                
+                <ReplyComment  postId={props.postId} user={props.user} refereshFunction={props.refereshFunction} parentCommentId={comment._id} refreshOpenReply={onClickReply}/> 
             }
         </div>
     )

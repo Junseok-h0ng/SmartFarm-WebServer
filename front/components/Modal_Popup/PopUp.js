@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BulbOutlined } from '@ant-design/icons';
 
 const Modal = ( props ) => {
     const { open, close, header } = props;
@@ -41,7 +42,7 @@ function PopUp() {
 
     return (
         <React.Fragment>
-            <button class= 'popup_btn' onClick={ openModal }>해당 데이터 더보기</button>
+            <button class= 'popup_btn' onClick={ openModal } ><BulbOutlined /></button>
             <Modal open={ modalOpen } close={ closeModal } header=''>
 
             </Modal>

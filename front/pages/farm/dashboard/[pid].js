@@ -30,17 +30,13 @@ function dashboard({farmData}) {
                         crops = payload.crops;
                     }
                 })
-                console.log(crops);
                 setCropsInfo(crops);
-            }
-    
-           
+            }   
         })
         // if(farmData.payload === false){
         //     message.error('농장에 접속할수 없습니다.')
         //     Router.back();
         // }
-        console.log(farmData.payload);
     }, [user])
    
     return (
@@ -50,7 +46,7 @@ function dashboard({farmData}) {
                 {/* {farmData.payload &&  */}
                 <div>
                     <h1 style={{textAlign:'center'}}>{cropsInfo ? cropsInfo.name : ''}</h1>
-                    <DashBoard/><br/>
+                    <DashBoard cropsInfo={cropsInfo}/><br/>
                     <ControlBoard/> 
                 </div>  
 

@@ -65,10 +65,11 @@ router.post('/addCropsInfo',(req,res)=>{
     })
 })
 
-router.post('/getApiNongsaro',async (req,res)=>{
+router.post('/getCropsTips',async (req,res)=>{
+    const cropsId = req.body.cropsId;
     const getUrl = async () =>{
         try{
-            return await axios.get("https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=30650&sKidofcomdtySeCode=FC")
+            return await axios.get(`https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=${cropsId}&sKidofcomdtySeCode=FC`)
         }catch(err){
             return res.status(401).send(err)
         }

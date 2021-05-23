@@ -45,6 +45,11 @@ export const loadFarmData = createAsyncThunk("LOAD_FARM_DATA",async(data)=>{
     return response.data;
 });
 
+export const getCropsTips = createAsyncThunk("GET_CROPS_TIPS",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/getCropsTips",(data));
+    return response.data;
+})
+
 export const farmReducer = createSlice({
     name:'farm',
     initialState: {

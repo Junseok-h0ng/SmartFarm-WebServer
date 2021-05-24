@@ -1,5 +1,7 @@
 import React from 'react';
-import { Bar} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+import { Popover } from 'antd'
+import { BulbOutlined } from '@ant-design/icons';
 import PopUp from '../Modal_Popup/PopUp';
 
 const DashboardForm = () => {
@@ -28,10 +30,9 @@ const DashboardForm = () => {
         }
 
         #now_condition {
-            display: flex;
+            padding-top: 4%;
             justify-content: center;
             align-items: center;
-            min-height: 47vh;
             border: 3px solid #5cb85c;
             border-radius: 8px;
         }
@@ -115,7 +116,7 @@ const DashboardForm = () => {
         <div  id= 'now_condition' align="center">
             <div>
                 <h3><strong>Now</strong></h3><br/>
-            <div><img width='100%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
+            <div><img width='99%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
             </div>
         </div>
         </div>
@@ -125,7 +126,9 @@ const DashboardForm = () => {
             <table id= 'dash_card'>
                 <tr>
                     <td colspan='2'>
-                        <PopUp/>
+                        <Popover trigger="click">
+                            <button><BulbOutlined />TIP!</button>
+                        </Popover>  
                     </td>
                 </tr>
                 <tr id= 'dash_card_th'>

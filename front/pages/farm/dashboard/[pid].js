@@ -7,6 +7,7 @@ import DashBoard from '../../../components/Farm/DashBoard';
 import ControlBoard from '../../../components/Farm/ControlBoard';
 import { loadFarmData, loadFarmInfo } from '../../../_redux/slices/farm';
 import NoLogin from '../../../components/commons/NoLogin';
+import ProfileForm from '../../../components/User/ProfileForm';
 
 
 function dashboard({farmData}) {
@@ -45,8 +46,9 @@ function dashboard({farmData}) {
             <>
                 {/* {farmData.payload &&  */}
                 <div>
+                    <ProfileForm user={user}/>
                     <h1 style={{textAlign:'center'}}>{cropsInfo ? cropsInfo.name : ''}</h1>
-                    <DashBoard cropsInfo={cropsInfo}/><br/>
+                    <DashBoard/><br/>
                     <ControlBoard/> 
                 </div>  
 

@@ -93,10 +93,11 @@ function UploadForm(props) {
           response.payload.map((payload,key)=>{
             const data={
               key,
-              name: key,
+              name: payload.fields.datetime,
               src: "data:image/jpg;base64,"+payload.fields.src,
               checked:false
             }
+            console.log(response);
             setImg(prevImg => [...prevImg,data]);
           })
         }else{
@@ -146,7 +147,7 @@ function UploadForm(props) {
               style={{width:120}}
               cover={<Image width={120} height={90} src={img.src}/>} 
           >
-              <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
+              <Checkbox  onChange={()=>onChangeCheckBox(index)}>{img.name}</Checkbox>
           </Card>
           </Col>
       ))}

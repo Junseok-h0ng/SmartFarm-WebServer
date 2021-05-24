@@ -63,7 +63,7 @@ function dashboard(props) {
         border: 3px solid #5cb85c;
         border-radius: 8px;
     }
-    
+
   `}</style>
 
   <div>
@@ -140,7 +140,7 @@ function dashboard(props) {
     />
     
     </div>
-    <div  id= 'now_condition' align="center">
+    <div id= 'now_condition' align="center">
         <div>
             <h3><strong>Now</strong></h3>
         <div><img width='85%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>

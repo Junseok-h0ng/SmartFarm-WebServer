@@ -4,6 +4,7 @@ import Router,{useRouter} from 'next/router';
 import SelectCrops from '../../components/Farm/SelectCrops';
 import { loadFarmInfo } from '../../_redux/slices/farm';
 import NoLogin from '../../components/commons/NoLogin';
+import ProfileForm from '../../components/User/ProfileForm';
 
 function settingFarm() {
 
@@ -20,12 +21,12 @@ function settingFarm() {
 
     return (
         <div>
-            {user.isLogin ?
+            {user.isLogin &&
                 <div>
+                    <ProfileForm user={user}/>
                     <SelectCrops pid={pid}/> 
                 </div>
-            :
-                <NoLogin/>
+            
             }
        
         </div>

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import { Button,Select,message } from 'antd';
 import { addCropsInfo, getCrops, getCropsInfo, loadFarmInfo } from '../../_redux/slices/farm';
+import ProfileForm from '../User/ProfileForm';
 import Router from 'next/router';
 
 function SelectCrops(props) {
@@ -150,37 +151,61 @@ function SelectCrops(props) {
     .ce {
         width: 15%;  padding: 10px; font-weight: lighter; vertical-align: center; border-bottom: 1px solid #ccc; background: #eee;
     }
+    #Select_btn {
+        box-shadow:inset 0px 1px 0px 0px #a4e271;
+       
+    }
+    
     `
+    const buttonStyle ={
+        float:'right',
+        boxShadow:'inset 0px 1px 0px 0px #a4e271',
+        backgroundColor:'#89c403',
+        borderRadius: '2px',
+        border:'1px solid #74b807',
+        display:'inline-block',
+        cursor:'pointer',
+        color:'#ffffff',
+        fontWeight:'bold',
+        padding: '4px 15px',
+        textDecoration:'none',
+        textShadow:'0px 1px 0px #528009'
+    }
 
     return (
 
         <div>
             {user.isLogin &&
                 <div>
-                    <Button onClick={()=>onClickButton(210005)}>밭농사</Button>
-                    <Button onClick={()=>onClickButton(210001)}>채소</Button>
-                    <Button onClick={()=>onClickButton(210002)}>과수</Button>
-                    <Select
-                        showSearch
-                        style={{ width: 200 }}
-                        placeholder="Select a Crops"
-                        onChange={onChangeCrops}
-                        filterOption={(input, option) =>
-                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }
-                    >
-                        {crops && 
-                            crops
-                        }
-                    </Select>
-                    {info &&
-                        <>
-                            <h1>{cropsInfo.name}</h1>
-                            <style>{mycss}</style>
-                            <div dangerouslySetInnerHTML={{__html:info}}></div>
-                            <Button onClick={onSumbitCropsInfo}>확인</Button>
-                        </>
-                    }  
+
+                    <div style={{marginTop:'10px'}}>
+                        <Select
+                            showSearch
+                            style={{ width: 200,float:'right'}}
+                            placeholder="Select a Crops"
+                            onChange={onChangeCrops}
+                            filterOption={(input, option) =>
+                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+                        {crops}
+                        </Select>
+
+                        <Button style={buttonStyle} onClick={()=>onClickButton(210005)}>밭농사</Button>
+                        <Button style={buttonStyle} onClick={()=>onClickButton(210001)}>채소</Button>
+                        <Button style={buttonStyle} onClick={()=>onClickButton(210002)}>과수</Button>
+
+                        {info &&
+                            <>
+                                <h1>{cropsInfo.name}</h1>
+                                <style>{mycss}</style>
+                                <div dangerouslySetInnerHTML={{__html:info}}></div>
+                                <Button style={{width:'100%',borderRadius:'12px',backgroundColor:'#89c403',
+                                margin:'10px 0',textShadow:'0px 1px 0px #528009',color:'#ffffff'}} onClick={onSumbitCropsInfo}>확인</Button>
+                            </>
+                        }  
+                    </div>
+
                 </div>
             }
             

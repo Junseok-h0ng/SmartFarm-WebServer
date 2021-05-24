@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import Router from 'next/router';
+import ScrollToTop from "react-scroll-to-top";
 import Link from 'next/link';
 import {Menu,Row,Col,message} from 'antd';
 import {logOut } from '../../_redux/slices/user';
@@ -45,6 +45,7 @@ function AppLayout({children}) {
                     {!isLoading &&
                     <>
                         {children}
+                        <ScrollToTop smooth/>
                     </>   
                     }
                 </Col>

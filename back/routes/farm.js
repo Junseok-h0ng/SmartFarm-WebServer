@@ -130,9 +130,19 @@ router.post('/getCrops/info',async(req,res)=>{
 });
 
 router.post('/loadFarmData',(req,res)=>{
+    let dateString = [];
+    
+    if(req.body.filterDateString){
+        dateString = req.body.filterDateString;
+    }else{
+        dateString = req.body.dateString;
+    }
+
+    console.log(dateString);
+
     const filter = {
-        start_date : req.body.dateString[0],
-        end_date : req.body.dateString[1],
+        start_date : dateString[0],
+        end_date : dateString[1],
         image: false,
         chart: false,
         dashboard: false

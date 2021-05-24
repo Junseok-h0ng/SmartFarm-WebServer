@@ -86,8 +86,11 @@ function UploadForm(props) {
       //     });
       //   }
       // }); 
-      
-      dispatch(loadFarmData({pid:selectFarm,dateString,option:'image'}))
+      const filterDateString = [];
+      filterDateString[0] = dateString + ' 00:00';
+      filterDateString[1] = dateString + ' 23:00';
+
+      dispatch(loadFarmData({pid:selectFarm,filterDateString,option:'image'}))
       .then(response=>{
         if(response.payload){
           response.payload.map((payload,key)=>{
@@ -97,7 +100,6 @@ function UploadForm(props) {
               src: "data:image/jpg;base64,"+payload.fields.src,
               checked:false
             }
-            console.log(response);
             setImg(prevImg => [...prevImg,data]);
           })
         }else{
@@ -120,6 +122,7 @@ function UploadForm(props) {
         start : dateString[0],
         end : dateString[1]
       }
+      console.log(dateString);
       setDateString(data);
       dispatch(loadFarmData({pid:selectFarm,dateString,option:'chart'}))
       .then(response=>{
@@ -177,16 +180,10 @@ function UploadForm(props) {
               <div className="card-container">
                   <Tabs type="card">
                     <Tabs.TabPane tab="week" key="1">
-                      <DatePicker.RangePicker onChange={onChangeImageDate}/>
+                      <DatePicker onChange={onChangeImageDate}/>
                       {img[0] &&
                         renderImage()
                       } 
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="today" key="2">
-                      <TimePicker format={'HH'} onChange={onChangeImageDate}/>
-                      {img[0] &&
-                        renderImage()
-                      }
                     </Tabs.TabPane>
                   </Tabs>
               </div>
@@ -199,12 +196,6 @@ function UploadForm(props) {
                     {dateString.name &&
                       <LineCharts/>
                     } 
-                  </Tabs.TabPane>
-                  <Tabs.TabPane tab="today" key="2">
-                    <TimePicker format={'HH'} onChange={onChangeChartDate}/>
-                    {dateString.name &&
-                      <LineCharts/>
-                    }
                   </Tabs.TabPane>
                 </Tabs>
             </div>

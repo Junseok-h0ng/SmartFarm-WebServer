@@ -122,7 +122,7 @@ const ControlForm = () => {
             <img src="https://i.postimg.cc/SKLHkLzy/fan.png" width="70" alt="sample"></img>&emsp;
             <Switch defaultChecked onChange={onChange} />
 
-            <img src="https://i.postimg.cc/GmphV2Bg/water.jpg" width="90" alt="sample"></img> 
+            <img src="https://i.postimg.cc/GmphV2Bg/water.jpg" width="100" alt="sample"></img> 
             <Switch defaultChecked onChange={onChange} />&emsp;
             <div>
                 <img src="https://i.postimg.cc/j5YTxd5b/light.jpg" width="80" alt="sample"></img>

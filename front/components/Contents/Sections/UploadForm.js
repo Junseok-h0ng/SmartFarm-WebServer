@@ -37,6 +37,9 @@ function UploadForm(props) {
       const filterImages = images.filter((img)  =>{
         return img != null;
       });
+      if(filterImages.length > 2){
+        return message.error('이미지는 최대 2개까지 포스팅할수 있습니다.');
+      }
       dateString.name ? filterImages.push(dateString) : null;
       props.handleCheckedImages(filterImages)
   };
@@ -46,32 +49,13 @@ function UploadForm(props) {
   };
 
   const onChangeCheckBox = (key) =>{
-   img[key].checked = !img[key].checked
+    img[key].checked = !img[key].checked
   }
-
-  // const renderImage = () =>(
-  //  <Row>
-  //           {img[0] ?
-  //            img.map((img,index)=>(
-  //             <Col span={6} key={index}>
-  //               <Card
-  //                 hoverable
-  //                 style={{width:120}}
-  //                 cover={<Image width={120} height={90} src={img.src}/>} 
-  //               >
-  //                 <Checkbox  onChange={()=>onChangeCheckBox(index)}>{index}</Checkbox>
-  //               </Card>
-  //             </Col>
-  //           ))
-  //           :
-  //           <NoContents message="이미지가 없습니다."/>
-  //           }
-  //         </Row>
-  // )
 
   const onChangeImageDate = (date,dateString) =>{
     // date가 빈칸이 아닌경우에만 img불러오기
     if(date != null){
+      setImg([]);
       // dispatch(loadFarmImages())
       // .then(result=>{
       //   if(result.payload){
@@ -93,15 +77,21 @@ function UploadForm(props) {
       dispatch(loadFarmData({pid:selectFarm,filterDateString,option:'image'}))
       .then(response=>{
         if(response.payload){
-          response.payload.map((payload,key)=>{
-            const data={
-              key,
-              name: payload.fields.datetime,
-              src: "data:image/jpg;base64,"+payload.fields.src,
-              checked:false
-            }
-            setImg(prevImg => [...prevImg,data]);
-          })
+          if(response.payload.length > 0){
+            // 리스폰스에 이미지가 있다면 이미지를 저장한다.
+            response.payload.map((payload,key)=>{
+              const data={
+                key,
+                name: payload.fields.datetime,
+                src: "data:image/jpg;base64,"+payload.fields.src,
+                checked:false
+              }
+              setImg(prevImg => [...prevImg,data]);
+            })
+          }else{
+            // 리스폰스에 이미지가 없다면 메시지를 띄운다.
+            message.error('해당되는 날짜에 이미지 데이터가 존재하지 않습니다.');
+          }
         }else{
           message.error('농장과 연결이 실패했습니다.');
           setSelectFarm();
@@ -122,7 +112,6 @@ function UploadForm(props) {
         start : dateString[0],
         end : dateString[1]
       }
-      console.log(dateString);
       setDateString(data);
       dispatch(loadFarmData({pid:selectFarm,dateString,option:'chart'}))
       .then(response=>{
@@ -150,7 +139,7 @@ function UploadForm(props) {
               style={{width:120}}
               cover={<Image width={120} height={90} src={img.src}/>} 
           >
-              <Checkbox  onChange={()=>onChangeCheckBox(index)}>{img.name}</Checkbox>
+              <Checkbox onChange={()=>onChangeCheckBox(index)}>{img.name}</Checkbox>
           </Card>
           </Col>
       ))}
@@ -180,7 +169,7 @@ function UploadForm(props) {
               <div className="card-container">
                   <Tabs type="card">
                     <Tabs.TabPane tab="week" key="1">
-                      <DatePicker onChange={onChangeImageDate}/>
+                      <DatePicker onChange={onChangeImageDate} style={{marginBottom:'15px'}}/>
                       {img[0] &&
                         renderImage()
                       } 

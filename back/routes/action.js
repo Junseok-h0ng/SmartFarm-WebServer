@@ -47,7 +47,7 @@ router.post('/unDislike',(req,res,next)=>{
 });
 
 router.post('/getLikes',(req,res,next)=>{
-
+    console.log(req.body);
     //userID 제거
     const filteredData = Object.assign({},req.body);
     delete filteredData.userId;

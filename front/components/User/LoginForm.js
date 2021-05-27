@@ -130,7 +130,7 @@ function LoginForm(props) {
                                         </Link>
                                         </li>
                                         <li>
-                                        <Link href="http://api.eouleuda.kro.kr/api/auth/google">
+                                        <Link href="http://localhost:3000/api/auth/google">
                                             <a>
                                                 <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="66" alt="구글 로그인"></img>                      
                                             </a>

@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Progress,Slider,Tooltip,Switch,Row,Col,Button} from 'antd';
 import {FaFan} from 'react-icons/fa';
 import {GiPlantWatering} from 'react-icons/gi';
 
 function control() {
+
+    const [temperature, setTemperature] = useState(0);
 
     const marks = {
         0: {
@@ -54,7 +56,7 @@ function control() {
     </div>
     <br/>
     <div id='col'>
-        <Slider range marks={marks} defaultValue={[17, 23]} max ='30' />
+        <Slider marks={marks} defaultValue={temperature} max ='30' />
     </div>
     <br/>
     <div align='center'>

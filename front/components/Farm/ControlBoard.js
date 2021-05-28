@@ -1,13 +1,32 @@
 import React,{useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Progress,Slider,Tooltip,Switch,Row,Col,Button} from 'antd';
-import {FaFan} from 'react-icons/fa';
-import {GiPlantWatering} from 'react-icons/gi';
+import {setFarmHumi, setFarmInfo, setFarmTemp} from '../../_redux/slices/farm';
 
-function control() {
+function control(props) {
 
+    const dispatch = useDispatch();
     const [temperature, setTemperature] = useState(0);
+    const [humidity, setHumidity] = useState(0);
 
-    const marks = {
+
+    const onChangeTemperature = (temperature) =>{
+        setTemperature(temperature);
+    }
+
+    const onChangeHumidity = (humidity) =>{
+        setHumidity(humidity);
+    }
+
+    const onSubmitFarmInfo = () =>{
+        dispatch(setFarmInfo({
+            temperature,
+            humidity,
+            ipAddress:props.farmInfo.ipAddress
+        }))
+    }
+
+    const tempMarks = {
         0: {
             style:{
                 color: '#489CFF'
@@ -24,8 +43,25 @@ function control() {
         }
     }
 
-    return <div>
+    const humiMarks ={
+        0: {
+            style:{
+                color: '#489CFF'
+            },
+            label: <strong>0%</strong>
+        },
+        10: '10%',
+        20: '20%',
+        30: {
+            style:{
+                color: '#f50'
+            },
+            label: <strong>30%</strong>
+        }
+    }
 
+    return (
+    <div>
     <style jsx>{`    
     #col_2 {
         column-count:2;
@@ -47,32 +83,28 @@ function control() {
 }
     
 `}</style>
-<div>
     <div align='center'>
-        <Progress type="dashboard" percent={20} format={percent => `${percent} °C`} />
+        <Tooltip title="목표 농장 온도">
+            <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} />
+        </Tooltip>
         &emsp;&emsp;
-        <Progress type="dashboard" percent={40} />
-           
+        <Tooltip title="목표 토양 습도">
+            <Progress type="dashboard" percent={humidity} />
+        </Tooltip>
     </div>
     <br/>
-    <div id='col'>
-        <Slider marks={marks} defaultValue={temperature} max ='30' />
-    </div>
-    <br/>
-    <div align='center'>
-        <img src="https://i.postimg.cc/SKLHkLzy/fan.png" width="70" alt="sample"></img>&emsp;
-        <Switch />
-
-        <img src="https://i.postimg.cc/GmphV2Bg/water.jpg" width="90" alt="sample"></img> 
-        <Switch />&emsp;
-        <div>
-            <img src="https://i.postimg.cc/j5YTxd5b/light.jpg" width="80" alt="sample"></img>
+        <div id='col'>
+            <Slider marks={tempMarks} defaultValue={temperature} max ='30' onChange={onChangeTemperature} />
         </div>
-        
+        <div id='col'>
+            <Slider marks={humiMarks} defaultValue={humidity} max ='30' onChange={onChangeHumidity} />
+        </div>
+        <Button style={{width:'100%',borderRadius:'12px',backgroundColor:'#89c403',
+                        margin:'10px 0',textShadow:'0px 1px 0px #528009',color:'#ffffff'}}
+                onClick={onSubmitFarmInfo}>설정</Button>
+    <br/>
     </div>
-
-    </div>
-</div>
+    )  
 }
 
 export default control

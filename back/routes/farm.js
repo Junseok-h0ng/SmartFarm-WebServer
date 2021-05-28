@@ -138,8 +138,6 @@ router.post('/loadFarmData',(req,res)=>{
         dateString = req.body.dateString;
     }
 
-    console.log(dateString);
-
     const filter = {
         start_date : dateString[0],
         end_date : dateString[1],
@@ -167,9 +165,12 @@ router.post('/loadFarmData',(req,res)=>{
             .then((response)=>{
                 res.status(200).send(response.data);
             });  
+    });
+});
 
-    })
-
+router.post('/setFarmInfo',(req,res)=>{
+    console.log(req.body);
+    res.send();
 });
 
 module.exports = router;    

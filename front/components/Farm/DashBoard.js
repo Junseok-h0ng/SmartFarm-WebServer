@@ -71,11 +71,11 @@ function dashboard(props) {
     <div>
     <Bar   
         data={{
-            labels: ['현재 값', '권장 값'],
+            labels: ['현재 값'],
             datasets:[
                 {
                     label : "온도",
-                    data: [21,24],
+                    data: [21],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -84,7 +84,7 @@ function dashboard(props) {
                 },
                 {
                     label : "습도",
-                    data: [24, 26],
+                    data: [24],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -92,8 +92,8 @@ function dashboard(props) {
                 backgroundColor: "rgba(25, 201, 14, 0.5)",
                 },
                 {
-                    label : "물양",
-                    data: [20, 17],
+                    label : "C02 농도",
+                    data: [20],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -101,8 +101,8 @@ function dashboard(props) {
                 backgroundColor: "rgba(75, 197, 220, 1)",
                 },
                 {
-                    label : "밝기",
-                    data: [33, 40],
+                    label : "물양",
+                    data: [33],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -162,20 +162,20 @@ function dashboard(props) {
                 </td>
             </tr>
             }
-            <tr id= 'dash_card_th'>
+            <tr id= 'dash_card  _th'>
                 <td id= 'dash_card_td'>
                     <h4>온도</h4>
                     <h4>21℃</h4>
                 </td>
                 <td>
                     <h4>습도</h4>
-                    <h4>24℃</h4>
+                    <h4>24%</h4>
                 </td>
             </tr>
             <tr id= 'dash_card_th'>
                 <td id= 'dash_card_td'>
                     <h4>물양</h4>
-                    <h4>20</h4>
+                    <h4>20%</h4>
                 </td>
                 <td id= 'dash_card_td'>
                     <h4>밝기</h4>

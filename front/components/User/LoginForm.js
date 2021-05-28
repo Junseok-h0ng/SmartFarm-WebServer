@@ -113,31 +113,6 @@ function LoginForm(props) {
                                         </div>                                            
                                     </td>
                                 </tr>
-                                <tr>
-                                    <ul>
-                                        <li>
-                                            <Link href="http://localhost:3000/api/auth/naver" >
-                                                <a>
-                                                    <img src="https://i.ibb.co/0DSXsm8/Naver-icon.png" width="66" alt="네이버 로그인"></img>
-                                                </a>  
-                                            </Link>
-                                        </li>
-                                        <li>
-                                        <Link href="http://localhost:3000/api/auth/kakao">
-                                            <a>
-                                                <img src="https://i.ibb.co/k0djP8x/img.jpg" width="66" alt="카카오톡 로그인"></img>
-                                            </a>
-                                        </Link>
-                                        </li>
-                                        <li>
-                                        <Link href="http://localhost:3000/api/auth/google">
-                                            <a>
-                                                <img src="https://i.ibb.co/GJgtxdr/google.jpg" width="66" alt="구글 로그인"></img>                      
-                                            </a>
-                                        </Link>
-                                        </li>
-                                    </ul>
-                                </tr>
                             </table>
                         </div>   
                         </Form>   

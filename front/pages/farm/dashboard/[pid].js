@@ -16,7 +16,7 @@ function dashboard({farmData}) {
     const {pid} = router.query;
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
-    const [cropsInfo, setCropsInfo] = useState({});
+    const [farmInfo, setFarmInfo] = useState({});
 
     useEffect(() => {
         if(!user.isLogin){
@@ -25,13 +25,11 @@ function dashboard({farmData}) {
         dispatch(loadFarmInfo({userId:user.data._id}))
         .then(res=>{
             if(res.payload[0]){
-                let crops;
                 res.payload.map((payload)=>{
                     if(payload._id === pid){
-                        crops = payload.crops;
+                        setFarmInfo(payload);
                     }
                 })
-                setCropsInfo(crops);
             }   
         })
         // if(farmData.payload === false){
@@ -39,7 +37,6 @@ function dashboard({farmData}) {
         //     Router.back();
         // }
     }, [user])
-   
     return (
         <div>
             {user.isLogin ?
@@ -47,9 +44,9 @@ function dashboard({farmData}) {
                 {/* {farmData.payload &&  */}
                 <div>
                     <ProfileForm user={user}/>
-                    <h1 style={{textAlign:'center'}}>{cropsInfo ? cropsInfo.name : ''}</h1>
+                    <h1 style={{textAlign:'center'}}>{farmInfo.crops ? farmInfo.crops.name : ''}</h1>
                     <DashBoard/><br/>
-                    <ControlBoard/> 
+                    <ControlBoard farmInfo={farmInfo}/> 
                 </div>  
 
                 {/* }  */}

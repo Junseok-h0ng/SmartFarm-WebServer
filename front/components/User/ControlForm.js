@@ -105,9 +105,9 @@ function control(props) {
 
   const style = {
     display: 'inline-block',
-    height: 200,
+    height: 145,
     margin: 24,
-    // marginLeft: 50,
+    margintop: 20,
   };
 
   return (
@@ -129,13 +129,13 @@ function control(props) {
 }
   
 `}</style>
-      <div align='center'>
-        <table>
+      <div>
+        <table align='center'>
           <tr>
             <td>
               <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="28" alt="sample"></img>
               <Tooltip title="목표 농장 온도">
-                <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} />
+                <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={155}/>
               </Tooltip>
               <div style={style}>
                 <Slider vertical marks={tempMarks} defaultValue={temperature} max='30' onChange={onChangeTemperature} />
@@ -144,7 +144,7 @@ function control(props) {
             <td>
               <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
               <Tooltip title="목표 토양 습도">
-                <Progress type="dashboard" percent={humidity} />
+                <Progress type="dashboard" percent={humidity} width={150}/>
               </Tooltip>
               <div style={style}>
                 <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />           

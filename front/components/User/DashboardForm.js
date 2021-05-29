@@ -14,8 +14,8 @@ const DashboardForm = () => {
         }
 
         #dash_card {
-            width: 70%;
-            border: 3px solid #a0a0a0;
+            width: 75%;
+            border: 2.5px solid #a0a0a0;
             text-align: center;
         }
 
@@ -33,8 +33,6 @@ const DashboardForm = () => {
             padding-top: 4%;
             justify-content: center;
             align-items: center;
-            border: 3px solid #5cb85c;
-            border-radius: 8px;
         }
         
       `}</style>
@@ -44,11 +42,11 @@ const DashboardForm = () => {
                 <div>
                     <Bar
                         data={{
-                            labels: ['현재 값', '권장 값'],
+                            labels: ['현재 값'],
                             datasets: [
                                 {
-                                    label: "온도",
-                                    data: [21, 24],
+                                    label: "농장온도",
+                                    data: [21],
                                     borderColor: [
                                         "rgba(255, 201, 14, 1)",
                                     ],
@@ -56,8 +54,8 @@ const DashboardForm = () => {
                                     backgroundColor: "rgba(255, 201, 14, 0.5)",
                                 },
                                 {
-                                    label: "습도",
-                                    data: [24, 26],
+                                    label: "농장습도",
+                                    data: [24],
                                     borderColor: [
                                         "rgba(255, 201, 14, 1)",
                                     ],
@@ -65,8 +63,26 @@ const DashboardForm = () => {
                                     backgroundColor: "rgba(25, 201, 14, 0.5)",
                                 },
                                 {
+                                    label: "토양온도",
+                                    data: [27],
+                                    borderColor: [
+                                        "rgba(255, 201, 14, 1)",
+                                    ],
+                                    borderColor: "rgba(255, 150, 14, 1)",
+                                    backgroundColor: "rgba(255, 151, 14, 0.5)",
+                                },
+                                {
+                                    label: "토양습도",
+                                    data: [29],
+                                    borderColor: [
+                                        "rgba(255, 201, 14, 1)",
+                                    ],
+                                    borderColor: "rgba(55, 111, 95, 13)",
+                                    backgroundColor: "rgba(55, 111, 95, 0.5)",
+                                },
+                                {
                                     label: "물양",
-                                    data: [20, 17],
+                                    data: [25],
                                     borderColor: [
                                         "rgba(255, 201, 14, 1)",
                                     ],
@@ -74,8 +90,8 @@ const DashboardForm = () => {
                                     backgroundColor: "rgba(75, 197, 220, 1)",
                                 },
                                 {
-                                    label: "밝기",
-                                    data: [33, 40],
+                                    label: "CO2",
+                                    data: [33],
                                     borderColor: [
                                         "rgba(255, 201, 14, 1)",
                                     ],
@@ -86,7 +102,7 @@ const DashboardForm = () => {
 
                         }}
                         width={'50%'}
-                        height={400}
+                        height={370}
 
                         options={{
                             responsive: true,
@@ -105,7 +121,7 @@ const DashboardForm = () => {
                                     },
                                     scaleLabel: {
                                         display: true,
-                                        labelString: '°C'
+                                        labelString:''
                                     }
                                 }]
                             }
@@ -115,7 +131,6 @@ const DashboardForm = () => {
                 </div>
                 <div id='now_condition' align="center">
                     <div>
-                        <h3><strong>Now</strong></h3><br />
                         <div><img width='99%' src="https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
                     </div>
                 </div>
@@ -125,7 +140,7 @@ const DashboardForm = () => {
 
                 <table id='dash_card'>
                     <tr>
-                        <td colspan='2'>
+                        <td colspan='4'>
                             <Popover trigger="click">
                                 <button><BulbOutlined />TIP!</button>
                             </Popover>
@@ -133,22 +148,28 @@ const DashboardForm = () => {
                     </tr>
                     <tr id='dash_card_th'>
                         <td id='dash_card_td'>
-                            <h4>온도</h4>
+                            <h4>농장온도</h4>
                             <h4>21℃</h4>
                         </td>
-                        <td>
-                            <h4>습도</h4>
+                        <td id='dash_card_td'>
+                            <h4>농장습도</h4>
                             <h4>24℃</h4>
-                        </td>
+                        </td>                      
                     </tr>
                     <tr id='dash_card_th'>
                         <td id='dash_card_td'>
-                            <h4>물양</h4>
-                            <h4>20</h4>
+                            <h4>토양온도</h4>
+                            <h4>27℃</h4>
                         </td>
                         <td id='dash_card_td'>
-                            <h4>밝기</h4>
-                            <h4>33</h4>
+                            <h4>토양습도</h4>
+                            <h4>29℃</h4>
+                        </td>
+                    </tr>
+                    <tr id='dash_card_th'>
+                        <td id='dash_card_td' td colspan='2'>
+                            <h4>물양</h4>
+                            <h4>20</h4>
                         </td>
                     </tr>
                 </table>

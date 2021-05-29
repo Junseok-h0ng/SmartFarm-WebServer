@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card,Avatar,Checkbox} from 'antd';
+import { Card, Avatar, Checkbox } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import {  LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
+import { LikeOutlined, DislikeOutlined, MessageOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
 
 const settings = {
@@ -10,7 +10,7 @@ const settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-  };
+};
 
 function CardForm() {
     return (
@@ -85,50 +85,50 @@ function CardForm() {
 
             `}</style>
 
-            
-            <div id= 'card_line'>
-                <Card style={{marginTop:'5%'}}
+
+            <div id='card_line'>
+                <Card style={{ marginTop: '5%' }}
                     actions={[
                         <LikeOutlined type="like" key="like" />,
-                        <DislikeOutlined type="dislike" key="dislike" /> ,
-                        <MessageOutlined  type="message" key="message"/>,
+                        <DislikeOutlined type="dislike" key="dislike" />,
+                        <MessageOutlined type="message" key="message" />,
                     ]}
                 >
                     <div>
-                        <Avatar icon={<UserOutlined />}/>&emsp;Jason<br/>2000 / 10 / 10 
+                        <Avatar icon={<UserOutlined />} />&emsp;Jason<br />2000 / 10 / 10
                         <div>
-                            <br/>Hello, this is my planet
-                            <Slider {...settings}>     
-                            <div align='center'>
-                                <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg" id= 'card_pic' alt="sample"></img>
-                            </div>
-                            <div align='center'>
-                                <br/><img src="https://i.ibb.co/QXrwTWh/sample.jpg" id= 'card_pic' alt="sample"></img>
-                            </div>
-                            </Slider>      
-                        </div> 
+                            <br />Hello, this is my planet
+                            <Slider {...settings}>
+                                <div align='center'>
+                                    <br /><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg" id='card_pic' alt="sample"></img>
+                                </div>
+                                <div align='center'>
+                                    <br /><img src="https://i.ibb.co/QXrwTWh/sample.jpg" id='card_pic' alt="sample"></img>
+                                </div>
+                            </Slider>
+                        </div>
                     </div>
                 </Card>
             </div>
-            
-            <div id= 'card'>
-                <div id= 'card_image'>
-                    <Slider {...settings}>     
-                            <div align='center'>
-                                <br/><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg" id= 'card_pic' alt="sample"></img>
-                            </div>
-                            <div align='center'>
-                                <br/><img src="https://i.ibb.co/QXrwTWh/sample.jpg" id= 'card_pic' alt="sample"></img>
-                            </div>
-                    </Slider>      
+
+            <div id='card'>
+                <div id='card_image'>
+                    <Slider {...settings}>
+                        <div align='center'>
+                            <br /><img src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg" id='card_pic' alt="sample"></img>
+                        </div>
+                        <div align='center'>
+                            <br /><img src="https://i.ibb.co/QXrwTWh/sample.jpg" id='card_pic' alt="sample"></img>
+                        </div>
+                    </Slider>
                 </div>
-                <div id= 'card_avatar'>
-                    <Avatar icon={<UserOutlined />}/> Jason <br/> 2000 / 2 / 2
+                <div id='card_avatar'>
+                    <Avatar icon={<UserOutlined />} /> Jason <br /> 2000 / 2 / 2
                 </div>
-                <div id= 'card_text'>
+                <div id='card_text'>
                     <p>This is my lover</p>
                 </div>
-                <div id= 'card_stats'>
+                <div id='card_stats'>
                     <div>
                         <LikeOutlined type="like" key="like" />
                     </div>
@@ -136,7 +136,7 @@ function CardForm() {
                         <DislikeOutlined type="dislike" key="dislike" />
                     </div>
                     <div>
-                        <MessageOutlined  type="message" key="message"/>
+                        <MessageOutlined type="message" key="message" />
                     </div>
                 </div>
             </div>

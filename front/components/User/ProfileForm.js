@@ -1,7 +1,7 @@
 import React from 'react';
-import {Avatar,Button,Card} from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import {useSelector} from 'react-redux';
+import { Avatar, Button, Card } from 'antd';
+import { UserOutlined, EditOutlined, MenuOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 function ProfileForm() {
     const user = useSelector(state => state.user);
@@ -51,35 +51,35 @@ function ProfileForm() {
                 />
             </Card> */}
             <div id='line'>
-            <br/>    
-                <div>                 
+                <br />
+                <div>
                     <div id='profile_container'>
                         <table>
                             <tr>
-                                <th id= 'profile_th'><Avatar size={99} icon={<UserOutlined />} /></th>
+                                <th id='profile_th'><Avatar size={99} icon={<UserOutlined />} /></th>
                             </tr>
                             <tr>
-                                <td id= 'profile_td'><h4>Jason</h4></td>
+                                <td id='profile_td'><h4>Jason</h4></td>
                             </tr>
                             <tr>
-                                <td id= 'profile_td'><h5>Jason123@naver.com</h5></td>
+                                <td id='profile_td'><h5>Jasoasdfasfsfsdn123@naver.com</h5></td>
                             </tr>
-                            <br/>
-                            <tr>
-                                <button id='profile_btn'>
-                                    <span>유저 프로필</span>
-                                </button>
+                            <br />
+                            <tr align='center'>
+                                <Button>
+                                    <EditOutlined />
+                                </Button>
                                 &ensp;
-                                <button id='profile_btn'>
-                                    <span href="/user">제어창</span>
-                                </button> 
+                                <Button>
+                                    <MenuOutlined />
+                                </Button>
                             </tr>
-                        </table>        
+                        </table>
+                    </div>
+                    <br />
                 </div>
-                <br/>
-            </div>
 
-        </div>
+            </div>
         </div>
     )
 }

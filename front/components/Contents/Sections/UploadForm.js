@@ -72,18 +72,19 @@ function UploadForm(props) {
       // }); 
       const filterDateString = [];
       filterDateString[0] = dateString + ' 00:00';
-      filterDateString[1] = dateString + ' 23:00';
+      filterDateString[1] = dateString + ' 23:59';
 
-      dispatch(loadFarmData({pid:selectFarm,filterDateString,option:'image'}))
+      dispatch(loadFarmData({pid:selectFarm,filterDateString,options:'image'}))
       .then(response=>{
         if(response.payload){
           if(response.payload.length > 0){
             // 리스폰스에 이미지가 있다면 이미지를 저장한다.
             response.payload.map((payload,key)=>{
+              console.log(payload);
               const data={
                 key,
-                name: payload.fields.datetime,
-                src: "data:image/jpg;base64,"+payload.fields.src,
+                name: key,
+                src: "data:image/jpg;base64," + payload.fields.src,
                 checked:false
               }
               setImg(prevImg => [...prevImg,data]);

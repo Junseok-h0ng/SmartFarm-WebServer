@@ -131,27 +131,22 @@ router.post('/getCrops/info',async(req,res)=>{
 
 router.post('/loadFarmData',(req,res)=>{
     let dateString = [];
-    
+
+    const filter = {
+        options: req.body.options
+    }
+
+    // 필터링된 DateString이 있으면
     if(req.body.filterDateString){
         dateString = req.body.filterDateString;
     }else{
         dateString = req.body.dateString;
     }
 
-    const filter = {
-        start_date : dateString[0],
-        end_date : dateString[1],
-        image: false,
-        chart: false,
-        dashboard: false
-    }
-
-    if(req.body.option === 'image'){
-        filter.image = true
-    }else if(req.body.option === 'chart'){
-        filter.chart = true
-    }else{
-        filter.dashboard = true
+    // Date정보가 있으면 추가
+    if(dateString){
+        filter.start_date = dateString[0];
+        filter.end_date = dateString[1];
     }
 
     Farm.findById({_id:req.body.pid})
@@ -168,9 +163,44 @@ router.post('/loadFarmData',(req,res)=>{
     });
 });
 
-router.post('/setFarmInfo',(req,res)=>{
-    console.log(req.body);
-    res.send();
+router.post('/setFarmTarget',(req,res)=>{
+    const filter = {
+        options: 'revice',
+        revice_temp: req.body.temperature,
+        revice_humidity: req.body.humidity
+    }
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        const ipAddress = doc.ipAddress;
+        axios.post(ipAddress+'/data/',(filter),{timeout:500})
+        .catch((err)=>{
+            res.status(401).send(false);
+        })
+        .then(()=>{
+            res.status(200).send({success:true});
+        })
+    })
 });
+
+router.post('/getFarmTarget',(req,res)=>{
+    const filter = {
+        options: 'get'
+    }
+
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        const ipAddress = doc.ipAddress;
+        console.log(ipAddress);
+        axios.post(ipAddress+'/data/',(filter),{timeout:500})
+        .catch((err)=>{
+            res.status(401).send(false);
+        })
+        .then((response)=>{
+            res.status(200).send(response.data);
+        })
+    })
+})
 
 module.exports = router;    

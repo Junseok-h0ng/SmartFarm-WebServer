@@ -26,9 +26,9 @@ function dashboard(props) {
                 }))
             }
         })
-
-
     }, [])
+
+    console.log(props.farmData)
 
     const popupContent=()=>{
         if(cropsTips.data){
@@ -69,13 +69,14 @@ function dashboard(props) {
   <div>
     <div id='dash_col'>
     <div>
-    <Bar   
+    {props.farmData &&
+        <Bar   
         data={{
             labels: ['현재 값'],
             datasets:[
                 {
                     label : "온도",
-                    data: [21],
+                    data: [props.farmData.farmTemp],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -84,7 +85,7 @@ function dashboard(props) {
                 },
                 {
                     label : "습도",
-                    data: [24],
+                    data: [props.farmData.farmHumidity],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -93,7 +94,7 @@ function dashboard(props) {
                 },
                 {
                     label : "C02 농도",
-                    data: [20],
+                    data: [props.farmData.co2ppm],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -102,7 +103,7 @@ function dashboard(props) {
                 },
                 {
                     label : "물양",
-                    data: [33],
+                    data: [60],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -138,6 +139,8 @@ function dashboard(props) {
             }            
         }}
     />
+    }
+    
     
     </div>
     <div id= 'now_condition' align="center">

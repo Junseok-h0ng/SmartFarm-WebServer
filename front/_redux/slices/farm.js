@@ -50,8 +50,13 @@ export const getCropsTips = createAsyncThunk("GET_CROPS_TIPS",async(data)=>{
     return response.data;
 });
 
-export const setFarmInfo = createAsyncThunk("SET_FARM_INFO",async(data)=>{
-    const response = await axios.post(config.back_url+"/api/farm/setFarmInfo",(data));
+export const setFarmTarget = createAsyncThunk("SET_FARM_TARGET",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/setFarmTarget",(data));
+    return response.data;
+});
+
+export const getFarmTarget = createAsyncThunk("GET_FARM_TARGET",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/getFarmTarget",(data));
     return response.data;
 })
 

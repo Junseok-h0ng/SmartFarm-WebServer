@@ -133,7 +133,7 @@ function control(props) {
         <table align='center'>
           <tr>
             <td>
-              <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="28" alt="sample"></img>
+              <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="29" alt="sample"></img>
               <Tooltip title="목표 농장 온도">
                 <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={155}/>
               </Tooltip>
@@ -142,7 +142,7 @@ function control(props) {
               </div>
             </td>
             <td>
-              <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
+              <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="29" alt="sample"></img>
               <Tooltip title="목표 토양 습도">
                 <Progress type="dashboard" percent={humidity} width={150}/>
               </Tooltip>
@@ -158,16 +158,34 @@ function control(props) {
       </div>
       <br />
       <div align='center'>
-             <img src="https://i.postimg.cc/SKLHkLzy/fan.png" width="70" alt="sample"></img>&emsp;
-             <Switch defaultChecked onChange={onChange} />
+        <table>
+          <tr>
+            <td>
+              <p><strong>Fan</strong></p>  
+            </td>
+            <td>
+              <p><strong>Water</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://i.postimg.cc/SKLHkLzy/fan.png" width="69" alt="sample"></img>&emsp;
+              <Switch defaultChecked onChange={onChange} />
+            </td>
+            <td>
+              <img src="https://i.postimg.cc/GmphV2Bg/water.jpg" width="100" alt="sample"></img>
+              <Switch defaultChecked onChange={onChange} />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan='2'>
+              <img src="https://i.postimg.cc/j5YTxd5b/light.jpg" width="80" alt="sample"></img>
+              <App />
+            </td>
 
-             <img src="https://i.postimg.cc/GmphV2Bg/water.jpg" width="100" alt="sample"></img> 
-             <Switch defaultChecked onChange={onChange} />&emsp;
-             <div>
-                 <img src="https://i.postimg.cc/j5YTxd5b/light.jpg" width="80" alt="sample"></img>
-                 <App />
-             </div>            
-         </div>
+          </tr>
+        </table>       
+      </div>
       <Button style={{
         width: '100%', borderRadius: '12px', backgroundColor: '#89c403',
         margin: '10px 0', textShadow: '0px 1px 0px #528009', color: '#ffffff'

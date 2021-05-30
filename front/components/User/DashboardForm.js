@@ -167,9 +167,13 @@ const DashboardForm = () => {
                         </td>
                     </tr>
                     <tr id='dash_card_th'>
-                        <td id='dash_card_td' td colspan='2'>
+                        <td id='dash_card_td'>
                             <h4>물양</h4>
                             <h4>20</h4>
+                        </td>
+                           <td id='dash_card_td'>
+                            <h4>CO2</h4>
+                            <h4>33</h4>
                         </td>
                     </tr>
                 </table>

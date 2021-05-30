@@ -8,7 +8,7 @@ import CardForm from '../components/Contents/CardForm';
 import SearchForm from '../components/Contents/SearchForm';
 import PostForm from '../components/Contents/PostForm';
 import ProfileForm from '../components/User/ProfileForm';
-import FarmData from '../components/User/FarmData';
+
 
 
 function Home({data}){
@@ -36,7 +36,7 @@ function Home({data}){
           <ProfileForm/>
           <br/>
           <PostForm/>
-          <FarmData/>
+
           
         </>
       }

@@ -30,7 +30,8 @@ const DashboardForm = () => {
         }
 
         #now_condition {
-            padding-top: 4%;
+            width: 100%;
+            padding-top: 3%;
             justify-content: center;
             align-items: center;
         }
@@ -131,7 +132,7 @@ const DashboardForm = () => {
                 </div>
                 <div id='now_condition' align="center">
                     <div>
-                        <div><img width='99%' src="https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
+                        <div><img width='100%' src="https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
                     </div>
                 </div>
             </div>

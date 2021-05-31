@@ -113,49 +113,52 @@ function control(props) {
   return (
     <div>
       <style jsx>{`    
-    #col_2 {
-        column-count:2;
-    }
 
-    #right {
-        float: right;
-        display: inline-block;
-    }
-    #col {
-        margin-left: 15%;
-        width: 70%;
-    }
-
-}
+    #reaction_table {column-count: 1; margin-top: 3%;}
+                @media screen and (min-width:600px){
+                #reaction_table {column-count: 2; }
+        }
+      }
   
 `}</style>
-      <div>
-        <table align='center'>
-          <tr>
-            <td>
-              <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="29" alt="sample"></img>
-              <Tooltip title="목표 농장 온도">
-                <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={155}/>
-              </Tooltip>
-              <div style={style}>
-                <Slider vertical marks={tempMarks} defaultValue={temperature} max='30' onChange={onChangeTemperature} />
-              </div>
-            </td>
-            <td>
-              <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="29" alt="sample"></img>
-              <Tooltip title="목표 토양 습도">
-                <Progress type="dashboard" percent={humidity} width={150}/>
-              </Tooltip>
-              <div style={style}>
-                <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />           
-              </div>
-              
-            </td>
-          </tr>
-        </table>
-        <p>마지막으로 물을 준 시간 : </p>
-
-      </div>
+      <div id='reaction_table'>
+        <div>
+          <table align='center'>
+            <tr>
+              <td>
+                <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="28" alt="sample"></img>
+                <Tooltip title="목표 농장 온도">
+                  <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={150} />
+                </Tooltip>
+              </td>
+              <td>
+                <div style={style}>
+                  <Slider vertical marks={tempMarks} defaultValue={temperature} max='30' onChange={onChangeTemperature} />
+                </div>
+              </td>
+            </tr>
+          </table>
+          </div>
+          <div>
+            <table align='center'>
+              <tr>
+                <td>
+                  <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
+                  <Tooltip title="목표 토양 습도" >
+                    <Tooltip placement="bottom" title="마지막 물준 시간 :">
+                      <Progress type="dashboard" percent={humidity} width={150} />
+                    </Tooltip>
+                  </Tooltip>
+                </td>
+                <td>
+                  <div style={style}>
+                    <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
       <br />
       <div align='center'>
         <table>

@@ -202,7 +202,7 @@ const FarmData = () => {
 
             <div align='center' id='card_container'>
                 <div id="tabmenu">
-                    <input type="radio" name="tab" id="tab1"></input>
+                    <input type="radio" checked="checked" name="tab" id="tab1"></input>
                     <input type="radio" name="tab" id="tab2"></input>
                     <input type="radio" name="tab" id="tab3"></input>
                     <input type="radio" name="tab" id="tab4"></input>

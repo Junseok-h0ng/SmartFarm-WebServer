@@ -114,11 +114,11 @@ function control(props) {
     <div>
       <style jsx>{`    
 
-    #reaction_table {column-count: 1; margin-top: 3%;}
-                @media screen and (min-width:600px){
-                #reaction_table {column-count: 2; }
+
+      @media screen and (min-width:600px){
+        #reaction_table {column-count: 2; }
         }
-      }
+      
   
 `}</style>
       <div id='reaction_table'>

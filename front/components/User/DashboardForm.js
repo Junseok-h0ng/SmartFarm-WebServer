@@ -8,9 +8,8 @@ const DashboardForm = () => {
     return <div>
         <style jsx>{`    
 
-        #dash_col {column-count: 1;}
-                @media screen and (min-width:600px){
-                #dash_col {column-count: 2;}
+        @media screen and (min-width:600px){
+            #dash_col {column-count: 2;}
         }
 
         #dash_card {
@@ -30,12 +29,9 @@ const DashboardForm = () => {
         }
 
         #now_condition {
-            width: 100%;
-            padding-top: 3%;
-            justify-content: center;
-            align-items: center;
+            padding-top: 1%;
         }
-        
+
       `}</style>
 
         <div>
@@ -102,8 +98,8 @@ const DashboardForm = () => {
                             ],
 
                         }}
-                        width={'50%'}
-                        height={370}
+                        width={null}
+                        height={385}
 
                         options={{
                             responsive: true,
@@ -130,10 +126,8 @@ const DashboardForm = () => {
                     />
 
                 </div>
-                <div id='now_condition' align="center">
-                    <div>
-                        <div><img width='100%' src="https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
-                    </div>
+                <div id='now_condition'>
+                    <img width='97%' height={333} src="https://i.ibb.co/QXrwTWh/sample.jpg"></img>
                 </div>
             </div>
             <br />

@@ -1,16 +1,17 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import Router,{useRouter} from 'next/router';
+import Link from 'next/link';
 import {wrapper} from '../../../_redux/store'
-import {Row,Col,message} from 'antd';
+import {Row,Col,message,Button} from 'antd';
 import DashBoard from '../../../components/Farm/DashBoard';
 import ControlBoard from '../../../components/Farm/ControlBoard';
-import { getFarmTarget, loadFarmData, loadFarmInfo } from '../../../_redux/slices/farm';
+import farm, { getFarmTarget, loadFarmData, loadFarmInfo } from '../../../_redux/slices/farm';
 import ProfileForm from '../../../components/User/ProfileForm';
 import NoContents from '../../../components/commons/NoContents';
 
 
-function dashboard({farmData}) {
+function dashboard({farmData,farmCrops,targetData}) {
     
     const router = useRouter();
     const {pid} = router.query;
@@ -22,29 +23,16 @@ function dashboard({farmData}) {
     useEffect(() => {
         if(!user.isLogin){
             return Router.push('/');
-        }
-        if(farmData.payload === false){
+        }else if(farmData.payload === undefined){
             message.error('농장에 접속할수 없습니다.')
-            Router.back();
-        }
-        dispatch(loadFarmInfo({userId:user.data._id,pid}))
-        .then(res=>{
-            if(res.payload[0]){
-                res.payload.map((payload)=>{
-                    if(payload._id === pid){
-                        setFarmInfo(payload);
-                    }
-                })
-            }   
-        });
-        dispatch(getFarmTarget({pid}))
-        .then(res=>{
-            if(res.payload){
-                setFarmTarget(res.payload);
-                
-            }
-        })
+            return Router.back();
+        }else{
 
+        setFarmInfo(farmCrops);
+        console.log(targetData);
+        setFarmTarget(targetData);   
+
+        }
     }, [user.isLogin])
     return (
         <div>
@@ -53,7 +41,11 @@ function dashboard({farmData}) {
                 {farmData.payload ?
                 <div>
                     <ProfileForm user={user}/>
-                    <h1 style={{textAlign:'center'}}>{farmInfo.crops ? farmInfo.crops.name : ''}</h1>
+                    <h1 style={{textAlign:'center'}}>{farmInfo.crops ? farmInfo.crops.name : ''}
+                        <Link href={`/farm/dashboard/previous/${pid}`}>
+                            <Button style={{marginTop:'10px',position: 'absolute', right: 10,color:'#5cb85c',borderColor: "#5cb85c",borderRadius:'12px'}}>이전 정보</Button>
+                        </Link>
+                    </h1>
                     <DashBoard farmData={farmData.payload} /><br/>
                     <ControlBoard farmInfo={farmInfo} pid={pid} farmTarget={farmTarget}/> 
                 </div>
@@ -66,8 +58,6 @@ function dashboard({farmData}) {
             :
                 ''
             }
-
-
         </div>
 
     )
@@ -75,14 +65,45 @@ function dashboard({farmData}) {
 
 export const getServerSideProps = wrapper.getServerSideProps(async context=>{
 
-    let farmData = await context.store.dispatch(loadFarmData({pid:context.params.pid,options:'dashboard'}));
+    const state = context.store.getState();
+    const user = state.user;
+    const pid = context.params.pid;
 
-    if(farmData.payload === undefined){
-        farmData.payload = false;
-    }
+
+
+    // 농작물 정보
+    let farmCrops;
+    // 목표 온/습도
+    let targetData;
+    // 농장 정보
+
+    // 로그인이 안되어있으면 리턴
+    if(!state.user.data){return}
+    // 농장 정보 불러오기(대시보드)
+    const farmData = await context.store.dispatch(loadFarmData({pid,options:'dashboard'}))
+
+    // 농작물 정보 불러오기 (농작물 이름)
+    await context.store.dispatch(loadFarmInfo({userId:user.data._id}))
+    .then((res)=>{
+        if(res.payload[0]){
+            res.payload.map((payload)=>{
+                if(payload._id === pid){
+                    return farmCrops = payload;
+                }
+            });
+        }   
+    });
+
+    // 목표 온/습도 불러오기
+    await context.store.dispatch(getFarmTarget({pid}))
+    .then((res)=>{
+        if(res.payload){
+            return targetData = res.payload;
+        }
+    });
 
     return{
-        props:{farmData}
+        props:{farmData,farmCrops,targetData}
     }
 }); 
 

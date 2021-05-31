@@ -1,11 +1,13 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {useRouter} from 'next/router';
-import NoContents from '../../../../components/commons/NoContents';
-import FilterFarmData from '../../../../components/Farm/FilterFarmData';
+import Router,{useRouter} from 'next/router';
+import Link from 'next/link';
+import {Button} from 'antd';
+import PreviousFarmData from '../../../../components/Farm/PreviousFarmData';
+import ProfileForm from '../../../../components/User/ProfileForm';
 
 
-function dashboard({farmData}) {
+function previous({farmData}) {
     
     const router = useRouter();
     const {pid} = router.query;
@@ -15,32 +17,26 @@ function dashboard({farmData}) {
     const [farmTarget, setFarmTarget] = useState({});
 
     useEffect(() => {
-        // if(!user.isLogin){
-        //     return Router.push('/');
-        // }
-
-        // })
-
+        if(!user.isLogin){
+            return Router.push('/');
+        }
     }, [user.isLogin])
+
     return (
         <div>
-            {/* {user.isLogin ? */}
+            {user.isLogin &&
             <>
                 {/* {farmData.payload ? */}
                 <div>
-                    {/* <ProfileForm user={user}/> */}
-                    <FilterFarmData/>
-                    
+                    <ProfileForm user={user}/>
+                    <PreviousFarmData pid={pid}/>                   
                 </div>
-                :
-                <div>
+                {/* <div style={{}}>
                     <NoContents/>
-                </div>
+                </div> */}
                 {/* }   */}
             </>
-            :
-                ''
-            {/* } */}
+            } 
 
 
         </div>
@@ -61,4 +57,4 @@ function dashboard({farmData}) {
 //     }
 // }); 
 
-export default dashboard
+export default previous

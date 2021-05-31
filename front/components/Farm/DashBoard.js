@@ -28,8 +28,6 @@ function dashboard(props) {
         })
     }, [])
 
-    console.log(props.farmData)
-
     const popupContent=()=>{
         if(cropsTips.data){
             const content = cropsTips.data.map((data)=>(
@@ -60,15 +58,17 @@ function dashboard(props) {
         padding: 10px;
     }
     #now_condition {
-        border: 3px solid #5cb85c;
-        border-radius: 8px;
+        padding-top: 4%;
+        justify-content: center;
+        align-items: center;
     }
 
   `}</style>
 
-  <div>
+    <div>
     <div id='dash_col'>
     <div>
+
     {props.farmData &&
         <Bar   
         data={{

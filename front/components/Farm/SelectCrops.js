@@ -25,15 +25,21 @@ function SelectCrops(props) {
         // 농장에 등록된 정보를 가져온다.
         dispatch(loadFarmInfo({userId:user.data._id}))
         .then((res=>{  
+            console.log(res);
             // 작물Id정보가 있는지 확인
             if(res.payload[0]){
-                let crops;
                 res.payload.map((payload)=>{
+                    // 농장id와 불러온 농장정보 id가 같은지 확인
                     if(payload._id === props.pid){
-                        crops = payload.crops;
+                        // 이미 농작물이 있을경우 농작물 정보를 불러온다.
+                        if(payload.crops){
+                            onChangeCrops(payload.crops.id,{children:payload.crops.name});
+                        }
                     }
                 })
-                onChangeCrops(crops.id,{children:crops.name});
+               
+            }else{
+                console.log('무야호')
             }
         }))
     }, [])

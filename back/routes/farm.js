@@ -66,38 +66,44 @@ router.post('/addCropsInfo',(req,res)=>{
 })
 
 router.post('/getCropsTips',async (req,res)=>{
-    const cropsId = req.body.cropsId;
-    const getUrl = async () =>{
-        try{
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(err);
+        const cropsId = doc.crops.id;
+        console.log(cropsId);
+        const getUrl = async () =>{
+            try{
             return await axios.get(`https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=${cropsId}&sKidofcomdtySeCode=FC`)
-        }catch(err){
-            return res.status(401).send(err)
-        }
-    }
-    getUrl()
-        .then(url => {
-            // 해당 링크에서 가져온 데이터를 저장
-            const $ = cheerio.load(url.data);
-            // url에서 가져온 데이터들을 추출할 bodyList
-            const $bodyList = $("div#contents").children("div#printZone");
-
-            // 제목을 추출해줌
-            const title = $bodyList.find('div#nongScheduleTit').children('div.floatDiv').text().replace(/(\r\n\t|\n|\t|\r\t)/gm,"");
-            
-            // 데이터들을 추출해줌
-            let data = [];
-            for(let i =1; i<=$bodyList.find('ul.listCon').children('li').length;i++){
-                data.push($bodyList.find('ul.listCon').children(`li:nth-child(${i})`).text())   
-            };
-
-            // 리턴해줄 최종 데이터 값
-            const response = {
-                title,
-                data
+            }catch(err){
+                return res.status(401).send(err)
             }
-
-            return response;
-        }).then(response=>{res.send(response)});
+        }
+        getUrl()
+            .then(url => {
+                // 해당 링크에서 가져온 데이터를 저장
+                const $ = cheerio.load(url.data);
+                // url에서 가져온 데이터들을 추출할 bodyList
+                const $bodyList = $("div#contents").children("div#printZone");
+    
+                // 제목을 추출해줌
+                const title = $bodyList.find('div#nongScheduleTit').children('div.floatDiv').text().replace(/(\r\n\t|\n|\t|\r\t)/gm,"");
+                
+                // 데이터들을 추출해줌
+                let data = [];
+                for(let i =1; i<=$bodyList.find('ul.listCon').children('li').length;i++){
+                    data.push($bodyList.find('ul.listCon').children(`li:nth-child(${i})`).text())   
+                };
+    
+                // 리턴해줄 최종 데이터 값
+                const response = {
+                    title,
+                    data
+                }
+    
+                return response;
+            }).then(response=>{res.send(response)});
+    })
+    
 });
 
 router.post('/getCrops',async (req,res)=>{
@@ -158,7 +164,7 @@ router.post('/loadFarmData',(req,res)=>{
 
             axios.post(ipAddress+'/data/',(filter),{timeout:500})
             .catch((err)=>{
-                return res.status(401).send()
+                return res.status(200).send({success:false})
             })
             .then((response)=>{
                 res.status(200).send(response.data);
@@ -180,7 +186,7 @@ router.post('/setFarmTarget',(req,res)=>{
         const ipAddress = doc.ipAddress;
         axios.post(ipAddress+'/data/',(filter),{timeout:500})
         .catch((err)=>{
-            res.status(401).send(false);
+            return res.status(200).send({success:false});
         })
         .then(()=>{
             res.status(200).send({success:true});
@@ -199,12 +205,48 @@ router.post('/getFarmTarget',(req,res)=>{
         const ipAddress = doc.ipAddress;
         axios.post(ipAddress+'/data/',(filter),{timeout:500})
         .catch((err)=>{
-            res.status(401).send(false);
+            return res.status(200).send({success:false});
         })
         .then((response)=>{
             res.status(200).send(response.data);
         })
     })
+});
+
+router.post('/getChartData',(req,res)=>{
+    const filter = {
+        start_date:"2021-05-28 00:00",
+        end_date: "2021-05-29 23:00",
+        options: 'chart'
+    }
+    const ipAddress = 'http://119.195.177.230:8000'
+    axios.post(ipAddress+'/data/',(filter),{timeout:500})
+    .catch((err)=>{
+        res.status(401).send(false);
+    })
+    .then((response)=>{
+        console.log(response.data.soilHumidity[23]);
+        res.status(200).send(response.data);
+    })
+
+});
+
+router.post('/auth',(req,res)=>{
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).json(false);
+        const ipAddress = doc.ipAddress;
+            axios.get(ipAddress+'/data/',{timeout:500})
+            .then(()=>{
+                return res.status(200).json(true);
+            }).catch(()=>{
+                return res.status(401).send();
+            })
+
+
+    })
+
+
 })
 
 module.exports = router;    

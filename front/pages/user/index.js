@@ -23,7 +23,8 @@ function index({data}) {
     const [currentLoad, setCurrentLoad] = useState(5);
 
     useEffect(() => {
-        if(!user.isLogin){return Router.push('/');}
+        if(!user.isLogin || !data.payload){return Router.push('/');}
+
         setContents(data.payload)
     }, [user]);
 

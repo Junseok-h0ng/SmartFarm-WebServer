@@ -15,18 +15,21 @@ function dashboard(props) {
     const [cropsTips, setCropsTips] = useState({});
 
     useEffect(() => {
-        farmData.map((data)=>{
-            if(data._id === pid && data.crops.id){              
-                dispatch(getCropsTips({cropsId:data.crops.id}))
-                .then((res=>{
-                    if(res.payload){
-                        console.log(res.payload.data[0])
-                        setCropsTips(res.payload);
-                    }
-                }))
-            }
-        })
+        // farmData.map((data)=>{
+        //     if(data._id === pid && data.crops.id){              
+        //         dispatch(getCropsTips({cropsId:data.crops.id}))
+        //         .then((res=>{
+        //             if(res.payload){
+        //                 console.log(res.payload.data[0])
+        //                 setCropsTips(res.payload);
+        //             }
+        //         }))
+        //     }
+        // })
+        console.log(props.cropsTips);
+        setCropsTips(props.cropsTips);
     }, [])
+    
 
     const popupContent=()=>{
         if(cropsTips.data){
@@ -40,13 +43,13 @@ function dashboard(props) {
 
     return <div>
     <style jsx>{` 
-    #dash_col {column-count: 1;}
-            @media screen and (min-width:600px){
-            #dash_col {column-count: 2;}
+
+    @media screen and (min-width:600px){
+        #dash_col {column-count: 2;}
     }
     #dash_card {
-        width: 70%;
-        border: 3px solid #a0a0a0;
+        width: 75%;
+        border: 2.5px solid #a0a0a0;
         text-align: center;
     }
     #dash_card_th {
@@ -58,9 +61,7 @@ function dashboard(props) {
         padding: 10px;
     }
     #now_condition {
-        padding-top: 4%;
-        justify-content: center;
-        align-items: center;
+        padding-top: 1%;
     }
 
   `}</style>
@@ -75,7 +76,7 @@ function dashboard(props) {
             labels: ['현재 값'],
             datasets:[
                 {
-                    label : "온도",
+                    label : "농장온도",
                     data: [props.farmData.farmTemp],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
@@ -84,13 +85,31 @@ function dashboard(props) {
                 backgroundColor: "rgba(255, 201, 14, 0.5)",
                 },
                 {
-                    label : "습도",
+                    label : "농장습도",
                     data: [props.farmData.farmHumidity],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
                     borderColor: "rgba(25, 201, 14, 13)",
                 backgroundColor: "rgba(25, 201, 14, 0.5)",
+                },
+                {
+                    label: "토양온도",
+                    data: [props.farmData.soilTemp],
+                    borderColor: [
+                        "rgba(255, 201, 14, 1)",
+                    ],
+                    borderColor: "rgba(255, 150, 14, 1)",
+                    backgroundColor: "rgba(255, 151, 14, 0.5)",
+                },
+                {
+                    label: "토양습도",
+                    data: [props.farmData.soilHumidity],
+                    borderColor: [
+                        "rgba(255, 201, 14, 1)",
+                    ],
+                    borderColor: "rgba(55, 111, 95, 13)",
+                    backgroundColor: "rgba(55, 111, 95, 0.5)",
                 },
                 {
                     label : "C02 농도",
@@ -103,7 +122,7 @@ function dashboard(props) {
                 },
                 {
                     label : "물양",
-                    data: [60],
+                    data: [props.farmData.currentWater],
                     borderColor: [
                         "rgba(255, 201, 14, 1)",
                     ],
@@ -111,10 +130,9 @@ function dashboard(props) {
                 backgroundColor: "rgba(2144, 144, 114, 1)",
                 },
             ],       
-            
         }}
-        width= {'50%'}
-        height= {400}
+        width= {null}
+        height= {385}
        
         options={{
             responsive: true,
@@ -133,22 +151,19 @@ function dashboard(props) {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: '°C'
+                        labelString:''
                     }
                 }]
-            }            
+            }
         }}
     />
     }
     
     
     </div>
-    <div id= 'now_condition' align="center">
-        <div>
-            <h3><strong>Now</strong></h3>
-        <div><img width='85%' src= "https://i.ibb.co/QXrwTWh/sample.jpg"></img></div>
+        <div id= 'now_condition'>
+            <div><img width='97%' height={333} src={"data:image/jpg;base64," +props.farmData.src}></img></div>
         </div>
-    </div>
     </div>
     <br/>
     <div align='center'>
@@ -156,33 +171,43 @@ function dashboard(props) {
         <table id= 'dash_card'>
             {cropsTips.data && 
             <tr>
-                <td colspan='2'>
+                <td colspan='4'>
                 
-                    <Popover title={cropsTips.title} content={popupContent} trigger="click">
+                    <Popover title={props.cropsTips.title} content={popupContent} trigger="click">
                         <Button>tip</Button>
                     </Popover>  
                
                 </td>
             </tr>
             }
-            <tr id= 'dash_card  _th'>
-                <td id= 'dash_card_td'>
-                    <h4>온도</h4>
-                    <h4>21℃</h4>
+            <tr id= 'dash_card_th'>
+                <td id='dash_card_td'>
+                    <h4>농장온도</h4>
+                    <h4>{props.farmData.farmTemp}℃</h4>
                 </td>
-                <td>
-                    <h4>습도</h4>
-                    <h4>24%</h4>
+                <td id='dash_card_td'>
+                    <h4>농장습도</h4>
+                    <h4>{props.farmData.farmHumidity}℃</h4>
+                </td>                      
+            </tr>
+            <tr id='dash_card_th'>
+                <td id='dash_card_td'>
+                    <h4>토양온도</h4>
+                    <h4>{props.farmData.soilTemp}℃</h4>
+                </td>
+                <td id='dash_card_td'>
+                    <h4>토양습도</h4>
+                    <h4>{props.farmData.soilHumidity}℃</h4>
                 </td>
             </tr>
-            <tr id= 'dash_card_th'>
-                <td id= 'dash_card_td'>
+            <tr id='dash_card_th'>
+                <td id='dash_card_td'>
                     <h4>물양</h4>
-                    <h4>20%</h4>
+                    <h4>{props.farmData.currentWater}</h4>
                 </td>
-                <td id= 'dash_card_td'>
-                    <h4>밝기</h4>
-                    <h4>33</h4>
+                <td id='dash_card_td'>
+                    <h4>CO2</h4>
+                    <h4>{props.farmData.co2ppm}</h4>
                 </td>
             </tr>
         </table>

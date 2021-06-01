@@ -58,7 +58,12 @@ export const setFarmTarget = createAsyncThunk("SET_FARM_TARGET",async(data)=>{
 export const getFarmTarget = createAsyncThunk("GET_FARM_TARGET",async(data)=>{
     const response = await axios.post(config.back_url+"/api/farm/getFarmTarget",(data));
     return response.data;
-})
+});
+
+export const authFarm = createAsyncThunk("AUTH_FARM",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/auth",(data));
+    return response.data;
+});
 
 export const farmReducer = createSlice({
     name:'farm',

@@ -12,7 +12,6 @@ function control(props) {
     useEffect(() => {
         setTemperature(props.farmTarget.targetTemp);
         setHumidity(props.farmTarget.targetHumidity);
-        console.log(temperature);
     }, [props.farmTarget])
 
     const onChangeTemperature = (temperature) =>{
@@ -36,6 +35,13 @@ function control(props) {
             }
         })
     }
+
+    const style = {
+        display: 'inline-block',
+        height: 145,
+        margin: 24,
+        margintop: 20,
+      };
 
     const tempMarks = {
         0: {
@@ -72,50 +78,79 @@ function control(props) {
     }
 
     return (
-    <div>
-    <style jsx>{`    
-    #col_2 {
-        column-count:2;
-    }
-    // #flex-container { 
-    //     position:absolute;
-    //     top:0; left:0; bottom:0; right:0;
-    //     height:110%;
-    //     margin:110% auto;
-    // }
-    #right {
-        float: right;
-        display: inline-block;
-    }
-    #col {
-        margin-left: 15%;
-        width: 70%;
-    }
-}
+        <div>
+        <style jsx>{`    
+        @media screen and (min-width:600px){
+          #reaction_table {column-count: 2; }
+          }
+        
     
-`}</style>
-
-    <div align='center'>
-        <Tooltip title="목표 농장 온도">
-            <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} />
-        </Tooltip>
-        &emsp;&emsp;
-        <Tooltip title="목표 토양 습도">
-            <Progress type="dashboard" percent={humidity} />
-        </Tooltip>
-    </div>
-    <br/>
-        <div id='col'>
-            <Slider marks={tempMarks} value={temperature} max ='30' onChange={onChangeTemperature} />
-        </div>
-        <div id='col'>
-            <Slider marks={humiMarks} value={humidity} max ='30' onChange={onChangeHumidity} />
-        </div>
-        <Button style={{width:'100%',borderRadius:'12px',backgroundColor:'#89c403',
-                        margin:'10px 0',textShadow:'0px 1px 0px #528009',color:'#ffffff'}}
-                onClick={onSubmitFarmTarget}>설정</Button>
-    <br/>
-    </div>
+  `}</style>
+        <div id='reaction_table'>
+          <div>
+            <table align='center'>
+              <tr>
+                <td>
+                  <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="28" alt="sample"></img>
+                  <Tooltip title="목표 농장 온도">
+                    <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={150} />
+                  </Tooltip>
+                </td>
+                <td>
+                  <div style={style}>
+                    <Slider vertical marks={tempMarks} value={temperature} max='30' onChange={onChangeTemperature} />
+                  </div>
+                </td>
+              </tr>
+            </table>
+            </div>
+            <div>
+              <table align='center'>
+                <tr>
+                  <td>
+                    <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
+                    <Tooltip title="목표 토양 습도" >
+                        <Progress type="dashboard" percent={humidity} width={150} />
+                    </Tooltip>
+                  </td>
+                  <td>
+                    <div style={style}>
+                      <Slider vertical marks={humiMarks} value={humidity} max='30' onChange={onChangeHumidity} />
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        <br />
+        <Button style={{
+          width: '100%', borderRadius: '12px', backgroundColor: '#89c403',
+          margin: '10px 0', textShadow: '0px 1px 0px #528009', color: '#ffffff'
+        }}
+          onClick={onSubmitFarmTarget}>설정</Button>
+        <br />
+      </div>
+    // <div align='center'>
+    //     <Tooltip title="목표 농장 온도">
+    //         <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} />
+    //     </Tooltip>
+    //     &emsp;&emsp;
+    //     <Tooltip title="목표 토양 습도">
+    //         <Progress type="dashboard" percent={humidity} />
+    //     </Tooltip>
+    // </div>
+    // <br/>
+    //     <div id='col'>
+    //         <Slider marks={tempMarks} value={temperature} max ='30' onChange={onChangeTemperature} />
+    //     </div>
+    //     <div id='col'>
+    //         <Slider marks={humiMarks} value={humidity} max ='30' onChange={onChangeHumidity} />
+    //     </div>
+    //     <Button style={{width:'100%',borderRadius:'12px',backgroundColor:'#89c403',
+    //                     margin:'10px 0',textShadow:'0px 1px 0px #528009',color:'#ffffff'}}
+    //             onClick={onSubmitFarmTarget}>설정</Button>
+    // <br/>
+    // </div>
     )  
 }
 

@@ -117,7 +117,6 @@ function UploadForm(props) {
       dispatch(loadFarmData({pid:selectFarm,dateString,option:'chart'}))
       .then(response=>{
         if(response.payload){
-          console.log(response.payload);
         }
       })
     }else{

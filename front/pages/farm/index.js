@@ -18,7 +18,8 @@ function index({data}) {
 
     useEffect(() => {
         // 로그인이 안되어있으면 메인화면으로 이동
-        if(!user.isLogin){
+        console.log(data);
+        if(!user.isLogin || !data.payload){
             return Router.push('/');
         }
         setFarmData(data.payload)

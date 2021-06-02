@@ -241,12 +241,30 @@ router.post('/auth',(req,res)=>{
                 return res.status(200).json(true);
             }).catch(()=>{
                 return res.status(401).send();
-            })
+            });
+    });
+});
 
+router.post('/previousFarmData',(req,res)=>{
 
+    const filter ={
+        start_date: req.body.dateString.start_date,
+        end_date: req.body.dateString.end_date,
+        options: 'previous'
+    }
+
+    Farm.findById({_id:req.body.pid})
+    .exec((err,doc)=>{
+        if(err) return res.status(401).send(false);
+        const ipAddress = doc.ipAddress;
+        axios.post(ipAddress+'/data/',(filter),{timeout:500})
+        .then((response)=>{
+            console.log(response);
+            return res.status(200).send(response.data);
+        }).catch(()=>{
+            return res.status(401).send();
+        })
     })
-
-
 })
 
 module.exports = router;    

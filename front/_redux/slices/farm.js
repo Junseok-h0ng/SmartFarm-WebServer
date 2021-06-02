@@ -65,6 +65,11 @@ export const authFarm = createAsyncThunk("AUTH_FARM",async(data)=>{
     return response.data;
 });
 
+export const getPreviousFarmData = createAsyncThunk("GET_PREVIOUS_FARM_DATA",async(data)=>{
+    const response = await axios.post(config.back_url+"/api/farm/previousFarmData",(data));
+    return response.data;
+})
+
 export const farmReducer = createSlice({
     name:'farm',
     initialState: {

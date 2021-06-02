@@ -121,6 +121,7 @@ function control(props) {
       
   
 `}</style>
+      <br/><br/>
       <div id='reaction_table'>
         <div>
           <table align='center'>
@@ -144,10 +145,8 @@ function control(props) {
               <tr>
                 <td>
                   <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
-                  <Tooltip title="목표 토양 습도" >
-                    <Tooltip placement="bottom" title="마지막 물준 시간 :">
+                  <Tooltip placement title="목표 토양 습도" >
                       <Progress type="dashboard" percent={humidity} width={150} />
-                    </Tooltip>
                   </Tooltip>
                 </td>
                 <td>

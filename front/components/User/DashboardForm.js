@@ -127,7 +127,7 @@ const DashboardForm = () => {
 
                 </div>
                 <div id='now_condition'>
-                    <img width='97%' height={333} src="https://i.ibb.co/QXrwTWh/sample.jpg"></img>
+                    <img width='97%' height={333} src="https://cdn.pixabay.com/photo/2019/04/20/10/56/lettuce-seedling-4141458_960_720.jpg"></img>
                 </div>
             </div>
             <br />
@@ -169,6 +169,11 @@ const DashboardForm = () => {
                            <td id='dash_card_td'>
                             <h4>CO2</h4>
                             <h4>33</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id= 'dash_card_td' colSpan='2'>
+                            <h4>마지막 물준 시간 : </h4>
                         </td>
                     </tr>
                 </table>

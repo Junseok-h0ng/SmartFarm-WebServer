@@ -7,21 +7,22 @@ function onChange(date, dateString) {
     console.log(date, dateString);
 }
 
+function onetime() {
+
+    return "checked";
+}
+
 const FarmData = () => {
     return (
         <div>
             <style jsx>{`    
 
             #Farm_container {
-                padding-top: 10%;
+                padding-top: 7%;
                 justify-content: center;
                 align-items: center;
             }
             
-            // #card_container {
-            //     border: 2px solid #6f4f28;
-            //     border-radius: 30px;                
-            // }
 
             #dash_card {
                 width: 90%;
@@ -33,11 +34,19 @@ const FarmData = () => {
             #dash_card_th {
                 border: 1px solid #6f4f28;
                 padding: 10px;
+                
+            }
+
+            #dash_card_thc {
+                border: 1px solid #6f4f28;
+                padding: 10px;
+                background-color: #bbdefb;
             }
     
             #dash_card_td {
                 border: 1px solid #6f4f28;
                 padding: 10px;
+                
             }
 
             #tabmenu label {
@@ -85,7 +94,7 @@ const FarmData = () => {
                 color: #669999;
             }
     
-            #tabmenu>* {
+            #tabmenu> * {
                 display: none;
             }
     
@@ -198,16 +207,14 @@ const FarmData = () => {
                 </div>
             </div>
             <br /><br />
-
-
-            <div align='center' id='card_container'>
+            <div align='center'>
                 <div id="tabmenu">
-                    <input type="radio" checked="checked" name="tab" id="tab1"></input>
-                    <input type="radio" name="tab" id="tab2"></input>
-                    <input type="radio" name="tab" id="tab3"></input>
-                    <input type="radio" name="tab" id="tab4"></input>
-                    <input type="radio" name="tab" id="tab5"></input>
-                    <input type="radio" name="tab" id="tab6"></input>
+                    <input type="radio" name="tab" id="tab1" defaultChecked/>
+                    <input type="radio" name="tab" id="tab2" />
+                    <input type="radio" name="tab" id="tab3" />
+                    <input type="radio" name="tab" id="tab4" />
+                    <input type="radio" name="tab" id="tab5" />
+                    <input type="radio" name="tab" id="tab6" />
                     <label for="tab1">농장온도</label>
                     <label for="tab2">농장습도</label>
                     <label for="tab3">토양온도</label>
@@ -221,12 +228,36 @@ const FarmData = () => {
                                     <h4>0시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>21℃</h4>
+                                    <h4>1시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>3시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>27℃</h4>
@@ -234,143 +265,203 @@ const FarmData = () => {
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>7시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>28℃</h4>
+                                    <h4>8시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>9시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>25℃</h4>
+                                    <h4>10시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>12시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>22℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>22℃</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>24℃</h4>
                                 </td>
+                                <td id='dash_card_td'>
+                                    <h4>25℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>13시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>14시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>15시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>26℃</h4>
+                                    <h4>16시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>18시</h4>
                                 </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>26℃</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>19시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>20시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>21시</h4>
                                 </td>
                                 <td id='dash_card_td'>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
                                     <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <div id="tab2_content">
                     <table id='dash_card'>
-                            <tr id='dash_card_th'>
+                    <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>0시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>27℃</h4>
+                                    <h4>1시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>3시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>25℃</h4>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
                                 </td>
                             </tr>
-                            <tr id='dash_card_th'>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>21℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>22℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>29℃</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>23℃</h4>
-                                </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>9시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>27℃</h4>
-                                </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>12시</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>24℃</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>15시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>25℃</h4>
-                                </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>18시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>27℃</h4>
-                                </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>21시</h4>
-                                </td>
                                 <td id='dash_card_td'>
                                     <h4>23℃</h4>
                                 </td>
                             </tr>
-                        </table>
-                    </div>
-                    <div id="tab3_content">
-                    <table id='dash_card'>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>0시</h4>
+                                    <h4>7시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>18℃</h4>
+                                    <h4>8시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>9시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>10시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>12시</h4>
                                 </td>
                             </tr>
-                            <tr id='dash_card_th'>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>3시</h4>
+                                    <h4>29℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>28℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>20℃</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>21℃</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>22℃</h4>
@@ -378,42 +469,246 @@ const FarmData = () => {
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>9시</h4>
+                                    <h4>13시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>29℃</h4>
+                                    <h4>14시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>12시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>24℃</h4>
-                                </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>15시</h4>
                                 </td>
                                 <td id='dash_card_td'>
+                                    <h4>16시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>18시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
                                     <h4>26℃</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>18시</h4>
+                                    <h4>19시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>25℃</h4>
+                                    <h4>20시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>21시</h4>
                                 </td>
                                 <td id='dash_card_td'>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="tab3_content">
+                    <table id='dash_card'>
+                    <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>0시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>1시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>3시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
                                     <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>29℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>25℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>24℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>7시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>8시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>9시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>10시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>12시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>25℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>24℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>29℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>25℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>2℃</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>13시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>14시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>15시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>16시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>18시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>19시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>20시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>21시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
                                 </td>
                             </tr>
                         </table>
@@ -425,63 +720,159 @@ const FarmData = () => {
                                     <h4>0시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>30℃</h4>
+                                    <h4>1시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>3시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>40℃</h4>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>22℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>28℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>21℃</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>7시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>35℃</h4>
+                                    <h4>8시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>9시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>45℃</h4>
+                                    <h4>10시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>12시</h4>
                                 </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>29℃</h4>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>27℃</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>13시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>14시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>15시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>25℃</h4>
+                                    <h4>16시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>18시</h4>
                                 </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>56℃</h4>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>26℃</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>19시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>20시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>21시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>45℃</h4>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23℃</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
                                 </td>
                             </tr>
                         </table>
@@ -493,44 +884,116 @@ const FarmData = () => {
                                     <h4>0시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>60</h4>
+                                    <h4>1시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>3시</h4>
                                 </td>
                                 <td id='dash_card_td'>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>70</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
+                                </td>
+                                <td id='dash_card_td'>
                                     <h4>50</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>7시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>60</h4>
+                                    <h4>8시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>9시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>50</h4>
+                                    <h4>10시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>12시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>60</h4>
                                 </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>40</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>40</h4>
+                                </td>
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
+                                    <h4>13시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>14시</h4>
+                                </td>
+                                <td id='dash_card_td'>
                                     <h4>15시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>16시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>18시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>30</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
                                 </td>
                                 <td id='dash_card_td'>
                                     <h4>50</h4>
@@ -538,18 +1001,42 @@ const FarmData = () => {
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>18시</h4>
+                                    <h4>19시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>55</h4>
+                                    <h4>20시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>21시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>56</h4>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
+                                    <h4>40</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>55</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>50</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>60</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
                                 </td>
                             </tr>
                         </table>
@@ -561,107 +1048,164 @@ const FarmData = () => {
                                     <h4>0시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>50</h4>
+                                    <h4>1시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>2시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>3시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>54</h4>
+                                    <h4>4시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>5시</h4>
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>200</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>150</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>105</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
-                                    <h4>6시</h4>
+                                    <h4>7시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>56</h4>
+                                    <h4>8시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
                                     <h4>9시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>55</h4>
+                                    <h4>10시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>11시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>12시</h4>
                                 </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>56</h4>
+                                    <h4>105</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>120</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>110</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>110</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>13시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>14시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>15시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>45</h4>
+                                    <h4>16시</h4>
                                 </td>
-                            </tr>
-                            <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>17시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>18시</h4>
                                 </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
                                 <td id='dash_card_td'>
-                                    <h4>55</h4>
+                                    <h4>150</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>140</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>100</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>110</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>115</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>110</h4>
                                 </td>
                             </tr>
                             <tr id='dash_card_th'>
+                                <td id='dash_card_td'>
+                                    <h4>19시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>20시</h4>
+                                </td>
                                 <td id='dash_card_td'>
                                     <h4>21시</h4>
                                 </td>
                                 <td id='dash_card_td'>
-                                    <h4>50</h4>
+                                    <h4>22시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>23시</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    
+                                </td>
+                            </tr>
+                            <tr id='dash_card_thc'>
+                            <td id='dash_card_td'>
+                                    <h4>115</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>120</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>120</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>125</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                    <h4>120</h4>
+                                </td>
+                                <td id='dash_card_td'>
+                                   
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                {/* <table id='dash_card'>
-                    <tr>
-                        <td colspan='4'>
-                            <Popover trigger="click">
-                                <button><BulbOutlined />TIP!</button>
-                            </Popover>
-                        </td>
-                    </tr>
-                    <tr id='dash_card_th'>
-                        <td id='dash_card_td'>
-                            <h4>농장온도</h4>
-                            <h4>21℃</h4>
-                        </td>
-                        <td id='dash_card_td'>
-                            <h4>농장습도</h4>
-                            <h4>24℃</h4>
-                        </td>                      
-                    </tr>
-                    <tr id='dash_card_th'>
-                        <td id='dash_card_td'>
-                            <h4>토양온도</h4>
-                            <h4>27℃</h4>
-                        </td>
-                        <td id='dash_card_td'>
-                            <h4>토양습도</h4>
-                            <h4>29℃</h4>
-                        </td>
-                    </tr>
-                    <tr id='dash_card_th'>
-                        <td id='dash_card_td'>
-                            <h4>물양</h4>
-                            <h4>20</h4>
-                        </td>
-                        <td id='dash_card_td'>
-                            <h4>CO2</h4>
-                            <h4>33</h4>
-                        </td>
-                    </tr>
-                </table> */}
             </div>
         </div>
     )

@@ -41,7 +41,7 @@ function dashboard({farmData,farmCrops,targetData,cropsTips,isConnected}) {
                 {farmData.payload ?
                 <div>
                     <ProfileForm user={user}/>
-                    <h1 style={{textAlign:'center'}}>{farmInfo.crops ? farmInfo.crops.name : ''}
+                    <h1 style={{textAlign:'center'}}>{farmInfo.crops ? farmInfo.crops.name : '농작물이 선택되지 않음'}
                         <Link href={`/farm/dashboard/previous/${pid}`}>
                             <Button style={{marginTop:'10px',position: 'absolute', right: 10,color:'#5cb85c',borderColor: "#5cb85c",borderRadius:'12px'}}>이전 정보</Button>
                         </Link>
@@ -89,6 +89,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async context=>{
     const farmData = await context.store.dispatch(loadFarmData({pid,options:'dashboard'}))
     
     const cropsTips = await context.store.dispatch(getCropsTips({pid}));
+
 
     // 농작물 정보 불러오기 (농작물 이름)
     await context.store.dispatch(loadFarmInfo({userId:user.data._id}))

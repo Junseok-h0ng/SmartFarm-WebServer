@@ -32,7 +32,7 @@ if(prod){
         credentials:true
     }));
 }
-
++
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
       secret:process.env.COOKIE_SECRET,
@@ -69,6 +69,6 @@ app.use('/api/auth',require('./routes/auth'));
 app.get('/',function(req,res){
       res.send();
 });
-app.listen(prod ? 8080 : 3000,function(){
+app.listen(3000,function(){
       console.log(`server is running at ${prod ? 8080 : 3000}`);
 });

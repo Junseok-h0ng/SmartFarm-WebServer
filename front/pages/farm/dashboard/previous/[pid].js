@@ -32,7 +32,7 @@ function previous({previousFarmData}) {
                 {/* {farmData.payload ? */}
                 <div>
                     <ProfileForm user={user}/>
-                    <PreviousFarmData pid={pid}/>                   
+                    <PreviousFarmData pid={pid} previousFarmData={previousFarmData.payload}/>                   
                 </div>
                 {/* <div style={{}}>
                     <NoContents/>
@@ -71,7 +71,6 @@ export const getServerSideProps = wrapper.getServerSideProps(async context=>{
         start_date: year + '-' + '5' + '-' + date + ' 00:00',
         end_date: year + '-' + month + '-' + date + ' 23:00'
     }
-    console.log(dateString);
 
     const previousFarmData = await context.store.dispatch(getPreviousFarmData({pid,dateString}));
 

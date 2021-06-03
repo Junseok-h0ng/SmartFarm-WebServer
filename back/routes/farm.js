@@ -69,8 +69,12 @@ router.post('/getCropsTips',async (req,res)=>{
     Farm.findById({_id:req.body.pid})
     .exec((err,doc)=>{
         if(err) return res.status(401).send(err);
-        const cropsId = doc.crops.id;
-        console.log(cropsId);
+        const cropsId = doc.crops ? doc.crops.id : false;
+        
+        // 농작물이 없으면 그냥 리턴
+        if(!cropsId){return res.status(200).send(null);}
+
+
         const getUrl = async () =>{
             try{
             return await axios.get(`https://www.nongsaro.go.kr/portal/ps/psb/psbl/workScheduleDtl.ps?menuId=PS00087&cntntsNo=${cropsId}&sKidofcomdtySeCode=FC`)
@@ -246,20 +250,20 @@ router.post('/auth',(req,res)=>{
 });
 
 router.post('/previousFarmData',(req,res)=>{
-
+    console.log(req.body);
     const filter ={
         start_date: req.body.dateString.start_date,
         end_date: req.body.dateString.end_date,
         options: 'previous'
     }
+    console.log(filter);
 
     Farm.findById({_id:req.body.pid})
     .exec((err,doc)=>{
         if(err) return res.status(401).send(false);
         const ipAddress = doc.ipAddress;
         axios.post(ipAddress+'/data/',(filter),{timeout:500})
-        .then((response)=>{
-            console.log(response);
+        .then((response)=>{       
             return res.status(200).send(response.data);
         }).catch(()=>{
             return res.status(401).send();

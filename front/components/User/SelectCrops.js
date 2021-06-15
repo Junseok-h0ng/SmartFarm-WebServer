@@ -177,13 +177,13 @@ function SelectCrops(props) {
 
             {/* {user.isLogin && */}
             {
-                <div>
+                <div width='100%'>
                     <button id= 'Select_btn' onClick={()=>onClickButton(210005)}>밭농사</button>
                     <button id= 'Select_btn' onClick={()=>onClickButton(210001)}>채소</button>
                     <button id= 'Select_btn' onClick={()=>onClickButton(210002)}>과수</button>
                     <Select
                         showSearch
-                        style={{ width: 200 }}
+                        style={{ width: '66%' }}
                         placeholder="Select a Crops"
                         onChange={onChangeCrops}
                         filterOption={(input, option) =>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Popover } from 'antd'
 import { BulbOutlined } from '@ant-design/icons';
-import PopUp from '../Modal_Popup/PopUp';
 
 const DashboardForm = () => {
     return <div>
@@ -26,6 +25,7 @@ const DashboardForm = () => {
         #dash_card_td {
             border: 2.2px solid #a0a0a0;
             padding: 10px;
+            width: 50%;
         }
 
         #now_condition {
@@ -59,15 +59,15 @@ const DashboardForm = () => {
                                     borderColor: "rgba(25, 201, 14, 13)",
                                     backgroundColor: "rgba(25, 201, 14, 0.5)",
                                 },
-                                {
-                                    label: "토양온도",
-                                    data: [27],
-                                    borderColor: [
-                                        "rgba(255, 201, 14, 1)",
-                                    ],
-                                    borderColor: "rgba(255, 150, 14, 1)",
-                                    backgroundColor: "rgba(255, 151, 14, 0.5)",
-                                },
+                                // {
+                                //     label: "토양온도",
+                                //     data: [27],
+                                //     borderColor: [
+                                //         "rgba(255, 201, 14, 1)",
+                                //     ],
+                                //     borderColor: "rgba(255, 150, 14, 1)",
+                                //     backgroundColor: "rgba(255, 151, 14, 0.5)",
+                                // },
                                 {
                                     label: "토양습도",
                                     data: [29],
@@ -153,27 +153,22 @@ const DashboardForm = () => {
                     </tr>
                     <tr id='dash_card_th'>
                         <td id='dash_card_td'>
-                            <h4>토양온도</h4>
+                            <h4>토양습도</h4>
                             <h4>27℃</h4>
                         </td>
-                        <td id='dash_card_td'>
-                            <h4>토양습도</h4>
-                            <h4>29℃</h4>
-                        </td>
-                    </tr>
-                    <tr id='dash_card_th'>
                         <td id='dash_card_td'>
                             <h4>물양</h4>
                             <h4>20</h4>
                         </td>
-                           <td id='dash_card_td'>
+                    </tr>
+                    <tr id='dash_card_th'>
+                        <td id='dash_card_td'>
                             <h4>CO2</h4>
                             <h4>33</h4>
                         </td>
-                    </tr>
-                    <tr>
-                        <td id= 'dash_card_td' colSpan='2'>
+                        <td id= 'dash_card_td'>
                             <h4>마지막 물준 시간 : </h4>
+                            <h4>5시간 전</h4>
                         </td>
                     </tr>
                 </table>

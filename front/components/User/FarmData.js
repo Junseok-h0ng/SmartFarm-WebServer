@@ -148,13 +148,6 @@ const FarmData = () => {
                                     lineTension: 0,
                                 },
                                 {
-                                    label: "토양온도",
-                                    data: [25, 23, 30, 20, 22, 28, 25, 24],
-                                    fill: false,
-                                    borderColor: "rgba(255, 150, 14, 1)",
-                                    lineTension: 0,
-                                },
-                                {
                                     label: "토양습도",
                                     data: [41, 42, 45, 45, 46, 44, 50, 43],
                                     fill: false,
@@ -214,13 +207,11 @@ const FarmData = () => {
                     <input type="radio" name="tab" id="tab3" />
                     <input type="radio" name="tab" id="tab4" />
                     <input type="radio" name="tab" id="tab5" />
-                    <input type="radio" name="tab" id="tab6" />
                     <label for="tab1">농장온도</label>
                     <label for="tab2">농장습도</label>
-                    <label for="tab3">토양온도</label>
-                    <label for="tab4">토양습도</label>
-                    <label for="tab5">물양  </label>
-                    <label for="tab6">CO2  </label>
+                    <label for="tab3">토양습도</label>
+                    <label for="tab4">물양  </label>
+                    <label for="tab5">CO2  </label>
                     <div id="tab1_content">
                         <table id='dash_card'>
                             <tr id='dash_card_th'>
@@ -549,7 +540,7 @@ const FarmData = () => {
                             </tr>
                         </table>
                     </div>
-                    <div id="tab3_content">
+                    {/* <div id="tab3_content">
                     <table id='dash_card'>
                     <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
@@ -712,8 +703,8 @@ const FarmData = () => {
                                 </td>
                             </tr>
                         </table>
-                    </div>
-                    <div id="tab4_content">
+                    </div> */}
+                    <div id="tab3_content">
                     <table id='dash_card'>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
@@ -877,7 +868,7 @@ const FarmData = () => {
                             </tr>
                         </table>
                     </div>
-                    <div id="tab5_content">
+                    <div id="tab4_content">
                     <table id='dash_card'>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>
@@ -1041,7 +1032,7 @@ const FarmData = () => {
                             </tr>
                         </table>
                     </div>
-                    <div id="tab6_content">
+                    <div id="tab5_content">
                     <table id='dash_card'>
                             <tr id='dash_card_th'>
                                 <td id='dash_card_td'>

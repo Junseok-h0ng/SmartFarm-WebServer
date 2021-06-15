@@ -114,12 +114,10 @@ function control(props) {
     <div>
       <style jsx>{`    
 
-
       @media screen and (min-width:600px){
         #reaction_table {column-count: 2; }
         }
-      
-  
+       
 `}</style>
       <br/><br/>
       <div id='reaction_table'>
@@ -139,26 +137,26 @@ function control(props) {
               </td>
             </tr>
           </table>
-          </div>
-          <div>
-            <table align='center'>
-              <tr>
-                <td>
-                  <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
-                  <Tooltip placement title="목표 토양 습도" >
-                      <Progress type="dashboard" percent={humidity} width={150} />
-                  </Tooltip>
-                </td>
-                <td>
-                  <div style={style}>
-                    <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
         </div>
-      <br />
+        <div>
+          <table align='center'>
+            <tr>
+              <td>
+                <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
+                <Tooltip title="목표 토양 습도" >
+                  <Progress type="dashboard" percent={humidity} width={150} />
+                </Tooltip>
+              </td>
+              <td>
+                <div style={style}>
+                  <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <br/>
       <div align='center'>
         <table>
           <tr>

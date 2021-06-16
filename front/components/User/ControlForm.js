@@ -37,11 +37,6 @@ class App extends React.Component {
       );
     }
   }
-
-  function onChange(checked) {
-    console.log(`switch to ${checked}`);
-    }
-
 function control(props) {
 
   const dispatch = useDispatch();
@@ -105,8 +100,8 @@ function control(props) {
 
   const style = {
     display: 'inline-block',
-    height: 145,
-    margin: 24,
+    height: 144,
+    margin: 20,
     margintop: 20,
   };
 
@@ -117,6 +112,12 @@ function control(props) {
       @media screen and (min-width:600px){
         #reaction_table {column-count: 2; }
         }
+
+      #control_td {
+        text-align: center;
+        vertical-align : top;
+      }
+      
        
 `}</style>
       <br/><br/>
@@ -124,30 +125,26 @@ function control(props) {
         <div>
           <table align='center'>
             <tr>
-              <td>
+              <td id='control_td'>
                 <img src="https://i.postimg.cc/MTLYV8gP/20210529-192949.png" width="28" alt="sample"></img>
                 <Tooltip title="목표 농장 온도">
                   <Progress type="dashboard" percent={temperature} format={percent => `${percent} °C`} width={150} />
                 </Tooltip>
               </td>
-              <td>
+              <td id='control_td'>
                 <div style={style}>
                   <Slider vertical marks={tempMarks} defaultValue={temperature} max='30' onChange={onChangeTemperature} />
                 </div>
               </td>
             </tr>
-          </table>
-        </div>
-        <div>
-          <table align='center'>
             <tr>
-              <td>
+              <td id='control_td'>
                 <img src="https://i.postimg.cc/yY2Y5rCM/blue.png" width="28" alt="sample"></img>
                 <Tooltip title="목표 토양 습도" >
                   <Progress type="dashboard" percent={humidity} width={150} />
                 </Tooltip>
               </td>
-              <td>
+              <td id='control_td'>
                 <div style={style}>
                   <Slider vertical marks={humiMarks} defaultValue={humidity} max='30' onChange={onChangeHumidity} />
                 </div>
@@ -182,7 +179,6 @@ function control(props) {
               <img src="https://i.postimg.cc/j5YTxd5b/light.jpg" width="80" alt="sample"></img>
               <App />
             </td>
-
           </tr>
         </table>       
       </div>

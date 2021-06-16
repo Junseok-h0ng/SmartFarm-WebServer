@@ -53,7 +53,7 @@ const FarmData = () => {
                 display: inline-block;
                 padding: 2%;
                 text-align: center;
-                width: 33%;
+                width: 20%;
                 line-height: 20px;
                 font-weight: bold;
                 background-color: #eee;
@@ -201,7 +201,7 @@ const FarmData = () => {
             </div>
             <br /><br />
             <div align='center'>
-                <div id="tabmenu">
+                <div id="tabmenu" align='center'>
                     <input type="radio" name="tab" id="tab1" defaultChecked/>
                     <input type="radio" name="tab" id="tab2" />
                     <input type="radio" name="tab" id="tab3" />

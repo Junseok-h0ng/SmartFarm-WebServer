@@ -28,9 +28,17 @@ function AddFarm(props) {
             if(hasAddress != 0){
                 dispatch(addFarm(data))
                 .then(res=>{
-                    if(res.payload){
-                        message.success('새로운 정보등록에 성공했습니다.');
-                        props.refreshFarmData(res.payload);
+                    if(res.type === 'ADD_FARM/fulfilled'){
+                        if(res.payload.success != false){
+                            message.success('새로운 정보등록에 성공했습니다.');
+                            console.log(res.payload);
+                            props.refreshFarmData(res.payload);
+                        }else{
+                            message.error('스마트팜과 연결이 되지 않았습니다.');
+                        }
+                    }else{
+                        //중복되면 에러 메세지 출력
+                        message.error('이미 정보가 있습니다.');
                     }
                 });
             }else{

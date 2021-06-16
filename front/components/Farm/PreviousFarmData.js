@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {useDispatch} from 'react-redux';
 import Link from 'next/link';
-import { DatePicker, Space,Button } from 'antd';
+import { DatePicker, Space,Button, message } from 'antd';
 import { Line } from 'react-chartjs-2';
 import { getPreviousFarmData } from '../../_redux/slices/farm';
 
@@ -45,8 +45,11 @@ const PreviousFarmData = (props) => {
         dispatch(getPreviousFarmData({pid:props.pid,dateString}))
         .then((res)=>{
             if(res){
-                console.log(res);
-                setPreviousFarmData(res.payload);
+                if(res.payload.errorcode){ 
+                   message.error('데이터를 불러오지 못했습니다.');
+                }else{
+                    setPreviousFarmData(res.payload);
+                }
             }
         })
     }

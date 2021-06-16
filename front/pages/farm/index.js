@@ -62,6 +62,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async context=>{
     const user = state.user;
     if(!state.user.data){return}
     const data = await context.store.dispatch(loadFarmInfo({userId:user.data._id}));
+    console.log(data);
     return {props:{data}}
 }); 
 

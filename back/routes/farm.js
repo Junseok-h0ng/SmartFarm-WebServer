@@ -24,18 +24,24 @@ router.post('/images',(req,res)=>{
 });
 
 router.post('/',(req,res)=>{
-    Farm.find({userId:req.body.userId,address:req.body.ipAddress})
+    Farm.find({userId:req.body.userId,ipAddress:req.body.ipAddress})
     .exec((err,doc)=>{
         if (err) return res.status(401).send(err);
+        console.log(doc[0]);
         //중복 등록 방지
         if(!doc[0]){
-            const farm = new Farm(req.body);
-            farm.save((err,doc)=>{
-                if (err) return res.status(401).send(err);
-                res.status(200).send(doc);
+            axios.get(req.body.ipAddress + '/data/')
+            .then(()=>{       
+                const farm = new Farm(req.body);
+                farm.save((err,doc)=>{
+                    if (err) return res.status(401).send(err);
+                    res.status(200).send(doc);
+                });
+            }).catch(()=>{
+                return res.status(200).send({success:false});
             });
         }else{
-            return res.status(401).json('이미 등록된 정보입니다.');
+            return res.status(401).send();
         }
     });
 });
@@ -159,6 +165,8 @@ router.post('/loadFarmData',(req,res)=>{
         filter.end_date = dateString[1];
     }
 
+    console.log(filter);
+
     Farm.findById({_id:req.body.pid})
     .exec((err,doc)=>{
         
@@ -167,12 +175,12 @@ router.post('/loadFarmData',(req,res)=>{
         const ipAddress = doc.ipAddress;
 
             axios.post(ipAddress+'/data/',(filter),{timeout:500})
+            .then((response)=>{
+                res.status(200).send(response.data);
+            })
             .catch((err)=>{
                 return res.status(200).send({success:false})
             })
-            .then((response)=>{
-                res.status(200).send(response.data);
-            });  
 
             
     });
@@ -269,6 +277,6 @@ router.post('/previousFarmData',(req,res)=>{
             return res.status(401).send();
         })
     })
-})
+});
 
 module.exports = router;    

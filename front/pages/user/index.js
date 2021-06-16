@@ -29,7 +29,7 @@ function index({data}) {
     }, [user]);
 
     const refreshPostCard = (newContents) =>{
-        setContents(contents.concat(newContents));
+        setContents(newContents.concat(contents));
     }
 
     const fetchMoreData = () =>{

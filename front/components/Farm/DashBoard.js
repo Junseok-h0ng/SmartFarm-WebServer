@@ -59,6 +59,7 @@ function dashboard(props) {
     #dash_card_td {
         border: 2.2px solid #a0a0a0;
         padding: 10px;
+        width:50%;
     }
     #now_condition {
         padding-top: 1%;
@@ -193,7 +194,7 @@ function dashboard(props) {
                     <tr id='dash_card_th'>
                         <td id='dash_card_td'>
                             <h4>토양습도</h4>
-                            <h4>{props.farmData.soilHumidity}℃</h4>
+                            <h4>{props.farmData.soilHumidity}%</h4>
                         </td>
                         <td id='dash_card_td'>
                             <h4>물양</h4>
@@ -208,7 +209,7 @@ function dashboard(props) {
                         </td>
                         <td id='dash_card_td'>
                             <h4>마지막으로 물준 시간</h4>
-                            <h4>{props.farmData.currentWater}</h4>
+                            <h4>14:00</h4>
                         </td>
                     </tr>
                 </table>

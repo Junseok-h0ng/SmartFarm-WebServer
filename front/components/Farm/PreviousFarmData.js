@@ -1,7 +1,7 @@
-import React,{useEffect,useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link';
-import { DatePicker, Space,Button, message } from 'antd';
+import { DatePicker, Space, Button, message } from 'antd';
 import { Line } from 'react-chartjs-2';
 import { getPreviousFarmData } from '../../_redux/slices/farm';
 
@@ -16,13 +16,13 @@ const PreviousFarmData = (props) => {
         let data = {
             farmTemp: [],
             farmHumidity: [],
-            soilTemp:[],
-            soilHumidity:[],
-            co2ppm:[],
-            currentWater:[]
+            soilTemp: [],
+            soilHumidity: [],
+            co2ppm: [],
+            currentWater: []
         };
- 
-        for(let i = 0; i<24; i++){
+
+        for (let i = 0; i < 24; i++) {
             data.farmTemp.push(previousFarmData.farmTemp[i]);
             data.farmHumidity.push(previousFarmData.farmHumidity[i]);
             data.soilTemp.push(previousFarmData.soilTemp[i]);
@@ -32,41 +32,37 @@ const PreviousFarmData = (props) => {
         }
         console.log(data);
         setFarmData(data);
-    
+
     }, [previousFarmData])
 
-    const onChangeDate = (_date,_dateString)=>{
-        if(!_dateString){return;}
+    const onChangeDate = (_date, _dateString) => {
+        if (!_dateString) { return; }
         const dateString = {
-            start_date : _dateString + ' 00:00',
-            end_date : _dateString + ' 23:00'
+            start_date: _dateString + ' 00:00',
+            end_date: _dateString + ' 23:00'
         }
-        
-        dispatch(getPreviousFarmData({pid:props.pid,dateString}))
-        .then((res)=>{
-            if(res){
-                if(res.payload.errorcode){ 
-                   message.error('데이터를 불러오지 못했습니다.');
-                }else{
-                    setPreviousFarmData(res.payload);
+
+        dispatch(getPreviousFarmData({ pid: props.pid, dateString }))
+            .then((res) => {
+                if (res) {
+                    if (res.payload.errorcode) {
+                        message.error('데이터를 불러오지 못했습니다.');
+                    } else {
+                        setPreviousFarmData(res.payload);
+                    }
                 }
-            }
-        })
+            })
     }
 
     return (
         <div>
             <style jsx>{`    
             #Farm_container {
-                margin-top: 10px;
+                padding-top: 7%;
                 justify-content: center;
                 align-items: center;
             }
             
-            // #card_container {
-            //     border: 2px solid #6f4f28;
-            //     border-radius: 30px;                
-            // }
             #dash_card {
                 width: 90%;
                 color: #5cb85c;
@@ -77,17 +73,24 @@ const PreviousFarmData = (props) => {
             #dash_card_th {
                 border: 1px solid #6f4f28;
                 padding: 10px;
+                
+            }
+            #dash_card_thc {
+                border: 1px solid #6f4f28;
+                padding: 10px;
+                background-color: #bbdefb;
             }
     
             #dash_card_td {
                 border: 1px solid #6f4f28;
                 padding: 10px;
+                
             }
             #tabmenu label {
                 display: inline-block;
                 padding: 2%;
                 text-align: center;
-                width: 33%;
+                width: 20%;
                 line-height: 20px;
                 font-weight: bold;
                 background-color: #eee;
@@ -128,7 +131,7 @@ const PreviousFarmData = (props) => {
                 color: #669999;
             }
     
-            #tabmenu>* {
+            #tabmenu> * {
                 display: none;
             }
     
@@ -154,209 +157,171 @@ const PreviousFarmData = (props) => {
             }
             `}</style>
 
-        {farmData.farmTemp && 
-        <>
-            <div id='Farm_container'>
-            <div>
-                <DatePicker onChange={onChangeDate} />
-                <Link href={`/farm/dashboard/${props.pid}`}>
-                        <Button style={{position: 'absolute', right: 10,color:'#5cb85c',borderColor: "#5cb85c",borderRadius:'12px'}}>현재 정보</Button>
-                </Link>
-            </div>
-            <br />
-            <div>
-                <Line
-                    data={{
-                        labels: ['0시', '3시', '6시', '9시', '12시', '15시', '18시', '21시'],
-                        datasets: [
-                            {
-                                label: "농장온도",
-                                data: farmData.farmTemp,
-                                fill: false,
-                                borderColor: "rgba(255, 201, 14, 1)",
-                                lineTension: 0,
-                            },
-                            {
-                                label: "농장습도",
-                                data: farmData.farmHumidity,
-                                fill: false,
-                                borderColor: "rgba(25, 201, 14, 13)",
-                                lineTension: 0,
-                            },
-                            {
-                                label: "토양온도",
-                                data: farmData.soilTemp,
-                                fill: false,
-                                borderColor: "rgba(255, 150, 14, 1)",
-                                lineTension: 0,
-                            },
-                            {
-                                label: "토양습도",
-                                data: farmData.soilHumidity,
-                                fill: false,
-                                borderColor: "rgba(55, 111, 95, 13)",
-                                lineTension: 0,
-                            },
-                            {
-                                label: "물양",
-                                data: farmData.currentWater,
-                                fill: false,
-                                borderColor: "rgba(75, 197, 220, 1",
-                                lineTension: 0,
-                            },
-                            {
-                                label: "CO2",
-                                data: farmData.co2ppm,
-                                fill: false,
-                                borderColor: "rgba(144, 144, 114, 1)",
-                                lineTension: 0,
-                            },
-                        ],
+            {farmData.farmTemp &&
+                <>
+                    <div id='Farm_container'>
+                        <div>
+                            <DatePicker onChange={onChangeDate} />
+                            <Link href={`/farm/dashboard/${props.pid}`}>
+                                <Button style={{ position: 'absolute', right: 10, color: '#5cb85c', borderColor: "#5cb85c", borderRadius: '12px' }}>현재 정보</Button>
+                            </Link>
+                        </div>
+                        <br />
+                        <div>
+                            <Line
+                                data={{
+                                    labels: ['0시', '3시', '6시', '9시', '12시', '15시', '18시', '21시'],
+                                    datasets: [
+                                        {
+                                            label: "농장온도",
+                                            data: farmData.farmTemp,
+                                            fill: false,
+                                            borderColor: "rgba(255, 201, 14, 1)",
+                                            lineTension: 0,
+                                        },
+                                        {
+                                            label: "농장습도",
+                                            data: farmData.farmHumidity,
+                                            fill: false,
+                                            borderColor: "rgba(25, 201, 14, 13)",
+                                            lineTension: 0,
+                                        },
+                                        {
+                                            label: "토양습도",
+                                            data: farmData.soilHumidity,
+                                            fill: false,
+                                            borderColor: "rgba(55, 111, 95, 13)",
+                                            lineTension: 0,
+                                        },
+                                    ],
 
-                    }}
-                    width={'50%'}
-                    height={400}
+                                }}
+                                width={'50%'}
+                                height={400}
 
-                    options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: false,
-                                }
-                            }],
-                            yAxes: [{
-                                display: true,
-                                ticks: {
-                                    suggestedMin: 0,
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: ''
-                                }
-                            }]
-                        }
-                    }}
-                />
-            </div>
-            </div>
-            <br /><br />
-            <div align='center' id='card_container'>
-                <div id="tabmenu">
-                    <input type="radio" name="tab" id="tab1"></input>
-                    <input type="radio" name="tab" id="tab2"></input>
-                    <input type="radio" name="tab" id="tab3"></input>
-                    <input type="radio" name="tab" id="tab4"></input>
-                    <input type="radio" name="tab" id="tab5"></input>
-                    <input type="radio" name="tab" id="tab6"></input>
-                    <label for="tab1">농장온도</label>
-                    <label for="tab2">농장습도</label>
-                    <label for="tab3">토양온도</label>
-                    <label for="tab4">토양습도</label>
-                    <label for="tab5">물양  </label>
-                    <label for="tab6">CO2  </label>
-                    <div id="tab1_content">
-                    <table id='dash_card'>
-                        {farmData.farmTemp.map((temp,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{temp}℃</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}
-                    </table>
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        xAxes: [{
+                                            display: true,
+                                            scaleLabel: {
+                                                display: false,
+                                            }
+                                        }],
+                                        yAxes: [{
+                                            display: true,
+                                            ticks: {
+                                                suggestedMin: 0,
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: ''
+                                            }
+                                        }]
+                                    }
+                                }}
+                            />
+                        </div>
                     </div>
-                    <div id="tab2_content">
-                    <table id='dash_card'>
-                        {farmData.farmHumidity.map((humidity,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{humidity}%</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}   
-                        </table>
+                    <br /><br />
+                    <div align='center' id='card_container'>
+                        <div id="tabmenu">
+                            <input type="radio" name="tab" id="tab1"></input>
+                            <input type="radio" name="tab" id="tab2"></input>
+                            <input type="radio" name="tab" id="tab3"></input>
+                            <input type="radio" name="tab" id="tab4"></input>
+                            <input type="radio" name="tab" id="tab5"></input>
+                            <input type="radio" name="tab" id="tab6"></input>
+                            <label for="tab1">농장온도</label>
+                            <label for="tab2">농장습도</label>
+                            <label for="tab3">토양습도</label>
+                            <label for="tab4">물양  </label>
+                            <label for="tab5">CO2  </label>
+                            <div id="tab1_content">
+                                <table id='dash_card'>
+                                    {farmData.farmTemp.map((temp, index) => (
+                                        <>
+                                            <tr id='dash_card_th'>
+                                                <td id='dash_card_td'>
+                                                    <h4>{index}시</h4>
+                                                </td>
+                                                <td id='dash_card_td'>
+                                                    <h4>{temp}℃</h4>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                            </div>
+                            <div id="tab2_content">
+                                <table id='dash_card'>
+                                    {farmData.farmHumidity.map((humidity, index) => (
+                                        <>
+                                            <tr id='dash_card_th'>
+                                                <td id='dash_card_td'>
+                                                    <h4>{index}시</h4>
+                                                </td>
+                                                <td id='dash_card_td'>
+                                                    <h4>{humidity}%</h4>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                            </div>
+                            <div id="tab3_content">
+                                <table id='dash_card'>
+                                    {farmData.soilHumidity.map((humidity, index) => (
+                                        <>
+                                            <tr id='dash_card_th'>
+                                                <td id='dash_card_td'>
+                                                    <h4>{index}시</h4>
+                                                </td>
+                                                <td id='dash_card_td'>
+                                                    <h4>{humidity}%</h4>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                            </div>
+                            <div id="tab4_content">
+                                <table id='dash_card'>
+                                    {farmData.currentWater.map((water, index) => (
+                                        <>
+                                            <tr id='dash_card_th'>
+                                                <td id='dash_card_td'>
+                                                    <h4>{index}시</h4>
+                                                </td>
+                                                <td id='dash_card_td'>
+                                                    <h4>{water}%</h4>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                            </div>
+                            <div id="tab5_content">
+                                <table id='dash_card'>
+                                    {farmData.co2ppm.map((co2ppm, index) => (
+                                        <>
+                                            <tr id='dash_card_th'>
+                                                <td id='dash_card_td'>
+                                                    <h4>{index}시</h4>
+                                                </td>
+                                                <td id='dash_card_td'>
+                                                    <h4>{co2ppm}</h4>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))}
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div id="tab3_content">
-                    <table id='dash_card'>
-                        {farmData.soilTemp.map((temp,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{temp}℃</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}   
-                        </table>
-                    </div>
-                    <div id="tab4_content">
-                    <table id='dash_card'>
-                    {farmData.soilHumidity.map((humidity,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{humidity}%</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}   
-                        </table>
-                    </div>
-                    <div id="tab5_content">
-                    <table id='dash_card'>
-                        {farmData.currentWater.map((water,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{water}%</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}   
-                    </table>
-                    </div>
-                    <div id="tab6_content">
-                    <table id='dash_card'>
-                        {farmData.co2ppm.map((co2ppm,index)=>(
-                            <>
-                            <tr id='dash_card_th'>
-                                <td id='dash_card_td'>
-                                    <h4>{index}시</h4>
-                                </td>
-                                <td id='dash_card_td'>
-                                    <h4>{co2ppm}</h4>
-                                </td>
-                            </tr>
-                            </>
-                        ))}   
-                    </table>
-                    </div>
-                </div>
-            </div>
-            </>
-        }
+                </>
+            }
 
         </div>
     )

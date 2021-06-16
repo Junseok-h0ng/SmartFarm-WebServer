@@ -170,7 +170,7 @@ function SelectCrops(props) {
         fontWeight: 'bold',
         padding: '4px 15px',
         textDecoration: 'none',
-        textShadow: '0px 1px 0px #528009'
+        textShadow: '0px 1px 0px #528009',
     }
 
     return (
@@ -180,6 +180,7 @@ function SelectCrops(props) {
                 <div>
 
                     <div style={{ marginTop: '10px', width: '100%' }}>
+
                         <Select
                             showSearch
                             style={{ width: '30%', float: 'right' }}
@@ -195,10 +196,10 @@ function SelectCrops(props) {
                         <Button style={buttonStyle} onClick={() => onClickButton(210005)}>밭농사</Button>
                         <Button style={buttonStyle} onClick={() => onClickButton(210001)}>채소</Button>
                         <Button style={buttonStyle} onClick={() => onClickButton(210002)}>과수</Button>
-
                         {info &&
                             <>
-                                <h1>{cropsInfo.name}</h1>
+                                <br /><br /><br />
+                                <h1 style={{ textAlign: 'center' }}>{cropsInfo.name}</h1>
                                 <style>{mycss}</style>
                                 <div dangerouslySetInnerHTML={{ __html: info }}></div>
                                 <Button style={{
@@ -208,7 +209,6 @@ function SelectCrops(props) {
                             </>
                         }
                     </div>
-
                 </div>
             }
 

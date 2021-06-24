@@ -8,27 +8,29 @@ function LineCharts(props) {
 
 
     useEffect(() => {
+
+        console.log(props.farmData);
+
         let data = {
             farmTemp: [],
             farmHumidity: [],
             soilTemp: [],
             soilHumidity: [],
             co2ppm: [],
-            currentWater: []
         };
 
-        for (let i = 0; i < 24; i++) {
+        
+
+        for (let i = 0; i < 24; i+=3) {
             data.farmTemp.push(props.farmData.farmTemp[i]);
             data.farmHumidity.push(props.farmData.farmHumidity[i]);
             data.soilHumidity.push(props.farmData.soilHumidity[i]);
-            data.co2ppm.push(props.farmData.co2ppm[i]);
-            data.currentWater.push(props.farmData.currentWater[i]);
         }
 
         setFarmData(data);
     }, [])
 
-    const labels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']
+    const labels = ['0시', '3시', '6시', '9시', '12시', '15시', '18시', '21시']
     return (
         <div>
             {farmData &&
@@ -57,24 +59,6 @@ function LineCharts(props) {
                             {
                                 label: "토양습도",
                                 data: farmData.soilHumidity,
-                                borderColor: [
-                                    "rgba(255, 201, 14, 1)",
-                                ],
-                                borderColor: "rgba(25, 201, 14, 13)",
-                                backgroundColor: "rgba(25, 201, 14, 0.5)",
-                            },
-                            {
-                                label: "co2농도",
-                                data: farmData.co2ppm,
-                                borderColor: [
-                                    "rgba(255, 201, 14, 1)",
-                                ],
-                                borderColor: "rgba(25, 201, 14, 13)",
-                                backgroundColor: "rgba(25, 201, 14, 0.5)",
-                            },
-                            {
-                                label: "물양",
-                                data: farmData.currentWater,
                                 borderColor: [
                                     "rgba(255, 201, 14, 1)",
                                 ],

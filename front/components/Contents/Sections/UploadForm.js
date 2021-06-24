@@ -15,6 +15,7 @@ function UploadForm(props) {
   const [farmList, setfarmList] = useState([]);
   const [selectFarm, setSelectFarm] = useState("");
   const [chartData, setChartData] = useState({});
+  
 
   useEffect(() => {
     dispatch(loadFarmInfo({ userId: props.userId }))
@@ -113,7 +114,7 @@ function UploadForm(props) {
         start: dateString[0],
         end: dateString[1]
       }
-      setDateString(data);
+      
 
       dateString[0] += ' 00:00';
       dateString[1] += ' 23:00';
@@ -121,12 +122,14 @@ function UploadForm(props) {
       dispatch(loadFarmData({ pid: selectFarm, dateString, options: 'chart' }))
         .then(response => {
           if (response.payload) {
-            console.log(response);
-            if (response.payload.length > 0) {
+            if (response.payload.farmTemp) {
               setChartData(response.payload);
+              setDateString({...data,data:response.payload});
             } else {
               // 리스폰스에 데이터가 없다면 메시지를 띄운다.
               message.error('해당되는 날짜에 데이터가 존재하지 않습니다.');
+              setDateString([]);
+              console.log(dateString);
             }
           } else {
             message.error('농장과 연결이 실패했습니다.');

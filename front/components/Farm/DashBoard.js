@@ -95,15 +95,6 @@ function dashboard(props) {
                                         backgroundColor: "rgba(25, 201, 14, 0.5)",
                                     },
                                     {
-                                        label: "토양온도",
-                                        data: [props.farmData.soilTemp],
-                                        borderColor: [
-                                            "rgba(255, 201, 14, 1)",
-                                        ],
-                                        borderColor: "rgba(255, 150, 14, 1)",
-                                        backgroundColor: "rgba(255, 151, 14, 0.5)",
-                                    },
-                                    {
                                         label: "토양습도",
                                         data: [props.farmData.soilHumidity],
                                         borderColor: [
@@ -111,15 +102,6 @@ function dashboard(props) {
                                         ],
                                         borderColor: "rgba(55, 111, 95, 13)",
                                         backgroundColor: "rgba(55, 111, 95, 0.5)",
-                                    },
-                                    {
-                                        label: "C02 농도",
-                                        data: [props.farmData.co2ppm],
-                                        borderColor: [
-                                            "rgba(255, 201, 14, 1)",
-                                        ],
-                                        borderColor: "rgba(75, 197, 220, 1",
-                                        backgroundColor: "rgba(75, 197, 220, 1)",
                                     },
                                     {
                                         label: "물양",
@@ -188,7 +170,7 @@ function dashboard(props) {
                         </td>
                         <td id='dash_card_td'>
                             <h4>농장습도</h4>
-                            <h4>{props.farmData.farmHumidity}℃</h4>
+                            <h4>{props.farmData.farmHumidity}%</h4>
                         </td>
                     </tr>
                     <tr id='dash_card_th'>
@@ -209,7 +191,7 @@ function dashboard(props) {
                         </td>
                         <td id='dash_card_td'>
                             <h4>마지막으로 물준 시간</h4>
-                            <h4>14:00</h4>
+                            <h4>{props.farmData.wateringTime}</h4>
                         </td>
                     </tr>
                 </table>

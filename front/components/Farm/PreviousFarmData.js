@@ -9,6 +9,7 @@ const PreviousFarmData = (props) => {
 
     const dispatch = useDispatch();
     const [previousFarmData, setPreviousFarmData] = useState(props.previousFarmData);
+    const [chartData, setChartData] = useState({})
     const [farmData, setFarmData] = useState({});
     // const previousFarmData = props.previousFarmData;
 
@@ -21,6 +22,11 @@ const PreviousFarmData = (props) => {
             co2ppm: [],
             currentWater: []
         };
+        let chart = {
+            farmTemp: [],
+            farmHumidity: [],
+            soilHumidity: []
+        }
 
         for (let i = 0; i < 24; i++) {
             data.farmTemp.push(previousFarmData.farmTemp[i]);
@@ -30,8 +36,14 @@ const PreviousFarmData = (props) => {
             data.co2ppm.push(previousFarmData.co2ppm[i]);
             data.currentWater.push(previousFarmData.currentWater[i]);
         }
-        console.log(data);
         setFarmData(data);
+
+        for (let i = 0; i < 24; i+=3) {
+            chart.farmTemp.push(previousFarmData.farmTemp[i]);
+            chart.farmHumidity.push(previousFarmData.farmHumidity[i]);
+            chart.soilHumidity.push(previousFarmData.soilHumidity[i]);
+        }
+        setChartData(chart);
 
     }, [previousFarmData])
 
@@ -157,7 +169,7 @@ const PreviousFarmData = (props) => {
             }
             `}</style>
 
-            {farmData.farmTemp &&
+            {chartData.farmTemp &&
                 <>
                     <div id='Farm_container'>
                         <div>
@@ -174,21 +186,21 @@ const PreviousFarmData = (props) => {
                                     datasets: [
                                         {
                                             label: "농장온도",
-                                            data: farmData.farmTemp,
+                                            data: chartData.farmTemp,
                                             fill: false,
                                             borderColor: "rgba(255, 201, 14, 1)",
                                             lineTension: 0,
                                         },
                                         {
                                             label: "농장습도",
-                                            data: farmData.farmHumidity,
+                                            data: chartData.farmHumidity,
                                             fill: false,
                                             borderColor: "rgba(25, 201, 14, 13)",
                                             lineTension: 0,
                                         },
                                         {
                                             label: "토양습도",
-                                            data: farmData.soilHumidity,
+                                            data: chartData.soilHumidity,
                                             fill: false,
                                             borderColor: "rgba(55, 111, 95, 13)",
                                             lineTension: 0,
@@ -227,7 +239,7 @@ const PreviousFarmData = (props) => {
                     <br /><br />
                     <div align='center' id='card_container'>
                         <div id="tabmenu">
-                            <input type="radio" name="tab" id="tab1"></input>
+                            <input type="radio" name="tab" id="tab1" defaultChecked></input>
                             <input type="radio" name="tab" id="tab2"></input>
                             <input type="radio" name="tab" id="tab3"></input>
                             <input type="radio" name="tab" id="tab4"></input>

@@ -145,7 +145,7 @@ function CardForm(props) {
                 ))}
                 {post.charts &&
                     <div>
-                        <LineCharts/>
+                        <LineCharts farmData={post.charts.data}/>
                     </div>
                 }
 

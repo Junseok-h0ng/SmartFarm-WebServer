@@ -174,7 +174,7 @@ router.post('/loadFarmData',(req,res)=>{
 
         const ipAddress = doc.ipAddress;
 
-            axios.post(ipAddress+'/data/',(filter),{timeout:500})
+            axios.post(ipAddress+'/data/',(filter),{timeout:2000})
             .then((response)=>{
                 res.status(200).send(response.data);
             })

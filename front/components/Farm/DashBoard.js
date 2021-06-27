@@ -26,6 +26,7 @@ function dashboard(props) {
         //         }))
         //     }
         // })
+        console.log(props);
         console.log(props.cropsTips);
         setCropsTips(props.cropsTips);
     }, [])
@@ -103,15 +104,6 @@ function dashboard(props) {
                                         borderColor: "rgba(55, 111, 95, 13)",
                                         backgroundColor: "rgba(55, 111, 95, 0.5)",
                                     },
-                                    {
-                                        label: "물양",
-                                        data: [props.farmData.currentWater],
-                                        borderColor: [
-                                            "rgba(255, 201, 14, 1)",
-                                        ],
-                                        borderColor: "rgba(144, 144, 114, 1)",
-                                        backgroundColor: "rgba(2144, 144, 114, 1)",
-                                    },
                                 ],
                             }}
                             width={null}
@@ -179,7 +171,7 @@ function dashboard(props) {
                             <h4>{props.farmData.soilHumidity}%</h4>
                         </td>
                         <td id='dash_card_td'>
-                            <h4>물양</h4>
+                            <h4>남은물양</h4>
                             <h4>{props.farmData.currentWater}</h4>
                         </td>
                     </tr>

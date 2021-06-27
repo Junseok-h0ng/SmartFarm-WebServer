@@ -245,7 +245,7 @@ const PreviousFarmData = (props) => {
                             <label for="tab1">농장온도</label>
                             <label for="tab2">농장습도</label>
                             <label for="tab3">토양습도</label>
-                            <label for="tab4">CO2  </label>
+                            <label for="tab4">CO2</label>
                             <div id="tab1_content">
                                 <table id='dash_card'>
                                     {farmData.farmTemp.map((temp, index) => (

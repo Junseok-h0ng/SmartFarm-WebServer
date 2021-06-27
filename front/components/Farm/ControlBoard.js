@@ -52,11 +52,12 @@ function control(props) {
     },
     10: '10°C',
     20: '20°C',
-    30: {
+    30: '30°C',
+    40: {
       style: {
         color: '#f50'
       },
-      label: <strong>30°C</strong>
+      label: <strong>40°C</strong>
     }
   }
 
@@ -67,13 +68,14 @@ function control(props) {
       },
       label: <strong>0%</strong>
     },
-    10: '10%',
     20: '20%',
-    30: {
+    40: '40%',
+    60: '60%',
+    80: {
       style: {
         color: '#f50'
       },
-      label: <strong>30%</strong>
+      label: <strong>80%</strong>
     }
   }
 
@@ -101,7 +103,7 @@ function control(props) {
               </td>
               <td id="control_td">
                 <div style={style}>
-                  <Slider vertical marks={tempMarks} value={temperature} max='30' onChange={onChangeTemperature} />
+                  <Slider vertical marks={tempMarks} value={temperature} max='40' onChange={onChangeTemperature} />
                 </div>
               </td>
             </tr>
@@ -118,7 +120,7 @@ function control(props) {
               </td>
               <td id="control_td">
                 <div style={style}>
-                  <Slider vertical marks={humiMarks} value={humidity} max='30' onChange={onChangeHumidity} />
+                  <Slider vertical marks={humiMarks} value={humidity} max='80' onChange={onChangeHumidity} />
                 </div>
               </td>
             </tr>

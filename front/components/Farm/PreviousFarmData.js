@@ -102,7 +102,7 @@ const PreviousFarmData = (props) => {
                 display: inline-block;
                 padding: 2%;
                 text-align: center;
-                width: 20%;
+                width: 25%;
                 line-height: 20px;
                 font-weight: bold;
                 background-color: #eee;
@@ -110,7 +110,6 @@ const PreviousFarmData = (props) => {
                 border-radius: 3px 3px 0 0;
                 color: #777;
                 cursor: pointer;
-    
             }
     
             #tabmenu input:nth-of-type(1):checked~label:nth-of-type(1) {
@@ -243,13 +242,10 @@ const PreviousFarmData = (props) => {
                             <input type="radio" name="tab" id="tab2"></input>
                             <input type="radio" name="tab" id="tab3"></input>
                             <input type="radio" name="tab" id="tab4"></input>
-                            <input type="radio" name="tab" id="tab5"></input>
-                            <input type="radio" name="tab" id="tab6"></input>
                             <label for="tab1">농장온도</label>
                             <label for="tab2">농장습도</label>
                             <label for="tab3">토양습도</label>
-                            <label for="tab4">물양  </label>
-                            <label for="tab5">CO2  </label>
+                            <label for="tab4">CO2  </label>
                             <div id="tab1_content">
                                 <table id='dash_card'>
                                     {farmData.farmTemp.map((temp, index) => (
@@ -299,22 +295,6 @@ const PreviousFarmData = (props) => {
                                 </table>
                             </div>
                             <div id="tab4_content">
-                                <table id='dash_card'>
-                                    {farmData.currentWater.map((water, index) => (
-                                        <>
-                                            <tr id='dash_card_th'>
-                                                <td id='dash_card_td'>
-                                                    <h4>{index}시</h4>
-                                                </td>
-                                                <td id='dash_card_td'>
-                                                    <h4>{water}%</h4>
-                                                </td>
-                                            </tr>
-                                        </>
-                                    ))}
-                                </table>
-                            </div>
-                            <div id="tab5_content">
                                 <table id='dash_card'>
                                     {farmData.co2ppm.map((co2ppm, index) => (
                                         <>

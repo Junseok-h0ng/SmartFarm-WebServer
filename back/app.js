@@ -69,6 +69,6 @@ app.use('/api/auth',require('./routes/auth'));
 app.get('/',function(req,res){
       res.send();
 });
-app.listen(3000,function(){
+app.listen(prod ? 8080 : 3000,function(){
       console.log(`server is running at ${prod ? 8080 : 3000}`);
 });

@@ -58,7 +58,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async context=>{
 
     const year = today.getFullYear(); // 년도
     const month = today.getMonth() + 1;  // 월
-    const date = today.getDate();  // 날짜
+    const date = today.getDate() - 1;  // 날짜
 
     // 로그인이 안되어있으면 리턴
     if(!state.user.data){return}
@@ -67,8 +67,10 @@ export const getServerSideProps = wrapper.getServerSideProps(async context=>{
     // 농장 서버와 접속에 실패했을시 리턴
     if(auth.type != 'AUTH_FARM/fulfilled'){return {props:{isConnected}}}
 
+
+
     const dateString ={
-        start_date: year + '-' + '5' + '-' + date + ' 00:00',
+        start_date: year + '-' + month + '-' + date + ' 00:00',
         end_date: year + '-' + month + '-' + date + ' 23:00'
     }
 
